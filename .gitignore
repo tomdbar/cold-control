@@ -2,5 +2,9 @@
 .project
 .DS_Store
 .settings
+.idea
+
 labbook/**
+
 exceptions
+exceptions.log
