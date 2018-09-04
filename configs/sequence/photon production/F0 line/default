@@ -1,0 +1,130 @@
+date = 03/11/16
+time = 14:00:54
+[notes]
+user = '''Default user notes...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+config_ch_assignments = "(0, 'Cool upper - freq')", "(1, 'Cool lower - freq')", "(2, 'Cool center - freq')", "(3, 'Cool repump - freq')", "(4, 'Cool upper - amp')", "(5, 'Cool lower - amp')", "(6, 'Cool center - amp')", "(7, 'Cool repump - amp')", "(8, 'STIRAP ref - freq')", "(9, 'STIRAP ref - amp')", "(10, 'Cavity lock - freq')", "(11, 'Cavity lock - amp')", "(12, 'Abs imaging - freq')", "(13, 'Abs imaging - amp')", "(14, 'Depump - freq')", "(15, 'Depump - amp')", "(16, 'MOT coils current')", "(17, 'AWG trigger')", "(18, 'Bias coils current')", "(19, '19 - unused')", "(20, '20 - unused')", "(21, '21 - unused')", "(22, '22 - unused')", "(23, 'Camera trigger')"
+[sequence]
+t_step = 10.0
+global_timings = "(5500.0, 'Cool off')", "(5000.0, 'Throw start')", "(9000.0, 'AWG start')", "(26000.0, 'AWG end')", "(5350.0, 'Repump off')", "(6350.0, 'Depump off')"
+n_samples = 3001
+[sequence channels]
+[[0]]
+tV_pairs = "(0.0, 6.098919432921334)", "(4000.0, 5.346830003517509)", "(5000.0, 5.2989077248450815)"
+V_interval_styles = 0, 0, 0
+chNum = 0
+[[1]]
+tV_pairs = "(0.0, 6.103347153084332)", "(4000.0, 5.348613892354194)", "(5000.0, 5.396590127598534)"
+V_interval_styles = 0, 0, 0
+chNum = 1
+[[2]]
+tV_pairs = "(0.0, 6.0491989854320405)", "(4000.0, 5.299176255211292)", "(5000.0, 5.299176255211292)"
+V_interval_styles = 0, 0, 0
+chNum = 2
+[[3]]
+tV_pairs = "(0.0, 2.050923155428587)",
+V_interval_styles = 0,
+chNum = 3
+[[4]]
+tV_pairs = "(0.0, 2.286603784070417)", "(5000.0, 1.8533324869840826)", "(6000.0, 0.02442002442)"
+V_interval_styles = 0, 0, 0
+chNum = 4
+[[5]]
+tV_pairs = "(0.0, 3.41391941392)", "(5000.0, 3.41391941392)", "(6000.0, 0.263736263736)"
+V_interval_styles = 0, 0, 0
+chNum = 5
+[[6]]
+tV_pairs = "(0.0, 4.66910866911)", "(5000.0, 2.231103892851029)", "(6000.0, 0.043956043956)"
+V_interval_styles = 0, 0, 0
+chNum = 6
+[[7]]
+tV_pairs = "(0.0, 5.06471306471)", "(6000.0, 0.0)"
+V_interval_styles = 0, 0
+chNum = 7
+[[8]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 8
+[[9]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 9
+[[10]]
+tV_pairs = "(0.0, 1.7671849223992062)",
+V_interval_styles = 0,
+chNum = 10
+[[11]]
+tV_pairs = "(0.0, 5.0)",
+V_interval_styles = 0,
+chNum = 11
+[[12]]
+tV_pairs = "(0.0, 7.355114577696655)",
+V_interval_styles = 0,
+chNum = 12
+[[13]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 13
+[[14]]
+tV_pairs = "(0.0, 0.0)", "(5000.0, 7.247268393397062)"
+V_interval_styles = 0, 0
+chNum = 14
+[[15]]
+tV_pairs = "(0.0, 0.0)", "(6750.0, 5.0)", "(7250.0, 0.0)"
+V_interval_styles = 0, 0, 0
+chNum = 15
+[[16]]
+tV_pairs = "(0.0, 5.0)", "(4000.0, 0.0)"
+V_interval_styles = 0, 0
+chNum = 16
+[[17]]
+tV_pairs = "(0.0, 0.0)", "(7000.0, 2.5)", "(26000.0, 0.0)", "(26000.0, 0.0)"
+V_interval_styles = 0, 0, 0, 0
+chNum = 17
+[[18]]
+tV_pairs = "(0.0, 0.1)", "(5500.0, 0.0)", "(27000.0, 0.0)"
+V_interval_styles = 0, 0, 0
+chNum = 18
+[[19]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 19
+[[20]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 20
+[[21]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 21
+[[22]]
+tV_pairs = "(0.0, 5.0)", "(10000.0, 5.0)", "(27000.0, 5.0)"
+V_interval_styles = 0, 0, 0
+chNum = 22
+[[23]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 23

@@ -1,0 +1,23 @@
+save_location = Z:/Results017_New/data
+summary_fname = automated_experiments_summary
+daq_channel_update_steps = 5
+daq_channel_update_delay = 1
+[experiments]
+[[0]]
+daq_channel_static_values = "(10, 75.25)",
+mot_reload = 1000000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_75_25
+[[1]]
+daq_channel_static_values = "(10, 75.75)",
+mot_reload = 1000000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_75_75
+[[2]]
+daq_channel_static_values = "(10, 76.25)",
+mot_reload = 1000000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_76_25

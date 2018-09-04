@@ -1,0 +1,106 @@
+date = 30/08/16
+time = 19:56:26
+[notes]
+user = Default user notes...
+config_ch_assignments = 0 = MOT cool 1 (lower)\n1 = MOT cool 2 (center)\n2 = MOT cool 3 (upper),
+[sequence]
+t_step = 100
+global_timings = "(1000.0, 'MOT launch')", "(2000.0, 'Fire lasers')", "(3000.0, 'Engage thrusters')"
+n_samples = 1001
+[sequence channels]
+[[0]]
+tV_pairs = "(0.0, 0.0)", "(10010.0, 3.0)", "(14000.0, 3.0)", "(20000.0, 3.0)", "(30000.0, 3.0)", "(34000.0, 3.0)"
+V_interval_styles = 0, 1, 0, 1, 0, 0
+chNum = 0
+[[1]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 1
+[[2]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 2
+[[3]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 3
+[[4]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 4
+[[5]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 5
+[[6]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 6
+[[7]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 7
+[[8]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 8
+[[9]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 9
+[[10]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 10
+[[11]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 11
+[[12]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 12
+[[13]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 13
+[[14]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 14
+[[15]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 15
+[[16]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 16
+[[17]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 17
+[[18]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 18
+[[19]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 19
+[[20]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 20
+[[21]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 21
+[[22]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 22
+[[23]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 23

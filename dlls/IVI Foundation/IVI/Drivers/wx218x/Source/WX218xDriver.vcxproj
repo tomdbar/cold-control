@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{10BB5FF9-EC4F-4228-9BEE-3FDD05DC292F}</ProjectGuid>
+    <RootNamespace>WX218x</RootNamespace>
+    <Keyword>AtlProj</Keyword>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NimbusProjectType>IviComDriverProject</NimbusProjectType>
+    <NimbusVersion>3.3.1113.0</NimbusVersion>
+    <NimbusProjFileName>WX218x.ivicomproj</NimbusProjFileName>
+    <DriverId>{79d70807-8ed5-4f14-b7ef-e13a7adec26c}</DriverId>
+    <DriverVersion>3.0.2.0</DriverVersion>
+    <DriverPiaNamespace>TaborElectronics.WX218x.Interop</DriverPiaNamespace>
+    <DriverPiaKeyFilePath>C:\Program Files (x86)\Pacific MindWorks\Nimbus Driver Studio 3.3\PubPrivNimbusTemp.snk</DriverPiaKeyFilePath>
+    <DelaySignDriverPia>False</DelaySignDriverPia>
+    <MatlabWrapperEnabled>true</MatlabWrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NimbusCurrentVersion>$([MSBuild]::GetRegistryValue('HKEY_LOCAL_MACHINE\SOFTWARE\Pacific MindWorks\NimbusDriverStudio', 'CurrentVersion'))</NimbusCurrentVersion>
+    <NimbusVersionSpecificRegistryPath>HKEY_LOCAL_MACHINE\SOFTWARE\Pacific MindWorks\NimbusDriverStudio\$(NimbusCurrentVersion)</NimbusVersionSpecificRegistryPath>
+    <NtlDir>$([MSBuild]::GetRegistryValueFromView('$(NimbusVersionSpecificRegistryPath)', NtlDir, null, RegistryView.Registry32, RegistryView.Default))</NtlDir>
+    <NtlDir Condition="'$(NtlDir)'==''">.\NTL</NtlDir>
+    <IviStandardRootDir32>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\Software\IVI\', IviStandardRootDir, null, RegistryView.Registry32, RegistryView.Default))</IviStandardRootDir32>
+    <IviStandardRootDir64>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\Software\IVI\', IviStandardRootDir, null, RegistryView.Registry64, RegistryView.Default))</IviStandardRootDir64>
+    <VisaRootDir32>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\VXIPNP_Alliance\VXIPNP\CurrentVersion', VXIPNPPATH, null, RegistryView.Registry32, RegistryView.Default))</VisaRootDir32>
+    <VisaRootDir64>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\VXIPNP_Alliance\VXIPNP\CurrentVersion', VXIPNPPATH, null, RegistryView.Registry64, RegistryView.Default))</VisaRootDir64>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfAtl>Static</UseOfAtl>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfAtl>Static</UseOfAtl>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfAtl>Static</UseOfAtl>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfAtl>Static</UseOfAtl>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\bin\x86\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">obj\x86\$(Configuration)\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\bin\x64\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">obj\x64\$(Configuration)\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\bin\x86\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">obj\x86\$(Configuration)\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\bin\x64\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">obj\x64\$(Configuration)\</IntDir>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)WX218x.tlb</TypeLibraryName>
+      <HeaderFileName>_WX218x.h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>_WX218x_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>WX218x_p.c</ProxyFileName>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(NtlDir);$(IviStandardRootDir32)Include;$(VisaRootDir32)WinNT\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <RegisterOutput>true</RegisterOutput>
+      <AdditionalDependencies>IviFloat.lib;IviCShared.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)wx218x.dll</OutputFile>
+      <ModuleDefinitionFile>.\WX218x-x86.nimbus.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>$(TargetDir)wx218x.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>$(IviStandardRootDir32)\lib\msc;$(VisaRootDir32)WinNT\lib\msc;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)WX218x.tlb</TypeLibraryName>
+      <HeaderFileName>_WX218x.h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>_WX218x_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>WX218x_p.c</ProxyFileName>
+      <AdditionalIncludeDirectories>$(VisaRootDir64)VisaCom64</AdditionalIncludeDirectories>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(NtlDir);$(IviStandardRootDir32)Include;$(VisaRootDir32)WinNT\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>IviFloat.lib;IviCShared.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)wx218x_64.dll</OutputFile>
+      <ModuleDefinitionFile>.\WX218x-x64.nimbus.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>$(TargetDir)wx218x.lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalLibraryDirectories>$(IviStandardRootDir32)\lib_x64\msc;$(VisaRootDir32)WinNT\lib_x64\msc;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RegisterOutput>true</RegisterOutput>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)WX218x.tlb</TypeLibraryName>
+      <HeaderFileName>_WX218x.h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>_WX218x_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>WX218x_p.c</ProxyFileName>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>$(NtlDir);$(IviStandardRootDir32)Include;$(VisaRootDir32)WinNT\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <RegisterOutput>true</RegisterOutput>
+      <AdditionalDependencies>IviFloat.lib;IviCShared.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)wx218x.dll</OutputFile>
+      <ModuleDefinitionFile>.\WX218x-x86.nimbus.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>$(TargetDir)wx218x.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>$(IviStandardRootDir32)\lib\msc;$(VisaRootDir32)WinNT\lib\msc;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)WX218x.tlb</TypeLibraryName>
+      <HeaderFileName>_WX218x.h</HeaderFileName>
+      <DllDataFileName>
+      </DllDataFileName>
+      <InterfaceIdentifierFileName>_WX218x_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>WX218x_p.c</ProxyFileName>
+      <AdditionalIncludeDirectories>$(VisaRootDir64)VisaCom64</AdditionalIncludeDirectories>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>$(NtlDir);$(IviStandardRootDir32)Include;$(VisaRootDir32)WinNT\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>IviFloat.lib;IviCShared.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)wx218x_64.dll</OutputFile>
+      <ModuleDefinitionFile>.\WX218x-x64.nimbus.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>$(TargetDir)wx218x.lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalLibraryDirectories>$(IviStandardRootDir32)\lib_x64\msc;$(VisaRootDir32)WinNT\lib_x64\msc;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RegisterOutput>true</RegisterOutput>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CoWX218x.cpp" />
+    <ClCompile Include="IIviDriver.cpp" />
+    <ClCompile Include="IIviDriverIdentity.cpp" />
+    <ClCompile Include="IIviDriverOperation.cpp" />
+    <ClCompile Include="IIviDriverUtility.cpp" />
+    <ClCompile Include="IIviFgen.cpp" />
+    <ClCompile Include="IIviFgenAM.cpp" />
+    <ClCompile Include="IIviFgenArbitrary.cpp" />
+    <ClCompile Include="IIviFgenArbitrarySequence.cpp" />
+    <ClCompile Include="IIviFgenArbitraryWaveform.cpp" />
+    <ClCompile Include="IIviFgenFM.cpp" />
+    <ClCompile Include="IIviFgenOutput.cpp" />
+    <ClCompile Include="IIviFgenStandardWaveform.cpp" />
+    <ClCompile Include="IIviFgenTrigger.cpp" />
+    <ClCompile Include="IviFgenDigitalManager.cpp" />
+    <ClCompile Include="IviFgenSequenceManager.cpp" />
+    <ClCompile Include="IviFgenWaveformManager.cpp" />
+    <ClCompile Include="IWX218x.cpp" />
+    <ClCompile Include="IWX218xAHOP.cpp" />
+    <ClCompile Include="IWX218xAM.cpp" />
+    <ClCompile Include="IWX218xArbitrary.cpp" />
+    <ClCompile Include="IWX218xArbitrarySequence.cpp" />
+    <ClCompile Include="IWX218xArbitrarySequenceAdvanceSequence.cpp" />
+    <ClCompile Include="IWX218xArbitraryWaveform.cpp" />
+    <ClCompile Include="IWX218xASK.cpp" />
+    <ClCompile Include="IWX218xCarrierModulation.cpp" />
+    <ClCompile Include="IWX218xCHIRP.cpp" />
+    <ClCompile Include="IWX218xCouple.cpp" />
+    <ClCompile Include="IWX218xDigitalPatternOutput.cpp" />
+    <ClCompile Include="IWX218xDigitalPulse.cpp" />
+    <ClCompile Include="IWX218xFHOP.cpp" />
+    <ClCompile Include="IWX218xFM.cpp" />
+    <ClCompile Include="IWX218xFSK.cpp" />
+    <ClCompile Include="IWX218xMarkers.cpp" />
+    <ClCompile Include="IWX218xOutput.cpp" />
+    <ClCompile Include="IWX218xOutputSync.cpp" />
+    <ClCompile Include="IWX218xPattern.cpp" />
+    <ClCompile Include="IWX218xPatternComposer.cpp" />
+    <ClCompile Include="IWX218xPSK.cpp" />
+    <ClCompile Include="IWX218xQAM.cpp" />
+    <ClCompile Include="IWX218xStandardWaveform.cpp" />
+    <ClCompile Include="IWX218xStateStorage.cpp" />
+    <ClCompile Include="IWX218xSweep.cpp" />
+    <ClCompile Include="IWX218xTrigger.cpp" />
+    <ClCompile Include="IWX218xTriggerARM.cpp" />
+    <ClCompile Include="IWX218xTriggerSmartTrigger.cpp" />
+    <ClCompile Include="IWX218xXInstrument.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wx218x.cpp" />
+    <ClCompile Include="WX218x.Module.cpp" />
+    <ClCompile Include="_WX218x_i.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="CoWX218x.nimbus.cpp" />
+    <ClCompile Include="Enums.nimbus.cpp" />
+    <ClCompile Include="ForwardingShims.nimbus.cpp" />
+    <ClCompile Include="wx218x.nimbus.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ConfigStore.xml" />
+    <None Include="CoWX218x.nimbus.rgs" />
+    <CustomBuild Include="ErrorMessages.nimbus.mc">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building message table</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">mc.exe ErrorMessages.nimbus.mc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ErrorMessages.nimbus.h;ErrorMessages.nimbus.rc;ErrorMessages.bin;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building message table</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">mc.exe ErrorMessages.nimbus.mc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ErrorMessages.nimbus.h;ErrorMessages.nimbus.rc;ErrorMessages.bin;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building message table</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">mc.exe ErrorMessages.nimbus.mc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ErrorMessages.nimbus.h;ErrorMessages.nimbus.rc;ErrorMessages.bin;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building message table</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">mc.exe ErrorMessages.nimbus.mc
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ErrorMessages.nimbus.h;ErrorMessages.nimbus.rc;ErrorMessages.bin;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="Resources.nimbus.rc2" />
+    <None Include="TaborElectronics.WX218x.Interop.xml" />
+    <None Include="WX218x-x64.nimbus.def" />
+    <None Include="WX218x-x86.nimbus.def" />
+    <None Include="wx218x.fp" />
+    <None Include="WX218x.nimbus.rgs" />
+    <None Include="wx218x.sub" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WX218x.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_WX218x.h" />
+    <ClInclude Include="CoWX218x.h" />
+    <ClInclude Include="IviFgenDigitalManager.h" />
+    <ClInclude Include="IviFgenSequenceManager.h" />
+    <ClInclude Include="IviFgenWaveformManager.h" />
+    <ClInclude Include="..\Pxi_Firmware\PXI2382Drv.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="WX218xDef.h" />
+    <ClInclude Include="CoWX218x.nimbus.h" />
+    <ClInclude Include="ErrorReporter.nimbus.h" />
+    <ClInclude Include="ForwardingShims.nimbus.h" />
+    <ClInclude Include="StdAfx.nimbus.h" />
+    <ClInclude Include="wx218x.h" />
+    <ClInclude Include="wx218x.nimbus.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="WX218x.nimbus.idl" />
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">wx218x</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">wx218x_64</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">wx218x</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">wx218x_64</TargetName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ExecutablePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(VisaRootDir32)VisaCom;$(ExecutablePath)</ExecutablePath>
+    <ExecutablePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(VisaRootDir32)VisaCom;$(ExecutablePath)</ExecutablePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(VisaRootDir64)VisaCom64;$(LibraryPath)</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(VisaRootDir64)VisaCom64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NimbusBuildToolsFolder>$([MSBuild]::GetRegistryValueFromView('$(NimbusVersionSpecificRegistryPath)', BuildToolsDir, null, RegistryView.Registry32, RegistryView.Default))</NimbusBuildToolsFolder>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(NimbusBuildToolsFolder)==''">
+    <NimbusBuildToolsFolder>$(MSBuildThisFileDirectory)</NimbusBuildToolsFolder>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <Import Project="$(NimbusBuildToolsFolder)MindWorks.IviComDriver.targets" />
+</Project>

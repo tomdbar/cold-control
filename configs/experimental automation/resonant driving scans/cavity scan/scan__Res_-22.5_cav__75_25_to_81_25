@@ -1,0 +1,70 @@
+save_location = Z:/Results017_New/data
+summary_fname = automated_experiments_summary
+daq_channel_update_steps = 5
+daq_channel_update_delay = 1
+[experiments]
+[[0]]
+daq_channel_static_values = "(10, 75.25)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_75_25
+[[1]]
+daq_channel_static_values = "(10, 75.75)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_75_75
+[[2]]
+daq_channel_static_values = "(10, 76.25)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_76_25
+[[3]]
+daq_channel_static_values = "(10, 76.75)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_76_75
+[[4]]
+daq_channel_static_values = "(10, 77.25)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_77_25
+[[5]]
+daq_channel_static_values = "(10, 77.75)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_77_75
+[[6]]
+daq_channel_static_values = "(10, 78.25)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_78_25
+[[7]]
+daq_channel_static_values = "(10, 78.75)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_78_75
+[[8]]
+daq_channel_static_values = "(10, 79.25)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_79_25
+[[9]]
+daq_channel_static_values = "(10, 79.75)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_79_75
+[[10]]
+daq_channel_static_values = "(10, 80.25)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_80_25
+[[11]]
+daq_channel_static_values = "(10, 80.75)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_80_75
+[[12]]
+daq_channel_static_values = "(10, 81.25)",
+mot_reload = 1000000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\cavity scans\-22.5 MHz offset\cav_81_25

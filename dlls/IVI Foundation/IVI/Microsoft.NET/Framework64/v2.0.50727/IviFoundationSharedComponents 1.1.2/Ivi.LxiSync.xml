@@ -1,0 +1,968 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivi.LxiSync</name>
+    </assembly>
+    <members>
+        <member name="T:Ivi.LxiSync.Errors">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.AlarmDoesNotExist">
+            <summary>
+              Looks up a localized string similar to The specified alarm has not been defined..
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.AlarmExists">
+            <summary>
+              Looks up a localized string similar to The specified alarm already exists..
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.AlarmName">
+            <summary>
+              Looks up a localized string similar to Alarm name: .
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.AlarmTime">
+            <summary>
+              Looks up a localized string similar to Alarm time: .
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.AlarmTimeInvalid">
+            <summary>
+              Looks up a localized string similar to The alarm time is invalid..
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.CannotRemoveReservedRepeatedCapability">
+            <summary>
+              Looks up a localized string similar to The reserved repeated capability cannot be removed from the collection..
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.EventSourceDoesNotExist">
+            <summary>
+              Looks up a localized string similar to The specified event source has not been defined..
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.EventSourceExists">
+            <summary>
+              Looks up a localized string similar to The specified event source already exists..
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.EventSourceName">
+            <summary>
+              Looks up a localized string similar to Event source name: .
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.EventSourceNotSet">
+            <summary>
+              Looks up a localized string similar to The event source has not been specified..
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.InvalidEventSource">
+            <summary>
+              Looks up a localized string similar to The specified event source is not valid..
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.OutOfEventResources">
+            <summary>
+              Looks up a localized string similar to Out of event resources..
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.RepeatedCapability">
+            <summary>
+              Looks up a localized string similar to Repeated capability: .
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.RepeatedCapabilityInstance">
+            <summary>
+              Looks up a localized string similar to Repeated capability instance: .
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.Errors.WiredOrModeInvalid">
+            <summary>
+              Looks up a localized string similar to The event source cannot operate in driven mode while serving as the wired-OR bias..
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.AlarmDoesNotExistException">
+            <summary>
+            A specified alarm has not been defined.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmDoesNotExistException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and alarm name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="alarmName">The alarm name.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmDoesNotExistException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmDoesNotExistException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmDoesNotExistException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmDoesNotExistException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.AlarmDoesNotExistException.AlarmName">
+            <summary>
+            The alarm name.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.AlarmDoesNotExistException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.AlarmExistsException">
+            <summary>
+            A specified alarm already exists.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmExistsException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and alarm name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="alarmName">The alarm name.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmExistsException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmExistsException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmExistsException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmExistsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.AlarmExistsException.AlarmName">
+            <summary>
+            The alarm name.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.AlarmExistsException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.AlarmTimeInvalidException">
+            <summary>
+            An alarm time is invalid.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmTimeInvalidException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="alarmName">The alarm name.</param>
+            <param name="alarmTime">The specified (invalid) time.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmTimeInvalidException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmTimeInvalidException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmTimeInvalidException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.AlarmTimeInvalidException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.AlarmTimeInvalidException.AlarmName">
+            <summary>
+            The alarm name.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.AlarmTimeInvalidException.AlarmTime">
+            <summary>
+            The specified (invalid) time.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.AlarmTimeInvalidException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.ArmSourceDetection">
+            <summary>Defined values for the style of arm source detection.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.ArmSourceDetection.Rise">
+            <summary>The LXI device will arm on the rising edge of the arm source.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.ArmSourceDetection.Fall">
+            <summary>The LXI device will arm on the falling edge of the arm source.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.ArmSourceDetection.High">
+            <summary>The LXI device will arm while the arm source is high, that is, while it remains true.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.ArmSourceDetection.Low">
+            <summary>The LXI device will arm while the arm source is low, that is, while it remains false.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.CannotRemoveReservedRepeatedCapabilityException">
+            <summary>
+            A reserved repeated capability cannot be removed from one of the IviLxiSync collections.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.CannotRemoveReservedRepeatedCapabilityException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified repeated capability and repeated capability
+            instance. 
+            </summary>
+            <param name="repeatedCapability">The name of the repeated capability.</param>
+            <param name="repeatedCapabilityInstance">The repeated capability instance that is reserved.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.CannotRemoveReservedRepeatedCapabilityException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.CannotRemoveReservedRepeatedCapabilityException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.CannotRemoveReservedRepeatedCapabilityException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.CannotRemoveReservedRepeatedCapabilityException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.CannotRemoveReservedRepeatedCapabilityException.RepeatedCapability">
+            <summary>
+            The name of the repeated capability..
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.CannotRemoveReservedRepeatedCapabilityException.RepeatedCapabilityInstance">
+            <summary>
+            The repeated capability instance that is reserved.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.CannotRemoveReservedRepeatedCapabilityException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.EventDriveMode">
+            <summary>Event driver mode.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.EventDriveMode.Driven">
+            <summary>Events are enabled in driven mode.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.EventDriveMode.Off">
+            <summary>Events are not enabled in any mode.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.EventDriveMode.WiredOr">
+            <summary>Events are enabled in wired-OR mode.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.EventSourceDoesNotExistException">
+            <summary>
+            A specified event source is not defined.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceDoesNotExistException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and event source name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="eventSourceName">The name of the event source.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceDoesNotExistException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceDoesNotExistException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceDoesNotExistException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceDoesNotExistException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.EventSourceDoesNotExistException.EventSourceName">
+            <summary>
+            The name of the event source.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.EventSourceDoesNotExistException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.EventSourceExistsException">
+            <summary>
+            A specified event source already exists.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceExistsException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and event source name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="eventSourceName">The name of the event source.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceExistsException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceExistsException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceExistsException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceExistsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.EventSourceExistsException.EventSourceName">
+            <summary>
+            The name of the event source.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.EventSourceExistsException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.EventSourceNotSetException">
+            <summary>
+            The event source has not been specified.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceNotSetException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceNotSetException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceNotSetException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.EventSourceNotSetException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.EventSourceNotSetException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSync">
+            <summary>LxiSync root interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSync.Arm">
+            <summary>Reference to the ILxiSyncArm interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSync.EventLog">
+            <summary>Reference to the ILxiSyncEventLog interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSync.Events">
+            <summary>Reference to the ILxiSyncEvents interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSync.Time">
+            <summary>Reference to the ILxiSyncTime interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSync.Trigger">
+            <summary>Reference to the ILxiSyncTrigger interface.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncArm">
+            <summary>LxiSync arm interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArm.Sources">
+            <summary>Reference to the ILxiSyncArmSources interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArm.ArmCount">
+            <summary>Specifies the number of times the arm has to occur to complete the arm loop; that is, the number of arms 
+            that are accepted before the measurement must be initiated again.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArm.Delay">
+            <summary>Specifies the delay from when the arm logic satisfied until the waiting for trigger state is entered.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArm.Alarms">
+            <summary>Reference to the ILxiSyncArmAlarms interface.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncArmAlarm">
+            <summary>LxiSync arm alarm interface.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncArmAlarm.Configure(System.Boolean,Ivi.Driver.PrecisionDateTime,Ivi.Driver.PrecisionTimeSpan,System.Int32)">
+            <summary>Configures the most commonly configured properties of the arm alarm sub-system.</summary>
+            <param name="enabled">If true, the arm alarm is enabled.  Refer to the Enabled property.</param>
+            <param name="time">Specifies the 1588 time. </param>
+            <param name="period">The period of the arm alarm.  Refer to the Period property for details.</param>
+            <param name="repeatCount">The number of times to repeat the trigger.  Refer to the RepeatCount property
+            for details.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArmAlarm.Time">
+            <summary>The 1588 time at which the alarm will go off.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArmAlarm.Period">
+            <summary>The period of the arm alarm; that is, the amount of time that transpires before the alarm 
+            repeats.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArmAlarm.RepeatCount">
+            <summary>The number of times to repeat the trigger at the period specified by the Period 
+            property.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArmAlarm.Enabled">
+            <summary>If true, the arm alarm is enabled.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncArmAlarmCollection">
+            <summary>LxiSync repeated capability interface containing methods and properties that apply to all arm alarms 
+            defined for the device.  A particular arm alarm can be accessed using the Item property.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncArmAlarmCollection.DisableAll">
+            <summary>Disables all arm alarms.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncArmAlarmCollection.Add(System.String)">
+            <summary>Creates a new arm alarm</summary>
+            <param name="alarmName">
+            The name of the arm alarm to create.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </param>
+            <returns>A reference to the new arm alarm object.</returns>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncArmAlarmCollection.Remove(System.String)">
+            <summary>Removes an arm alarm.</summary>
+            <param name="alarmName">Specifies the name of the arm alarm to remove.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncArmAlarmCollection.RemoveAllCustomArmAlarms">
+            <summary>Removes all of the custom arm alarms that were added using the Add method.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncArmSource">
+            <summary>LxiSync arm source interface.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncArmSource.Configure(System.Boolean,Ivi.LxiSync.ArmSourceDetection)">
+            <summary>Configures the most commonly configured properties of the arm source sub-system.</summary>
+            <param name="enabled">Enables or disables the arm source. Refer to the Enabled property.</param>
+            <param name="detection">The style of arm source detection. Refer to the Detection property.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArmSource.Enabled">
+            <summary>If true, the arm source is enabled.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArmSource.Detection">
+            <summary>The style of arm source detection.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArmSource.Filter">
+            <summary>A filter for restricting arm sources.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArmSource.EventId">
+            <summary>The LAN event identifier that is associated with this arm source.  LAN Events with this 
+            identifier are accepted from  the source described in the filter.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncArmSourceCollection">
+            <summary>LxiSync repeated capability interface containing methods and properties that apply to all arm sources 
+            defined for the device.  A particular arm source can be accessed using the Item property.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncArmSourceCollection.Add(System.String)">
+            <summary>Creates a new arm source.</summary>
+            <param name="sourceName">
+            The name of the arm source to create.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </param>
+            <returns>A reference to the new arm source object.</returns>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncArmSourceCollection.Remove(System.String)">
+            <summary>Removes an arm source.</summary>
+            <param name="sourceName">The name of the arm source to remove.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncArmSourceCollection.DisableAll">
+            <summary>Disables all arm sources.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncArmSourceCollection.RemoveAllCustomArmSources">
+            <summary>Removes all of the custom arm sources that were added using the Add method.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncArmSourceCollection.OrEnabled">
+            <summary>If true, OR-summing of the arm sources is enabled.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncEvent">
+            <summary>LxiSync event interface.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncEvent.Configure(Ivi.LxiSync.EventDriveMode,System.String,System.String,Ivi.LxiSync.Slope)">
+            <summary>Configures the most commonly configured properties of the event sub-system.</summary>
+            <param name="driveMode">The event mode.  Refer to the DriveMode property for details.</param>
+            <param name="source">The signal which causes an event to be transmitted. Refer to the Source property.</param>
+            <param name="destinationPath">The list of places to send the event. Refer to the DestinationPath property.</param>
+            <param name="slope">The slope of the event signal.  Refer to the Slope property for details.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncEvent.Source">
+            <summary>The signal which causes an event to be transmitted.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncEvent.DestinationPath">
+            <summary>The list of places to send the event.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncEvent.Slope">
+            <summary>The slope of the inbound event that will cause the generation of an outbound event.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncEvent.DriveMode">
+            <summary>The event mode - that is, how the event is transmitted.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncEventLog">
+            <summary>LxiSync event log interface.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncEventLog.Clear">
+            <summary>Removes all existing entries from the event log.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncEventLog.GetNextEntry">
+            <summary>Retrieves and clears the oldest event log entry for the IVI session. </summary>
+            <returns />
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncEventLog.EntryCount">
+            <summary>Returns the number of event log entries available.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncEventLog.Enabled">
+            <summary>if true, the event logging feature is enabled.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncEventCollection">
+            <summary>LxiSync repeated capability interface containing methods and properties that apply to all events defined 
+            for the device.  A particular event can be accessed using the Item property.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncEventCollection.DisableAll">
+            <summary>Disables all events.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncEventCollection.Add(System.String)">
+            <summary>Creates a new event.</summary>
+            <param name="eventName">The name of the event to create.</param>
+            <returns>A reference to the new event object.</returns>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncEventCollection.Remove(System.String)">
+            <summary>Removes an event.</summary>
+            <param name="eventName">The name of the event to remove.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncEventCollection.RemoveAllCustomEvents">
+            <summary>Removes all of the custom events that were added using the Add function.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncEventCollection.WiredOrBiasMode">
+            <summary>The Wired-Or Bias Mode interface lines for which the LXI device will serve as the wired-OR bias. </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncTime">
+            <summary>LxiSync time interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTime.SystemTime">
+            <summary>The current 1588 time.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTime.IsMaster">
+            <summary>Indicates if this device is the 1588 master.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTime.IsSynchronized">
+            <summary>Indicates if the device is synchronized.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncTrigger">
+            <summary>LxiSync trigger interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTrigger.Sources">
+            <summary>Reference to the ILxiSyncTriggerSources interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTrigger.TriggerCount">
+            <summary>Specifies the number of times a trigger has to occur to complete a measurement; that is, the number of 
+            triggers that are accepted before the measurement must be armed again.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTrigger.Alarms">
+            <summary>Reference to the ILxiSyncTriggerAlarms interface.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTrigger.TriggerSource">
+            <summary>
+            Specifies which of the available trigger sources to use as the signal for triggering the device-specific 
+            operation (for example, a measurement).
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncTriggerAlarm">
+            <summary>LxiSync trigger alarm interface.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncTriggerAlarm.Configure(Ivi.Driver.PrecisionDateTime,Ivi.Driver.PrecisionTimeSpan,System.Int32)">
+            <summary>Configures the most commonly configured properties of the trigger alarm sub-system.</summary>
+            <param name="time">The 1588 time of the trigger alarm. Refer to the Time parameter for details.</param>
+            <param name="period">The period of the trigger alarm. Refer to the Period parameter for details.</param>
+            <param name="repeatCount">The number of times to repeat the trigger at the period specified by the 
+            period parameter. Refer to the RepeatCount property.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTriggerAlarm.Period">
+            <summary>The period of the trigger alarm; that is, the amount of time that transpires before the alarm 
+            repeats.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTriggerAlarm.RepeatCount">
+            <summary>The number of times to repeat the trigger at the period specified by the Period property.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTriggerAlarm.Time">
+            <summary>The time at which the alarm will go off.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTriggerAlarm.Enabled">
+            <summary>If true, the trigger alarm is enabled.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncTriggerAlarmCollection">
+            <summary>LxiSync repeated capability interface containing methods and properties that apply to all trigger alarms 
+            defined for the device.  A particular trigger alarm can be accessed using the Item property.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncTriggerAlarmCollection.Add(System.String)">
+            <summary>This function creates a new trigger alarm</summary>
+            <param name="alarmName">
+            Specifies the name of the trigger alarm to create.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </param>
+            <returns>A reference to the new trigger alarm object.</returns>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncTriggerAlarmCollection.DisableAll">
+            <summary>This function disables all trigger alarms.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncTriggerAlarmCollection.Remove(System.String)">
+            <summary>This function removes a trigger alarm.</summary>
+            <param name="alarmName">Specifies the name of the trigger alarm to remove.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncTriggerAlarmCollection.RemoveAllTriggerAlarms">
+            <summary>This function removes all of the trigger alarms that were added using the Add Trigger Alarm function.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncTriggerSource">
+            <summary>LxiSync trigger source interface.</summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncTriggerSource.Configure(Ivi.Driver.PrecisionTimeSpan,Ivi.LxiSync.Slope)">
+            <summary>Configures the most commonly configured properties of the trigger source sub-system.</summary>
+            <param name="delay">The trigger source delay.  Refer to the Delay property for details.</param>
+            <param name="detection">The slope of the trigger source.  Refer to the Detection property.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTriggerSource.Delay">
+            <summary>The trigger source delay from when the trigger logic is satisfied until the device specific 
+            action (for instance a measurement) is triggered.  A negative value implies pre-trigger acquisition.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTriggerSource.Detection">
+            <summary>The slope of the trigger source.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTriggerSource.EventId">
+            <summary>The LAN event identifier that is associated with this trigger source.</summary>
+        </member>
+        <member name="P:Ivi.LxiSync.IIviLxiSyncTriggerSource.Filter">
+            <summary>The filter for restricting trigger sources.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.IIviLxiSyncTriggerSourceCollection">
+            <summary>
+            LxiSync repeated capability interface containing methods and properties that apply to all trigger sources 
+            defined for the device.  A particular trigger source can be accessed using the Item property.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncTriggerSourceCollection.Add(System.String)">
+            <summary>
+            This function creates a new trigger source.
+            </summary>
+            <param name="sourceName">
+            Specifies the name of the trigger source to create.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </param>
+            <returns>A reference to the new trigger source object.</returns>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncTriggerSourceCollection.Remove(System.String)">
+            <summary>This function removes a trigger source.</summary>
+            <param name="sourceName">Specifies the name of the trigger source to remove.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.IIviLxiSyncTriggerSourceCollection.RemoveAllCustomTriggerSources">
+            <summary>This function removes all of the custom trigger sources that were added using the Add Trigger Source 
+            function.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.InvalidEventSourceException">
+            <summary>
+            A specified event source is not valid.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.InvalidEventSourceException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and event source name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="eventSourceName">The name of the event source.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.InvalidEventSourceException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.InvalidEventSourceException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.InvalidEventSourceException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.InvalidEventSourceException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.InvalidEventSourceException.EventSourceName">
+            <summary>
+            The name of the event source.
+            </summary>
+        </member>
+        <member name="P:Ivi.LxiSync.InvalidEventSourceException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.WiredOrBiasModeLines">
+            <summary>Defined values for the Wired-Or Bias Mode interface lines.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.WiredOrBiasModeLines.None">
+            <summary>No LXI lines.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.WiredOrBiasModeLines.Lxi0">
+            <summary>Line LXI0.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.WiredOrBiasModeLines.Lxi1">
+            <summary>Line LXI1.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.WiredOrBiasModeLines.Lxi2">
+            <summary>Line LXI2.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.WiredOrBiasModeLines.Lxi3">
+            <summary>Line LXI3.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.WiredOrBiasModeLines.Lxi4">
+            <summary>Line LXI4.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.WiredOrBiasModeLines.Lxi5">
+            <summary>Line LXI5.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.WiredOrBiasModeLines.Lxi6">
+            <summary>Line LXI6.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.WiredOrBiasModeLines.Lxi7">
+            <summary>Line LXI7.</summary>
+        </member>
+        <member name="T:Ivi.LxiSync.WiredOrModeInvalidException">
+            <summary>
+            The event source cannot operate in driven mode while serving as the wired-OR bias.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.WiredOrModeInvalidException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.WiredOrModeInvalidException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.WiredOrModeInvalidException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.WiredOrModeInvalidException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.WiredOrModeInvalidException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.OutOfEventResourcesException">
+            <summary>
+            The channel is not enabled.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.OutOfEventResourcesException.#ctor">
+            <summary>
+            The driver is out of event resources.
+            </summary>
+        </member>
+        <member name="M:Ivi.LxiSync.OutOfEventResourcesException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.OutOfEventResourcesException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.LxiSync.OutOfEventResourcesException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.LxiSync.OutOfEventResourcesException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.LxiSync.Slope">
+            <summary>IVI LxiSync values for Slope.</summary>
+        </member>
+        <member name="F:Ivi.LxiSync.Slope.Positive">
+            <summary>
+            Positive slope.
+            </summary>
+        </member>
+        <member name="F:Ivi.LxiSync.Slope.Negative">
+            <summary>
+            Negative slope.
+            </summary>
+        </member>
+    </members>
+</doc>

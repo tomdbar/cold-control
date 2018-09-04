@@ -1,0 +1,1180 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivi.Counter</name>
+    </assembly>
+    <members>
+        <member name="T:Ivi.Counter.ArmType">
+            <summary>
+            IviCounter class defined values for arm type.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.ArmType.Immediate">
+            <summary>
+            Do not wait for an external arm source event.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.ArmType.External">
+            <summary>
+            Wait for an external arm source event.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.Coupling">
+            <summary>
+            IviCounter class defined values for the Coupling parameter of the Configure method in the IIviCounterChannel
+            interface.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.Coupling.AC">
+            <summary>
+            The counter AC couples the channel signal.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.Coupling.DC">
+            <summary>
+            The counter DC couples the channel signal.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.Errors">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.Errors.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.Errors.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounter">
+            <summary>
+            The IviCounter class-compliant root interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.Channels">
+            <summary>
+            A reference to the IIviCounterChannelCollection interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.Frequency">
+            <summary>
+            A reference to the IIviCounterFrequency interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.Period">
+            <summary>
+            A reference to the IIviCounterPeriod interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.PulseWidth">
+            <summary>
+            A reference to the IIviCounterPulseWidth interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.DutyCycle">
+            <summary>
+            A reference to the IIviCounterDutyCycle interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.EdgeTime">
+            <summary>
+            A reference to the IIviCounterEdgeTime interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.FrequencyRatio">
+            <summary>
+            A reference to the IIviCounterFrequencyRatio interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.TimeInterval">
+            <summary>
+            A reference to the IIviCounterTimeInterval interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.Phase">
+            <summary>
+            A reference to the IIviCounterPhase interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.TotalizeContinuous">
+            <summary>
+            A reference to the IIviCounterTotalizeContinuous interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.TotalizeGated">
+            <summary>
+            A reference to the IIviCounterTotalizeGated interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.TotalizeTimed">
+            <summary>
+            A reference to the IIviCounterTotalizeTimed interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.Arm">
+            <summary>
+            A reference to the IIviCounterArm interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.Measurement">
+            <summary>
+            A reference to the IIviCounterMeasurement interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.Voltage">
+            <summary>
+            A reference to the IIviCounterVoltage interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounter.MeasurementFunction">
+            <summary>
+            The current measurement function of the Counter.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterArm">
+            <summary>
+            IviCounter class-compliant IIviCounterArm interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArm.Start">
+            <summary>
+            A reference to the IIviCounterArmStart interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArm.Stop">
+            <summary>
+            A reference to the IIviCounterArmStop interface.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterArmStart">
+            <summary>
+            The IviCounter class-compliant IIviCounterArmStart interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStart.External">
+            <summary>
+            A reference to the IIviCounterArmStartExternal interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStart.Type">
+            <summary>
+            The start arm type for armed measurements.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterArmStartExternal">
+            <summary>
+            IviCounter class-compliant IIviCounterArmStartExternal interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterArmStartExternal.Configure(System.String,System.Double,Ivi.Counter.Slope,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures the external start arm source, level, slope and delay.
+            </summary>
+            <param name="source">The external start arm source. Refer to the Source property for details.</param>
+            <param name="level">The external start arm level. Refer to the Level property for details.</param>
+            <param name="slope">The external start arm slope. Refer to the Slope property for details.</param>
+            <param name="delay">The external start arm delay. Refer to the Delay property for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStartExternal.Source">
+            <summary>
+            The start arm source for external armed measurements.  The value can be a channel name alias, a
+            driver-specific channel string, or a standard value.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStartExternal.Level">
+            <summary>
+            The voltage level in volts that starts external armed measurements.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStartExternal.Slope">
+            <summary>
+            The signal slope that starts external armed measurements.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStartExternal.Delay">
+            <summary>
+            The delay used after an external armed measurement has been armed.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterArmStop">
+            <summary>
+            IviCounter class-compliant IIviCounterArmStop interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStop.External">
+            <summary>
+            A reference to the IIviCounterArmStopExternal interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStop.Type">
+            <summary>
+            The stop arm type for armed measurements.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterArmStopExternal">
+            <summary>
+            IviCounter class-compliant IIviCounterArmStopExternal interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterArmStopExternal.Configure(System.String,System.Double,Ivi.Counter.Slope,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures the external stop arm source, level, slope and delay.
+            </summary>
+            <param name="source">The external stop arm source. Refer to the Source property for details.</param>
+            <param name="level">The external stop arm level. Refer to the Level property for details.</param>
+            <param name="slope">The external stop arm slope. Refer to the Slope property for details.</param>
+            <param name="delay">The external stop arm Delay. Refer to the Delay property for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStopExternal.Source">
+            <summary>
+            The stop arm source for external armed measurements.  The value can be a channel name alias, a
+            driver-specific channel string, or a standard value.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStopExternal.Level">
+            <summary>
+            The voltage level in volts that stops external armed measurements.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStopExternal.Slope">
+            <summary>
+            The signal slope that stops external armed measurements.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterArmStopExternal.Delay">
+            <summary>
+            The delay after the External Arm Stop event has occurred until the measurement stops.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterChannel">
+            <summary>
+            IviCounter class-compliant IIviCounterChannel interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterChannel.ConfigureFilter(System.Double,System.Double)">
+            <summary>
+            Configures the bandpass filter minimum and maximum frequencies for a channel.
+            </summary>
+            <param name="minimumFrequency">The minimum filter frequency. Refer to the MinimumFrequency property
+            for details.</param>
+            <param name="maximumFrequency">The maximum filter frequency. Refer to the MaximumFrequency property
+            for details.</param>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterChannel.ConfigureLevel(System.Double,System.Double)">
+            <summary>
+            Configures the level and hysteresis for a channel.
+            </summary>
+            <param name="triggerLevel">The trigger Level the counter will use for the channel. Refer to the Level
+            property for details.</param>
+            <param name="hysteresis">The hysteresis the counter will use for the channel. Refer to the Hysteresis
+            property for details.</param>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterChannel.Configure(System.Double,Ivi.Counter.Coupling,System.Double)">
+            <summary>
+            Configures the impedance, coupling, and attenuation of the counter channel.
+            </summary>
+            <param name="impedance">The impedance the counter will use to couple the input signal for the channel.
+            Refer to the Impedance property for details.</param>
+            <param name="coupling">If true, the counter will couple the input signal for the channel. Refer to the
+            Coupling property for details.</param>
+            <param name="attenuation">The attenuation the counter will use for the channel. Refer to the Attenuation
+            property for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterChannel.Impedance">
+            <summary>
+            The input impedance of the channel in Ohms. 
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterChannel.Coupling">
+            <summary>
+            The electrical coupling method used on the input channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterChannel.Attenuation">
+            <summary>
+            The scale factor by which the channel attenuates the input. Increasing this value decreases the
+            sensitivity. For instance, setting this value to 10 attenuates the input by a factor of 10.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterChannel.Level">
+            <summary>
+            The voltage level the input signal must pass through to produce a count.  Level is specified as the
+            voltage at the input terminals and is independent of attenuation.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterChannel.Hysteresis">
+            <summary>
+            The Hysteresis value in volts. Hysteresis sets how far a signal must fall below the level before a rising
+            edge can again be detected, and how far a signal must rise above the level before a falling edge can again
+            be detected. Hysteresis is specified as the voltage at the input terminals and is independent of
+            attenuation.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterChannel.FilterEnabled">
+            <summary>
+            If true, the filter on the selected channel is enabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterChannel.Slope">
+            <summary>
+            Indicates whether a rising (positive) or a falling (negative) edge triggers the counter.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterChannel.MinimumFrequency">
+            <summary>
+            The low cutoff frequency for the filter in hertz.  Set to zero to disable low frequency filtering.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterChannel.MaximumFrequency">
+            <summary>
+            The high cutoff frequency for the filter in hertz.  Set to Double.PositiveInfinity to disable high
+            frequency filtering.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterChannelCollection">
+            <summary>
+            IviCounter class-compliant IIviCounterChannelCollection interface.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterDutyCycle">
+            <summary>
+            IviCounter class-compliant IIviCounterDutyCycle interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterDutyCycle.Configure(System.String,System.Double,System.Double)">
+            <summary>
+            Configures the frequency estimate and resolution for a duty cycle measurement.
+            </summary>
+            <param name="channel">The channel on which the duty cycle is measured. Refer to the Channel property
+            for details.</param>
+            <param name="frequencyEstimate">The estimated frequency. Refer to the FrequencyEstimate property for
+            details.</param>
+            <param name="resolution">The resolution of the duty cycle measurement. Refer to the Resolution property
+            for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterDutyCycle.Channel">
+            <summary>
+            The input channel on which the duty cycle is measured.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterDutyCycle.FrequencyEstimate">
+            <summary>
+            The estimated frequency, in hertz, for the duty cycle measurement function.  The driver uses this to
+            optimize the configuration of the instrument for the input signal.  The driver typically use this to
+            set the duration of the measurement.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterDutyCycle.Resolution">
+            <summary>
+            The resolution for the duty cycle measurement function. Duty Cycle Resolution is a unitless value. It is the
+            quantization size, i.e. the smallest delta value that can be detected.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterEdgeTime">
+            <summary>
+            IviCounter class-compliant IIviCounterEdgeTime interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterEdgeTime.Configure(System.String,Ivi.Driver.PrecisionTimeSpan,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures an edge time measurement.
+            </summary>
+            <param name="channel">The channel on which the edge time will be measured. Refer to the Channel property
+            for details.</param>
+            <param name="estimate">The estimated edge time. Refer to the Estimate property for details.</param>
+            <param name="resolution">The resolution of the edge time measurement. Refer to the Resolution property
+            for details.</param>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterEdgeTime.ConfigureReferenceLevels(System.String,Ivi.Counter.ReferenceType,Ivi.Driver.PrecisionTimeSpan,Ivi.Driver.PrecisionTimeSpan,System.Double,System.Double)">
+            <summary>
+            Configures the reference type, estimate, resolution, high reference level, and low reference level
+            for an edge time measurement.
+            </summary>
+            <param name="channel">The channel on which the edge time will be measured. Refer to the Channel property
+            for details.</param>
+            <param name="referenceType">The reference type. Refer to the ReferenceType property for details.</param>
+            <param name="estimate">The estimated edge time. Refer to the Estimate property for details.</param>
+            <param name="resolution">The resolution of the edge time measurement. Refer to the Resolution property
+            for details.</param>
+            <param name="highReference">The high reference level for the edge time. Refer to the HighReference
+            property for details.</param>
+            <param name="lowReference">The low reference level for the edge time. Refer to the LowReference
+            property for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterEdgeTime.Channel">
+            <summary>
+            The input channel on which the edge time is measured.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterEdgeTime.Estimate">
+            <summary>
+            The estimated edge time for the edge time measurement function.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterEdgeTime.Resolution">
+            <summary>
+            The resolution of the measurement for the edge time measurement function. It is the quantization size,
+            i.e. the smallest delta value that can be detected.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterEdgeTime.ReferenceType">
+            <summary>
+            The current reference type of the Counter, which determines whether the Edge Time High Referenace and
+            Edge Time Low Reference are interpreted as percentage of peak-peak or absolute volts. 
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterEdgeTime.HighReference">
+            <summary>
+            The high reference voltage level in volts for the edge time measurement function.  For a Rise Time
+            measurement, this is the level where the measurement stops and for a Fall Time measurement, this is
+            the level where the measurement starts.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterEdgeTime.LowReference">
+            <summary>
+            The low reference voltage level in volts for the edge time measurement function. For a Rise Time
+            measurement, this is the level where the measurement starts and for a Fall Time measurements, this is
+            the level where the measurement stops.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterFrequency">
+            <summary>
+            IviCounter class-compliant IIviCounterFrequency interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterFrequency.ConfigureWithAperture(System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures a frequency measurement based on the specified aperture time.
+            </summary>
+            <param name="channel">The channel on which the frequency will be measured. Refer to the Channel property
+            for details.</param>
+            <param name="apertureTime">The aperture time of the frequency measurement. Refer to the ApertureTime
+            property for details.</param>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterFrequency.ConfigureManual(System.String,System.Double,System.Double)">
+            <summary>
+            Configures the channel, estimate, and resolution for a frequency measurement.
+            </summary>
+            <param name="channel">The channel on which the frequency will be measured. Refer to the Channel
+            property for details.</param>
+            <param name="estimate">The estimated frequency. Refer to the Estimate property for details.</param>
+            <param name="resolution">The resolution of the frequency measurement. Refer to the Resolution
+            property for details.</param>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterFrequency.ConfigureManual(System.String,System.Boolean,System.Double)">
+            <summary>
+            Configures the channel, estimate, and resolution for a frequency measurement.
+            </summary>
+            <param name="channel">The channel on which the frequency will be measured. Refer to the Channel
+            property for details.</param>
+            <param name="estimateAuto">If true, the instrument determines the estimated frequency. Refer to the
+            EstimateAuto property for details.</param>
+            <param name="resolution">The resolution of the frequency measurement. Refer to the Resolution property
+            for details.</param>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterFrequency.ConfigureManual(System.String,System.Double,System.Boolean)">
+            <summary>
+            Configures the channel, estimate, and resolution for a frequency measurement.
+            </summary>
+            <param name="channel">The channel on which the frequency will be measured. Refer to the Channel
+            property for details.</param>
+            <param name="estimate">The estimated frequency. Refer to the Estimate property for details.</param>
+            <param name="resolutionAuto">If true, the instrument determines the resolution of the frequency
+            measurement. Refer to the ResolutionAuto property for details.</param>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterFrequency.ConfigureManual(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Configures the channel, estimate, and resolution for a frequency measurement.
+            </summary>
+            <param name="channel">The channel on which the frequency will be measured. Refer to the Channel property
+            for details.</param>
+            <param name="estimateAuto">If true, the instrument determines the estimated frequency. Refer to the
+            EstimateAuto property for details.</param>
+            <param name="resolutionAuto">If true, the instrument determines the resolution of the frequency
+            measurement. Refer to the ResolutionAuto property for details.</param>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterFrequency.Configure(System.String)">
+            <summary>
+            Provides auto frequency configuration. Configures the instrument to determine the best estimate and
+            resolution for the selected channel.
+            </summary>
+            <param name="channel">The channel on which the frequency will be measured. Refer to the Channel
+            property for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequency.Channel">
+            <summary>
+            The input channel on which the frequency is measured.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequency.Estimate">
+            <summary>
+            The estimated frequency, in hertz, for the frequency measurement function.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequency.Resolution">
+            <summary>
+            The resolution of the measurement, in hertz, for the frequency measurement function.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequency.ApertureTime">
+            <summary>
+            The aperture time for the frequency with aperture time measurement function. It is the quantization size,
+            i.e. the smallest delta value that can be detected.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequency.EstimateAuto">
+            <summary>
+            If true, the instrument determines the estimated frequency, in hertz, for the frequency measurement function.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequency.ResolutionAuto">
+            <summary>
+            If true, the instrument determines the resolution of the measurement, in hertz, for the frequency measurement
+            function.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterFrequencyRatio">
+            <summary>
+            IviCounter class-compliant IIviCounterFrequencyRatio interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterFrequencyRatio.Configure(System.String,System.String,System.Double,System.Double,System.Double)">
+            <summary>
+            Configures the numerator channel, denominator channel, estimated frequency, and resolution for a frequency
+            ratio measurement.
+            </summary>
+            <param name="numeratorChannel">The numerator channel on which the frequency ratio will be measured. Refer
+            to the NumeratorChannel property for details.</param>
+            <param name="denominatorChannel">The denominator channel on which the frequency ratio will be measured.
+            Refer to the DenominatorChannel property for details.</param>
+            <param name="numeratorFrequencyEstimate">The estimated frequency for the numerator of the frequency ratio.
+            Refer to the NumeratorFrequencyEstimate property for details.</param>
+            <param name="estimate">The estimated frequency ratio measurement. Refer to the Estimate property for
+            details.</param>
+            <param name="resolution">The resolution of the frequency ratio measurement. Refer to the Resolution
+            property for details. </param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequencyRatio.NumeratorChannel">
+            <summary>
+            The input numerator channel on which the frequency ratio is measured.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequencyRatio.DenominatorChannel">
+            <summary>
+            The input denominator channel on which the frequency ratio is measured.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequencyRatio.NumeratorFrequencyEstimate">
+            <summary>
+            The estimated numerator frequency, in hertz, for the frequency ratio measurement function. The driver uses
+            this to optimize the configuration of the instrument for the input signal. The driver typically use this
+            to set the duration of the measurement.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequencyRatio.Estimate">
+            <summary>
+            The estimated frequency ratio for the frequency ratio measurement function. Estimate is a unitless value.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterFrequencyRatio.Resolution">
+            <summary>
+            The resolution of the measurement for the frequency ratio measurement function. Resolution is a unitless
+            value. It is the quantization size, i.e. the smallest delta value that can be detected.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterMeasurement">
+            <summary>
+            IviCounter class-compliant IIviCounterMeasurement interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterMeasurement.Read(Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Initiates and fetches a measurement based on the current configuration. 
+            </summary>
+            <param name="maxTime">Pass the maximum length of time in which to allow the read waveform measurement
+            operation to complete. If the operation does not complete within this time interval, the method returns
+            the Maximum Time Exceeded error. When this occurs, you can call the Abort method to cancel the read
+            waveform operation and return the counter to the idle state.</param>
+            <returns>The measured value.</returns>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterMeasurement.Fetch">
+            <summary>
+            Retrieves the result from a previously initiated measurement. 
+            </summary>
+            <returns>The measured value.</returns>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterMeasurement.Abort">
+            <summary>
+            Aborts a previously initiated measurement.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterMeasurement.Initiate">
+            <summary>
+            Initiates a measurement based on the current configuration. 
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterMeasurement.GetMeasurementComplete">
+            <summary>
+            Determines whether a measurement is in progress, complete, or if the status is unknown.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterPeriod">
+            <summary>
+            IviCounter class-compliant IIviCounterPeriod interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterPeriod.ConfigureWithAperture(System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures a period measurement based on the specified aperture time.
+            </summary>
+            <param name="channel">The channel on which the period will be measured. Refer to the Channel property
+            for details.</param>
+            <param name="apertureTime">The aperture time of the period measurement. Refer to the ApertureTime
+            property for details.</param>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterPeriod.Configure(System.String,Ivi.Driver.PrecisionTimeSpan,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures the estimate and resolution properties for a period measurement.
+            </summary>
+            <param name="channel">The channel on which the period will be measured. Refer to the Channel property
+            for details.</param>
+            <param name="estimate">The estimated period. Refer to the Estimate property for details.</param>
+            <param name="resolution">The resolution of the period measurement. Refer to the Resolution property
+            for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPeriod.Channel">
+            <summary>
+            The input channel on which the period will be measured. 
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPeriod.Estimate">
+            <summary>
+            The estimated period for the period measurement function. The driver uses this to optimize the
+            configuration of the instrument for the input signal. The driver typically use this to set the
+            duration of the measurement.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPeriod.Resolution">
+            <summary>
+            The resolution of the measurement for the period measurement function. It is the quantization size, i.e.
+            the smallest delta value that can be detected.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPeriod.ApertureTime">
+            <summary>
+            The aperture time for the period with aperture time measurement function.  Setting this property
+            overrides the period estimate and period resolution.  This property can be read to determine the
+            value of aperture time selected by the driver based on the period estimate and period resolution.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterPhase">
+            <summary>
+            IviCounter class-compliant IIviCounterPhase interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterPhase.Configure(System.String,System.String,System.Double,System.Double)">
+            <summary>
+            Configures the input channel, reference channel, estimate, and resolution for a phase measurement.
+            </summary>
+            <param name="inputChannel">The input channel on which the phase will be measured. Refer to the
+            InputChannel property for details.</param>
+            <param name="referenceChannel">The channel to which the phase measurement will be referenced. Refer to the
+            ReferenceChannel property for details.</param>
+            <param name="frequencyEstimate">The estimated phase. Refer to the FrequencyEstimate property for details.</param>
+            <param name="resolution">The resolution of the phase measurement. Refer to the Resolution property for
+            details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPhase.InputChannel">
+            <summary>
+            The input channel on which the phase will be measured.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPhase.ReferenceChannel">
+            <summary>
+            The reference channel to which the phase measurement will be referenced.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPhase.FrequencyEstimate">
+            <summary>
+            The estimated frequency, in hertz, for the phase measurement function reference channel.  The driver uses
+            this property to optimize the configuration of the instrument for the input signal. The driver typically use this to set the duration of the measurement.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPhase.Resolution">
+            <summary>
+            The resolution of the measurement, in degrees, for the phase measurement function reference channel. It is
+            the quantization size, i.e. the smallest delta value that can be detected.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterPulseWidth">
+            <summary>
+            IviCounter class-compliant IIviCounterPulseWidth interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterPulseWidth.Configure(System.String,Ivi.Driver.PrecisionTimeSpan,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures the estimate and resolution properties for a pulse width measurement.
+            </summary>
+            <param name="channel">The channel on which the pulse width will be measured. Refer to the Channel property
+            for details.</param>
+            <param name="estimate">The estimated pulse width. Refer to the Estimate property for details.</param>
+            <param name="resolution">The resolution of the pulse width measurement. Refer to the Resolution property
+            for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPulseWidth.Channel">
+            <summary>
+            The channel on which the pulse width will be measured.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPulseWidth.Estimate">
+            <summary>
+            The estimated pulse width for the pulse width measurement function.  The driver uses this to optimize the
+            configuration of the instrument for the input signal. The driver typically use this to set the duration
+            of the measurement.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterPulseWidth.Resolution">
+            <summary>
+            The resolution of the measurement for the pulse width measurement function. It is the quantization size, i.e.
+            the smallest delta value that can be detected.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterTimeInterval">
+            <summary>
+            IviCounter class-compliant IIviCounterTimeInterval interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterTimeInterval.Configure(System.String,System.String,Ivi.Driver.PrecisionTimeSpan,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures the start and stop channels, estimate and resolution for a time interval measurement.
+            </summary>
+            <param name="startChannel">The channel that will start the time interval measurement. Refer to the
+            StartChannel property for details.</param>
+            <param name="stopChannel">The channel that will stop the time interval measurement. Refer to the
+            StopChannel property for details.</param>
+            <param name="estimate">The estimated time interval. Refer to the Estimate property for details.</param>
+            <param name="resolution">The resolution of the time interval measurement. Refer to the Resolution
+            property for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTimeInterval.StartChannel">
+            <summary>
+            The start channel used to perform the measure time interval measurement function.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTimeInterval.StopChannel">
+            <summary>
+            The stop channel used to perform the measure time interval measurement function.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTimeInterval.Estimate">
+            <summary>
+            The estimated time interval for the time interval measurement function.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTimeInterval.Resolution">
+            <summary>
+            The resolution of the measurement for the time interval measurement function. It is the quantization size,
+            i.e. the smallest delta value that can be detected.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTimeInterval.StopHoldoff">
+            <summary>
+            The stop holdoff time for a time interval measurement.  The stop holdoff time is the time from the Time
+            Interval Start Channel Trigger until the Time Interval Stop Channel Trigger is enabled.  Many counters
+            have a small, non-zero value as the minimum value for this property. To configure the instrument to use
+            the shortest stop hold-off, the user can specify a value of zero for this property.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterTotalizeContinuous">
+            <summary>
+            IviCounter class-compliant IIviCounterTotalizeContinuous interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterTotalizeContinuous.Stop">
+            <summary>
+            Stops the accumulation of counts for a continuous totalize measurement.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterTotalizeContinuous.Start">
+            <summary>
+            Clears the count and starts the counter for a continuous totalize measurement.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterTotalizeContinuous.Configure(System.String)">
+            <summary>
+            Configures the counter for a continuous totalize measurement.
+            </summary>
+            <param name="channel">The input channel.</param>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterTotalizeContinuous.FetchCount">
+            <summary>
+            Retrieves the current count while the counter is continuously totalizing.
+            </summary>
+            <returns>The current count.</returns>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTotalizeContinuous.Channel">
+            <summary>
+            The input channel for the continuous totalize measurement function.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterTotalizeGated">
+            <summary>
+            IviCounter class-compliant IIviCounterTotalizeGated interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterTotalizeGated.Configure(System.String,System.String,Ivi.Counter.Slope)">
+            <summary>
+            Configures the gate source channel, the gating channel, and gate slope property for a gated totalize
+            measurement.
+            </summary>
+            <param name="channel">The channel that will be counted. Refer to the Channel property for details.</param>
+            <param name="gateSource">The channel that will gate the counted channel. Refer to the GateSource
+            property for details.</param>
+            <param name="gateSlope">The gate slope. Refer to the GateSlope property for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTotalizeGated.Channel">
+            <summary>
+            The channel that will be counted for the gated totalize measurement function.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTotalizeGated.GateSource">
+            <summary>
+            The channel that will gate the counted channel for the gated totalize measurement function.  The value
+            can be a channel name alias, a driver-specific channel string, or a standard value.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTotalizeGated.GateSlope">
+            <summary>
+            The gate slope that enables the gated totalize measurement function. 
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterTotalizeTimed">
+            <summary>
+            IviCounter class-compliant IIviCounterTotalizeTimed interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterTotalizeTimed.Configure(System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures the gate time for the timed totalize measurement.
+            </summary>
+            <param name="channel">The channel that will be counted. Refer to the Channel property for details.</param>
+            <param name="gateTime">The gate time that will gate the counter channel. Refer to the GateTime property
+            for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTotalizeTimed.Channel">
+            <summary>
+            The input channel that will be counted for the timed totalize measurement.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterTotalizeTimed.GateTime">
+            <summary>
+            The gate time that will gate the counter channel for the timed totalize measurement function.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IIviCounterVoltage">
+            <summary>
+            IviCounter class-compliant IIviCounterVoltage interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IIviCounterVoltage.Configure(System.String,Ivi.Counter.MeasurementFunction,System.Double,System.Double)">
+            <summary>
+            Configures the voltage measurement function, estimate, and resolution for a voltage measurement.
+            </summary>
+            <param name="channel">The channel on which the voltage will be measured. Refer to the Channel property
+            for details.</param>
+            <param name="measurementFunction">The voltage function. Refer to the IIviCounter.MeasurementFunction
+            property for details.  For this method, valid functions are DC Voltage, Maximum Voltage, Minimum Voltage,
+            RMS Voltage, and Peak-to-Peak Voltage.</param>
+            <param name="estimate">The estimated voltage. Refer to the Estimate property for details.</param>
+            <param name="resolution">The resolution of the voltage measurement. Refer to the Resolution
+            property for details.</param>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterVoltage.Channel">
+            <summary>
+            The channel on which the voltage will be measured.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterVoltage.Estimate">
+            <summary>
+            The estimated voltage, in volts, for the voltage measurement function.
+            </summary>
+        </member>
+        <member name="P:Ivi.Counter.IIviCounterVoltage.Resolution">
+            <summary>
+            The resolution of the measurement, in volts, for the voltage measurement function. It is the quantization
+            size, i.e. the smallest delta value that can be detected.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IviCounterWarnings">
+            <summary>
+            Warning codes.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.IviCounterWarnings.MeasureUncalibrated">
+            <summary>
+            The instrument was in an uncalibrated state when the measurement 
+            was taken.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.IviCounter">
+            <summary>
+            The IviCounter class allows clients to create instances of drivers that implement the class-compliant
+            IviCounter interfaces, based on information in the IVI configuration store.  This allows clients to
+            interchange IVI.NET class-compliant IviCounter drivers without modifying or rebuilding the client program
+            source code.
+            </summary>
+        </member>
+        <member name="M:Ivi.Counter.IviCounter.Create(System.String)">
+            <summary>
+            Create an instance of an IviCounter class-compliant driver and return an IIviCounter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviCounter driver to be created.</param>
+            <returns>
+            An IIviCounter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.Counter.IviCounter.Create(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Create an instance of an IviCounter class-compliant driver and return an IIviCounter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviCounter driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <returns>
+            An IIviCounter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.Counter.IviCounter.Create(System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Create an instance of an IviCounter class-compliant driver and return an IIviCounter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviCounter driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviCounter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="M:Ivi.Counter.IviCounter.Create(System.String,System.Boolean,System.Boolean,Ivi.Driver.LockType,System.String,System.String)">
+            <summary>
+            Create an instance of an IviCounter class-compliant driver and return an IIviCounter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviCounter driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="lockType">Specifies whether to use .NET AppDomain-wide locking or machine-wide locking.</param>
+            <param name="accessKey">Specifies a user-selectable access key to identify the lock.  Driver instances 
+            that are created with the same accessKey will be protected from simultaneous access by multiple threads 
+            within a process or across processes, depending upon the value of the lockType parameter. </param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviCounter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="T:Ivi.Counter.MeasurementFunction">
+            <summary>
+            IviCounter class defined values for measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.Frequency">
+            <summary>
+            The Frequency measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.FrequencyWithAperture">
+            <summary>
+            The Frequency with Aperture measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.Period">
+            <summary>
+            The Period measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.PeriodWithAperture">
+            <summary>
+            The Period with Aperture measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.PulseWidth">
+            <summary>
+            The Pulse Width measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.DutyCycle">
+            <summary>
+            The Duty Cycle measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.EdgeTime">
+            <summary>
+            The Edge Time measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.FrequencyRatio">
+            <summary>
+            The Frequency Ratio measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.TimeInterval">
+            <summary>
+            The Time Interval measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.Phase">
+            <summary>
+            The Phase measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.ContinuousTotalize">
+            <summary>
+            The Continuous Totalize measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.GatedTotalize">
+            <summary>
+            The Gated Totalize measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.TimedTotalize">
+            <summary>
+            The Timed Totalize measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.DCVoltage">
+            <summary>
+            The DC Voltage measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.MaximumVoltage">
+            <summary>
+            The Maximum Voltage measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.MinimumVoltage">
+            <summary>
+            The Minimum Voltage measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.RmsVoltage">
+            <summary>
+            The RMS Voltage measurement function.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementFunction.PeakToPeakVoltage">
+            <summary>
+            The Peak-to-Peak Voltage measurement function.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.MeasurementStatus">
+            <summary>
+            IviCounter class defined values for measurement complete status.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementStatus.InProgress">
+            <summary>
+            The counter is still acquiring data.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementStatus.Complete">
+            <summary>
+            The counter has completed the measurement.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.MeasurementStatus.Unknown">
+            <summary>
+            The counter cannot determine the status of the measurement.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.ReferenceType">
+            <summary>
+            IviCounter class defined values for reference type.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.ReferenceType.Voltage">
+            <summary>
+            Edge Time is measured based on voltage reference levels.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.ReferenceType.Percent">
+            <summary>
+            Edge Time is measured based on percentage reference levels.
+            </summary>
+        </member>
+        <member name="T:Ivi.Counter.Slope">
+            <summary>IviCounter class defined values for slope.</summary>
+        </member>
+        <member name="F:Ivi.Counter.Slope.Positive">
+            <summary>
+            A positive (rising edge) slope.
+            </summary>
+        </member>
+        <member name="F:Ivi.Counter.Slope.Negative">
+            <summary>
+            A negative (falling edge) slope.
+            </summary>
+        </member>
+    </members>
+</doc>

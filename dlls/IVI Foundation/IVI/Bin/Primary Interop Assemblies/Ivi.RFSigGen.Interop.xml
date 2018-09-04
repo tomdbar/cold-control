@@ -1,0 +1,1205 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<doc>
+	<assembly>
+		<name>Ivi.RFSigGen.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGen">
+			<summary>IVI RFSigGen class-compliant root interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGen.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument 
+			are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the 
+			instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address 
+			of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of 
+			certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameter
+			is "Name=Value", 
+			where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,
+			or DriverSetup. Value is either true or false except for DriverSetup. 
+			If the Options String parameter contains an assignment for the Driver Setup attribute, 
+			the Initialize function assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGen.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument 
+			are not accessible after Close is called.</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGen.SendSoftwareTrigger">
+			<summary>Sends a software trigger, which will cause the signal generator to start signal generation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the 
+			Close method, and False at all other times.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.RF">
+			<summary>Pointer to the class-compliant IIviRFSigGenRF interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.ALC">
+			<summary>Pointer to the class-compliant IIviRFSigGenALC interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.LFGenerator">
+			<summary>Pointer to the class-compliant IIviRFSigGenLFGenerator interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.PulseGenerator">
+			<summary>Pointer to the class-compliant IIviRFSigGenPulseGenerator interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.Sweep">
+			<summary>Pointer to the class-compliant IIviRFSigGenSweep interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.ReferenceOscillator">
+			<summary>Pointer to the class-compliant IIviRFSigGenReferenceOscillator interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.AnalogModulation">
+			<summary>Pointer to the class-compliant IIviRFSigGenAnalogModulation interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.PulseModulation">
+			<summary>Pointer to the class-compliant IIviRFSigGenPulseModulation interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.DigitalModulation">
+			<summary>Pointer to the class-compliant IIviRFSigGenDigitalModulation interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGen.IQ">
+			<summary>Pointer to the class-compliant IIviRFSigGenIQ interface</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenRF">
+			<summary>IVI RFSigGen class-compliant RF interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenRF.Configure(System.Double,System.Double)">
+			<summary>This function configures the frequency and the power level of the RF output signal.</summary>
+			<param name="Frequency">Specifies the frequency of the generated RF signal. This value sets the Frequency property</param>
+			<param name="PowerLevel">Specifies the power level of the generated RF signal. This value sets the Level property</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenRF.IsSettled">
+			<summary>This function queries the state of the RF output signal.</summary>
+			<returns>Returns True if the output signal is in settled, False otherwise.</returns>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenRF.WaitUntilSettled(System.Int32)">
+			<summary>This function returns if the state of the RF output signal has settled.</summary>
+			<param name="MaxTimeMilliseconds">Defines the maximum time the function waits for the output to be settled. 
+			The units are milliseconds.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenRF.DisableAllModulation">
+			<summary>This function disables all currently enabled modulations.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenRF.Frequency">
+			<summary>Specifies the frequency of the generated RF output signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenRF.Level">
+			<summary>Specifies the amplitude (power/level) of the RF output signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenRF.OutputEnabled">
+			<summary>Enables or disables the RF output signal.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenALC">
+			<summary>IVI RFSigGen class-compliant Automatic Level Control (ALC) interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenALC.Configure(Ivi.RFSigGen.Interop.IviRFSigGenALCSourceEnum,System.Double)">
+			<summary>This function configures the ALC (Automatic Level Control) of the signal generator's RF output.</summary>
+			<param name="Source">This value sets the ALC.Source property.</param>
+			<param name="Bandwidth">This value sets the ALC.Bandwidth property</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenALC.Source">
+			<summary>Specifies the ALC (Automatic Level Control) source.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenALC.Bandwidth">
+			<summary>Specifies the ALC (Automatic Level Control) bandwidth.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenALC.Enabled">
+			<summary>Enables or disables the Automatic Level Control (ALC).</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenLFGenerator">
+			<summary>IVI RFSigGen class-compliant LF generator interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenLFGenerator.Configure(System.Double,Ivi.RFSigGen.Interop.IviRFSigGenLFGeneratorWaveformEnum)">
+			<summary>This function configures the LF generator output frequency and waveform.</summary>
+			<param name="Frequency">Specifies the frequency of the LF generator. This value sets the LFGenerator 
+			Frequency property</param>
+			<param name="Waveform">Specifies the waveform of the LF generator. This value sets the LFGenerator 
+			Waveform property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenLFGenerator.Output">
+			<summary>Pointer to the class-compliant IIviRFSigGenLFGeneratorOutput interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenLFGenerator.Frequency">
+			<summary>Specifies the frequency of the active LF generator.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenLFGenerator.Waveform">
+			<summary>Specifies the waveform of the active LF generator.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenLFGenerator.ActiveLFGenerator">
+			<summary>Selects the generator that is used as the modulating signal or for LF output.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenLFGenerator.Count">
+			<summary>Returns the number of LF generators.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenLFGenerator.Name">
+			<summary>Returns the LF generator name for a given index.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenLFGenerator.Name(System.Int32)">
+			<summary>Returns the LF generator name for a given index.</summary>
+			<param name="Index">One base index into the collection of LF generators.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenLFGenerator.get_Name(System.Int32)">
+			<summary>Retrives names of LF generators. </summary>
+			<param name="Index">One base index into the collection of LF generators.</param>
+			<returns>The name of a particular LF Generator.</returns>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenLFGeneratorOutput">
+			<summary>IVI RFSigGen class-compliant LF generator output interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenLFGeneratorOutput.Configure(System.Double,System.Boolean)">
+			<summary>This function configures the attributes of the LF generator output (within the RF signal generator).</summary>
+			<param name="Amplitude">Specifies the output voltage of the LF generator output signal. 
+			This value sets the LFGenerator Output Amplitude property.</param>
+			<param name="Enabled">Specifies whether the LF generator applies a signal to the output. 
+			This value sets the LFGenerator Output Enabled property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenLFGeneratorOutput.Enabled">
+			<summary>Enables or disables the external LF generator output.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenLFGeneratorOutput.Amplitude">
+			<summary>Specifies the output voltage of the LF generator.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator">
+			<summary>IVI RFSigGen class-compliant pulse generator interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator.Configure(Ivi.RFSigGen.Interop.IviRFSigGenPulseTriggerSourceEnum,System.Double,System.Boolean)">
+			<summary>This function configures the pulse generator within the RF signal generator.</summary>
+			<param name="PulseTriggerSource">Specifies the source of the signal the pulse generator uses 
+			to generate one pulse. This value sets the Pulse Trigger Source property.</param>
+			<param name="PulseWidth">Specifies the width of the output pulse. This value sets the Pulse 
+			Width property.</param>
+			<param name="GatingEnabled">Enables or disables gating. This value sets the Pulse Gating 
+			Enabled property.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator.ConfigureExternalTrigger(Ivi.RFSigGen.Interop.IviRFSigGenPulseExternalTriggerSlopeEnum,System.Double)">
+			<summary>This function configures the external trigger for the pulse generator.</summary>
+			<param name="Slope">Specifies the polarity of the trigger input to start one pulse. 
+			This value sets the Pulse External Trigger Slope property.</param>
+			<param name="Delay">Specifies the delay for starting the output pulse with respect to the trigger input. 
+			This value sets the Pulse External Trigger Delay property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator.Double">
+			<summary>Pointer to the class-compliant IIviRFSigGenPulseGeneratorDouble interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator.Output">
+			<summary>Pointer to the class-compliant IIviRFSigGenPulseGeneratorOutput interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator.InternalTriggerPeriod">
+			<summary>Specifies the period of the pulse generator's output signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator.Width">
+			<summary>Specifies the width of the output pulse.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator.GatingEnabled">
+			<summary>Enables or disables trigger gating.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator.TriggerSource">
+			<summary>Specifies the source of the signal the pulse generator uses to generate one pulse.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator.ExternalTriggerSlope">
+			<summary>Specifies whether the event occurs on the rising or falling edge of the trigger input signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGenerator.ExternalTriggerDelay">
+			<summary>Specifies the delay for starting the output signal with respect to the trigger input.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGeneratorDouble">
+			<summary>IVI RFSigGen class-compliant pulse double generator interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGeneratorDouble.Configure(System.Boolean,System.Double)">
+			<summary>This function configures the double pulse state and delay.</summary>
+			<param name="Enabled">Enables or disables double pulse mode. 
+			This value sets the Pulse Double Enabled property.</param>
+			<param name="Delay">Specifies the delay of the second pulse. 
+			This value sets the Pulse Double Delay property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGeneratorDouble.Enabled">
+			<summary>Turns double pulse mode on/off.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGeneratorDouble.Delay">
+			<summary>Specifies the delay of the second pulse.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGeneratorOutput">
+			<summary>IVI RFSigGen class-compliant pulse generator output interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGeneratorOutput.Configure(Ivi.RFSigGen.Interop.IviRFSigGenPulseOutputPolarityEnum,System.Boolean)">
+			<summary>This function configures the output and polarity of the pulse generator.</summary>
+			<param name="Polarity">Specifies the polarity of the output signal. 
+			This value sets the Pulse Output Polarity property.</param>
+			<param name="Enabled">Enables or disables the external output of the pulse generator. 
+			This value sets the Pulse Output Enabled property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGeneratorOutput.Polarity">
+			<summary>Specifies the polarity of the output signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseGeneratorOutput.Enabled">
+			<summary>Enables or disables the pulse generator external output.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenSweep">
+			<summary>IVI RFSigGen class-compliant sweep interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenSweep.Configure(Ivi.RFSigGen.Interop.IviRFSigGenSweepModeEnum,Ivi.RFSigGen.Interop.IviRFSigGenSweepTriggerSourceEnum)">
+			<summary>This function configures the signal generator whether the RF output signal is 
+			a continuous wave or the frequency, the power level or both are swept or stepped.</summary>
+			<param name="Mode">Specifies the sweep mode of the RF signal generator. 
+			This value sets the Sweep Mode property.</param>
+			<param name="TriggerSource">Specifies the way to start the sweep or running it continuously. 
+			This value sets the Sweep Trigger Source property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenSweep.FrequencySweep">
+			<summary>Pointer to the class-compliant IIviRFSigGenFrequencySweep interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenSweep.PowerSweep">
+			<summary>Pointer to the class-compliant IIviRFSigGenPowerSweep interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenSweep.FrequencyStep">
+			<summary>Pointer to the class-compliant IIviRFSigGenFrequencyStep interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenSweep.PowerStep">
+			<summary>Pointer to the class-compliant IIviRFSigGenPowerStep interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenSweep.List">
+			<summary>Pointer to the class-compliant IIviRFSigGenList interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenSweep.Mode">
+			<summary>Specifies whether the RF output signal is a continuous wave or the frequency, 
+			the power level or both are swept or stepped.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenSweep.TriggerSource">
+			<summary>Specifies the way to start the sweep or run the sweep continuously.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencySweep">
+			<summary>IVI RFSigGen class-compliant frequency sweep interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencySweep.ConfigureCenterSpan(System.Double,System.Double)">
+			<summary>This function configures the center frequency and the frequency span for the sweep.</summary>
+			<param name="Center">Specifies the center frequency of the sweep. 
+			This value, along with the Span parameter, sets the Frequency Sweep Start and Frequency Sweep Stop properties.</param>
+			<param name="Span">Specifies the frequency span of the sweep. 
+			This value, along with the Center paraemter, sets the Frequency Sweep Start and Frequency Sweep Stop properties.
+</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencySweep.ConfigureStartStop(System.Double,System.Double)">
+			<summary>This function configures the start and the stop frequency for the sweep.</summary>
+			<param name="Start">Specifies the start frequency of the sweep. 
+			This value sets the Frequency Sweep Start property.</param>
+			<param name="Stop">Specifies the stop frequency of the sweep. 
+			This value sets the Frequency Sweep Stop property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencySweep.Start">
+			<summary>Specifies the start frequency of the sweep.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencySweep.Stop">
+			<summary>Specifies the stop frequency of the sweep.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencySweep.Time">
+			<summary>Specifies the duration of one sweep from start to stop frequency.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenPowerSweep">
+			<summary>IVI RFSigGen class-compliant power sweep interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenPowerSweep.ConfigureStartStop(System.Double,System.Double)">
+			<summary>This function configures the start and the stop power for the sweep.</summary>
+			<param name="Start">Specifies the start power of the sweep. This value sets the Power Sweep Start property.</param>
+			<param name="Stop">Specifies the stop power of the sweep. This value sets the Power Sweep Stop property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPowerSweep.Start">
+			<summary>Specifies the start power of the sweep.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPowerSweep.Stop">
+			<summary>Specifies the stop power of the sweep.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPowerSweep.Time">
+			<summary>Specifies the duration of one sweep from start to stop power.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencyStep">
+			<summary>IVI RFSigGen class-compliant frequency step interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencyStep.ConfigureStartStop(System.Double,System.Double,Ivi.RFSigGen.Interop.IviRFSigGenFrequencyStepScalingEnum,System.Double)">
+			<summary>This function configures the attributes that control the step frequencies of the generator's RF output signal.</summary>
+			<param name="Start">Specifies the start frequency of the step sweep. This value sets the Frequency Step Start property.</param>
+			<param name="Stop">Specifies the stop frequency of the step sweep. This value sets the Frequency Step Stop property.</param>
+			<param name="Scaling">Specifies the scaling of the step sweep. This value sets the Frequency Step Scaling property.</param>
+			<param name="StepSize">Specifies the size of one step. This value sets the Frequency Step Size property.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencyStep.ConfigureDwell(System.Boolean,System.Double)">
+			<summary>This function configures the attributes that control the stepping.</summary>
+			<param name="SingleStepEnabled">Specifies whether the trigger initiates the next step. 
+			This value sets the Frequency Step Single Step Enabled property.</param>
+			<param name="Dwell">Specifies the duration of one frequency step. 
+			This value sets the Frequency Step Dwell property.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencyStep.Reset">
+			<summary>This function resets the stepping if single step is enabled.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencyStep.Start">
+			<summary>Specifies the start frequency of the stepped sweep.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencyStep.Stop">
+			<summary>Specifies the stop frequency of the stepped sweep.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencyStep.Scaling">
+			<summary>Specifies the spacing of the steps.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencyStep.Size">
+			<summary>Specifies the step size.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencyStep.SingleStepEnabled">
+			<summary>Turns single step on/off.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFrequencyStep.Dwell">
+			<summary>Specifies the duration of one step.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenPowerStep">
+			<summary>IVI RFSigGen class-compliant power step interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenPowerStep.ConfigureStartStop(System.Double,System.Double,System.Double)">
+			<summary>This function configures the attributes that control the power steps of the generator's RF output signal.</summary>
+			<param name="Start">Specifies the start power of the stepping. This value sets the PowerStep Start property. </param>
+			<param name="Stop">Specifies the stop power of the stepping. This value sets the Power Step Stop property.</param>
+			<param name="StepSize">Specifies the size of one step. This value sets the Power Step Size property.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenPowerStep.ConfigureDwell(System.Boolean,System.Double)">
+			<summary>This function configures the attributes that control the stepping.</summary>
+			<param name="SingleStepEnabled">Specifies whether the trigger initiates the next step. 
+			This value sets the Power Step Single Step Enabled property.</param>
+			<param name="Dwell">Specifies the duration of one power step. 
+			This value sets the Power Step Dwell property.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenPowerStep.Reset">
+			<summary>This function resets the stepping if single step is enabled.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPowerStep.Start">
+			<summary>Specifies the start power of the stepped sweep.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPowerStep.Stop">
+			<summary>Specifies the stop power of the stepped sweep.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPowerStep.Size">
+			<summary>Specifies the step size.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPowerStep.SingleStepEnabled">
+			<summary>Turns single step on/off.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPowerStep.Dwell">
+			<summary>Specifies the duration of one step.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenList">
+			<summary>IVI RFSigGen class-compliant sweep list interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenList.ConfigureDwell(System.Boolean,System.Double)">
+			<summary>This function configures the attributes that control the stepping.</summary>
+			<param name="SingleStepEnabled">Specifies whether the trigger initiates transitions to the next list step. 
+			This value sets the List Single Step Enabled property.</param>
+			<param name="Dwell">Specifies the duration of one list step. 
+			This value sets the List Dwell property.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenList.ClearAll">
+			<summary>This function deletes all lists from the pool of lists.</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenList.CreateFrequency(System.String,System.Double[]@)">
+			<summary>This function creates a named list of frequency values.</summary>
+			<param name="Name">Specifies the name of the list to be created.</param>
+			<param name="Frequency">Specifies the array of frequency values to become elements of the list. 
+			The units are Hertz.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenList.CreatePower(System.String,System.Double[]@)">
+			<summary>This function creates a named list of power values.</summary>
+			<param name="Name">Specifies the name of the list to be created. </param>
+			<param name="Power">Specifies the array of power values to become elements of the list. 
+			The units are dBm.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenList.CreateFrequencyPower(System.String,System.Double[]@,System.Double[]@)">
+			<summary>This function creates a named list of frequency and power value pairs.</summary>
+			<param name="Name">Specifies the name of the list to be created. </param>
+			<param name="Frequency">Specifies the array of frequency values to become elements of the list. 
+			The units are Hertz.</param>
+			<param name="Power">Specifies the array of power values to become elements of the list. 
+			The units are dBm.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenList.Reset">
+			<summary>This function resets the stepping if single step is enabled.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenList.SingleStepEnabled">
+			<summary>Turns single step on/off.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenList.Dwell">
+			<summary>Specifies the duration of one step.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenList.SelectedName">
+			<summary>Specifies the name of the selected list to become active.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenReferenceOscillator">
+			<summary>IVI RFSigGen class-compliant reference oscillator interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenReferenceOscillator.Configure(Ivi.RFSigGen.Interop.IviRFSigGenReferenceOscillatorSourceEnum,System.Double)">
+			<summary>This function configures the signal generator's reference oscillator.</summary>
+			<param name="Source">Specifies source of reference frequency signal. 
+			This value sets the Reference Oscillator Source property.</param>
+			<param name="Frequency">Specifies the frequency of the external reference oscillator. 
+			This parameter is only used if the Source is set to External. 
+			This value sets the Reference Oscillator Frequency property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenReferenceOscillator.Source">
+			<summary>Specifies the reference oscillator source.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenReferenceOscillator.ExternalFrequency">
+			<summary>Specifies the frequency of the external signal, which is used as reference 
+			for internal RF frequency generation.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenAnalogModulation">
+			<summary>IVI RFSigGen class-compliant analog modulation interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAnalogModulation.AM">
+			<summary>Pointer to the class-compliant IIviRFSigGenAM interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAnalogModulation.FM">
+			<summary>Pointer to the class-compliant IIviRFSigGenFM interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAnalogModulation.PM">
+			<summary>Pointer to the class-compliant IIviRFSigGenPM interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAnalogModulation.Source">
+			<summary>Pointer to the class-compliant IIviRFSigGenAnalogModulationSource interface</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenAM">
+			<summary>IVI RFSigGen class-compliant analog modulation interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenAM.Configure(System.String,Ivi.RFSigGen.Interop.IviRFSigGenAMScalingEnum,System.Double)">
+			<summary>This function configures the attributes that control the signal generator's amplitude modulation.</summary>
+			<param name="Source">Specifies the source of the signal that the signal generator uses to modulate the output signal. 
+			This value sets the AM Source property.</param>
+			<param name="Scaling">Specifies the scaling of the modulation. 
+			This value sets the AM Scaling property.</param>
+			<param name="Depth">Specifies the extent of modulation. The driver uses this value to set the AM Depth attribute. 
+			See the attribute description for more details.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAM.Source">
+			<summary>Specifies the source of the signal that is used as the modulating signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAM.Scaling">
+			<summary>Specifies linear or logarithmic attenuation for amplitude modulation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAM.Depth">
+			<summary>Specifies the extent of modulation the signal generator applies to the RF-signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAM.NominalVoltage">
+			<summary>Returns the voltage at which the instrument achieves the amount of modulation 
+			specified by the AM Depth attribute.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAM.Enabled">
+			<summary>Specifies whether the signal generator enables or disables amplitude modulation 
+			of the RF output signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAM.ExternalCoupling">
+			<summary>Specifies the coupling of the external source of the modulating signal.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenFM">
+			<summary>IVI RFSigGen class-compliant frequency modulation interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenFM.Configure(System.String,System.Double)">
+			<summary>This function configures the attributes that control the signal generator's frequency modulation.</summary>
+			<param name="Source">Specifies the modulating source. This value sets the FM Source propety.</param>
+			<param name="Deviation">Specifies the extent of modulation. This value sets the FM Deviation property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFM.Source">
+			<summary>Specifies the source of the signal that is used as the modulating signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFM.Deviation">
+			<summary>Specifies the extent of modulation (peak frequency deviation) the signal generator applies to the RF-signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFM.NominalVoltage">
+			<summary>Returns the voltage at which the instrument achieves the amount of modulation specified by the FM Deviation attribute.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFM.Enabled">
+			<summary>Specifies whether the signal generator enables or disables frequency modulation of the RF output signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenFM.ExternalCoupling">
+			<summary>Specifies the coupling of the external source of the modulating signal.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenPM">
+			<summary>IVI RFSigGen class-compliant phase modulation interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenPM.Configure(System.String,System.Double)">
+			<summary>This function configures the attributes that control the signal generator's phase modulation.</summary>
+			<param name="Source">Specifies the source of the signal the signal generator uses to modulate the output signal. This value sets the PM Source property.</param>
+			<param name="Deviation">Specifies the extent of modulation. This value sets the PM Deviation property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPM.Source">
+			<summary>Specifies the source of the signal that is used as the modulating signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPM.Deviation">
+			<summary>Specifies the extent of modulation (peak phase deviation) the signal generator applies to the RF-signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPM.NominalVoltage">
+			<summary>Returns the voltage at which the instrument achieves the amount of modulation specified by the PM Deviation attribute.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPM.Enabled">
+			<summary>Specifies whether the signal generator enables or disables phase modulation of the RF output signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPM.ExternalCoupling">
+			<summary>Specifies the coupling of the external source of the modulating signal.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenAnalogModulationSource">
+			<summary>IVI RFSigGen class-compliant modulation source interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAnalogModulationSource.Count">
+			<summary>Specifies how many modulation sources are available.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAnalogModulationSource.Name">
+			<summary>Returns the name of a particular modulation source.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenAnalogModulationSource.Name(System.Int32)">
+			<summary>Returns the name of a particular modulation source.</summary>
+			<param name="Index">One base index into the collection of modulation sources.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenAnalogModulationSource.get_Name(System.Int32)">
+			<summary>Retrives names of modulation sources. </summary>
+			<param name="Index">One base index into the collection of modulation sources.</param>
+			<returns>The name of a particular modulation source.</returns>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenPulseModulation">
+			<summary>IVI RFSigGen class-compliant pulse modulation interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseModulation.Enabled">
+			<summary>Enables or disables pulse modulation of the RF output signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseModulation.Source">
+			<summary>Specifies the source of the signal that is used as the modulating signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenPulseModulation.ExternalPolarity">
+			<summary>Specifies the polarity of the external source signal.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulation">
+			<summary>IVI RFSigGen class-compliant digital modulation interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulation.Arb">
+			<summary>Pointer to the class-compliant IIviRFSigGenArb interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulation.Base">
+			<summary>Pointer to the class-compliant IIviRFSigGenDigitalModulationBase interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulation.TDMA">
+			<summary>Pointer to the class-compliant IIviRFSigGenTDMA interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulation.CDMA">
+			<summary>Pointer to the class-compliant IIviRFSigGenCDMA interface</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenArb">
+			<summary>IVI RFSigGen class-compliant ARB generator interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenArb.Configure(System.Double,System.Double)">
+			<summary>This function configures the ARB generator.</summary>
+			<param name="ClockFrequency">This value sets the Arb Clock Frequency property.</param>
+			<param name="FilterFrequency">This value sets the Arb Filter Frequency property.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenArb.WriteWaveform(System.String,System.Double[]@,System.Double[]@,System.Boolean)">
+			<summary>This function stores the waveform in the driver's or instrument's memory.</summary>
+			<param name="Name">The driver uses this value to name the stored waveform.</param>
+			<param name="IData">The values in this array are the I part of the waveform . The voltages are normalized to {-1, +1} 
+			to the full I range.</param>
+			<param name="QData">The values in this array are the Q part of the waveform . The voltages are normalized to {-1, +1} 
+			to the full Q range.</param>
+			<param name="MoreDataPending">The value is set to True if more data is coming. To complete the waveform, the next 
+			data shall have the same name. False means the waveform has no more data to come.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenArb.ClearAllWaveforms">
+			<summary>This function deletes all waveforms from the pool of waveforms.</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenArb.QueryWaveformCapabilities(System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
+			<summary>This function returns the capabilities of the ARB generator.</summary>
+			<param name="MaxNumberWaveforms">Returns the Arb Max Number Waveforms property.</param>
+			<param name="WaveformQuantum">Returns the Arb Waveform Quantum property.</param>
+			<param name="MinWaveformSize">Returns the Arb Min Waveform Size property.</param>
+			<param name="MaxWaveformSize">Returns the Arb Max Waveform Size property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenArb.SelectedWaveform">
+			<summary>Specifies the selected waveform from the pool of available waveforms.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenArb.ClockFrequency">
+			<summary>Specifies the sample frequency.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenArb.FilterFrequency">
+			<summary>Specifies the cut off frequency of the low pass filter.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenArb.MaxNumberWaveforms">
+			<summary>Specifies the maximum number of waveforms the instrument can hold in memory.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenArb.WaveformQuantum">
+			<summary>The waveform length must be a multiple of this quantum.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenArb.WaveformSizeMin">
+			<summary>The waveform length must be equal or greater than min size.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenArb.WaveformSizeMax">
+			<summary>The waveform length must be equal or less than max size.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenArb.TriggerSource">
+			<summary>Specifies the trigger source for the ARB waveform.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenArb.ExternalTriggerSlope">
+			<summary>Specifies whether the trigger event occurs on the rising or falling edge of the input signal.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase">
+			<summary>IVI RFSigGen class-compliant digital modulation base interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.ConfigureClockSource(Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseClockSourceEnum,Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseExternalClockTypeEnum)">
+			<summary>This function configures the clock source.</summary>
+			<param name="Source">This value sets the DigitalModulationBase Clock Source property.</param>
+			<param name="Type">Type is ignored if Source is set to Internal.This value sets the DigitalModulationBase External 
+			Clock Type property.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.WriteBitSequence(System.String,System.Int32,System.Byte[]@,System.Boolean)">
+			<summary>This function writes the bit sequence used as data for the digital base modulation.</summary>
+			<param name="Name">The  name of the stored bit sequence.</param>
+			<param name="BitCount">The number of bits in the sequence. One char/byte has 8 bits, but the stream of bits doesn't end 
+			necessarily on byte boundaries.</param>
+			<param name="Sequence">This array contains a stream of bits.</param>
+			<param name="MoreDataPending">The value is set to True if more data is comming. To complete the sequence, the next data 
+			shall have the same name. False means the waveform has no more data to come.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.ClearAllBitSequences">
+			<summary>This function deletes all named bit sequences.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.StandardName">
+			<summary>Returns the standard name for the given index.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.StandardName(System.Int32)">
+			<summary>Returns the standard name for the given index.</summary>
+			<param name="Index">One based index into the list of standard names.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.get_StandardName(System.Int32)">
+			<summary>Gets standard names.</summary>
+			<param name="Index">One based index into the list of standard names.</param>
+			<returns>The standard name for the given index.</returns>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.StandardCount">
+			<summary>Returns the count of available standards for digital base modulation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.SelectedStandard">
+			<summary>Specifies the actual standard used by the instrument.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.DataSource">
+			<summary>Specifies the source of data for digital base modulation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.PRBSType">
+			<summary>Specifies the type of PRBS for digital base modulation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.SelectedBitSequence">
+			<summary>Specifies name of bit sequence used as data for digital modulation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.ClockSource">
+			<summary>Specifies the source of the clock signal used to generate the digital modulation according to 
+			the selected standard.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenDigitalModulationBase.ExternalClockType">
+			<summary>Specifies the type of the external clock signal used to generate the digital modulation.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA">
+			<summary>IVI RFSigGen class-compliant TDMA base interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.ConfigureClockSource(Ivi.RFSigGen.Interop.IviRFSigGenTDMAClockSourceEnum,Ivi.RFSigGen.Interop.IviRFSigGenTDMAExternalClockTypeEnum)">
+			<summary>This function configures the clock source.</summary>
+			<param name="Source">This value sets the TDMA Clock Source property.</param>
+			<param name="Type">Type is ignored if Source is set to Internal.This value sets the TDMA External Clock 
+			Type property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.StandardName">
+			<summary>Returns the standard name for the given index.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.StandardName(System.Int32)">
+			<summary>Returns the standard name for the given index.</summary>
+			<param name="Index">One based index into the list of standard names.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.get_StandardName(System.Int32)">
+			<summary>Gets standard names.</summary>
+			<param name="Index">One based index into the list of standard names.</param>
+			<returns>The standard name for the given index.</returns>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.StandardCount">
+			<summary>Returns the count of available standards for TDMA modulation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.SelectedStandard">
+			<summary>Specifies the actual standard used by the instrument.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.FrameName">
+			<summary>Returns the frame name for the given index.</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.get_FrameName(System.Int32)">
+			<summary>Gets frame names.</summary>
+			<param name="Index">One based index into the list of frame names.</param>
+			<returns>The frame name for the given index.</returns>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.FrameCount">
+			<summary>Returns the count of available frame names.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.SelectedFrame">
+			<summary>Specifies the actual frame/slot used by the instrument.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.TriggerSource">
+			<summary>Specifies the source of the trigger signal starting the generation of the frame/slot.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.ExternalTriggerSlope">
+			<summary>Specifies whether the trigger event occurs on the rising or falling edge of the input signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.ClockSource">
+			<summary>Specifies the source of the clock signal used to generate the digital modulation according to the selected standard.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenTDMA.ExternalClockType">
+			<summary>Specifies the type of the external clock signal used to generate the digital modulation.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA">
+			<summary>IVI RFSigGen class-compliant CDMA base interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.StandardName">
+			<summary>Returns the standard name for the given index.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.StandardName(System.Int32)">
+			<summary>Returns the standard name for the given index.</summary>
+			<param name="Index">One based index into the list of standard names.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.get_StandardName(System.Int32)">
+			<summary>Gets standard names.</summary>
+			<param name="Index">One based index into the list of standard names.</param>
+			<returns>The standard name for the given index.</returns>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.StandardCount">
+			<summary>Returns the count of available standards for CDMA modulation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.SelectedStandard">
+			<summary>Specifies the actual standard used by the instrument.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.TestModelName">
+			<summary>Returns the selected test model name. (]</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.TestModelName(System.Int32)">
+			<summary>Returns the selected test model name. (]</summary>
+			<param name="Index">One based index into the list of test model names.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.get_TestModelName(System.Int32)">
+			<summary>Gets test model names.</summary>
+			<param name="Index">One based index into the list of test model names.</param>
+			<returns>The test model name for the given index.</returns>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.TestModelCount">
+			<summary>Returns the count of available test models.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.SelectedTestModel">
+			<summary>Specifies the actual test model used by the instrument.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.TriggerSource">
+			<summary>Specifies the trigger source for starting the signal generation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.ExternalTriggerSlope">
+			<summary>Specifies whether the trigger event occurs on the rising or falling edge of the input signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenCDMA.ClockSource">
+			<summary>Specifies the source of the clock signal used to generate the digital modulation.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenIQ">
+			<summary>IVI RFSigGen class-compliant IQ modulation interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenIQ.Configure(Ivi.RFSigGen.Interop.IviRFSigGenIQSourceEnum,System.Boolean)">
+			<summary>This function configures the attributes that control the signal generator's IQ modulation.</summary>
+			<param name="Source">Specifies the modulation source. This value sets the Modulate IQ Source property.</param>
+			<param name="SwapEnabled">Specifies the swap state. True swaps I and Q inputs, the result is an invers phase rotation. This value sets the Modulate IQ Swap Enabled property.</param>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenIQ.Calibrate">
+			<summary>This function performs a calibration of the IQ modulator.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenIQ.Impairment">
+			<summary>Pointer to the class-compliant IIviRFSigGenIQImpairment interface</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenIQ.Source">
+			<summary>Specifies the source of the signal that the signal generator uses for IQ modulation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenIQ.SwapEnabled">
+			<summary>Enables or disables the inverse phase rotation of the IQ signal by swapping the I and Q inputs.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenIQ.NominalVoltage">
+			<summary>Returns the voltage at which the instrument achieves full modulation.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenIQ.Enabled">
+			<summary>Enables or disables IQ (vector) modulation of the RF output signal.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IIviRFSigGenIQImpairment">
+			<summary>IVI RFSigGen class-compliant IQ modulation impairment interface</summary>
+		</member>
+		<member name="M:Ivi.RFSigGen.Interop.IIviRFSigGenIQImpairment.Configure(System.Double,System.Double,System.Double,System.Double)">
+			<summary>This function configures the attributes that simulate or correct impairment for the signal generator's IQ (vector) modulation.</summary>
+			<param name="IOffset">Specifies an offset to the I-path of IQ signals. This value sets the IQ I Offset property.</param>
+			<param name="QOffset">Specifies an offset to the Q-path of IQ signals. This value sets the IQ Q Offset property.</param>
+			<param name="Ratio">Specifies a gain imbalance to the IQ signals. This value sets the IQ Ratio property.</param>
+			<param name="Skew">Specifies an angle offset to the IQ signals. This value sets the IQ Skew property.</param>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenIQImpairment.Enabled">
+			<summary>Enables or disables impairment attributes.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenIQImpairment.IOffset">
+			<summary>Specifies an origin offset voltage to the I signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenIQImpairment.QOffset">
+			<summary>Specifies an origin offset voltage to the Q signal.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenIQImpairment.Ratio">
+			<summary>Specifies the gain imbalance between the I and Q channels.</summary>
+		</member>
+		<member name="P:Ivi.RFSigGen.Interop.IIviRFSigGenIQImpairment.Skew">
+			<summary>Specifies the adjustment of the phase angle between the I and Q vectors.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenALCSourceEnum">
+			<summary>Values for the ALC source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenALCSourceEnum.IviRFSigGenALCSourceInternal">
+			<summary>The ALC is controlled by an internal measurement source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenALCSourceEnum.IviRFSigGenALCSourceExternal">
+			<summary>The ALC is controlled by an external voltage.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenLFGeneratorWaveformEnum">
+			<summary>Values for the LFGenerator waveform.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenLFGeneratorWaveformEnum.IviRFSigGenLFGeneratorWaveformSine">
+			<summary>Configures the LF generator to produce a sinusoidal waveform</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenLFGeneratorWaveformEnum.IviRFSigGenLFGeneratorWaveformSquare">
+			<summary>Configures the LF generator to produce a square waveform</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenLFGeneratorWaveformEnum.IviRFSigGenLFGeneratorWaveformTriangle">
+			<summary>Configures the LF generator to produce a triangle waveform</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenLFGeneratorWaveformEnum.IviRFSigGenLFGeneratorWaveformRampUp">
+			<summary>Configures the LF generator to produce a rising ramp waveform</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenLFGeneratorWaveformEnum.IviRFSigGenLFGeneratorWaveformRampDown">
+			<summary>Configures the LF generator to produce a falling ramp waveform</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenPulseOutputPolarityEnum">
+			<summary>Values for the pulse output polarity.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPulseOutputPolarityEnum.IviRFSigGenPulseOutputPolarityNormal">
+			<summary>Specifies normal polarity.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPulseOutputPolarityEnum.IviRFSigGenPulseOutputPolarityInverse">
+			<summary>Specifies inverted polarity.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenPulseTriggerSourceEnum">
+			<summary>Values for the pulse generator trigger source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPulseTriggerSourceEnum.IviRFSigGenPulseTriggerSourceInternal">
+			<summary>No external trigger is used. The pulse period is specified with Pulse Internal Trigger Period.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPulseTriggerSourceEnum.IviRFSigGenPulseTriggerSourceExternal">
+			<summary>The pulse is started with a trigger after the delay time specified with Pulse External Trigger Delay.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenPulseExternalTriggerSlopeEnum">
+			<summary>Values for the pulse generator external trigger slope.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPulseExternalTriggerSlopeEnum.IviRFSigGenPulseExternalTriggerSlopePositive">
+			<summary>Enables rising edge triggering.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPulseExternalTriggerSlopeEnum.IviRFSigGenPulseExternalTriggerSlopeNegative">
+			<summary>Enables falling edge triggering.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenFrequencyStepScalingEnum">
+			<summary>Values for the frequency step scaling mode.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenFrequencyStepScalingEnum.IviRFSigGenFrequencyStepScalingLinear">
+			<summary>Enables linear scaling.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenFrequencyStepScalingEnum.IviRFSigGenFrequencyStepScalingLogarithmic">
+			<summary>Enables logarithmic scaling.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenSweepModeEnum">
+			<summary>Values for the sweep mode.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenSweepModeEnum.IviRFSigGenSweepModeNone">
+			<summary>The RF output of the signal generator is a non-swept signal (Continuous Wave). Frequency and power level settings from the base capability group are used.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenSweepModeEnum.IviRFSigGenSweepModeFrequencySweep">
+			<summary>The signal generator sweeps the RF output signal's frequency in an analog form (non-stepped). Refer to IviRFSigGenFrequencySweep extension group.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenSweepModeEnum.IviRFSigGenSweepModePowerSweep">
+			<summary>The signal generator sweeps the RF output signal's power in an analog form (non-stepped). Refer to IviRFSigGenPowerSweep extension group.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenSweepModeEnum.IviRFSigGenSweepModeFrequencyStep">
+			<summary>The signal generator sweeps the RF output signal's frequency in steps. Refer to IviRFSigGenFrequencyStep extension group.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenSweepModeEnum.IviRFSigGenSweepModePowerStep">
+			<summary>The signal generator sweeps the RF output signal's power level in steps. Refer to IviRFSigGenPowerStep extension group.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenSweepModeEnum.IviRFSigGenSweepModeList">
+			<summary>The signal generator uses two lists with frequency and power level values to sweep the RF output signal. Refer to IviRFSigGenList extension group.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenSweepTriggerSourceEnum">
+			<summary>Values for the sweep trigger source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenSweepTriggerSourceEnum.IviRFSigGenSweepTriggerSourceImmediate">
+			<summary>The sweep system does not wait for a trigger of any kind, so it is running continuously.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenSweepTriggerSourceEnum.IviRFSigGenSweepTriggerSourceExternal">
+			<summary>The sweep is started with an external signal.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenSweepTriggerSourceEnum.IviRFSigGenSweepTriggerSourceSoftware">
+			<summary>The sweep is started with a software programmable trigger.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenReferenceOscillatorSourceEnum">
+			<summary>Values for the reference oscillator source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenReferenceOscillatorSourceEnum.IviRFSigGenReferenceOscillatorSourceInternal">
+			<summary>The internal reference oscillator is used.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenReferenceOscillatorSourceEnum.IviRFSigGenReferenceOscillatorSourceExternal">
+			<summary>An external reference oscillator is used.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenAMScalingEnum">
+			<summary>Values for the AM scaling mode.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenAMScalingEnum.IviRFSigGenAMScalingLinear">
+			<summary>Enables linear attenuation for amplitude modulation.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenAMScalingEnum.IviRFSigGenAMScalingLogarithmic">
+			<summary>Enables logarithmic attenuation for amplitude modulation.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenAMExternalCouplingEnum">
+			<summary>Values for the AM external coupling.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenAMExternalCouplingEnum.IviRFSigGenAMExternalCouplingAC">
+			<summary>The external source is coupled for AC only. </summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenAMExternalCouplingEnum.IviRFSigGenAMExternalCouplingDC">
+			<summary>The external source is coupled for both DC and AC</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenFMExternalCouplingEnum">
+			<summary>Values for the FM external coupling.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenFMExternalCouplingEnum.IviRFSigGenFMExternalCouplingAC">
+			<summary>The external source is coupled for AC only. </summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenFMExternalCouplingEnum.IviRFSigGenFMExternalCouplingDC">
+			<summary>The external source is coupled for both DC and AC</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenPMExternalCouplingEnum">
+			<summary>Values for the PM external coupling.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPMExternalCouplingEnum.IviRFSigGenPMExternalCouplingAC">
+			<summary>The external source is coupled for AC only. </summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPMExternalCouplingEnum.IviRFSigGenPMExternalCouplingDC">
+			<summary>The external source is coupled for both DC and AC</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenPulseModulationSourceEnum">
+			<summary>Values for the pulse modulation source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPulseModulationSourceEnum.IviRFSigGenPulseModulationSourceInternal">
+			<summary>The internal pulse generator (IviRFSigGenPulseGenerator Extension Group) is used for modulation.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPulseModulationSourceEnum.IviRFSigGenPulseModulationSourceExternal">
+			<summary>An external generator is used for modulation.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenPulseModulationExternalPolarityEnum">
+			<summary>Values for the pulse modulation external polarity.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPulseModulationExternalPolarityEnum.IviRFSigGenPulseModulationExternalPolarityNormal">
+			<summary>The signal generator modulates the carrier signal with normal pulse polarity. Increasing the positive pulse voltage level results in higher RF level.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenPulseModulationExternalPolarityEnum.IviRFSigGenPulseModulationExternalPolarityInverse">
+			<summary>The signal generator modulates the carrier signal with inverted pulse polarity. Increasing the positive pulse voltage level results in lower RF level.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenArbTriggerSourceEnum">
+			<summary>Values for the Arb generator trigger source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenArbTriggerSourceEnum.IviRFSigGenArbTriggerSourceImmediate">
+			<summary>The Arb generator system does not wait for a trigger of any kind, so it is running continuously.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenArbTriggerSourceEnum.IviRFSigGenArbTriggerSourceExternal">
+			<summary>The sweep is started with an external signal.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenArbTriggerSourceEnum.IviRFSigGenArbTriggerSourceSoftware">
+			<summary>The sweep is started with a software programmable trigger.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenArbExternalTriggerSlopeEnum">
+			<summary>Values for the Arb generator external trigger slope.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenArbExternalTriggerSlopeEnum.IviRFSigGenArbExternalTriggerSlopePositive">
+			<summary>Enables rising edge triggering.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenArbExternalTriggerSlopeEnum.IviRFSigGenArbExternalTriggerSlopeNegative">
+			<summary>Enables falling edge triggering.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseClockSourceEnum">
+			<summary>Values for the digital modulation base clock source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseClockSourceEnum.IviRFSigGenDigitalModulationBaseClockSourceInternal">
+			<summary>The internal clock generator is used.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseClockSourceEnum.IviRFSigGenDigitalModulationBaseClockSourceExternal">
+			<summary>An connected external clock generator (bit or symbol clock frequency) is used.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseExternalClockTypeEnum">
+			<summary>Values for digital base modulation clock type.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseExternalClockTypeEnum.IviRFSigGenDigitalModulationBaseExternalClockTypeBit">
+			<summary>The external clock frequency is equal to the bit clock frequency of the digital modulation.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseExternalClockTypeEnum.IviRFSigGenDigitalModulationBaseExternalClockTypeSymbol">
+			<summary>The external clock frequency is equal to the symbol clock frequency of the digital modulation.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseDataSourceEnum">
+			<summary>Values for digital modulation base data source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseDataSourceEnum.IviRFSigGenDigitalModulationBaseDataSourceExternal">
+			<summary>The data from an external device connected to the instrument is used.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseDataSourceEnum.IviRFSigGenDigitalModulationBaseDataSourcePRBS">
+			<summary>The internal PRBS (Pseudo Random Binary Sequence) generator is used as data source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBaseDataSourceEnum.IviRFSigGenDigitalModulationBaseDataSourceBitSequence">
+			<summary>A constant bit sequence is used as data source and repeated continuously.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBasePRBSTypeEnum">
+			<summary>Specifies the type of PRBS for digital base modulation.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBasePRBSTypeEnum.IviRFSigGenDigitalModulationBasePRBSTypePRBS9">
+			<summary>Length of PRBS sequence is 2^9 - 1.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBasePRBSTypeEnum.IviRFSigGenDigitalModulationBasePRBSTypePRBS11">
+			<summary>Length of PRBS sequence is 2^11 - 1.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBasePRBSTypeEnum.IviRFSigGenDigitalModulationBasePRBSTypePRBS15">
+			<summary>Length of PRBS sequence is 2^15 - 1.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBasePRBSTypeEnum.IviRFSigGenDigitalModulationBasePRBSTypePRBS16">
+			<summary>Length of PRBS sequence is 2^16 - 1.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBasePRBSTypeEnum.IviRFSigGenDigitalModulationBasePRBSTypePRBS20">
+			<summary>Length of PRBS sequence is 2^20 - 1.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBasePRBSTypeEnum.IviRFSigGenDigitalModulationBasePRBSTypePRBS21">
+			<summary>Length of PRBS sequence is 2^21 - 1.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenDigitalModulationBasePRBSTypeEnum.IviRFSigGenDigitalModulationBasePRBSTypePRBS23">
+			<summary>Length of PRBS sequence is 2^23 - 1.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenTDMAClockSourceEnum">
+			<summary>Values for the TDMA clock source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenTDMAClockSourceEnum.IviRFSigGenTDMAClockSourceInternal">
+			<summary>The internal clock generator is used.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenTDMAClockSourceEnum.IviRFSigGenTDMAClockSourceExternal">
+			<summary>A connected external clock generator (bit or symbol clock frequency) is used.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenTDMAExternalClockTypeEnum">
+			<summary>Values for TDMA clock type.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenTDMAExternalClockTypeEnum.IviRFSigGenTDMAExternalClockTypeBit">
+			<summary>The external clock frequency is equal to the bit clock frequency of the digital modulation.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenTDMAExternalClockTypeEnum.IviRFSigGenTDMAExternalClockTypeSymbol">
+			<summary>The external clock frequency is equal to the symbol clock frequency of the digital modulation.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenTDMATriggerSourceEnum">
+			<summary>Values for the TDMA trigger source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenTDMATriggerSourceEnum.IviRFSigGenTDMATriggerSourceImmediate">
+			<summary>The TDMA generator system does not wait for a trigger of any kind, so it is running the frames continuously.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenTDMATriggerSourceEnum.IviRFSigGenTDMATriggerSourceExternal">
+			<summary></summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenTDMATriggerSourceEnum.IviRFSigGenTDMATriggerSourceSoftware">
+			<summary>Each frame is started with an external signal.Each frame is started with a software programmable trigger.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenTDMAExternalTriggerSlopeEnum">
+			<summary>Values for the TDMA external trigger slope.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenTDMAExternalTriggerSlopeEnum.IviRFSigGenTDMAExternalTriggerSlopePositive">
+			<summary>Enables rising edge triggering.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenTDMAExternalTriggerSlopeEnum.IviRFSigGenTDMAExternalTriggerSlopeNegative">
+			<summary>Enables falling edge triggering.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenCDMATriggerSourceEnum">
+			<summary>Values for the CDMA trigger source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenCDMATriggerSourceEnum.IviRFSigGenCDMATriggerSourceImmediate">
+			<summary>The CDMA generator system does not wait for a trigger of any kind, so it is running the channel codings continuously.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenCDMATriggerSourceEnum.IviRFSigGenCDMATriggerSourceExternal">
+			<summary>Each channel coding is started with an external signal.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenCDMATriggerSourceEnum.IviRFSigGenCDMATriggerSourceSoftware">
+			<summary>Each channel coding is started with a software programmable trigger.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenCDMAExternalTriggerSlopeEnum">
+			<summary>Values for the CDMA external trigger slope.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenCDMAExternalTriggerSlopeEnum.IviRFSigGenCDMAExternalTriggerSlopePositive">
+			<summary>Enables rising edge triggering.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenCDMAExternalTriggerSlopeEnum.IviRFSigGenCDMAExternalTriggerSlopeNegative">
+			<summary>Enables falling edge triggering.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenCDMAClockSourceEnum">
+			<summary>Values for the CDMA clock source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenCDMAClockSourceEnum.IviRFSigGenCDMAClockSourceInternal">
+			<summary>The internal clock generator is used.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenCDMAClockSourceEnum.IviRFSigGenCDMAClockSourceExternal">
+			<summary>A connected external clock generator (bit or symbol clock frequency) is used.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenIQSourceEnum">
+			<summary>Values for the IQ modulation source.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenIQSourceEnum.IviRFSigGenIQSourceDigitalModulationBase">
+			<summary>The signal generator uses the internally generated digital modulation signal to apply IQ modulation to the output RF signal. - See chapter IviRFSigGenDigitalModulationBase Extension Group for configuration.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenIQSourceEnum.IviRFSigGenIQSourceCDMABase">
+			<summary>The signal generator uses the internally generated CDMA signal to apply IQ modulation to the output RF signal. - See chapter IviRFSigGenCDMABase Extension Group for configuration.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenIQSourceEnum.IviRFSigGenIQSourceTDMABase">
+			<summary>The signal generator uses the internally generated TDMA signal to apply IQ modulation to the output RF signal. - See chapter IviRFSigGenTDMABase Extension Group for configuration.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenIQSourceEnum.IviRFSigGenIQSourceArbGenerator">
+			<summary>The signal generator uses the internally generated Arb signal to apply IQ modulation to the output RF signal. - See chapter IviRFSigGenArbGenerator Extension Group for configuration.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenIQSourceEnum.IviRFSigGenIQSourceExternal">
+			<summary>The signal generator uses data from an external source for IQ modulation.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenErrorCodesEnum">
+			<summary>IVI RFSigGen class defined HRESULTS</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenErrorCodesEnum.E_IVIRFSIGGEN_TRIGGER_NOT_SOFTWARE">
+			<summary>The trigger source is not set to software trigger.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenErrorCodesEnum.E_IVIRFSIGGEN_MAX_TIME_EXCEEDED">
+			<summary>Maximum time exceeded before the operation completed.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenErrorCodesEnum.E_IVIRFSIGGEN_LIST_UNKNOWN">
+			<summary>The selected list is not defined.</summary>
+		</member>
+		<member name="T:Ivi.RFSigGen.Interop.IviRFSigGenMaxTimeMillisecondsEnum">
+			<summary>IVI RFSigGen class defined values for MaxTimeMilliseconds.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenMaxTimeMillisecondsEnum.IviRFSigGenMaxTimeMillisecondsInfinite">
+			<summary>Sets timeout to infinite. The function waits indefinitely for the settling to complete.</summary>
+		</member>
+		<member name="F:Ivi.RFSigGen.Interop.IviRFSigGenMaxTimeMillisecondsEnum.IviRFSigGenMaxTimeMillisecondsImmediate">
+			<summary>Sets timeout to immediate. The function returns immediately.</summary>
+		</member>
+	</members>
+</doc>

@@ -1,0 +1,78 @@
+date = 16/08/16
+time = 16:18:51
+[notes]
+user = '''Default user notes...
+
+
+
+'''
+config_ch_assignments = "(0, 'Cool upper - freq')", "(1, 'Cool lower - freq')", "(2, 'Cool center - freq')", "(3, 'Cool repump - freq')", "(4, 'Cool upper - amp')", "(5, 'Cool lower - amp')", "(6, 'Cool center - amp')", "(7, 'Cool repump - amp')", "(8, 'STIRAP - freq')", "(9, 'STIRAP - amp')", "(10, 'Cavity lock - freq')", "(11, 'Cavity lock - amp')", "(12, 'Abs imaging - freq')", "(13, 'Abs imaging - amp')", "(14, '14 - unused')", "(15, 'Camera trigger')"
+[sequence]
+t_step = 5.0
+global_timings = "(500.0, 'Img time')",
+n_samples = 1001
+[sequence channels]
+[[0]]
+tV_pairs = "(0.0, 6.46364074875929)",
+V_interval_styles = 0,
+chNum = 0
+[[1]]
+tV_pairs = "(0.0, 6.471620917059827)",
+V_interval_styles = 0,
+chNum = 1
+[[2]]
+tV_pairs = "(0.0, 6.412889352434814)",
+V_interval_styles = 0,
+chNum = 2
+[[3]]
+tV_pairs = "(0.0, 2.0508067725014967)",
+V_interval_styles = 0,
+chNum = 3
+[[4]]
+tV_pairs = "(0.0, 3.45787545788)", "(500.0, 0.02442002442)"
+V_interval_styles = 0, 0
+chNum = 4
+[[5]]
+tV_pairs = "(0.0, 4.47863247863)", "(500.0, 0.029304029304)"
+V_interval_styles = 0, 0
+chNum = 5
+[[6]]
+tV_pairs = "(0.0, 6.34920634921)", "(500.0, 0.014652014652)"
+V_interval_styles = 0, 0
+chNum = 6
+[[7]]
+tV_pairs = "(0.0, 5.06471306471)", "(500.0, 0.0)"
+V_interval_styles = 0, 0
+chNum = 7
+[[8]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 8
+[[9]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 9
+[[10]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 10
+[[11]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 11
+[[12]]
+tV_pairs = "(0.0, 7.355114577696655)", "(500.0, 7.355114577696655)"
+V_interval_styles = 0, 0
+chNum = 12
+[[13]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 13
+[[14]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 14
+[[15]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 15

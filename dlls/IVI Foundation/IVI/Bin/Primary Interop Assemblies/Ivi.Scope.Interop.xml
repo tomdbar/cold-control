@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<doc>
+	<assembly>
+		<name>Ivi.Scope.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.Scope.Interop.IIviScope">
+			<summary>IVI Scope class-compliant root interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScope.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of 
+			certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameter
+			is "Name=Value", 
+			where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,
+			or DriverSetup. Value is either true or false except for DriverSetup. 
+			If the Options String parameter contains an assignment for the Driver Setup attribute, 
+			the Initialize function assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScope.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument are not accessible after Close is called.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScope.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScope.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScope.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScope.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the Close method, and False at all other times.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScope.Acquisition">
+			<summary>Pointer to the class-compliant IIviScopeAcquisition interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScope.Channels">
+			<summary>Pointer to the class-compliant IIviScopeChannels interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScope.Measurements">
+			<summary>Pointer to the class-compliant IIviScopeMeasurements interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScope.ReferenceLevel">
+			<summary>Pointer to the class-compliant IIviScopeReferenceLevel interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScope.Trigger">
+			<summary>Pointer to the class-compliant IIviScopeTrigger interface</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeAcquisition">
+			<summary>IVI Scope class-compliant acquisition interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeAcquisition.ConfigureRecord(System.Double,System.Int32,System.Double)">
+			<summary>Configures the most commonly used properties of the oscilloscope's acquisition subsystem: time per record, minimum record length, and the acquisition start time.</summary>
+			<param name="TimePerRecord">Specifies the time per record. This value sets the Horizontal Time Per Record property.</param>
+			<param name="MinNumPts">Specifies the minimum number of points the end-user allows in the waveform recorded. This value sets the Horizontal Minimum Number of Points property.</param>
+			<param name="AcquisitionStartTime">Specifies the position of the first point in the waveform record relative to the trigger event. This value sets the Acquisition Start Time property.</param>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeAcquisition.NumberOfAverages">
+			<summary>The number of waveforms the oscilloscope acquires and averages before returning to the idle state.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeAcquisition.NumberOfEnvelopes">
+			<summary>The number of waveforms the oscilloscope acquires and analyzes to create the minimum and maximum waveforms, before returning to the idle state.  Applies only when acquisition Type is Envelope</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeAcquisition.Interpolation">
+			<summary>The interpolation method the oscilloscope uses when it cannot sample a voltage for every point in the waveform record.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeAcquisition.RecordLength">
+			<summary>The actual number of points the oscilloscope acquires for each channel.  It is equal to or greater than the minimum number of points specified with the Horizontal Minimun Number of Points property.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeAcquisition.SampleMode">
+			<summary>The sample mode the oscilloscope is currently using.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeAcquisition.SampleRate">
+			<summary>The effective digitizing rate using the current configuration.  The units are samples per second.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeAcquisition.Type">
+			<summary>How the oscilloscope acquires data and fills the waveform record.  When set to Envelope or Peak Detect, the oscilloscope acquires minimum and maximum waveforms.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeAcquisition.NumberOfPointsMin">
+			<summary>The minimum number of points which can be in a waveform record for each channel.  It configures the record length that the oscilloscope uses for waveform acquisition.  The Record Length property returns the actual record length.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeAcquisition.StartTime">
+			<summary>The length of time from the trigger event to the first point in the waveform record.  The units are seconds.  If positive, the first point in the waveform occurs after the trigger.  If negative, the first point in the waveform occurs before the trigger.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeAcquisition.TimePerRecord">
+			<summary>The time in seconds that corresponds to the record length.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeChannels">
+			<summary>IVI Scope class-compliant channel collection interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannels.Item">
+			<summary>An interface reference pointer to one of the IviScopeChannel interfaces which is selected by the channel name.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannels.Item(System.String)">
+			<summary>An interface reference pointer to one of the IviScopeChannel interfaces which is selected by the channel name.</summary>
+			<param name="OutputName">The name of a channel. It may be either a name returned by the Name property or
+			a name mapped to a particular repeated capability in the session in the configuration store.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeChannels.get_Item(System.String)">
+			<summary>Gets a pointer to a channel object.</summary>
+			<param name="OutputName">The name of a channel. It may be either a name returned by get_Name or
+			a name mapped to a particular repeated capability in the session in the configuration store.</param>
+			<returns>A pointer to a class-compliant IIviScopeChannel interface.</returns>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannels.Count">
+			<summary>The number of channels.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannels.Name">
+			<summary>The channel name for a given index.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannels.Name(System.Int32)">
+			<summary>The channel name for a given index.</summary>
+			<param name="Index">One based index into the collection of channels.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeChannels.get_Name(System.Int32)">
+			<summary>Gets the name of a channel.</summary>
+			<param name="Index">One based index into the collection of channels.</param>
+			<returns>The string associated by the driver to the value of Index without ever referring 
+			to the configuration store.</returns>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeChannel">
+			<summary>IVI Scope class-compliant channel interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeChannel.Configure(System.Double,System.Double,Ivi.Scope.Interop.IviScopeVerticalCouplingEnum,System.Double,System.Boolean)">
+			<summary>Configures the most commonly used properties of the oscilloscope channel sub-system.  They are the range, offset, coupling, probe attenuation, and whether the channel is enabled.</summary>
+			<param name="Range">Specifies the vertical range. This value sets the Vertical Range property.</param>
+			<param name="Offset">Specifies the vertical offset. This value sets the Vertical Offset property.</param>
+			<param name="Coupling">Specifies how to couple the input signal. This value sets the Vertical</param>
+			<param name="ProbeAttenuation">Specifies the probe attenuation. This value sets the Probe Attenuation property.</param>
+			<param name="Enabled">Specifies if the channel is enabled for acquisition. This value sets the Channel Enabled property.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeChannel.ConfigureCharacteristics(System.Double,System.Double)">
+			<summary>Configures the properties that control the electrical characteristics of the channel.  They are the input impedance and the maximum frequency of the input signal.</summary>
+			<param name="InputImpedance">The input impedance for the channel. The driver sets the Input Impedance to this value.</param>
+			<param name="InputFrequencyMax">The maximum input frequency for the channel. The driver sets the Max Input Frequency to this value.</param>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannel.ProbeSense">
+			<summary>The probe attenuation value the oscilloscope automatically senses.  If the automatic probe sense is disabled, its value is the manual probe attenuation setting.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannel.Coupling">
+			<summary>How the oscilloscope couples the input signal.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannel.Enabled">
+			<summary>If True, the oscilloscope acquires a waveform for this channel when the Initiate Acquisition, Read Waveform, Read Min Max Waveform, or Read Waveform Measurement methods are called.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannel.InputFrequencyMax">
+			<summary>The maximum input frequency of this channel.  It the frequency at which the input circuitry attenuates the input signal by 3 dB.  The units are hertz.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannel.InputImpedance">
+			<summary>The input impedance of this channel.  The units are ohms.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannel.Offset">
+			<summary>The location of the center of the range that you specify with the Range property.  The units are volts, with respect to ground.  For example, to acquire a sine wave spanning 0.0 to 10.0 volts, set Offset to 5.0 volts.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannel.ProbeAttenuation">
+			<summary>The scaling factor by which the probe attenuates the input signal.  For example, with a 10:1 probe, the value is 10.0.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeChannel.Range">
+			<summary>The absolute value of the input range the oscilloscope can acquire for the channel.  The units are volts.  For example, to acquire a sine wave spanning -5.0 to 5.0 volts, set Range to 10.0 volts.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeMeasurements">
+			<summary>IVI Scope class-compliant measurement collection interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurements.Initiate">
+			<summary>Initiates a waveform acquisition.  The oscilloscope leaves the Idle state and waits for a trigger.  The oscilloscope acquires a waveform for each enabled channel.</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurements.Abort">
+			<summary>Aborts an acquisition and returns the oscilloscope to the Idle state.</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurements.AutoSetup">
+			<summary>Automatically configures all the oscilloscopes settings based on the input signals.</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurements.Status">
+			<summary>Returns whether an acquisition is in progress, complete, or if the status is unknown.</summary>
+			<returns>Acquisition Status. May be one of the values define by IviScopeAcquisitionStatusEnum.</returns>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurements.IsWaveformElementInvalid(System.Double)">
+			<summary>Returns False if an element in a waveform array returned by the driver contains a valid voltage.  Returns True if an element in a waveform array returned by the driver contains a value indicating that the oscilloscope could not sample a voltage.</summary>
+			<param name="Element">Pass one of the values from the waveform array returned by the read and fetch waveform methods.</param>
+			<returns>Returns whether true when the elementValue is a valid voltage or false for a value indicating that the oscilloscope could not sample a voltage. </returns>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeMeasurements.Item">
+			<summary>An interface reference pointer to one of the IviScopeMeasurement interfaces which is selected by the channel name.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeMeasurements.Item(System.String)">
+			<summary>An interface reference pointer to one of the IviScopeMeasurement interfaces which is selected by the channel name.</summary>
+			<param name="Name">The name of a channel. It may be either a name returned by the Name property or
+			a name mapped to a particular repeated capability in the session in the configuration store.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurements.get_Item(System.String)">
+			<summary>Gets a pointer to a measurement object.</summary>
+			<param name="Name">The name of a channel. It may be either a name returned by get_Name or
+			a name mapped to a particular repeated capability in the session in the configuration store.</param>
+			<returns>A pointer to a class-compliant IIviPwrMeterChannel interface.</returns>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeMeasurements.Count">
+			<summary>The number of measurements.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeMeasurements.Name">
+			<summary>The measurement name for given index.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeMeasurements.Name(System.Int32)">
+			<summary>The measurement name for given index.</summary>
+			<param name="Index">One based index into the collection of measurements.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurements.get_Name(System.Int32)">
+			<summary>Gets the name of a measurement.</summary>
+			<param name="Index">One based index into the collection of measurements.</param>
+			<returns>The string associated by the driver to the value of Index without ever referring 
+			to the configuration store.</returns>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeMeasurement">
+			<summary>IVI Scope class-compliant measurement interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurement.FetchWaveform(System.Double[]@,System.Double@,System.Double@)">
+			<summary>Returns a previously acquired waveform for this channel. The acquisition must be made prior to calling this method.  
+			Call this method separately for each channel.</summary>
+			<param name="WaveformArray">The array contains the acquired waveform.. Units for the individual array elements are in volts.</param>
+			<param name="InitialX">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative 
+			values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="XIncrement">The effective time between points in the acquired waveform in seconds.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurement.FetchWaveformMeasurement(Ivi.Scope.Interop.IviScopeMeasurementEnum,System.Double@)">
+			<summary>Returns a previously acquired waveform measurement for this channel.  The acquisition must be made prior to 
+			calling this method.  Call this method separately for each measurement.</summary>
+			<param name="MeasFunction">Characteristic of the acquired waveform to be measured.</param>
+			<param name="Measurement">The measured value. The units depend on the measurement that the user specifies with the 
+			measFunction parameter.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurement.FetchWaveformMinMax(System.Double[]@,System.Double[]@,System.Double@,System.Double@)">
+			<summary>Returns the previously acquired minimum and maximum waveforms for this specified channel.  The acquisition 
+			must be made prior to calling this method. Call this method separately for each channel.</summary>
+			<param name="MinWaveform">This array contains the min waveform.</param>
+			<param name="MaxWaveform">This array contains the max waveform.</param>
+			<param name="InitialX">The time in relation to the Trigger Event of the first point in the waveform in seconds.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurement.ReadWaveform(System.Int32,System.Double[]@,System.Double@,System.Double@)">
+			<summary>Initiates an acquisition on all enabled channels, waits (up to MaxTime) for the acquisition to complete, and 
+			returns the waveform for this channel.  Call FetchWaveform to obtain the waveforms for other channels.</summary>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time the end-user allows for this method to complete in 
+			milliseconds. The values defined in IviScopeTimeOutEnum are also allowed.</param>
+			<param name="WaveformArray">The array contains the acquired waveform.. Units for the individual array elements are 
+			in volts.</param>
+			<param name="InitialX">The time in relation to the Trigger Event of the first point in the waveform in seconds. 
+			Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="XIncrement">The effective time between points in the acquired waveform in seconds.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurement.ReadWaveformMeasurement(Ivi.Scope.Interop.IviScopeMeasurementEnum,System.Int32,System.Double@)">
+			<summary>Initiates an acquisition on all enabled channels, waits (up to MaxTime) for the acquisition to complete, 
+			and returns the measurement for this channel.  Call FetchWaveformMeasurement to obtain other measurements for this 
+			or other channels.</summary>
+			<param name="MeasFunction">Characteristic of the acquired waveform to be measured.</param>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time the end-user allows for this method to complete in 
+			milliseconds. The values defined in IviScopeTimeOutEnum are also allowed.</param>
+			<param name="Measurement">The measured value. The units depend on the measurement that the user specifies with 
+			the measFunction parameter.</param>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeMeasurement.ReadWaveformMinMax(System.Int32,System.Double[]@,System.Double[]@,System.Double@,System.Double@)">
+			<summary>Initiates an acquisition on all enabled channels, waits (up to MaxTime) for the acquisition to complete, 
+			and returns the min/max waveforms for this channel.  Call FetchMinMaxWaveform to obtain the min/max waveforms for 
+			other channels.</summary>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time the end-user allows for this method to complete in 
+			milliseconds. The values defined in IviScopeTimeOutEnum are also allowed.</param>
+			<param name="MinWaveform">This array contains the min waveform.</param>
+			<param name="MaxWaveform">This array contains the max waveform.</param>
+			<param name="InitialX">The time in relation to the Trigger Event of the first point in the waveform in seconds.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeReferenceLevel">
+			<summary>IVI Scope class-compliant reference level interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeReferenceLevel.Configure(System.Double,System.Double,System.Double)">
+			<summary>Configures the reference levels for waveform measurements, low, mid, and high.</summary>
+			<param name="Low">Measurement low reference. This value sets the Meas Low Ref property</param>
+			<param name="Mid">Measurement mid reference. This value sets the Meas Mid Ref property.</param>
+			<param name="High">Measurement high reference. This value sets the Meas High Ref property.</param>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeReferenceLevel.High">
+			<summary>The high reference for waveform measurements.  It is a percentage of the difference between the Voltage 
+			High and Voltage Low.  Voltage High and Voltage Low may be calculated using either the min/max or histogram methods.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeReferenceLevel.Low">
+			<summary>The low reference for waveform measurements.  It is a percentage of the difference between the Voltage 
+			High and Voltage Low.  Voltage High and Voltage Low may be calculated using either the min/max or histogram methods.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeReferenceLevel.Mid">
+			<summary>The mid reference for waveform measurements.  It is a percentage of the difference between the Voltage 
+			High and Voltage Low.  Voltage High and Voltage Low may be calculated using either the min/max or histogram methods.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeTrigger">
+			<summary>IVI Scope class-compliant trigger interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeTrigger.Configure(Ivi.Scope.Interop.IviScopeTriggerTypeEnum,System.Double)">
+			<summary>Configures trigger Type and Holdoff.  Holdoff units are seconds.</summary>
+			<param name="Type">Specifies the trigger type. This value sets the Trigger Type property.</param>
+			<param name="Holdoff">Specifies the trigger hold-off. This value sets the Trigger Holdoff property.</param>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Continuous">
+			<summary>If True, the oscilloscope waits trigger holdoff seconds after a waveform acquisition is complete and then immediatley enters the wait for trigger state without passing through the idle state.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Coupling">
+			<summary>How the oscilloscope couples the trigger source.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Level">
+			<summary>The voltage threshold for the trigger subsystem.  The units are volts.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Modifier">
+			<summary>The trigger modifier determines the oscilloscope's behavior in the absence of a trigger.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Source">
+			<summary>The signal the oscilloscope monitors for a trigger. It can be channel or one of many other values.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Holdoff">
+			<summary>The length of time the oscilloscope waits after it fills the acquisition buffer until the oscilloscope enables the trigger subsystem to detect another trigger.  The units are seconds.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Type">
+			<summary>The kind of event that triggers the osciolloscope.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.AcLine">
+			<summary>Pointer to the class-compliant IIviScopeTriggerAcLine interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Edge">
+			<summary>Pointer to the class-compliant IIviScopeTriggerEdge interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Glitch">
+			<summary>Pointer to the class-compliant IIviScopeTriggerGlitch interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Runt">
+			<summary>Pointer to the class-compliant IIviScopeTriggerRunt interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.TV">
+			<summary>Pointer to the class-compliant IIviScopeTriggerTv interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTrigger.Width">
+			<summary>Pointer to the class-compliant IIviScopeTriggerWidth interface</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeTriggerAcLine">
+			<summary>IVI Scope class-compliant AC line trigger interface</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerAcLine.Slope">
+			<summary>The slope of the zero crossing upon which the scope triggers.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeTriggerEdge">
+			<summary>IVI Scope class-compliant edge trigger interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeTriggerEdge.Configure(System.String,System.Double,Ivi.Scope.Interop.IviScopeTriggerSlopeEnum)">
+			<summary>Configures the conidtions for edge trigger.  An edge trigger occurs when the trigger source signal passes through the trigger level with the specified slope.</summary>
+			<param name="Source">Specifies the trigger source. This value sets the Trigger Source property.</param>
+			<param name="Level">Specifies the trigger level. This value sets the Trigger Level property.</param>
+			<param name="Slope">Specifies the trigger slope. This value sets the Trigger Slope property.</param>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerEdge.Slope">
+			<summary>The slope, a rising or a falling edge, that triggers the oscilloscope.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeTriggerGlitch">
+			<summary>IVI Scope class-compliant glitch trigger interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeTriggerGlitch.Configure(System.String,System.Double,System.Double,Ivi.Scope.Interop.IviScopeGlitchPolarityEnum,Ivi.Scope.Interop.IviScopeGlitchConditionEnum)">
+			<summary>Configure the glitch trigger Source, Level, Width, Polarity, and Condition.  A glitch trigger occurs when the edge of a pulse that matches the Width and Polarity crosses the specified Level (in Volts).</summary>
+			<param name="Source">Specifies the trigger source. This value sets the Trigger Source property.</param>
+			<param name="Level">Specifies the trigger level. This value sets the Trigger Level property.</param>
+			<param name="Width">Specifies the glitch triggering glitch width in seconds. This value sets the Glitch Width property.</param>
+			<param name="polarity">Specifies the glitch polarity. This value sets the Glitch Polarity property.</param>
+			<param name="condition">Specifies the glitch condition. This value sets the Glitch Condition property.</param>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerGlitch.condition">
+			<summary>The glitch condition detemermines whether the oscilloscope triggers on a a pulse with a width less than or greater than the glitch width value.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerGlitch.polarity">
+			<summary>The polarity of the glitch that triggers the oscilloscope.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerGlitch.Width">
+			<summary>The glitch width.  The units are seconds.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeTriggerRunt">
+			<summary>IVI Scope class-compliant runt trigger interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeTriggerRunt.Configure(System.String,System.Double,System.Double,Ivi.Scope.Interop.IviScopeRuntPolarityEnum)">
+			<summary>Configures the runt trigger Source, ThresholdLow, ThresholdHigh, and Polarity.  A runt trigger occurs when the trigger signal crosses one of the runt thresholds twice without crossing the other runt threshold.</summary>
+			<param name="Source">Specifies the trigger source. This value sets the Trigger Source property.</param>
+			<param name="ThresholdLow">Sets the runt triggering low threshold in volts.</param>
+			<param name="ThresholdHigh">Sets the runt triggering high threshold in volts.</param>
+			<param name="polarity">Sets the runt polarity.</param>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerRunt.polarity">
+			<summary>The polarity of the runt that triggers the oscilloscope.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerRunt.ThresholdHigh">
+			<summary>The high threshold the oscilloscope uses for runt triggering.  The units are volts.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerRunt.ThresholdLow">
+			<summary>The low threshold the oscilloscope uses for runt triggering.  The units are volts.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeTriggerTv">
+			<summary>IVI Scope class-compliant TV trigger interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeTriggerTv.Configure(System.String,Ivi.Scope.Interop.IviScopeTVSignalFormatEnum,Ivi.Scope.Interop.IviScopeTVTriggerEventEnum,Ivi.Scope.Interop.IviScopeTVTriggerPolarityEnum)">
+			<summary>Configures the TV trigger source, signal format, event and polarity.</summary>
+			<param name="Source">Specifies the trigger source. This value sets the Trigger Source property.</param>
+			<param name="SignalFormat">Specifies the TV trigger signal format. This value sets the TV Trigger Signal Format property.</param>
+			<param name="Event">Specifies the TV trigger event. This value sets the TV Trigger Event property.</param>
+			<param name="polarity">Specifies the polarity of the TV trigger. This value sets the TV Trigger Polarity property.</param>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerTv.LineNumber">
+			<summary>The line on which the oscilloscope triggers.  The line number is absolute and not relative to the field of the TV signal.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerTv.Event">
+			<summary>The event on which the oscilloscope triggers.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerTv.polarity">
+			<summary>The polarity of the TV signal.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerTv.SignalFormat">
+			<summary>The format of the TV signal on which the oscilloscope triggers.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IIviScopeTriggerWidth">
+			<summary>IVI Scope class-compliant width trigger interface</summary>
+		</member>
+		<member name="M:Ivi.Scope.Interop.IIviScopeTriggerWidth.Configure(System.String,System.Double,System.Double,System.Double,Ivi.Scope.Interop.IviScopeWidthPolarityEnum,Ivi.Scope.Interop.IviScopeWidthConditionEnum)">
+			<summary>Configures the width trigger Source, Level, ThresholdLow, ThresholdHigh, Polarity, and Condition.  A width trigger occurs when a pulse, that passes through Level, with a width between or outside, the width thresholds is detected.</summary>
+			<param name="Source"></param>
+			<param name="Level">Trigger Level. This value sets the Trigger Level property.</param>
+			<param name="ThresholdLow">Sets the width triggering low threshold in seconds. This value sets the Width Low Threshold property.</param>
+			<param name="ThresholdHigh">Sets the width triggering high threshold in seconds. This value sets the Width High Threshold property.</param>
+			<param name="polarity">Sets the width polarity. This value sets the Width Polarity property.</param>
+			<param name="condition">Specifies whether a pulse that is within or outside the user-specified thresholds trigger waveform acquisition. This value sets the Width Condition property.</param>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerWidth.condition">
+			<summary>The condition of a pulse that triggers the oscilloscope.  The condition is either inside or outside of the high and low thresholds.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerWidth.polarity">
+			<summary>The polarity of the pulse that triggers the oscilloscope.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerWidth.ThresholdLow">
+			<summary>The low width threshold time.  The units are seconds.</summary>
+		</member>
+		<member name="P:Ivi.Scope.Interop.IIviScopeTriggerWidth.ThresholdHigh">
+			<summary>The high width threshold time.  The units are seconds.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeInterpolationEnum">
+			<summary>IVI Scope class-compliant values for acquisition Interpolation</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeInterpolationEnum.IviScopeInterpolationNone">
+			<summary>The oscilloscope does not interpolate points in the waveform. Instead, the driver sets every element in the waveform record for which the oscilloscope cannot receive a value to an IEEE-defined NaN (Not-a-Number) value. Use the Is Waveform Element Invalid method to determine if the waveform record element is invalid.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeInterpolationEnum.IviScopeInterpolationSineX">
+			<summary>The oscilloscope uses a sin(x)/x calculation to interpolate a value when it cannot resolve a voltage in the waveform record.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeInterpolationEnum.IviScopeInterpolationLinear">
+			<summary>The oscilloscope uses a linear approximation to interpolate a value when it cannot resolve a voltage in the waveform record.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeSampleModeEnum">
+			<summary>IVI Scope class-compliant values for acquisition SampleMode</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeSampleModeEnum.IviScopeSampleModeRealTime">
+			<summary>Indicates that the oscilloscope is using real-time sampling.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeSampleModeEnum.IviScopeSampleModeEquivalentTime">
+			<summary>Indicates that the oscilloscope is using equivalent time sampling.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeAcquisitionTypeEnum">
+			<summary>IVI Scope class-compliant values for Acquisition Type</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeAcquisitionTypeEnum.IviScopeAcquisitionTypeNormal">
+			<summary>Configures the oscilloscope to acquire one sample for each point in the waveform record. The oscilloscope uses real-time or equivalent time sampling.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeAcquisitionTypeEnum.IviScopeAcquisitionTypePeakDetect">
+			<summary>Sets the oscilloscope to the peak-detect acquisition mode. The oscilloscope oversamples the input signal and keeps the minimum and maximum values that correspond to each position in the waveform record. The oscilloscope uses only real-time sampling.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeAcquisitionTypeEnum.IviScopeAcquisitionTypeHiRes">
+			<summary>Configures the oscilloscope to oversample the input signal. The oscilloscope calculates the average value that corresponds to each position in the waveform record. The oscilloscope uses only real-time sampling.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeAcquisitionTypeEnum.IviScopeAcquisitionTypeEnvelope">
+			<summary>Sets the oscilloscope to the envelope acquisition mode. The oscilloscope acquires multiple waveforms and keeps the minimum and maximum voltages it acquires for each point in the waveform record. The end-user specifies the number of waveforms the oscilloscope acquires with the Number of Envelopes property. The oscilloscope can use real-time or equivalent-time sampling.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeAcquisitionTypeEnum.IviScopeAcquisitionTypeAverage">
+			<summary>Configures the oscilloscope to acquire multiple waveforms and calculate the average value for each point in the waveform record. The end-user specifies the number of waveforms to acquire with the Number of Averages property. The oscilloscope uses real-time or equivalent time sampling.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeVerticalCouplingEnum">
+			<summary>IVI Scope class-compliant values for channel Coupling</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeVerticalCouplingEnum.IviScopeVerticalCouplingAC">
+			<summary>The oscilloscope AC couples the input signal.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeVerticalCouplingEnum.IviScopeVerticalCouplingDC">
+			<summary>The oscilloscope DC couples the input signal.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeVerticalCouplingEnum.IviScopeVerticalCouplingGnd">
+			<summary>The oscilloscope couples the channel to the ground.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeMeasurementEnum">
+			<summary>IVI Scope class-compliant values for the MeasFunction parameter of the measurement Read and Fetch methods</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementRiseTime">
+			<summary>The length of time for a rising edge of the signal to rise from the low reference level to the high reference level. The units are seconds.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementFallTime">
+			<summary>The length of time for a falling edge of the signal to fall from the high reference level to the low reference level. The units are seconds.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementFrequency">
+			<summary>The frequency of one complete cycle in the waveform. The units are Hertz.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementPeriod">
+			<summary>The length of time of one complete cycle in the waveform. The units are seconds.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementVoltageRMS">
+			<summary>The true Root Mean Square voltage of the entire waveform. The units are Volts.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementVoltagePeakToPeak">
+			<summary>The absolute difference between the Voltage Max and the Voltage Min. The units are Volts.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementVoltageMax">
+			<summary>The maximum amplitude found in the entire waveform. The units are Volts.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementVoltageMin">
+			<summary>The minimum amplitude found in the entire waveform. The units are Volts.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementVoltageHigh">
+			<summary>The voltage that corresponds to 100% when using the reference levels. The oscilloscope calculates this value using either the min/max or histogram methods. The min/max method uses the maximum value found. The histogram method uses a common value found above the middle of the waveform. The units are Volts.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementVoltageLow">
+			<summary>The voltage that corresponds to 0% when using the reference levels. The oscilloscope calculates this value using either the min/max or histogram methods. The min/max method uses the minimum value found. The histogram method uses a common value found below the middle of the waveform. The units are Volts.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementVoltageAverage">
+			<summary>The arithmetic average in volts measured over the entire waveform. The units are Volts.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementWidthNeg">
+			<summary>The length of time between the mid reference level points of a negative pulse in the waveform. The units are seconds.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementWidthPos">
+			<summary>The length of time between the mid reference level points of a positive pulse in the waveform. The units are seconds.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementDutyCycleNeg">
+			<summary>The ratio of the Width Neg to the Period of an integer number of cycles in the waveform expressed as a percentage. </summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementDutyCyclePos">
+			<summary>The ratio of the Width Pos width to the Period of an integer number of cycles in the waveform expressed as a percentage.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementAmplitude">
+			<summary>The Voltage High less the Voltage Low in Volts over the entire waveform. </summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementVoltageCycleRMS">
+			<summary>The true Root Mean Square voltage over an integer number of cycles in the waveform. The units are Volts.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementVoltageCycleAverage">
+			<summary>The arithmetic average in Volts over an integer number of cycles in the waveform. The units are Volts.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementOverShoot">
+			<summary>The relative waveform distortion that follows an edge transition.  </summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeMeasurementEnum.IviScopeMeasurementPreshoot">
+			<summary>The relative waveform distortion that precedes an edge transition. </summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeAcquisitionStatusEnum">
+			<summary>IVI Scope class-compliant values for the status parameter of the acquisition Status method</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeAcquisitionStatusEnum.IviScopeAcqComplete">
+			<summary>The oscilloscope has completed the acquisition.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeAcquisitionStatusEnum.IviScopeAcqInProgress">
+			<summary>The oscilloscope is still acquiring data.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeAcquisitionStatusEnum.IviScopeAcqStatusUnknown">
+			<summary>The oscilloscope cannot determine the status of the acquisition.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeTriggerTypeEnum">
+			<summary>IVI Scope class-compliant values for trigger Type</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerTypeEnum.IviScopeTriggerEdge">
+			<summary>Configures the oscilloscope for edge triggering. An edge trigger occurs when the trigger signal specified with the Trigger Source property passes the voltage threshold specified with the Trigger Level property and has the slope specified with the Trigger Slope property.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerTypeEnum.IviScopeTriggerWidth">
+			<summary>Configures the oscilloscope for width triggering. Use the IviScopeWidthTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerTypeEnum.IviScopeTriggerRunt">
+			<summary>Configures the oscilloscope for runt triggering. Use the IviScopeRuntTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerTypeEnum.IviScopeTriggerGlitch">
+			<summary>Configures the oscilloscope for glitch triggering. Use the IviScopeGlitchTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerTypeEnum.IviScopeTriggerTV">
+			<summary>Configures the oscilloscope for triggering on TV signals. Use the IviScopeTVTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerTypeEnum.IviScopeTriggerImmediate">
+			<summary>Configures the oscilloscope for immediate triggering. The oscilloscope does not wait for trigger of any kind upon initialization.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerTypeEnum.IviScopeTriggerACLine">
+			<summary>Configures the oscilloscope for AC Line triggering. Use the IviScopeACLineTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeTriggerCouplingEnum">
+			<summary>IVI Scope class-compliant values for trigger Coupling</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerCouplingEnum.IviScopeTriggerCouplingAC">
+			<summary>The oscilloscope AC couples the trigger signal.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerCouplingEnum.IviScopeTriggerCouplingDC">
+			<summary>The oscilloscope DC couples the trigger signal.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerCouplingEnum.IviScopeTriggerCouplingHFReject">
+			<summary>The oscilloscope filters out the high frequencies from the trigger signal.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerCouplingEnum.IviScopeTriggerCouplingLFReject">
+			<summary>The oscilloscope filters out the low frequencies from the trigger signal.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerCouplingEnum.IviScopeTriggerCouplingNoiseReject">
+			<summary>The oscilloscope filters out the noise from the trigger signal.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeTriggerModifierEnum">
+			<summary>IVI Scope class-compliant values for trigger Modifier</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerModifierEnum.IviScopeTriggerModifierNone">
+			<summary>The oscilloscope waits until the trigger the end-user specifies occurs.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerModifierEnum.IviScopeTriggerModifierAuto">
+			<summary>The oscilloscope automatically triggers if the configured trigger does not occur within the oscilloscope's timeout period.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerModifierEnum.IviScopeTriggerModifierAutoLevel">
+			<summary>The oscilloscope adjusts the trigger level if the trigger the end-user specifies does not occur.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeACLineSlopeEnum">
+			<summary>IVI Scope class-compliant values for AC line trigger Slope</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeACLineSlopeEnum.IviScopeACLinePositive">
+			<summary>Configures the oscilloscope to trigger on positive slope zero crossings of the network supply voltage.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeACLineSlopeEnum.IviScopeACLineNegative">
+			<summary>Configures the oscilloscope to trigger on negative slope zero crossings of the network supply voltage.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeACLineSlopeEnum.IviScopeACLineEither">
+			<summary>Configures the oscilloscope to trigger on either positive or negative slope zero crossings of the network supply voltage.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeTriggerSlopeEnum">
+			<summary>IVI Scope class-compliant values for edge trigger Slope</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerSlopeEnum.IviScopeTriggerSlopePositive">
+			<summary>A positive (rising) edge passing through the trigger level triggers the oscilloscope.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTriggerSlopeEnum.IviScopeTriggerSlopeNegative">
+			<summary>A negative (falling) edge passing through the trigger level triggers the oscilloscope.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeGlitchPolarityEnum">
+			<summary>IVI Scope class-compliant values for glitch trigger Polarity</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeGlitchPolarityEnum.IviScopeGlitchPolarityPositive">
+			<summary>The oscilloscope triggers on a positive glitch.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeGlitchPolarityEnum.IviScopeGlitchPolarityNegative">
+			<summary>The oscilloscope triggers on a negative glitch.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeGlitchPolarityEnum.IviScopeGlitchPolarityEither">
+			<summary>The oscilloscope triggers on either a positive or negative glitch.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeGlitchConditionEnum">
+			<summary>IVI Scope class-compliant values for glitch trigger Condition</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeGlitchConditionEnum.IviScopeGlitchConditionLessThan">
+			<summary>The oscilloscope triggers when the pulse width is less than the value you specify with the Glitch Width property.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeGlitchConditionEnum.IviScopeGlitchConditionGreaterThan">
+			<summary>The oscilloscope triggers when the pulse width is greater than the value you specify with the Glitch Width property.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeRuntPolarityEnum">
+			<summary>IVI Scope class-compliant values for runt trigger Polarity</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeRuntPolarityEnum.IviScopeRuntPolarityPositive">
+			<summary>The oscilloscope triggers on a positive runt. A positive runt occurs when a rising edge crosses the low runt threshold and does not cross the high runt threshold before re-crossing the low runt threshold.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeRuntPolarityEnum.IviScopeRuntPolarityNegative">
+			<summary>The oscilloscope triggers on a negative runt. A negative runt occurs when a falling edge crosses the high runt threshold and does not cross the low runt threshold before re-crossing the high runt threshold.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeRuntPolarityEnum.IviScopeRuntPolarityEither">
+			<summary>The oscilloscope triggers on either a positive or negative runt.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeTVSignalFormatEnum">
+			<summary>IVI Scope class-compliant values for TV trigger SignalFormat</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTVSignalFormatEnum.IviScopeTVSignalFormatNTSC">
+			<summary>Configures the oscilloscope to trigger on the NTSC signal format.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTVSignalFormatEnum.IviScopeTVSignalFormatPAL">
+			<summary>Configures the oscilloscope to trigger on the PAL signal format</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTVSignalFormatEnum.IviScopeTVSignalFormatSECAM">
+			<summary>Configures the oscilloscope to trigger on the SECAM signal format</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeTVTriggerEventEnum">
+			<summary>IVI Scope class-compliant values for TV trigger Event</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTVTriggerEventEnum.IviScopeTVTriggerEventField1">
+			<summary>Sets the oscilloscope to trigger on field 1 of the video signal.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTVTriggerEventEnum.IviScopeTVTriggerEventField2">
+			<summary>Sets the oscilloscope to trigger on field 2 of the video signal.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTVTriggerEventEnum.IviScopeTVTriggerEventAnyField">
+			<summary>Sets the oscilloscope to trigger on any field.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTVTriggerEventEnum.IviScopeTVTriggerEventAnyLine">
+			<summary>Sets the oscilloscope to trigger on any line.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTVTriggerEventEnum.IviScopeTVTriggerEventLineNumber">
+			<summary>Sets the oscilloscope to trigger on a specific line number you specify with the TV Trigger Line Number property.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeTVTriggerPolarityEnum">
+			<summary>IVI Scope class-compliant values for TV trigger Polarity</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTVTriggerPolarityEnum.IviScopeTVTriggerPolarityPositive">
+			<summary>Configures the oscilloscope to trigger on a positive video sync pulse.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTVTriggerPolarityEnum.IviScopeTVTriggerPolarityNegative">
+			<summary>Configures the oscilloscope to trigger on a negative video sync pulse.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeWidthPolarityEnum">
+			<summary>IVI Scope class-compliant values for width trigger Polarity</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeWidthPolarityEnum.IviScopeWidthPolarityPositive">
+			<summary>Configures the oscilloscope to trigger on positive pulses that have a width that meets the condition the user specifies with the Width Condition property.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeWidthPolarityEnum.IviScopeWidthPolarityNegative">
+			<summary>Configures the oscilloscope to trigger on negative pulses that have a width that meets the condition the user specifies with the Width Condition property.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeWidthPolarityEnum.IviScopeWidthPolarityEither">
+			<summary>Configures the oscilloscope to trigger on either positive or negative pulses that have a width that meets the condition the user specifies with the Width Condition property.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeWidthConditionEnum">
+			<summary>IVI Scope class-compliant values for width trigger Condition</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeWidthConditionEnum.IviScopeWidthConditionWithin">
+			<summary>Configures the oscilloscope to trigger on pulses that have a width that is less than the high threshold and greater than the low threshold. The end-user specifies the high and low thresholds with the Width High Threshold and Width Low Threshold properties.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeWidthConditionEnum.IviScopeWidthConditionOutside">
+			<summary>Configures the oscilloscope to trigger on pulses that have a width that is either greater than the high threshold or less than a low threshold. The end-user specifies the high and low thresholds with the Width High Threshold and Width Low Threshold properties.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeErrorCodesEnum">
+			<summary>IVI Scope class defined HRESULTS</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeErrorCodesEnum.E_IVISCOPE_CHANNEL_NOT_ENABLED">
+			<summary>Specified channel is not enabled.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeErrorCodesEnum.E_IVISCOPE_UNABLE_TO_PERFORM_MEASUREMENT">
+			<summary>Unable to perform desired measurement operation.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeErrorCodesEnum.E_IVISCOPE_MAX_TIME_EXCEEDED">
+			<summary>Maximum time exceeded before the operation completed.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeErrorCodesEnum.E_IVISCOPE_INVALID_ACQ_TYPE">
+			<summary>Invalid acquisition type.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeErrorCodesEnum.S_IVISCOPE_INVALID_WFM_ELEMENT">
+			<summary>One of the elements in the waveform array is invalid.</summary>
+		</member>
+		<member name="T:Ivi.Scope.Interop.IviScopeTimeOutEnum">
+			<summary>IVI Scope class-compliant values for maxTime parameter of the measurement Read and Fetch methods.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTimeOutEnum.IviScopeTimeOutInfinite">
+			<summary>The method waits indefinitely for the measurement to complete.</summary>
+		</member>
+		<member name="F:Ivi.Scope.Interop.IviScopeTimeOutEnum.IviScopeTimeOutImmediate">
+			<summary>The method returns immediately. If no valid measurement value exists, the method returns an error.</summary>
+		</member>
+	</members>
+</doc>

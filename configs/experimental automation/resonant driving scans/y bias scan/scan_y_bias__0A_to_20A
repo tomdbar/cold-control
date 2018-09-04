@@ -1,0 +1,71 @@
+save_location = Z:/Results017_New/data
+summary_fname = automated_experiments_summary
+daq_channel_update_steps = 5
+daq_channel_update_delay = 1
+[experiments]
+[[0]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\0A_yBias
+[[1]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\2A_yBias
+[[2]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\4A_yBias
+[[3]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\6A_yBias
+[[4]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\8A_yBias
+[[5]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\10A_yBias
+[[6]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\12A_yBias
+[[7]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\14A_yBias
+[[8]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\16A_yBias
+[[9]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\18A_yBias
+[[10]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = ,
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F0 line\y bias scan\20A_yBias

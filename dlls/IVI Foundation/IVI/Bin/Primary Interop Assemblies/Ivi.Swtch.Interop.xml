@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<doc>
+	<assembly>
+		<name>Ivi.Swtch.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.Swtch.Interop.IIviSwtch">
+			<summary>IVI Swtch class-compliant root level interface</summary>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtch.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of 
+			certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameter
+			is "Name=Value", 
+			where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,
+			or DriverSetup. Value is either true or false except for DriverSetup. 
+			If the Options String parameter contains an assignment for the Driver Setup attribute, 
+			the Initialize function assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtch.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument are not accessible after Close is called.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtch.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtch.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtch.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtch.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the Close method, and False at all other times.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtch.Channels">
+			<summary>Pointer to the class-compliant IIviSwtchChannels interface</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtch.Path">
+			<summary>Pointer to the class-compliant IIviSwtchPath interface</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtch.Scan">
+			<summary>Pointer to the class-compliant IIviSwtchScan interface</summary>
+		</member>
+		<member name="T:Ivi.Swtch.Interop.IIviSwtchChannels">
+			<summary>IVI Swtch class-compliant channel collection interface</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchChannels.Item">
+			<summary>An interface reference pointer to one of the IVI Swtch Channel interfaces which is selected by the channel name.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchChannels.Item(System.String)">
+			<summary>An interface reference pointer to one of the IVI Swtch Channel interfaces which is selected by the channel name.</summary>
+			<param name="OutputName">The name of a channel. It may be either a name returned by the Name property or
+			a name mapped to a particular repeated capability in the session in the configuration store.</param>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchChannels.get_Item(System.String)">
+			<summary>Gets a pointer to a channel object.</summary>
+			<param name="OutputName">The name of a channel. It may be either a name returned by get_Name or
+			a name mapped to a particular repeated capability in the session in the configuration store.</param>
+			<returns>A pointer to a class-compliant IIviSwtchChannel interface.</returns>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchChannels.Count">
+			<summary>The number of channels.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchChannels.Name">
+			<summary>The channel name for a given index.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchChannels.Name(System.Int32)">
+			<summary>The channel name for a given index.</summary>
+			<param name="Index">One based index into the collection of channels.</param>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchChannels.get_Name(System.Int32)">
+			<summary>Gets the name of a channel.</summary>
+			<param name="Index">One based index into the collection of channels.</param>
+			<returns>The string associated by the driver to the value of Index without ever referring 
+			to the configuration store.</returns>
+		</member>
+		<member name="T:Ivi.Swtch.Interop.IIviSwtchChannel">
+			<summary>IVI Swtch class-compliant channel interface</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchChannel.IsConfigurationChannel">
+			<summary>If True, the specific driver can use the channel for internal path creation.  The only operations that may be performed on configuration channels are reading and writing the IsConfigurationChannel property.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchChannel.IsSourceChannel">
+			<summary>If True, the channel is a source channel.  Two channels that are either sources or have their own connections to sources, may not be connected.  This prevents connections that might cause damage to channels, devices, or system.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchChannel.Characteristics">
+			<summary>Pointer to the class-compliant IIviSwtchCharacteristics interface</summary>
+		</member>
+		<member name="T:Ivi.Swtch.Interop.IIviSwtchCharacteristics">
+			<summary>IVI Swtch class-compliant channel characteristics interface</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.ACCurrentCarryMax">
+			<summary>The maximum AC current the channel can carry, in amperes.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.ACCurrentSwitchingMax">
+			<summary>The maximum AC current the channel can switch, in amperes.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.ACPowerCarryMax">
+			<summary>The maximum AC power the channel can handle, in volt-amperes.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.ACPowerSwitchingMax">
+			<summary>The maximum AC power the channel can switch, in volt-amperes.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.ACVoltageMax">
+			<summary>The maximum AC voltage the channel can handle, in volts RMS.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.Bandwidth">
+			<summary>The bandwidth, in Hertz, for the channel.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.DCCurrentCarryMax">
+			<summary>The maximum DC current the channel can carry, in amperes.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.DCCurrentSwitchingMax">
+			<summary>The maximum DC current the channel can switch, in amperes.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.DCPowerCarryMax">
+			<summary>The maximum DC power the channel can handle, in watts.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.DCPowerSwitchingMax">
+			<summary>The maximum DC power the channel can switch, in watts.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.DCVoltageMax">
+			<summary>The maximum DC voltage the channel can handle, in volts.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.Impedance">
+			<summary>The characteristic impedance of the channel, in ohms.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.SettlingTime">
+			<summary>The maximum total settling time, in seconds, for the channel before the signal going through it is considered stable.  This includes both the activation time for the channel as well as any debounce time.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchCharacteristics.WireMode">
+			<summary>The number of conductors in the current channel.</summary>
+		</member>
+		<member name="T:Ivi.Swtch.Interop.IIviSwtchPath">
+			<summary>IVI Swtch class-compliant path interface</summary>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchPath.CanConnect(System.String,System.String)">
+			<summary>Without actually creating the path, reports whether the switch module can create a given path.  This method takes existing paths into account.</summary>
+			<param name="Channel1">A string indicating one of the channels of the path.</param>
+			<param name="Channel2">A string indicating one of the channels of the path.</param>
+			<returns>Indicates whether a path is valid and/or possible. See below for definitions.</returns>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchPath.Connect(System.String,System.String)">
+			<summary>Creates a path between the two channels.  If the path already exists, the operation does not count the number of calls.  All paths are assumed to be bi-directional.</summary>
+			<param name="Channel1">A string indicating one of the channels of the path.</param>
+			<param name="Channel2">A string indicating one of the channels of the path.</param>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchPath.Disconnect(System.String,System.String)">
+			<summary>Destroys the path between the two channels.  The order of the two channels need not be the same as the connect operation.</summary>
+			<param name="Channel1">A string indicating one of the channels of the path.</param>
+			<param name="Channel2">A string indicating one of the channels of the path.</param>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchPath.DisconnectAll">
+			<summary>Disconnect all paths created since Initialize or Reset have been called.  If any paths remain, this method returns a Path Remains warning.</summary>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchPath.GetPath(System.String,System.String)">
+			<summary>Returns the list of comma separated channel pairs that have been connected in order to create the path between the specified channels.  The only valid paths that can be returned are ones that have been explicitly set via Connect and SetPath methods.</summary>
+			<param name="Channel1">A string indicating one of the channels of the path.</param>
+			<param name="Channel2">A string indicating one of the channels of the path.</param>
+			<returns>A user-allocated (for IVI-C) or driver-allocated (for IVI-COM) buffer into which the driver stores the list of configuration channels used to create a path between the two channels.
+The caller may pass VI_NULL for this parameter if the PathListBufferSize parameter is 0.
+</returns>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchPath.SetPath(System.String)">
+			<summary>Creates a path given a PathList of comma separated channel pairs.  The end channels are the first and last entries in the PathList.  For intermediate channels, the second channel of one pair must be the same as the first channel of the following pair.</summary>
+			<param name="PathList">List of comma separated channel pairs indicating the path.</param>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchPath.WaitForDebounce(System.Int32)">
+			<summary>Wait until all the signals flowing through the switch have settled.  If the signals do not settle within MaxTime, the method returns a Max Time Exceeded error.</summary>
+			<param name="MaxTimeMilliseconds">Maximum time (in milliseconds).</param>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchPath.IsDebounced">
+			<summary>If True, the switch module has settled from previous switching commands and completed debounce.  This indicates that the signal going through the switch module is valid, assuming that the switches in the path have the correct characteristics.</summary>
+		</member>
+		<member name="T:Ivi.Swtch.Interop.IIviSwtchScan">
+			<summary>IVI Swtch class-compliant scan interface</summary>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchScan.ConfigureList(System.String,Ivi.Swtch.Interop.IviSwtchScanModeEnum)">
+			<summary>Configures the scan List and Mode properties.</summary>
+			<param name="List">Scan list string.  The driver uses this value to set the Scan List attribute.  See the attribute description for more details.</param>
+			<param name="Mode">Scanning mode.  The driver uses this value to set the Scan Mode attribute.  See the attribute description for more details.</param>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchScan.ConfigureTrigger(System.Double,Ivi.Swtch.Interop.IviSwtchTriggerInputEnum,Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum)">
+			<summary>Configures the scan Delay, Input trigger, and AdvancedOutput trigger properties, in order to set the trigger behavior for the scan list established with the ConfigureList method.</summary>
+			<param name="ScanDelay">The minimum length of time you want the instrument to wait from the time the instrument creates a path until it asserts a trigger on the Scan Advanced output line (in seconds).  The driver uses this value to set the Scan Delay attribute.  See the attribute description for more details.</param>
+			<param name="TriggerInput">Trigger input.  The driver uses this value to set the Trigger Input attribute.  See the attribute description for more details.</param>
+			<param name="AdvancedOutput">Scan advanced output.  The driver uses this value to set the Scan Advanced Output attribute.  See the attribute description for more details.</param>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchScan.Initiate">
+			<summary>Initiates the scan based on the current List property, and returns once the scan has begun.  To stop scanning, call Abort.  When the switch is scanning, operations other than reading properties, SendSoftwareTrigger and Abort are invalid.</summary>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchScan.Abort">
+			<summary>Stops the scan begun with Initiate method and returns the switch to the Idle state.  This operation does not reset or initialize the state of the switch.  To determine the status of the scan, call the IsScanning method.</summary>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchScan.SendSoftwareTrigger">
+			<summary>Sends a software trigger, which causes the switch to advance to the next entry in the scan List.</summary>
+		</member>
+		<member name="M:Ivi.Swtch.Interop.IIviSwtchScan.WaitForScanComplete(System.Int32)">
+			<summary>Waits, up to MaxTime milliseconds, for the instrument to stop scanning through the scan List.</summary>
+			<param name="MaxTimeMilliseconds">Maximum time (milliseconds)</param>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchScan.IsScanning">
+			<summary>If True, the switch module is currently scanning through the scan list.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchScan.Continuous">
+			<summary>If True, the switch module should scan continuously through the scan list, otherwise it should only scan once through the scan list.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchScan.NumberOfColumns">
+			<summary>The maximum number of channels on the column of a matrix or scanner.  If the switch module is a scanner, this value is the number of input channels.  The number returned is dependent on the WireMode property.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchScan.NumberOfRows">
+			<summary>The maximum number of channels on the row of a matrix or scanner.  If the switch module is a scanner, this value is the number of output channels (commons).  The number returned is dependent on the WireMode property.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchScan.AdvancedOutput">
+			<summary>The destination of the scan's advanced output trigger.  This trigger is asserted each time a path is created.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchScan.Delay">
+			<summary>The minimum length of time, in milliseconds, from creating the path to asserting the scan's advanced output trigger.  The actual time may be longer.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchScan.Input">
+			<summary>The source of the trigger input.  Input triggers tell the switch module to advance to the next entry in the scan list and close the specified channel.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchScan.List">
+			<summary>A list of the channels to scan, and the order to scan them in.  The format of this string is described in the IviSwtch specification.</summary>
+		</member>
+		<member name="P:Ivi.Swtch.Interop.IIviSwtchScan.Mode">
+			<summary>The connection breaking behavior of the switch during a scan.  Previous paths may be broken before making new ones, after making new ones, or not broken at all.</summary>
+		</member>
+		<member name="T:Ivi.Swtch.Interop.IviSwtchPathCapabilityEnum">
+			<summary>IVI Swtch class-compliant values for PathCapability</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchPathCapabilityEnum.IviSwtchPathAvailable">
+			<summary>The driver can create a path at this time.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchPathCapabilityEnum.IviSwtchPathExists">
+			<summary>The explicit path between the channels already exists.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchPathCapabilityEnum.IviSwtchPathUnsupported">
+			<summary>The instrument is not capable of creating a path between the two channels.The instrument is not capable of creating a path between the two channels.Although the path is valid, the driver cannot create the path at this moment because the switch module is currently using one or more of the required channels to create another path.  You must destroy the other path before creating this one.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchPathCapabilityEnum.IviSwtchPathRsrcInUse">
+			<summary>Although the path is valid, the driver cannot create the path at this moment because the switch module is currently using one or more of the required channels to create another path.  You must destroy the other path before creating this one.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchPathCapabilityEnum.IviSwtchPathSourceConflict">
+			<summary>The instrument cannot create a path between the two channels because both are connected to a different source channel.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchPathCapabilityEnum.IviSwtchPathChannelNotAvailable">
+			<summary>The driver cannot create a path between the two channels because one of the channels is a configuration channel and thus unavailable for external connections.</summary>
+		</member>
+		<member name="T:Ivi.Swtch.Interop.IviSwtchScanModeEnum">
+			<summary>IVI Swtch class-compliant values for Scan Mode</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchScanModeEnum.IviSwtchScanModeNone">
+			<summary>Indicates that no action should be taken on the previous paths.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchScanModeEnum.IviSwtchScanModeBreakBeforeMake">
+			<summary>Tells the card to break the previous paths before making the new paths.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchScanModeEnum.IviSwtchScanModeBreakAfterMake">
+			<summary>Tells the driver to make new paths before breaking the previous paths.</summary>
+		</member>
+		<member name="T:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum">
+			<summary>IVI Swtch class-compliant values for Trigger Input</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputImmediate">
+			<summary>Indicates that the switch module does not wait for a trigger before starting the next entry in the scan list.  This is typically done for switch modules that support the Scan Delay attribute and can therefore have the switch module pace itself.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputExternal">
+			<summary>Means the trigger is coming from an external source through a trigger input connection.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputSwTrigFunc">
+			<summary>The switch exits the Wait-For-Trigger state when the Send Software Trigger function executes.  Refer to the Standardized Cross Class Capabilities specification for a complete description of this value and the Send Software Trigger function</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputTTL0">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on TTL0.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputTTL1">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on TTL1.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputTTL2">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on TTL2.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputTTL3">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on TTL3.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputTTL4">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on TTL4.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputTTL5">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on TTL5.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputTTL6">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on TTL6.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputTTL7">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on TTL7.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputECL0">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on ECL0.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputECL1">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on ECL1.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputPXIStar">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on PXI Star trigger bus.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputRTSI0">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on RTSI0.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputRTSI1">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on RTSI1.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputRTSI2">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on RTSI2.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputRTSI3">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on RTSI3.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputRTSI4">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on RTSI4.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputRTSI5">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on RTSI5.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchTriggerInputEnum.IviSwtchTriggerInputRTSI6">
+			<summary>The switch exits the Wait-For-Trigger state when it receives a trigger on RTSI6.</summary>
+		</member>
+		<member name="T:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum">
+			<summary>IVI Swtch class-compliant values for scan Advanced Output</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputNone">
+			<summary>No scan advanced output trigger is sent out of the switch module.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputExternal">
+			<summary>Means the trigger is going out to an external device through a trigger output connection.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputGPIBSRQ">
+			<summary>The scan advanced output trigger is represented as a GPIB SRQ event.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputTTL0">
+			<summary>The switch asserts TTL0 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputTTL1">
+			<summary>The switch asserts TTL1 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputTTL2">
+			<summary>The switch asserts TTL2 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputTTL3">
+			<summary>The switch asserts TTL3 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputTTL4">
+			<summary>The switch asserts TTL4 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputTTL5">
+			<summary>The switch asserts TTL5 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputTTL6">
+			<summary>The switch asserts TTL6 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputTTL7">
+			<summary>The switch asserts TTL7 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputECL0">
+			<summary>The switch asserts ECL0 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputECL1">
+			<summary>The switch asserts ECL1 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputPXIStar">
+			<summary>The switch asserts PXI Star each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputRTSI0">
+			<summary>The switch asserts RTSI0 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputRTSI1">
+			<summary>The switch asserts RTSI1 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputRTSI2">
+			<summary>The switch asserts RTSI2 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputRTSI3">
+			<summary>The switch asserts RTSI3 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputRTSI4">
+			<summary>The switch asserts RTSI4 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputRTSI5">
+			<summary>The switch asserts RTSI5 each time a path is created.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchAdvancedOutputEnum.IviSwtchAdvancedOutputRTSI6">
+			<summary>The switch asserts RTSI6 each time a path is created.</summary>
+		</member>
+		<member name="T:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum">
+			<summary>IVI Swtch class defined HRESULTS</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_TRIGGER_NOT_SOFTWARE">
+			<summary>The trigger source is not set to software trigger.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_INVALID_SWITCH_PATH">
+			<summary>Invalid path list string.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_INVALID_SCAN_LIST">
+			<summary>The given scan list string does not have the correct syntax.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_RSRC_IN_USE">
+			<summary>One of the channels in the path is a configuration channel that is in use.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_EMPTY_SCAN_LIST">
+			<summary>No scan list specified.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_EMPTY_SWITCH_PATH">
+			<summary>The specified path list string is empty.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_SCAN_IN_PROGRESS">
+			<summary>The switch module is currently scanning through the scan list.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_NO_SCAN_IN_PROGRESS">
+			<summary>The switch module is not currently scanning through the scan list.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_NO_SUCH_PATH">
+			<summary>No explicit path exists between the channels.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_IS_CONFIGURATION_CHANNEL">
+			<summary>An explicit connection to a configuration channel is not allowed.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_NOT_A_CONFIGURATION_CHANNEL">
+			<summary>One of the non-terminal channels in the path is not a configuration channel.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_ATTEMPT_TO_CONNECT_SOURCES">
+			<summary>A connection between two different sources is not allowed.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_EXPLICIT_CONNECTION_EXISTS">
+			<summary>An explicit connection between the channels already exists.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_LEG_MISSING_FIRST_CHANNEL">
+			<summary>A leg in the path does not begin with a channel name.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_LEG_MISSING_SECOND_CHANNEL">
+			<summary>A leg in the path is missing the second channel.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_CHANNEL_DUPLICATED_IN_LEG">
+			<summary>The first and the second channels in the leg are the same.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_CHANNEL_DUPLICATED_IN_PATH">
+			<summary>A channel name is duplicated in the path string.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_PATH_NOT_FOUND">
+			<summary>No path was found between the two channels.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_DISCONTINUOUS_PATH">
+			<summary>The first channel of a leg in the path is not the same as the second channel in the previous leg.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_CANNOT_CONNECT_DIRECTLY">
+			<summary>The path contains a leg with two channels that cannot be directly connected.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_CHANNELS_ALREADY_CONNECTED">
+			<summary>A leg in the path contains two channels that are already directly connected.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_CANNOT_CONNECT_TO_ITSELF">
+			<summary>A channel cannot be connected to itself.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.E_IVISWTCH_MAX_TIME_EXCEEDED">
+			<summary>Maximum time exceeded before the operation completed.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.S_IVISWTCH_PATH_REMAINS">
+			<summary>Some connections remain after disconnecting.</summary>
+		</member>
+		<member name="F:Ivi.Swtch.Interop.IviSwtchErrorCodesEnum.S_IVISWTCH_IMPLICIT_CONNECTION_EXISTS">
+			<summary>The implicit connection exists between the channels.</summary>
+		</member>
+	</members>
+</doc>

@@ -1,0 +1,4012 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+interface IWX218x;
+interface IWX218xChannel;
+interface IWX218xAM;
+interface IWX218xChannelSync;
+interface IWX218xStandardWaveform;
+interface IWX218xArbitrary;
+interface IWX218xArbitraryWaveform;
+interface IWX218xArbitrarySequence;
+interface IWX218xArbitrarySequenceAdvanceSequence;
+interface IWX218xCarrierModulation;
+interface IWX218xCouple;
+interface IWX218xFM;
+interface IWX218xMarkers;
+interface IWX218xTrigger;
+interface IWX218xTriggerARM;
+interface IWX218xTriggerSmartTrigger;
+interface IWX218xStateStorage;
+interface IWX218xXInstrument;
+interface IWX218xDigitalPulse;
+interface IWX218xSweep;
+interface IWX218xDigitalPatternOutput;
+interface IWX218xCHIRP;
+interface IWX218xFSK;
+interface IWX218xASK;
+interface IWX218xFHOP;
+interface IWX218xAHOP;
+interface IWX218xPattern;
+interface IWX218xPatternComposer;
+interface IWX218xPSK;
+interface IWX218xQAM;
+
+#ifdef CUSTOM_IDL
+#include "CustomInterfaceDeclarations.idl"
+#endif
+
+[
+	uuid(eb5ffd1f-180b-400e-9fed-46af13b65982),
+	version(3.0),
+	helpstring("IVI WX218x 3.0 Type Library"),
+	helpcontext(1),
+	helpfile("WX218x.chm")
+]
+library WX218xLib
+{
+	importlib("stdole2.tlb");
+	importlib("IviFgenTypeLib.dll");
+	importlib("IviDriverTypeLib.dll");
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xAdvanceSequenceModeEnum
+	//
+
+	[
+		uuid(fb4c45de-5f24-4ae4-9433-041138e46b74),
+		v1_enum,
+		helpstring(""),
+		helpcontext(9)
+	] 
+	typedef enum WX218xAdvanceSequenceModeEnum
+	{
+		WX218xAdvanceSequenceModeAuto = 0,
+		WX218xAdvanceSequenceModeOnce = 1,
+		WX218xAdvanceSequenceModeStep = 2,
+	} WX218xAdvanceSequenceModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xAMInternalWaveformEnum
+	//
+
+	[
+		uuid(1dcf8d42-5f00-4312-858a-4e7a7b6467af),
+		v1_enum,
+		helpstring(""),
+		helpcontext(10)
+	] 
+	typedef enum WX218xAMInternalWaveformEnum
+	{
+		WX218xAMInternalWaveformSine = 1,
+		WX218xAMInternalWaveformTriangle = 3,
+		WX218xAMInternalWaveformSquare = 2,
+		WX218xAMInternalWaveformRamp = 4,
+	} WX218xAMInternalWaveformEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xArbitrarySourceEnum
+	//
+
+	[
+		uuid(5c3ea472-d08e-44f5-ac9d-70b5b275e698),
+		v1_enum,
+		helpstring(""),
+		helpcontext(11)
+	] 
+	typedef enum WX218xArbitrarySourceEnum
+	{
+		WX218xArbitrarySourceBus = 0,
+		WX218xArbitrarySourceExternal = 1,
+	} WX218xArbitrarySourceEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xArbitraryTimingEnum
+	//
+
+	[
+		uuid(e71f2f89-e9da-414a-8aee-5ce706cc0c72),
+		v1_enum,
+		helpstring(""),
+		helpcontext(12)
+	] 
+	typedef enum WX218xArbitraryTimingEnum
+	{
+		WX218xArbitraryTimingCoherent = 0,
+		WX218xArbitraryTimingImmediate = 1,
+	} WX218xArbitraryTimingEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xArmSlopeEnum
+	//
+
+	[
+		uuid(d3045ad6-afb4-4b44-9446-39ab9a06fcf6),
+		v1_enum,
+		helpstring(""),
+		helpcontext(13)
+	] 
+	typedef enum WX218xArmSlopeEnum
+	{
+		WX218xArmSlopePositive = 0,
+		WX218xArmSlopeNegative = 1,
+		WX218xArmSlopeEither = 2,
+	} WX218xArmSlopeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xCarrierModulationWaveformEnum
+	//
+
+	[
+		uuid(37bde25e-8f62-43ed-8cf0-e8c594a257d1),
+		v1_enum,
+		helpstring(""),
+		helpcontext(14)
+	] 
+	typedef enum WX218xCarrierModulationWaveformEnum
+	{
+		WX218xCarrierModulationWaveformSine = 0,
+		WX218xCarrierModulationWaveformTriangle = 1,
+		WX218xCarrierModulationWaveformSquare = 2,
+	} WX218xCarrierModulationWaveformEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xContinuousModeEnum
+	//
+
+	[
+		uuid(d3d1fb75-f565-4c30-be23-5a5d998cff4e),
+		v1_enum,
+		helpstring(""),
+		helpcontext(15)
+	] 
+	typedef enum WX218xContinuousModeEnum
+	{
+		WX218xContinuousModeSelf = 0,
+		WX218xContinuousModeArmed = 1,
+	} WX218xContinuousModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xContinuousSourceEnum
+	//
+
+	[
+		uuid(468c8edc-168c-4037-a755-61245b810ffe),
+		v1_enum,
+		helpstring(""),
+		helpcontext(16)
+	] 
+	typedef enum WX218xContinuousSourceEnum
+	{
+		WX218xContinuousSourceBus = 0,
+		WX218xContinuousSourceEvent = 1,
+		WX218xContinuousSourceTrigger = 2,
+	} WX218xContinuousSourceEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xSequenceJumpTimingEnum
+	//
+
+	[
+		uuid(457e2dd9-15e5-40a3-89de-9a902c0a448c),
+		v1_enum,
+		helpstring(""),
+		helpcontext(17)
+	] 
+	typedef enum WX218xSequenceJumpTimingEnum
+	{
+		WX218xSequenceJumpTimingCoherent = 0,
+		WX218xSequenceJumpTimingImmediate = 1,
+	} WX218xSequenceJumpTimingEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xSequenceSourceEnum
+	//
+
+	[
+		uuid(8d96841b-7738-4a77-8430-b6342f21067f),
+		v1_enum,
+		helpstring(""),
+		helpcontext(18)
+	] 
+	typedef enum WX218xSequenceSourceEnum
+	{
+		WX218xSequenceSourceBus = 0,
+		WX218xSequenceSourceExternal = 1,
+	} WX218xSequenceSourceEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xSequenceTimingEnum
+	//
+
+	[
+		uuid(ce3f6c3a-8dbc-4e11-ae58-848f13a9ce3f),
+		v1_enum,
+		helpstring(""),
+		helpcontext(19)
+	] 
+	typedef enum WX218xSequenceTimingEnum
+	{
+		WX218xSequenceTimingCoherent = 0,
+		WX218xSequenceTimingImmediate = 1,
+	} WX218xSequenceTimingEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xStateStorageConfigurationEnum
+	//
+
+	[
+		uuid(38b9bc77-f033-4f18-bc27-5c366244e2ae),
+		v1_enum,
+		helpstring(""),
+		helpcontext(20)
+	] 
+	typedef enum WX218xStateStorageConfigurationEnum
+	{
+		WX218xStateStorageConfigurationSetup = 0,
+		WX218xStateStorageConfigurationWave = 1,
+		WX218xStateStorageConfigurationAll = 2,
+	} WX218xStateStorageConfigurationEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xStateStorageTargetEnum
+	//
+
+	[
+		uuid(acfc145c-8407-4262-9662-c6afb961fdcc),
+		v1_enum,
+		helpstring(""),
+		helpcontext(21)
+	] 
+	typedef enum WX218xStateStorageTargetEnum
+	{
+		WX218xStateStorageTargetINT = 0,
+		WX218xStateStorageTargetUSB = 1,
+	} WX218xStateStorageTargetEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPulseLevelControlEnum
+	//
+
+	[
+		uuid(e76eab20-4214-44fc-8aa7-4ac16f14ee43),
+		v1_enum,
+		helpstring(""),
+		helpcontext(22)
+	] 
+	typedef enum WX218xPulseLevelControlEnum
+	{
+		WX218xPulseLevelControlHLOW = 0,
+		WX218xPulseLevelControlAOffset = 1,
+		WX218xPulseLevelControlPositive = 2,
+		WX218xPulseLevelControlNegative = 3,
+	} WX218xPulseLevelControlEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPulseModeEnum
+	//
+
+	[
+		uuid(a10e0599-b86e-438b-a1c6-e5546bc4b530),
+		v1_enum,
+		helpstring(""),
+		helpcontext(23)
+	] 
+	typedef enum WX218xPulseModeEnum
+	{
+		WX218xPulseModeSingle = 0,
+		WX218xPulseModeDelayed = 1,
+		WX218xPulseModeDouble = 2,
+	} WX218xPulseModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPulsePolarityEnum
+	//
+
+	[
+		uuid(14030e1c-d3c1-4f3d-9fab-9ea658400df5),
+		v1_enum,
+		helpstring(""),
+		helpcontext(24)
+	] 
+	typedef enum WX218xPulsePolarityEnum
+	{
+		WX218xPulsePolarityNormal = 0,
+		WX218xPulsePolarityComplement = 1,
+		WX218xPulsePolarityInverted = 2,
+	} WX218xPulsePolarityEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPulseTransitionEnum
+	//
+
+	[
+		uuid(7455d719-5edf-4c07-b974-cdf17a73ddea),
+		v1_enum,
+		helpstring(""),
+		helpcontext(25)
+	] 
+	typedef enum WX218xPulseTransitionEnum
+	{
+		WX218xPulseTransitionFast = 0,
+		WX218xPulseTransitionLinear = 1,
+		WX218xPulseTransitionSymmetrical = 2,
+	} WX218xPulseTransitionEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xReferenceClockSourceEnum
+	//
+
+	[
+		uuid(a7721f02-d652-4680-9039-587256685773),
+		v1_enum,
+		helpstring(""),
+		helpcontext(26)
+	] 
+	typedef enum WX218xReferenceClockSourceEnum
+	{
+		WX218xReferenceClockSourceInternal = 0,
+		WX218xReferenceClockSourceExternal = 1,
+	} WX218xReferenceClockSourceEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xSampleRateSourceEnum
+	//
+
+	[
+		uuid(5eb07d36-0ab6-4952-821d-5e826df66b67),
+		v1_enum,
+		helpstring(""),
+		helpcontext(27)
+	] 
+	typedef enum WX218xSampleRateSourceEnum
+	{
+		WX218xSampleRateSourceInternal = 0,
+		WX218xSampleRateSourceExternal = 1,
+	} WX218xSampleRateSourceEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xSequenceAdvanceModeEnum
+	//
+
+	[
+		uuid(c0a8e892-efdf-4689-896d-a874dcf976b2),
+		v1_enum,
+		helpstring(""),
+		helpcontext(28)
+	] 
+	typedef enum WX218xSequenceAdvanceModeEnum
+	{
+		WX218xSequenceAdvanceModeAuto = 0,
+		WX218xSequenceAdvanceModeOnce = 1,
+		WX218xSequenceAdvanceModeStep = 2,
+	} WX218xSequenceAdvanceModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xSequenceJumpEventEnum
+	//
+
+	[
+		uuid(c1af0f8a-65c5-41da-b2bb-91f6ff310dec),
+		v1_enum,
+		helpstring(""),
+		helpcontext(29)
+	] 
+	typedef enum WX218xSequenceJumpEventEnum
+	{
+		WX218xSequenceJumpEventBus = 0,
+		WX218xSequenceJumpEventEvent = 1,
+	} WX218xSequenceJumpEventEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xFMInternalWaveformEnum
+	//
+
+	[
+		uuid(80d2a62d-c427-4e81-9756-bfda020c2f2a),
+		v1_enum,
+		helpstring(""),
+		helpcontext(30)
+	] 
+	typedef enum WX218xFMInternalWaveformEnum
+	{
+		WX218xFMInternalWaveformSine = 1,
+		WX218xFMInternalWaveformTriangle = 3,
+		WX218xFMInternalWaveformSquare = 2,
+		WX218xFMInternalWaveformRamp = 4,
+	} WX218xFMInternalWaveformEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xOperationModeEnum
+	//
+
+	[
+		uuid(9493fa8d-462f-4917-864f-ee32bec42fa0),
+		v1_enum,
+		helpstring(""),
+		helpcontext(31)
+	] 
+	typedef enum WX218xOperationModeEnum
+	{
+		WX218xOperationModeContinuous = 0,
+		WX218xOperationModeBurst = 1,
+		WX218xOperationModeTrigger = 2,
+		WX218xOperationModeGate = 3,
+	} WX218xOperationModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xOutputCoupleEnum
+	//
+
+	[
+		uuid(fa2f2d3d-caf6-4ad3-a5f3-e7423adb075f),
+		v1_enum,
+		helpstring(""),
+		helpcontext(32)
+	] 
+	typedef enum WX218xOutputCoupleEnum
+	{
+		WX218xOutputCoupleDC = 0,
+		WX218xOutputCoupleAC = 1,
+		WX218xOutputCoupleHV = 2,
+	} WX218xOutputCoupleEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xOutputModeEnum
+	//
+
+	[
+		uuid(ed2e9357-e4e1-4154-9792-17719e589eb6),
+		v1_enum,
+		helpstring(""),
+		helpcontext(33)
+	] 
+	typedef enum WX218xOutputModeEnum
+	{
+		WX218xOutputModeFunction = 0,
+		WX218xOutputModeArbitrary = 1,
+		WX218xOutputModeSequence = 2,
+		WX218xOutputModeASequence = 3,
+		WX218xOutputModeModulation = 4,
+		WX218xOutputModeDPulse = 5,
+		WX218xOutputModePattern = 6,
+	} WX218xOutputModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xOutputSyncFunctionEnum
+	//
+
+	[
+		uuid(af45b3e1-c8f2-42ea-bb58-9f9d2e9610b3),
+		v1_enum,
+		helpstring(""),
+		helpcontext(34)
+	] 
+	typedef enum WX218xOutputSyncFunctionEnum
+	{
+		WX218xOutputSyncFunctionPulse = 0,
+		WX218xOutputSyncFunctionWCOM = 1,
+	} WX218xOutputSyncFunctionEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xOutputSyncSourceEnum
+	//
+
+	[
+		uuid(4fe1a3b8-adcc-42ad-b441-2c5a2c0f14fc),
+		v1_enum,
+		helpstring(""),
+		helpcontext(35)
+	] 
+	typedef enum WX218xOutputSyncSourceEnum
+	{
+		WX218xOutputSyncSourceCH1 = 0,
+		WX218xOutputSyncSourceCH2 = 1,
+		WX218xOutputSyncSourceCH3 = 2,
+		WX218xOutputSyncSourceCH4 = 3,
+	} WX218xOutputSyncSourceEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPulseConfigureEnum
+	//
+
+	[
+		uuid(381d5643-f191-4276-95aa-40f399b39f47),
+		v1_enum,
+		helpstring(""),
+		helpcontext(36)
+	] 
+	typedef enum WX218xPulseConfigureEnum
+	{
+		WX218xPulseConfigureTime = 0,
+		WX218xPulseConfigurePercent = 1,
+	} WX218xPulseConfigureEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xSweepDirectionEnum
+	//
+
+	[
+		uuid(5980667a-56f5-4596-832e-71c3d672dd5e),
+		v1_enum,
+		helpstring(""),
+		helpcontext(37)
+	] 
+	typedef enum WX218xSweepDirectionEnum
+	{
+		WX218xSweepDirectionUp = 0,
+		WX218xSweepDirectionDown = 1,
+	} WX218xSweepDirectionEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xSweepSpacingEnum
+	//
+
+	[
+		uuid(8945247c-e438-437c-be71-e90fcd343865),
+		v1_enum,
+		helpstring(""),
+		helpcontext(38)
+	] 
+	typedef enum WX218xSweepSpacingEnum
+	{
+		WX218xSweepSpacingLin = 0,
+		WX218xSweepSpacingLog = 1,
+	} WX218xSweepSpacingEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xTriggerModeEnum
+	//
+
+	[
+		uuid(46299812-98cc-4005-91a6-ae95838e5320),
+		v1_enum,
+		helpstring(""),
+		helpcontext(39)
+	] 
+	typedef enum WX218xTriggerModeEnum
+	{
+		WX218xTriggerModeNormal = 0,
+		WX218xTriggerModeOverride = 1,
+	} WX218xTriggerModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xTriggerSlopeEnum
+	//
+
+	[
+		uuid(09cf4a1b-4fb5-4f4d-b6af-3b0ededbb4ad),
+		v1_enum,
+		helpstring(""),
+		helpcontext(40)
+	] 
+	typedef enum WX218xTriggerSlopeEnum
+	{
+		WX218xTriggerSlopePositive = 0,
+		WX218xTriggerSlopeNegative = 1,
+		WX218xTriggerSlopeEither = 2,
+	} WX218xTriggerSlopeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xTriggerSourceEnum
+	//
+
+	[
+		uuid(17ef2d9a-fc60-4c28-ad64-037f5e79d89f),
+		v1_enum,
+		helpstring(""),
+		helpcontext(41)
+	] 
+	typedef enum WX218xTriggerSourceEnum
+	{
+		WX218xTriggerSourceExternal = 1,
+		WX218xTriggerSourceSoftware = 2,
+		WX218xTriggerSourceTimer = 4,
+		WX218xTriggerSourceEvent = 5,
+	} WX218xTriggerSourceEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xTriggerTimerModeEnum
+	//
+
+	[
+		uuid(ef70c5c6-f971-4340-b2ba-1df8ddedb94b),
+		v1_enum,
+		helpstring(""),
+		helpcontext(42)
+	] 
+	typedef enum WX218xTriggerTimerModeEnum
+	{
+		WX218xTriggerTimerModeTime = 0,
+		WX218xTriggerTimerModeDelay = 1,
+	} WX218xTriggerTimerModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xXInstrumentModeEnum
+	//
+
+	[
+		uuid(48c2acff-2d37-48d6-8d5b-d4bda6f59fdb),
+		v1_enum,
+		helpstring(""),
+		helpcontext(44)
+	] 
+	typedef enum WX218xXInstrumentModeEnum
+	{
+		WX218xXInstrumentModeMaster = 0,
+		WX218xXInstrumentModeSlave = 1,
+	} WX218xXInstrumentModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xMarkerControlEnum
+	//
+
+	[
+		uuid(417b91ba-37fa-4740-87ab-bf00528ba419),
+		v1_enum,
+		helpstring(""),
+		helpcontext(227)
+	] 
+	typedef enum WX218xMarkerControlEnum
+	{
+		WX218xMarkerControlLocal = 0,
+		WX218xMarkerControlRemote = 1,
+	} WX218xMarkerControlEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xStateStorageRecalConfigurationEnum
+	//
+
+	[
+		uuid(5df502c9-8b98-4989-8700-9ac5204b41a7),
+		v1_enum,
+		helpstring(""),
+		helpcontext(230)
+	] 
+	typedef enum WX218xStateStorageRecalConfigurationEnum
+	{
+		WX218xStateStorageRecalConfigurationSetup = 0,
+		WX218xStateStorageRecalConfigurationWave = 1,
+		WX218xStateStorageRecalConfigurationAll = 2,
+		WX218xStateStorageRecalConfigurationEmpty = 3,
+	} WX218xStateStorageRecalConfigurationEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xWaveformEnum
+	//
+
+	[
+		uuid(52fda3d3-014a-4e63-be42-71d3c8bbc6d4),
+		v1_enum,
+		helpstring(""),
+		helpcontext(43)
+	] 
+	typedef enum WX218xWaveformEnum
+	{
+		WX218xWaveformSine = 1,
+		WX218xWaveformSquare = 2,
+		WX218xWaveformTriangle = 3,
+		WX218xWaveformRampUp = 4,
+		WX218xWaveformRampDown = 5,
+		WX218xWaveformDC = 6,
+		WX218xWaveformSinc = 7,
+		WX218xWaveformGaussian = 8,
+		WX218xWaveformExponential = 9,
+		WX218xWaveformNoise = 10,
+	} WX218xWaveformEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPatternTransitionTypeEnum
+	//
+
+	[
+		uuid(82445369-455c-45f8-8a09-9a0044390e97),
+		v1_enum,
+		helpstring(""),
+		helpcontext(237)
+	] 
+	typedef enum WX218xPatternTransitionTypeEnum
+	{
+		WX218xPatternTransitionTypeFast = 0,
+		WX218xPatternTransitionTypeLinear = 1,
+	} WX218xPatternTransitionTypeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPatternResTypeEnum
+	//
+
+	[
+		uuid(9381d572-6bed-4a17-8058-b9d0887dc2e6),
+		v1_enum,
+		helpstring(""),
+		helpcontext(239)
+	] 
+	typedef enum WX218xPatternResTypeEnum
+	{
+		WX218xPatternResTypeAuto = 0,
+		WX218xPatternResTypeUser = 1,
+	} WX218xPatternResTypeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xSequencePrestepEnum
+	//
+
+	[
+		uuid(1c08d86f-3c42-464b-a699-15c73587e849),
+		v1_enum,
+		helpstring(""),
+		helpcontext(241)
+	] 
+	typedef enum WX218xSequencePrestepEnum
+	{
+		WX218xSequencePrestepWave = 0,
+		WX218xSequencePrestepDC = 1,
+	} WX218xSequencePrestepEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xDigPatternDelayModeEnum
+	//
+
+	[
+		uuid(dc8cbf82-90ec-4f61-96b0-2c38a9b98a2b),
+		v1_enum,
+		helpstring(""),
+		helpcontext(247)
+	] 
+	typedef enum WX218xDigPatternDelayModeEnum
+	{
+		WX218xDigPatternDelayModeCommon = 0,
+		WX218xDigPatternDelayModeSeparate = 1,
+	} WX218xDigPatternDelayModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xDigPatternLevelModeEnum
+	//
+
+	[
+		uuid(f38566b2-d75f-49ae-809f-5db63c76300b),
+		v1_enum,
+		helpstring(""),
+		helpcontext(249)
+	] 
+	typedef enum WX218xDigPatternLevelModeEnum
+	{
+		WX218xDigPatternLevelModeCommon = 0,
+		WX218xDigPatternLevelModeSeparate = 1,
+	} WX218xDigPatternLevelModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xChirpFreqDirectionEnum
+	//
+
+	[
+		uuid(872078d5-ec70-4a0c-a5ae-7a874d6c525a),
+		v1_enum,
+		helpstring(""),
+		helpcontext(262)
+	] 
+	typedef enum WX218xChirpFreqDirectionEnum
+	{
+		WX218xChirpFreqDirectionUp = 0,
+		WX218xChirpFreqDirectionDown = 1,
+	} WX218xChirpFreqDirectionEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xChirpFreqSpacingEnum
+	//
+
+	[
+		uuid(9f0caea7-87f5-49d7-8b52-d5f3a4d1a615),
+		v1_enum,
+		helpstring(""),
+		helpcontext(264)
+	] 
+	typedef enum WX218xChirpFreqSpacingEnum
+	{
+		WX218xChirpFreqSpacingLinear = 0,
+		WX218xChirpFreqSpacingLog = 1,
+	} WX218xChirpFreqSpacingEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xChirpAmplitudeDirectionEnum
+	//
+
+	[
+		uuid(40bfa78d-fa23-4a98-90ff-0e5561a27723),
+		v1_enum,
+		helpstring(""),
+		helpcontext(266)
+	] 
+	typedef enum WX218xChirpAmplitudeDirectionEnum
+	{
+		WX218xChirpAmplitudeDirectionUp = 0,
+		WX218xChirpAmplitudeDirectionDown = 1,
+	} WX218xChirpAmplitudeDirectionEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xChirpAmplSpacingEnum
+	//
+
+	[
+		uuid(07e1b29a-7e40-49ea-a985-2fa53682ce0f),
+		v1_enum,
+		helpstring(""),
+		helpcontext(268)
+	] 
+	typedef enum WX218xChirpAmplSpacingEnum
+	{
+		WX218xChirpAmplSpacingLin = 0,
+		WX218xChirpAmplSpacingLog = 1,
+	} WX218xChirpAmplSpacingEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xFHOPDwellModeEnum
+	//
+
+	[
+		uuid(4507e167-a2d0-49fb-a0b6-9cbbd98c4280),
+		v1_enum,
+		helpstring(""),
+		helpcontext(283)
+	] 
+	typedef enum WX218xFHOPDwellModeEnum
+	{
+		WX218xFHOPDwellModeFixed = 0,
+		WX218xFHOPDwellModeVariable = 1,
+	} WX218xFHOPDwellModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xAHOPDwellModeEnum
+	//
+
+	[
+		uuid(023ac6bd-f92b-4435-89da-cc537c021770),
+		v1_enum,
+		helpstring(""),
+		helpcontext(288)
+	] 
+	typedef enum WX218xAHOPDwellModeEnum
+	{
+		WX218xAHOPDwellModeFixed = 0,
+		WX218xAHOPDwellModeVariable = 1,
+	} WX218xAHOPDwellModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPatternModeEnum
+	//
+
+	[
+		uuid(b4b6fcd4-143d-4c98-8f25-196603383bc0),
+		v1_enum,
+		helpstring(""),
+		helpcontext(292)
+	] 
+	typedef enum WX218xPatternModeEnum
+	{
+		WX218xPatternModeComposer = 0,
+		WX218xPatternModePredefined = 1,
+	} WX218xPatternModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPatternPredefinedTypeEnum
+	//
+
+	[
+		uuid(1c09bebb-ede3-4498-abef-356259762c90),
+		v1_enum,
+		helpstring(""),
+		helpcontext(294)
+	] 
+	typedef enum WX218xPatternPredefinedTypeEnum
+	{
+		WX218xPatternPredefinedTypePRBS7 = 0,
+		WX218xPatternPredefinedTypePRBS9 = 1,
+		WX218xPatternPredefinedTypePRBS11 = 2,
+		WX218xPatternPredefinedTypePRBS15 = 3,
+		WX218xPatternPredefinedTypePRBS23 = 4,
+		WX218xPatternPredefinedTypePRBS31 = 5,
+		WX218xPatternPredefinedTypeUSER = 6,
+	} WX218xPatternPredefinedTypeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPatternComposerTransitionTypeEnum
+	//
+
+	[
+		uuid(6f9f344d-241a-4ded-9619-11a88010479a),
+		v1_enum,
+		helpstring(""),
+		helpcontext(302)
+	] 
+	typedef enum WX218xPatternComposerTransitionTypeEnum
+	{
+		WX218xPatternComposerTransitionTypeFast = 0,
+		WX218xPatternComposerTransitionTypeLinear = 1,
+	} WX218xPatternComposerTransitionTypeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xPskTypeEnum
+	//
+
+	[
+		uuid(e7a579fa-c55f-4d6a-90bd-d9c2f92fb7eb),
+		v1_enum,
+		helpstring(""),
+		helpcontext(317)
+	] 
+	typedef enum WX218xPskTypeEnum
+	{
+		WX218xPskTypePSK = 0,
+		WX218xPskTypeBPSK = 1,
+		WX218xPskTypeQPSK = 2,
+		WX218xPskTypeOQPSK = 3,
+		WX218xPskTypeDQPSK = 4,
+		WX218xPskType8PSK = 5,
+		WX218xPskType16PSK = 6,
+		WX218xPskTypeUSER = 7,
+	} WX218xPskTypeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xQamTypeEnum
+	//
+
+	[
+		uuid(0813a1e7-7e5e-4a50-9209-bb8b7e3775cb),
+		v1_enum,
+		helpstring(""),
+		helpcontext(324)
+	] 
+	typedef enum WX218xQamTypeEnum
+	{
+		WX218xQamType16QAM = 0,
+		WX218xQamType64QAM = 1,
+		WX218xQamType256QAM = 2,
+		WX218xQamTypeUSER = 3,
+	} WX218xQamTypeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xDigFormatDataEnum
+	//
+
+	[
+		uuid(a76cffca-9d5a-4682-b38a-1814f3923c39),
+		v1_enum,
+		helpstring(""),
+		helpcontext(352)
+	] 
+	typedef enum WX218xDigFormatDataEnum
+	{
+		WX218xDigFormatDataSeparate = 0,
+		WX218xDigFormatDataCommon = 1,
+	} WX218xDigFormatDataEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xArbitraryResolutionEnum
+	//
+
+	[
+		uuid(43ebd855-28cd-4aa4-8203-4d31a8e2a58f),
+		v1_enum,
+		helpstring(""),
+		helpcontext(354)
+	] 
+	typedef enum WX218xArbitraryResolutionEnum
+	{
+		WX218xArbitraryResolution1P = 0,
+		WX218xArbitraryResolution2P = 1,
+	} WX218xArbitraryResolutionEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xMarkerSourceEnum
+	//
+
+	[
+		uuid(d68151d0-27af-472d-b13c-898dcfadc6b0),
+		v1_enum,
+		helpstring(""),
+		helpcontext(361)
+	] 
+	typedef enum WX218xMarkerSourceEnum
+	{
+		WX218xMarkerSourceWave = 0,
+		WX218xMarkerSourceUser = 1,
+	} WX218xMarkerSourceEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xTraceModeEnum
+	//
+
+	[
+		uuid(88358cfb-7f3b-464b-926b-ac87c6c41e72),
+		v1_enum,
+		helpstring(""),
+		helpcontext(366)
+	] 
+	typedef enum WX218xTraceModeEnum
+	{
+		WX218xTraceModeSingle = 0,
+		WX218xTraceModeDuplicate = 1,
+		WX218xTraceModeZero = 2,
+		WX218xTraceModeCombine = 3,
+	} WX218xTraceModeEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xXInstrumentModeAdvEnum
+	//
+
+	[
+		uuid(09fe787e-5288-4361-9393-7c031be7a7b4),
+		v1_enum,
+		helpstring(""),
+		helpcontext(490)
+	] 
+	typedef enum WX218xXInstrumentModeAdvEnum
+	{
+		WX218xXInstrumentModeAdvMaster = 0,
+		WX218xXInstrumentModeAdvSlave = 1,
+		WX218xXInstrumentModeAdvMSlave = 2,
+	} WX218xXInstrumentModeAdvEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xFreqDividerEnum
+	//
+
+	[
+		uuid(d8007d74-a4b7-4942-befa-1cc20a351fbb),
+		v1_enum,
+		helpstring(""),
+		helpcontext(496)
+	] 
+	typedef enum WX218xFreqDividerEnum
+	{
+		WX218xFreqDividerDiv1 = 0,
+		WX218xFreqDividerDiv2 = 1,
+		WX218xFreqDividerDiv4 = 2,
+		WX218xFreqDividerDiv8 = 3,
+		WX218xFreqDividerDiv16 = 4,
+	} WX218xFreqDividerEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xExtFrequencyEnum
+	//
+
+	[
+		uuid(f698204d-b034-4bc7-a912-70e67ee8d8b2),
+		v1_enum,
+		helpstring(""),
+		helpcontext(498)
+	] 
+	typedef enum WX218xExtFrequencyEnum
+	{
+		WX218xExtFrequency10M = 0,
+		WX218xExtFrequency20M = 1,
+		WX218xExtFrequency50M = 2,
+		WX218xExtFrequency100M = 3,
+	} WX218xExtFrequencyEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xDigitalClockEnum
+	//
+
+	[
+		uuid(ab615dae-a784-4b81-bf50-a5eb82c0d352),
+		v1_enum,
+		helpstring(""),
+		helpcontext(368)
+	] 
+	typedef enum WX218xDigitalClockEnum
+	{
+		WX218xDigitalClockSDR = 0,
+		WX218xDigitalClockDDR = 1,
+	} WX218xDigitalClockEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xDigPortEnum
+	//
+
+	[
+		uuid(74616a2d-0ee8-46c2-8169-50fa90e2c9ef),
+		v1_enum,
+		helpstring(""),
+		helpcontext(557)
+	] 
+	typedef enum WX218xDigPortEnum
+	{
+		WX218xDigPortPort1 = 0,
+		WX218xDigPortPort2 = 1,
+		WX218xDigPortPortBoth = 2,
+	} WX218xDigPortEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xArbDownloadRecordEnum
+	//
+
+	[
+		uuid(a6fc4745-7e41-4587-87f1-fc44c3ed00dd),
+		v1_enum,
+		helpstring(""),
+		helpcontext(559)
+	] 
+	typedef enum WX218xArbDownloadRecordEnum
+	{
+		WX218xArbDownloadRecordEnable = 0,
+		WX218xArbDownloadRecordDisable = 1,
+	} WX218xArbDownloadRecordEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xTriggerImpedanceEnum
+	//
+
+	[
+		uuid(3e6b96ff-0a2a-48af-af33-dd68f19df728),
+		v1_enum,
+		helpstring(""),
+		helpcontext(562)
+	] 
+	typedef enum WX218xTriggerImpedanceEnum
+	{
+		WX218xTriggerImpedance50 = 0,
+		WX218xTriggerImpedance10K = 1,
+	} WX218xTriggerImpedanceEnum;
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218xErrorCodesEnum
+	//
+
+	[
+		uuid(0ecfe325-230e-4f39-bc8e-7ab8248bc7ea),
+		v1_enum,
+		helpstring(""),
+		helpcontext(3)
+	] 
+	typedef enum WX218xErrorCodesEnum
+	{
+		E_WX218X_IO_GENERAL = -2147204588,
+		E_WX218X_IO_TIMEOUT = -2147204587,
+		E_WX218X_MODEL_NOT_SUPPORTED = -2147204586,
+		E_WX218X_PERSONALITY_NOT_ACTIVE = -2147204591,
+		E_WX218X_PERSONALITY_NOT_LICENSED = -2147204589,
+		E_WX218X_PERSONALITY_NOT_INSTALLED = -2147204590,
+		E_WX218X_ELEMENT_ARRAY_NOT_VALID = -2147204580,
+		E_WX218X_HANDLE_CHANNEL_NOT_EXIST = -2147204583,
+		E_WX218X_HANDLE_LOOP_JUMP_NOT_EQUAL = -2147204581,
+		E_WX218X_HANDLE_LOOP_NOT_EQUAL = -2147204582,
+		E_WX218X_INVALID_CONFIGURATION = -2147204584,
+		E_WX218X_LBOUND_ARRAY_EQUAL = -2147204579,
+		E_WX218X_LBOUND_ARRAY_ZERO = -2147204577,
+		E_WX218X_MAX_COUNT_SEGMENTS = -2147204576,
+		E_WX218X_NO_AVAILABLE_MEMORY = -2147204575,
+		E_WX218X_START_PHASE = -2147204585,
+		E_WX218X_UBOUND_ARRAY_EQUAL = -2147204578,
+		E_WX218X_UPPER_BOUND_ZERO = -2147204574,
+		E_WX218X_FEATURE_NOT_SUPPORTED = -2147204573,
+		E_WX218X_SIZE_ARRAY_NOT_EQUAL = -2147204572,
+		E_WX218X_DATA_ARRAY_EMPTY = -2147204571,
+		E_WX218X_SEGSIZE_ARBDIG_NOTEQUAL = -2147204570,
+		E_WX218X_SEGSIZE_DIG_NOTEQUAL = -2147204569,
+		E_WX218X_SEGMENT_NOT_EMPTY = -2147204568,
+		E_WX218X_INVALID_FILE_DATA = -2147204567,
+		E_WX218X_DIG_POD_NOT_PRESENT = -2147204566,
+		E_WX218X_INVALID_FILE_LENGTH = -2147204565,
+		E_WX218X_TRACE_MODE_NORMAL = -2147204564,
+		E_WX218X_TRACE_MODE_DUPLICATE = -2147204563,
+		E_WX218X_FILE_SIZE_NOT_EQUAL = -2147204562,
+		E_WX218X_TRACE_MODE_DUPLICATE_FILE = -2147204561,
+		E_WX218X_TRACE_MODE_NORMAL_FILE = -2147204560,
+		E_WX218X_NOT_SUPPORTED_TRACE_MODE = -2147204559,
+		E_WX218X_SEG_NOT_EXIST = -2147204557,
+		E_WX218X_DIG_POD_NOT_EXIST = -2147204558,
+		E_WX218X_COUNT_SEG_NOT_EQUAL = -2147204556,
+		E_WX218X_SIZE_NOT_EQUAL = -2147204554,
+		E_WX218X_TRACE_MODE_NOT_SUPP = -2147204554,
+		E_WX218X_DIG_PORT_BIT_INDEX = -2147204555,
+		E_WX218X_COMMAND_EMPTY = -2147204553,
+	} WX218xErrorCodesEnum;
+
+
+#ifdef CUSTOM_IDL
+#include "CustomEnums.idl"
+#endif
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218x
+	//
+
+	[
+		object,
+		uuid(5f53bb41-b729-45db-8c3e-6b9c932b8898),
+		helpstring("IWX218x interface."),
+		helpcontext(2),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218x : IIviDriver
+	{
+		[helpcontext(45), helpstring("Use this method for an immediate and unconditional termination of the output waveform.")]
+		HRESULT AbortGeneration();
+
+		[helpcontext(144), helpstring("Use this method for an immediate and unconditional generation of the selected output waveform.")]
+		HRESULT InitiateGeneration();
+
+		[helpcontext(235), helpstring("Sets the active channel for programming.")]
+		HRESULT SetActiveChannel([in] BSTR ChName);
+
+		[helpcontext(572), helpstring("Sending scipi command to the instrument.")]
+		HRESULT SendCmd([in] BSTR Command);
+
+		[helpcontext(573), helpstring("Sending scipi command to the instrument and read the answer.")]
+		HRESULT ReadQuery([in] BSTR SendBuff, [in, out] BSTR* ReadBuff);
+
+		[propget, helpcontext(8), helpstring("Pointer to the IWX218xChannel interface.")]
+		HRESULT Output([out, retval] IWX218xChannel** Val);
+
+		[propget, helpcontext(46), helpstring("Pointer to the IWX218xAM interface.")]
+		HRESULT AM([out, retval] IWX218xAM** Val);
+
+		[propget, helpcontext(52), helpstring("Sets the active channel for programming.")]
+		HRESULT ActiveChannel([out, retval] BSTR* Val);
+
+		[propput, helpcontext(52), helpstring("Sets the active channel for programming.")]
+		HRESULT ActiveChannel([in] BSTR Val);
+
+		[propget, helpcontext(65), helpstring("Pointer to the IWX218xStandardWaveform interface.")]
+		HRESULT StandardWaveform([out, retval] IWX218xStandardWaveform** Val);
+
+		[propget, helpcontext(91), helpstring("Pointer to the IWX218xArbitrary interface.")]
+		HRESULT Arbitrary([out, retval] IWX218xArbitrary** Val);
+
+		[propget, helpcontext(130), helpstring("Pointer to the IWX218xCarrierModulation interface.")]
+		HRESULT CarrierModulation([out, retval] IWX218xCarrierModulation** Val);
+
+		[propget, helpcontext(133), helpstring("Pointer to the IWX218xCouple interface.")]
+		HRESULT Couple([out, retval] IWX218xCouple** Val);
+
+		[propget, helpcontext(137), helpstring("Pointer to the IWX218xFM interface.")]
+		HRESULT FM([out, retval] IWX218xFM** Val);
+
+		[propget, helpcontext(145), helpstring("Pointer to the IWX218xMarkers interface.")]
+		HRESULT Markers([out, retval] IWX218xMarkers** Val);
+
+		[propget, helpcontext(152), helpstring("Pointer to the IWX218xTrigger interface.")]
+		HRESULT Trigger([out, retval] IWX218xTrigger** Val);
+
+		[propget, helpcontext(179), helpstring("Pointer to the IWX218xStateStorage interface.")]
+		HRESULT StateStorage([out, retval] IWX218xStateStorage** Val);
+
+		[propget, helpcontext(190), helpstring("Pointer to the IWX218xXInstrument interface.")]
+		HRESULT XInstrument([out, retval] IWX218xXInstrument** Val);
+
+		[propget, helpcontext(194), helpstring("Pointer to the IWX218xDigitalPulse interface.")]
+		HRESULT DigitalPulse([out, retval] IWX218xDigitalPulse** Val);
+
+		[propget, helpcontext(219), helpstring("Pointer to the IWX218xSweep interface.")]
+		HRESULT Sweep([out, retval] IWX218xSweep** Val);
+
+		[propget, helpcontext(243), helpstring("Pointer to the IWX218xDigitalPatternOutput interface.")]
+		HRESULT DigitalPatternOutput([out, retval] IWX218xDigitalPatternOutput** Val);
+
+		[propget, helpcontext(255), helpstring("Pointer to the IWX218xCHIRP interface.")]
+		HRESULT CHIRP([out, retval] IWX218xCHIRP** Val);
+
+		[propget, helpcontext(271), helpstring("Pointer to the IWX218xFSK interface.")]
+		HRESULT FSK([out, retval] IWX218xFSK** Val);
+
+		[propget, helpcontext(275), helpstring("Pointer to the IWX218xASK interface.")]
+		HRESULT ASK([out, retval] IWX218xASK** Val);
+
+		[propget, helpcontext(280), helpstring("Pointer to the IWX218xFHOP interface.")]
+		HRESULT FHOP([out, retval] IWX218xFHOP** Val);
+
+		[propget, helpcontext(285), helpstring("Pointer to the IWX218xAHOP interface.")]
+		HRESULT AHOP([out, retval] IWX218xAHOP** Val);
+
+		[propget, helpcontext(289), helpstring("Pointer to the IWX218xPattern interface.")]
+		HRESULT Pattern([out, retval] IWX218xPattern** Val);
+
+		[propget, helpcontext(313), helpstring("Pointer to the IWX218xPSK interface.")]
+		HRESULT PSK([out, retval] IWX218xPSK** Val);
+
+		[propget, helpcontext(322), helpstring("Pointer to the IWX218xQAM interface.")]
+		HRESULT QAM([out, retval] IWX218xQAM** Val);
+
+		[propget, helpcontext(310), helpstring("Fine skew adjustment.")]
+		HRESULT Skew([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(310), helpstring("Fine skew adjustment.")]
+		HRESULT Skew([in] BSTR Channel, [in] double Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xChannel
+	//
+
+	[
+		object,
+		uuid(7c73a664-20bb-4490-9091-0640507a551d),
+		helpstring(""),
+		helpcontext(5),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xChannel : IUnknown
+	{
+		[helpcontext(470), helpstring("Use this method to set the frequency range that will be applied to the reference oscillator input.")]
+		HRESULT ConfigureRefExtFrequency([in] BSTR Channel, [in] double ExtFreq);
+
+		[helpcontext(500), helpstring("Use this method to set the external frequency (for 4 Ch. models).")]
+		HRESULT ConfigureExtFrequency([in] BSTR Channel, [in] enum WX218xExtFrequencyEnum ExtFrequency);
+
+		[helpcontext(565), helpstring("Sets the output on and off for all channels (for 4 Ch. models).")]
+		HRESULT ConfigureOutputStateAllCh([in] VARIANT_BOOL State);
+
+		[helpcontext(566), helpstring("Use this method to set the type of the output amplifier that will be placed between the DAC and the output connectors for all channels (for 4 Ch. models).")]
+		HRESULT ConfigureCoupleAllCh([in] enum WX218xOutputCoupleEnum Couple);
+
+		[propget, helpcontext(6), helpstring("Returns the number of Channels.")]
+		HRESULT Count([out, retval] long* Val);
+
+		[propget, helpcontext(7), helpstring("Returns channel name for selected index.")]
+		HRESULT Name([in] long Index, [out, retval] BSTR* Val);
+
+		[propget, helpcontext(53), helpstring("Use this property to set or query the type of the output amplifier that will be placed between the DAC and the output connectors. The instrument has three separate amplifiers for the output path: DC, AC and HV.")]
+		HRESULT Couple([in] BSTR Channel, [out, retval] enum WX218xOutputCoupleEnum* Val);
+
+		[propput, helpcontext(53), helpstring("Use this property to set or query the type of the output amplifier that will be placed between the DAC and the output connectors. The instrument has three separate amplifiers for the output path: DC, AC and HV.")]
+		HRESULT Couple([in] BSTR Channel, [in] enum WX218xOutputCoupleEnum Val);
+
+		[propget, helpcontext(54), helpstring("Sets the output on and off.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(54), helpstring("Sets the output on and off.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(55), helpstring("This property configures the operation mode of the function generator.")]
+		HRESULT OperationMode([in] BSTR Channel, [out, retval] enum WX218xOperationModeEnum* Val);
+
+		[propput, helpcontext(55), helpstring("This property configures the operation mode of the function generator.")]
+		HRESULT OperationMode([in] BSTR Channel, [in] enum WX218xOperationModeEnum Val);
+
+		[propget, helpcontext(56), helpstring("Use this property to set or query the type of waveform that will be available at the output connector.")]
+		HRESULT OutputMode([out, retval] enum WX218xOutputModeEnum* Val);
+
+		[propput, helpcontext(56), helpstring("Use this property to set or query the type of waveform that will be available at the output connector.")]
+		HRESULT OutputMode([in] enum WX218xOutputModeEnum Val);
+
+		[propget, helpcontext(57), helpstring("Use this property to set or query the source of the 10 MHz reference.")]
+		HRESULT ReferenceClockSource([out, retval] enum WX218xReferenceClockSourceEnum* Val);
+
+		[propput, helpcontext(57), helpstring("Use this property to set or query the source of the 10 MHz reference.")]
+		HRESULT ReferenceClockSource([in] enum WX218xReferenceClockSourceEnum Val);
+
+		[propget, helpcontext(58), helpstring("Use this property to set or query the frequency range that will be applied to the reference oscillator input.")]
+		HRESULT RefExtFrequency([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(58), helpstring("Use this property to set or query the frequency range that will be applied to the reference oscillator input.")]
+		HRESULT RefExtFrequency([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(59), helpstring("Pointer to the IWX218xChannelSync interface.")]
+		HRESULT Sync([out, retval] IWX218xChannelSync** Val);
+
+		[propget, helpcontext(499), helpstring("Use this property to set or query the external frequency.")]
+		HRESULT ExtFrequency([in] BSTR Channel, [out, retval] enum WX218xExtFrequencyEnum* Val);
+
+		[propput, helpcontext(499), helpstring("Use this property to set or query the external frequency.")]
+		HRESULT ExtFrequency([in] BSTR Channel, [in] enum WX218xExtFrequencyEnum Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xAM
+	//
+
+	[
+		object,
+		uuid(df8beabf-8254-4003-bb83-9a597df1e6aa),
+		helpstring("IWX218xAM interface."),
+		helpcontext(46),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xAM : IUnknown
+	{
+		[helpcontext(47), helpstring("Programs the AM parameters.")]
+		HRESULT ConfigureInternal([in] double Depth, [in] enum WX218xAMInternalWaveformEnum Waveform, [in] double Frequency);
+
+		[helpcontext(386), helpstring("This method configures whether the function generator applies amplitude modulation to a channel.")]
+		HRESULT ConfigureAMEnabled([in] BSTR Channel, [in] VARIANT_BOOL Enabled);
+
+		[propget, helpcontext(48), helpstring("This property configures whether the function generator applies amplitude modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(48), helpstring("This property configures whether the function generator applies amplitude modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(49), helpstring("Programs the depth of the modulating waveform in units of percent.")]
+		HRESULT InternalDepth([out, retval] double* Val);
+
+		[propput, helpcontext(49), helpstring("Programs the depth of the modulating waveform in units of percent.")]
+		HRESULT InternalDepth([in] double Val);
+
+		[propget, helpcontext(50), helpstring("Select one of the waveform shapes as the active modulating waveform.")]
+		HRESULT InternalWaveform([out, retval] enum WX218xAMInternalWaveformEnum* Val);
+
+		[propput, helpcontext(50), helpstring("Select one of the waveform shapes as the active modulating waveform.")]
+		HRESULT InternalWaveform([in] enum WX218xAMInternalWaveformEnum Val);
+
+		[propget, helpcontext(51), helpstring("Programs the frequency of the modulating waveform in units of Hz.")]
+		HRESULT InternalFrequency([out, retval] double* Val);
+
+		[propput, helpcontext(51), helpstring("Programs the frequency of the modulating waveform in units of Hz.")]
+		HRESULT InternalFrequency([in] double Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xChannelSync
+	//
+
+	[
+		object,
+		uuid(7e13f2a4-751b-4bc3-8197-91f8576a5428),
+		helpstring("IWX218xChannelSync interface."),
+		helpcontext(59),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xChannelSync : IUnknown
+	{
+		[helpcontext(471), helpstring("This method will set the state of the sync output.")]
+		HRESULT ConfigureSyncEnabled([in] BSTR Channel, [in] VARIANT_BOOL Enabled);
+
+		[helpcontext(472), helpstring("Use this method to set the shape of the sync pulse.")]
+		HRESULT ConfigureSyncFunction([in] BSTR Channel, [in] enum WX218xOutputSyncFunctionEnum Function);
+
+		[helpcontext(473), helpstring("Sets the SYNC position in waveform points.")]
+		HRESULT ConfigureSyncPosition([in] BSTR Channel, [in] long Position);
+
+		[helpcontext(474), helpstring("Use this method to set the source of the sync pulse.")]
+		HRESULT ConfigureSyncSource([in] enum WX218xOutputSyncSourceEnum Source);
+
+		[helpcontext(475), helpstring("Sets the SYNC width in waveform points.")]
+		HRESULT ConfigureSyncWidth([in] BSTR Channel, [in] long Width);
+
+		[propget, helpcontext(60), helpstring("This property will set or query the state of the sync output.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(60), helpstring("This property will set or query the state of the sync output.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(61), helpstring("Use this property to set or query the shape of the sync pulse.")]
+		HRESULT Function([in] BSTR Channel, [out, retval] enum WX218xOutputSyncFunctionEnum* Val);
+
+		[propput, helpcontext(61), helpstring("Use this property to set or query the shape of the sync pulse.")]
+		HRESULT Function([in] BSTR Channel, [in] enum WX218xOutputSyncFunctionEnum Val);
+
+		[propget, helpcontext(62), helpstring("Sets the SYNC position in waveform points.")]
+		HRESULT Position([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(62), helpstring("Sets the SYNC position in waveform points.")]
+		HRESULT Position([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(63), helpstring("Use this property to set or query the source of the sync pulse.")]
+		HRESULT Source([out, retval] enum WX218xOutputSyncSourceEnum* Val);
+
+		[propput, helpcontext(63), helpstring("Use this property to set or query the source of the sync pulse.")]
+		HRESULT Source([in] enum WX218xOutputSyncSourceEnum Val);
+
+		[propget, helpcontext(64), helpstring("Sets the SYNC width in waveform points.")]
+		HRESULT Width([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(64), helpstring("Sets the SYNC width in waveform points.")]
+		HRESULT Width([in] BSTR Channel, [in] long Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xStandardWaveform
+	//
+
+	[
+		object,
+		uuid(5897b7fa-6a10-4b53-8a2e-16b43e06da76),
+		helpstring("IWX218xStandardWaveform interface."),
+		helpcontext(65),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xStandardWaveform : IUnknown
+	{
+		[helpcontext(68), helpstring("This method configures the parameters of the function generator for the  ramp waveform.")]
+		HRESULT ConfigureRampWaveform([in] BSTR Channel, [in] double Delay, [in] double RiseTime, [in] double FallTime);
+
+		[helpcontext(80), helpstring("This method sets the maximum amplitude value.")]
+		HRESULT SetAmplitudeMax([in] BSTR Channel);
+
+		[helpcontext(81), helpstring("This method sets the minimum amplitude value.")]
+		HRESULT SetAmplitudeMin([in] BSTR Channel);
+
+		[helpcontext(82), helpstring("This method sets the maximum DC offset value.")]
+		HRESULT SetDCOffsetMax([in] BSTR Channel);
+
+		[helpcontext(83), helpstring("This method sets the minimum DC offset value.")]
+		HRESULT SetDCOffsetMin([in] BSTR Channel);
+
+		[helpcontext(84), helpstring("This method sets the maximum frequency value.")]
+		HRESULT SetFrequencyMax([in] BSTR Channel);
+
+		[helpcontext(85), helpstring("This method sets the minimum frequency value.")]
+		HRESULT SetFrequencyMin([in] BSTR Channel);
+
+		[helpcontext(86), helpstring("This method sets the maximum power value (not for 4Ch. models,WS835x).")]
+		HRESULT SetPowerMax([in] BSTR Channel);
+
+		[helpcontext(87), helpstring("This method sets the minimum power value (not for 4Ch. models,WS835x).")]
+		HRESULT SetPowerMin([in] BSTR Channel);
+
+		[helpcontext(90), helpstring("This method configures the parameters of the function generator that affect standard waveform generation.")]
+		HRESULT Configure([in] BSTR Channel, [in] enum WX218xWaveformEnum Waveform, [in] double Amplitude, [in] double DCOffset, [in] double Frequency, [in] double StartPhase);
+
+		[helpcontext(528), helpstring("Programs the DC offset parameter in units of volts.")]
+		HRESULT ConfigureDCLevel([in] BSTR Channel, [in] double DcLevel);
+
+		[helpcontext(529), helpstring("Programs the duty cycle of the standard square waveform in units of percent.")]
+		HRESULT ConfigureDutyCycle([in] BSTR Channel, [in] double DutyCycle);
+
+		[helpcontext(530), helpstring("Programs the exponent parameter.")]
+		HRESULT ConfigureExponenent([in] BSTR Channel, [in] long Exponent);
+
+		[helpcontext(531), helpstring("Use this method to set the exponent for the standard Gaussian pulse waveform.")]
+		HRESULT ConfigureGauss([in] BSTR Channel, [in] long Gauss);
+
+		[helpcontext(532), helpstring("Sets the HV amplitude of the standard waveform.")]
+		HRESULT ConfigureHvAmplitude([in] BSTR Channel, [in] double HvAmplitude);
+
+		[helpcontext(533), helpstring("Use this method to the output power (not for 4Ch. models,WS835x).")]
+		HRESULT ConfigurePower([in] BSTR Channel, [in] double Power);
+
+		[helpcontext(534), helpstring("Use this method to set number of cycles of the standard SINC pulse waveform.")]
+		HRESULT ConfigureSincNCycles([in] BSTR Channel, [in] long Cycles);
+
+		[helpcontext(567), helpstring("Sets the amplitude of the standard waveform for all channels (only for 4Ch. models).")]
+		HRESULT ConfigureAmplitudeAllCh([in] double Amplitude);
+
+		[helpcontext(568), helpstring("Sets the HV amplitude of the standard waveform for all channels (only for 4Ch. models).")]
+		HRESULT ConfigureHVAmplAllCh([in] double HVAmplitude);
+
+		[helpcontext(569), helpstring("Use this method to set dc offset of the output waveform for all channels (only for 4Ch. models).")]
+		HRESULT ConfigureOffsetAllCh([in] double Offset);
+
+		[propget, helpcontext(66), helpstring("Sets the amplitude of the standard waveform.")]
+		HRESULT Amplitude([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(66), helpstring("Sets the amplitude of the standard waveform.")]
+		HRESULT Amplitude([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(70), helpstring("Programs the DC offset parameter in units of volts.")]
+		HRESULT DcLevel([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(70), helpstring("Programs the DC offset parameter in units of volts.")]
+		HRESULT DcLevel([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(71), helpstring("Use this property to set or query the dc offset of the output waveform.")]
+		HRESULT DCOffset([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(71), helpstring("Use this property to set or query the dc offset of the output waveform.")]
+		HRESULT DCOffset([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(72), helpstring("Programs the duty cycle of the standard square waveform in units of percent.")]
+		HRESULT DutyCycleHigh([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(72), helpstring("Programs the duty cycle of the standard square waveform in units of percent.")]
+		HRESULT DutyCycleHigh([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(73), helpstring("Programs the exponent parameter.")]
+		HRESULT ExpExponent([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(73), helpstring("Programs the exponent parameter.")]
+		HRESULT ExpExponent([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(74), helpstring("Use this property to set or query the frequency of the standard waveforms in units of hertz (Hz).")]
+		HRESULT Frequency([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(74), helpstring("Use this property to set or query the frequency of the standard waveforms in units of hertz (Hz).")]
+		HRESULT Frequency([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(75), helpstring("Use this property to set or query the exponent for the standard Gaussian pulse waveform.")]
+		HRESULT GaussExponent([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(75), helpstring("Use this property to set or query the exponent for the standard Gaussian pulse waveform.")]
+		HRESULT GaussExponent([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(76), helpstring("Use this property to set or query the output power.")]
+		HRESULT Power([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(76), helpstring("Use this property to set or query the output power.")]
+		HRESULT Power([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(77), helpstring("Programs the ramp delay parameter in units of percent.")]
+		HRESULT RampDelay([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(77), helpstring("Programs the ramp delay parameter in units of percent.")]
+		HRESULT RampDelay([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(78), helpstring("Programs the ramp fall time parameter in units of percent.")]
+		HRESULT RampFallTime([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(78), helpstring("Programs the ramp fall time parameter in units of percent.")]
+		HRESULT RampFallTime([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(79), helpstring("Programs the ramp rise time parameter in units of percent.")]
+		HRESULT RampRiseTime([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(79), helpstring("Programs the ramp rise time parameter in units of percent.")]
+		HRESULT RampRiseTime([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(88), helpstring("Use this property to set or query the number of cycles of the standard SINC pulse waveform.")]
+		HRESULT SincNCycle([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(88), helpstring("Use this property to set or query the number of cycles of the standard SINC pulse waveform.")]
+		HRESULT SincNCycle([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(89), helpstring("Sets the horizontal offset of the standard waveform.")]
+		HRESULT StartPhase([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(89), helpstring("Sets the horizontal offset of the standard waveform.")]
+		HRESULT StartPhase([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(233), helpstring("Sets the HV amplitude of the standard waveform.")]
+		HRESULT HvAmplitude([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(233), helpstring("Sets the HV amplitude of the standard waveform.")]
+		HRESULT HvAmplitude([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(67), helpstring("Selects the standard waveform that you want the function generator to produce.")]
+		HRESULT Waveform([in] BSTR Channel, [out, retval] enum WX218xWaveformEnum* Val);
+
+		[propput, helpcontext(67), helpstring("Selects the standard waveform that you want the function generator to produce.")]
+		HRESULT Waveform([in] BSTR Channel, [in] enum WX218xWaveformEnum Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xArbitrary
+	//
+
+	[
+		object,
+		uuid(2cb79de8-c3f8-4552-8619-a6af9da4108f),
+		helpstring("IWX218xArbitrary interface."),
+		helpcontext(91),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xArbitrary : IUnknown
+	{
+		[helpcontext(92), helpstring("This method will delete all predefined segments and will clear the entire waveform memory space for the active channel.")]
+		HRESULT ClearMemory();
+
+		[helpcontext(98), helpstring("Use this method to set the maximum sample clock frequency of the arbitrary waveform in units of samples per second (Sa/s).")]
+		HRESULT SetSampleRateMax();
+
+		[helpcontext(99), helpstring("Use this method to set the minimum sample clock frequency of the arbitrary waveform in units of samples per second (Sa/s).")]
+		HRESULT SetSampleRateMin();
+
+		[helpcontext(387), helpstring("Will set the external sample clock frequency divider (not for 4Ch. models).")]
+		HRESULT ConfigureClockDivider([in] BSTR Channel, [in] long ClockDivider);
+
+		[helpcontext(388), helpstring("Selects the internal or external sample clock input.")]
+		HRESULT ConfigureSampleRateSource([in] BSTR Channel, [in] enum WX218xSampleRateSourceEnum SampleRateSource);
+
+		[helpcontext(389), helpstring("Configures the source of the segment select command.")]
+		HRESULT ConfigureArbSource([in] BSTR Channel, [in] enum WX218xArbitrarySourceEnum Source);
+
+		[helpcontext(390), helpstring("Use this method to set the timing characteristics of the trace select command.")]
+		HRESULT ConfigureArbTiming([in] BSTR Channel, [in] enum WX218xArbitraryTimingEnum Timing);
+
+		[helpcontext(583), helpstring("Use this method to configure Frequency Raster Divider (only for 4Ch. models).")]
+		HRESULT ConfigureFreqRastDivider([in] BSTR Channel, [in] enum WX218xFreqDividerEnum Divider);
+
+		[helpcontext(584), helpstring("Specifies the factor by which the function generator scales the arbitrary waveforms.")]
+		HRESULT ConfigureArbGain([in] BSTR Channel, [in] double Gain);
+
+		[helpcontext(585), helpstring("Specifies the value the function generator adds to the arbitrary waveforms.")]
+		HRESULT ConfigureArbOffset([in] BSTR Channel, [in] double Offset);
+
+		[helpcontext(586), helpstring("Will set the sample clock frequency of the arbitrary and sequenced waveform in units of Sa/s.")]
+		HRESULT ConfigureArbSampleRate([in] double SampleRate);
+
+		[propget, helpcontext(93), helpstring("Will set the external sample clock frequency divider.")]
+		HRESULT ClockDivider([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(93), helpstring("Will set the external sample clock frequency divider.")]
+		HRESULT ClockDivider([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(94), helpstring("Specifies the factor by which the function generator scales the arbitrary waveforms.")]
+		HRESULT Gain([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(94), helpstring("Specifies the factor by which the function generator scales the arbitrary waveforms.")]
+		HRESULT Gain([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(95), helpstring("Specifies the value the function generator adds to the arbitrary waveforms.")]
+		HRESULT Offset([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(95), helpstring("Specifies the value the function generator adds to the arbitrary waveforms.")]
+		HRESULT Offset([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(96), helpstring("Will set the sample clock frequency of the arbitrary and sequenced waveform in units of Sa/s.")]
+		HRESULT SampleRate([out, retval] double* Val);
+
+		[propput, helpcontext(96), helpstring("Will set the sample clock frequency of the arbitrary and sequenced waveform in units of Sa/s.")]
+		HRESULT SampleRate([in] double Val);
+
+		[propget, helpcontext(97), helpstring("Selects the internal or external sample clock input.")]
+		HRESULT SampleRateSource([in] BSTR Channel, [out, retval] enum WX218xSampleRateSourceEnum* Val);
+
+		[propput, helpcontext(97), helpstring("Selects the internal or external sample clock input.")]
+		HRESULT SampleRateSource([in] BSTR Channel, [in] enum WX218xSampleRateSourceEnum Val);
+
+		[propget, helpcontext(100), helpstring("Use this property to set or query the source of the segment select command.")]
+		HRESULT Source([in] BSTR Channel, [out, retval] enum WX218xArbitrarySourceEnum* Val);
+
+		[propput, helpcontext(100), helpstring("Use this property to set or query the source of the segment select command.")]
+		HRESULT Source([in] BSTR Channel, [in] enum WX218xArbitrarySourceEnum Val);
+
+		[propget, helpcontext(101), helpstring("Use this property to set or query the timing characteristics of the trace select command.")]
+		HRESULT Timing([in] BSTR Channel, [out, retval] enum WX218xArbitraryTimingEnum* Val);
+
+		[propput, helpcontext(101), helpstring("Use this property to set or query the timing characteristics of the trace select command.")]
+		HRESULT Timing([in] BSTR Channel, [in] enum WX218xArbitraryTimingEnum Val);
+
+		[propget, helpcontext(102), helpstring("Pointer to the IWX218xArbitraryWaveform interface.")]
+		HRESULT Waveform([out, retval] IWX218xArbitraryWaveform** Val);
+
+		[propget, helpcontext(111), helpstring("Pointer to the IWX218xArbitrarySequence interface.")]
+		HRESULT Sequence([out, retval] IWX218xArbitrarySequence** Val);
+
+		[propget, helpcontext(497), helpstring("")]
+		HRESULT FreqRastDivider([in] BSTR Channel, [out, retval] enum WX218xFreqDividerEnum* Val);
+
+		[propput, helpcontext(497), helpstring("")]
+		HRESULT FreqRastDivider([in] BSTR Channel, [in] enum WX218xFreqDividerEnum Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xArbitraryWaveform
+	//
+
+	[
+		object,
+		uuid(5cb181df-5a2c-4013-b17e-d36e407429b6),
+		helpstring("IWX218xArbitraryWaveform interface."),
+		helpcontext(102),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xArbitraryWaveform : IUnknown
+	{
+		[helpcontext(103), helpstring("This method will delete a predefined segment from the working memory or all predefined segments and will clear the entire waveform memory space.")]
+		HRESULT Clear([in] long Handle);
+
+		[helpcontext(104), helpstring("This method configures the parameters of the function generator that affect arbitrary waveform generation.")]
+		HRESULT Configure([in] BSTR Channel, [in] long Handle, [in] double Gain, [in] double Offset);
+
+		[helpcontext(105), helpstring("This method creates an arbitrary waveform from array of Data values.")]
+		HRESULT Create([in] SAFEARRAY(double)* Data, [out, retval] long* Val);
+
+		[helpcontext(106), helpstring("This method load waveform from file and create an arbitrary waveform.")]
+		HRESULT LoadArbWfmFromFile([in] BSTR Channel, [in] BSTR FileName, [out, retval] long* Val);
+
+		[helpcontext(232), helpstring("This method creates an arbitrary waveform from array of Data (short) values,that are already in range from 0 to 4095 (WX2181, WX2182) and from 0 to 16383 (WX2181B, WX2182B,WX2182C,WX1281B,WX1282B,WS8351,WS8352,WX2184,WX1284,WX2184C,WX1284C).")]
+		HRESULT CreateCustom([in] SAFEARRAY(short)* Data, [out, retval] long* Val);
+
+		[helpcontext(369), helpstring("This method creates two arbitrary waveforms from specified files and download them in to the memory when trace mode Combine (only for 4Ch. models).")]
+		HRESULT LoadArbWfmFromFileAdv([in] BSTR Channel, [in] BSTR FileName1, [in] BSTR FileName2, [in, out] long* Handle1, [in, out] long* Handle2);
+
+		[helpcontext(370), helpstring("This method download an arbitrary waveform from arrays of Data (short) values,that are already in range from  0 to 16383 in to the both channels(Channel1 and Channel2,Channel3 and Channel4) when trace mode is Double or Combine (only for 4Ch. models).")]
+		HRESULT CreateCustomAdv([in] SAFEARRAY(short)* Data1, [in] SAFEARRAY(short)* Data2, [in, out] long* Handle1, [in, out] long* Handle2);
+
+		[helpcontext(376), helpstring("This method sets the selected segments for the two part simultaneously (only for 4Ch. models).")]
+		HRESULT SetCoupleActiveSegment([in] long SegNum1, [in] long SegNum2);
+
+		[helpcontext(378), helpstring("Sets active segment for selected Channel.")]
+		HRESULT SetActiveSegment([in] BSTR Channel, [in] long SegNum);
+
+		[helpcontext(392), helpstring("Use this method to configure the trace mode (only for 4Ch. models).")]
+		HRESULT ConfigureArbWaveTraceMode([in] enum WX218xTraceModeEnum TraceMode);
+
+		[helpcontext(553), helpstring("This method load from binary file and create an arbitrary waveform.")]
+		HRESULT LoadBinaryArbWfmFromFile([in] BSTR Channel, [in] BSTR FileName, [out, retval] long* Val);
+
+		[helpcontext(554), helpstring("This method creates two binary arbitrary waveforms from specified files and download them in to the memory when trace mode is Combine (only for 4Ch. models).")]
+		HRESULT LoadBinaryArbWfmFromFileAdv([in] BSTR Channel, [in] BSTR FileName1, [in] BSTR FileName2, [in, out] long* Handle1, [in, out] long* Handle2);
+
+		[helpcontext(555), helpstring("This method load ascii waveform from file and create an arbitrary waveform.")]
+		HRESULT LoadAsciiArbWfmFromFile([in] BSTR Channel, [in] BSTR FileName, [out, retval] long* Val);
+
+		[helpcontext(556), helpstring("This method creates two arbitrary waveforms from specified ascii files and download them in to the memory when trace mode is Combine (only for 4Ch. models).")]
+		HRESULT LoadAsciiArbWfmFromFileAdv([in] BSTR Channel, [in] BSTR FileName1, [in] BSTR FileName2, [in, out] long* Handle1, [in, out] long* Handle2);
+
+		[helpcontext(561), helpstring("Enable or Disable record all downloaded waves on internal flash (only for 4Ch. models).")]
+		HRESULT ConfigureDownloadRecord([in] enum WX218xArbDownloadRecordEnum DownloadRecord);
+
+		[helpcontext(581), helpstring("This method load csv waveform from file and create an arbitrary waveform.")]
+		HRESULT LoadCSVFile([in] BSTR Channel, [in] BSTR FileName, [out, retval] long* Val);
+
+		[helpcontext(582), helpstring("This method creates two arbitrary waveforms from specified ascii files and download them in to the memory when trace mode is Combine (only for 4Ch. models).")]
+		HRESULT LoadCSVFileAdv([in] BSTR Channel, [in] BSTR FileName1, [in] BSTR FileName2, [in, out] long* Handle1, [in, out] long* Handle2);
+
+		[propget, helpcontext(107), helpstring("Returns the maximum number of arbitrary waveforms that the function generator allows.")]
+		HRESULT NumberWaveformsMax([out, retval] long* Val);
+
+		[propget, helpcontext(108), helpstring("The size (i.e. number of points) of each waveform must be a multiple of a constant quantum value.")]
+		HRESULT Quantum([out, retval] long* Val);
+
+		[propget, helpcontext(109), helpstring("Returns the maximum number of points the function generator allows in a waveform.")]
+		HRESULT SizeMax([out, retval] long* Val);
+
+		[propget, helpcontext(110), helpstring("Returns the minimum number of points the function generator allows in a waveform.")]
+		HRESULT SizeMin([out, retval] long* Val);
+
+		[propget, helpcontext(367), helpstring("Use this property to set or query the trace mode.")]
+		HRESULT TraceMode([out, retval] enum WX218xTraceModeEnum* Val);
+
+		[propput, helpcontext(367), helpstring("Use this property to set or query the trace mode.")]
+		HRESULT TraceMode([in] enum WX218xTraceModeEnum Val);
+
+		[propget, helpcontext(552), helpstring("")]
+		HRESULT FastDownload([out, retval] long* Val);
+
+		[propput, helpcontext(552), helpstring("")]
+		HRESULT FastDownload([in] long Val);
+
+		[propget, helpcontext(560), helpstring("Enable or Disable record all downloaded waves on internal flash.")]
+		HRESULT DownloadRecord([out, retval] enum WX218xArbDownloadRecordEnum* Val);
+
+		[propput, helpcontext(560), helpstring("Enable or Disable record all downloaded waves on internal flash.")]
+		HRESULT DownloadRecord([in] enum WX218xArbDownloadRecordEnum Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xArbitrarySequence
+	//
+
+	[
+		object,
+		uuid(27cd29ca-aac3-441f-af84-4b6f383b202b),
+		helpstring("IWX218xArbitrarySequence interface."),
+		helpcontext(111),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xArbitrarySequence : IUnknown
+	{
+		[helpcontext(113), helpstring("Use this method to delete specified sequence or to delete all sequences and to free space for fresh sequence tables (not for WS8351,WS8352).")]
+		HRESULT Clear([in] long Handle);
+
+		[helpcontext(114), helpstring("This method configures the parameters of the function generator that affect arbitrary sequence generation (not for WS8351,WS8352).")]
+		HRESULT Configure([in] BSTR Channel, [in] long Handle, [in] double Gain, [in] double Offset);
+
+		[helpcontext(115), helpstring("This method creates an arbitrary sequence from an array of waveform handles and an array of corresponding loop counts (not for WS8351,WS8352).")]
+		HRESULT Create([in] SAFEARRAY(long)* WfmHandle, [in] SAFEARRAY(long)* LoopCount, [out, retval] long* Val);
+
+		[helpcontext(116), helpstring("This method creates an arbitrary sequence from an array of waveform handles, array of corresponding loop counts and array of JumpFlag (not for WS8351,WS8352).")]
+		HRESULT CreateSequenceAdv([in] SAFEARRAY(long)* WfmHandle, [in] SAFEARRAY(long)* LoopCount, [in] SAFEARRAY(BYTE)* JumpFlag, [out, retval] long* Val);
+
+		[helpcontext(377), helpstring("This method sets the selected seq numbers for the two part simultaneously (only for 4Ch. models).")]
+		HRESULT SetCoupleActiveSequence([in] long SeqNum1, [in] long SeqNum2);
+
+		[helpcontext(379), helpstring("Sets active sequence for selected Channel (not for WS8351,WS8352).")]
+		HRESULT SetActiveSequence([in] BSTR Channel, [in] long SeqNum);
+
+		[helpcontext(380), helpstring("This method creates an arbitrary sequence from an array of waveform handles, array of corresponding loop counts and array of JumpFlag (not for WS8351,WS8352).")]
+		HRESULT CreateSequenceAdv1([in] SAFEARRAY(long)* WfmHandle, [in] SAFEARRAY(long)* LoopCount, [in] SAFEARRAY(long)* JumpFlag, [out, retval] long* Val);
+
+		[helpcontext(391), helpstring("Selects the sequence advance mode (not for WS8351,WS8352).")]
+		HRESULT ConfigureAdvanceMode([in] BSTR Channel, [in] enum WX218xSequenceAdvanceModeEnum AdvanceMode);
+
+		[helpcontext(393), helpstring("Use this method to configure  the source of the jump signal (not for WS8351,WS8352).")]
+		HRESULT ConfigureSeqJumpEvent([in] BSTR Channel, [in] enum WX218xSequenceJumpEventEnum JumpEvent);
+
+		[helpcontext(394), helpstring("Sets Sequence Prestep as Wave or DC (not for WS8351,WS8352).")]
+		HRESULT ConfigureSeqPrestep([in] BSTR Channel, [in] enum WX218xSequencePrestepEnum Prestep);
+
+		[helpcontext(395), helpstring("Use this method to configure the source of the sequence (not for WS8351,WS8352).")]
+		HRESULT ConfigureSeqSource([in] BSTR Channel, [in] enum WX218xSequenceSourceEnum Source);
+
+		[helpcontext(396), helpstring("Set sync position to sequence step number (not for WS8351,WS8352).")]
+		HRESULT ConfigureSeqSyncLock([in] BSTR Channel, [in] long SyncLock);
+
+		[helpcontext(397), helpstring("Use this method to configure the timing characteristics of the sequence select command (not for WS8351,WS8352).")]
+		HRESULT ConfigureSeqTiming([in] BSTR Channel, [in] enum WX218xSequenceTimingEnum Timing);
+
+		[helpcontext(571), helpstring("Sets sequence once count (not for WS8351,WS8352).")]
+		HRESULT ConfigureOnceCount([in] BSTR Channel, [in] long Count);
+
+		[propget, helpcontext(112), helpstring("Selects the sequence advance mode.")]
+		HRESULT AdvanceMode([in] BSTR Channel, [out, retval] enum WX218xSequenceAdvanceModeEnum* Val);
+
+		[propput, helpcontext(112), helpstring("Selects the sequence advance mode.")]
+		HRESULT AdvanceMode([in] BSTR Channel, [in] enum WX218xSequenceAdvanceModeEnum Val);
+
+		[propget, helpcontext(117), helpstring("Use this property to set or query the source of the jump signal.")]
+		HRESULT JumpEvent([in] BSTR Channel, [out, retval] enum WX218xSequenceJumpEventEnum* Val);
+
+		[propput, helpcontext(117), helpstring("Use this property to set or query the source of the jump signal.")]
+		HRESULT JumpEvent([in] BSTR Channel, [in] enum WX218xSequenceJumpEventEnum Val);
+
+		[propget, helpcontext(118), helpstring("Returns the maximum number of arbitrary waveforms the function generator allows in a sequence.")]
+		HRESULT LengthMax([out, retval] long* Val);
+
+		[propget, helpcontext(119), helpstring("Returns the minimum number of arbitrary waveforms the function generator allows in a sequence.")]
+		HRESULT LengthMin([out, retval] long* Val);
+
+		[propget, helpcontext(120), helpstring("Returns the maximum number of times the function generator can repeat an arbitrary waveform in a sequence.")]
+		HRESULT LoopCountMax([out, retval] long* Val);
+
+		[propget, helpcontext(121), helpstring("Returns the maximum number of loops that the advanced sequence can execute when its advance mode is programmed to ONCE.")]
+		HRESULT NumberSequenceMax([out, retval] long* Val);
+
+		[propget, helpcontext(122), helpstring("Use this property to set or query the source of the sequence.")]
+		HRESULT Source([in] BSTR Channel, [out, retval] enum WX218xSequenceSourceEnum* Val);
+
+		[propput, helpcontext(122), helpstring("Use this property to set or query the source of the sequence.")]
+		HRESULT Source([in] BSTR Channel, [in] enum WX218xSequenceSourceEnum Val);
+
+		[propget, helpcontext(123), helpstring("Set sync position to sequence step number.")]
+		HRESULT SyncLock([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(123), helpstring("Set sync position to sequence step number.")]
+		HRESULT SyncLock([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(124), helpstring("Use this property to set or query the timing characteristics of the sequence select command.")]
+		HRESULT Timing([in] BSTR Channel, [out, retval] enum WX218xSequenceTimingEnum* Val);
+
+		[propput, helpcontext(124), helpstring("Use this property to set or query the timing characteristics of the sequence select command.")]
+		HRESULT Timing([in] BSTR Channel, [in] enum WX218xSequenceTimingEnum Val);
+
+		[propget, helpcontext(125), helpstring("Pointer to the IWX218xArbitrarySequenceAdvanceSequence interface.")]
+		HRESULT AdvanceSequence([out, retval] IWX218xArbitrarySequenceAdvanceSequence** Val);
+
+		[propget, helpcontext(69), helpstring("If user want to download sequence table in quick mode, he must set this proprty to 1, else to 0.")]
+		HRESULT QuickSequence([out, retval] long* Val);
+
+		[propput, helpcontext(69), helpstring("If user want to download sequence table in quick mode, he must set this proprty to 1, else to 0.")]
+		HRESULT QuickSequence([in] long Val);
+
+		[propget, helpcontext(242), helpstring("Sets Sequence Prestep as Wave or DC.")]
+		HRESULT Prestep([in] BSTR Channel, [out, retval] enum WX218xSequencePrestepEnum* Val);
+
+		[propput, helpcontext(242), helpstring("Sets Sequence Prestep as Wave or DC.")]
+		HRESULT Prestep([in] BSTR Channel, [in] enum WX218xSequencePrestepEnum Val);
+
+		[propget, helpcontext(570), helpstring("Sets or query sequence once count.")]
+		HRESULT OnceCount([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(570), helpstring("Sets or query sequence once count.")]
+		HRESULT OnceCount([in] BSTR Channel, [in] long Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xArbitrarySequenceAdvanceSequence
+	//
+
+	[
+		object,
+		uuid(807128bd-9c38-4a56-a29c-38bb1b751f24),
+		helpstring("IWX218xArbitrarySequenceAdvanceSequence interface."),
+		helpcontext(125),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xArbitrarySequenceAdvanceSequence : IUnknown
+	{
+		[helpcontext(126), helpstring("Creates an advanced sequence table (not for WS8351,WS8352).")]
+		HRESULT CreateAdvSequence([in] SAFEARRAY(long)* SeqHandle, [in] SAFEARRAY(long)* LoopCount, [in] SAFEARRAY(BYTE)* JumpFlag);
+
+		[helpcontext(127), helpstring("Use this method to delete and reset the contents of the advanced sequencing table (not for WS8351,WS8352).")]
+		HRESULT DeleteAdvSequence();
+
+		[helpcontext(381), helpstring("Creates an advanced sequence table (not for WS8351,WS8352).")]
+		HRESULT CreateAdvSequence1([in] SAFEARRAY(long)* SeqHandle, [in] SAFEARRAY(long)* LoopCount, [in] SAFEARRAY(long)* JumpFlag);
+
+		[helpcontext(575), helpstring("Sets advance sequence once count (not for WS8351,WS8352).")]
+		HRESULT ConfigureOnceCount([in] BSTR Channel, [in] long Count);
+
+		[propget, helpcontext(128), helpstring("This property will select the sequence advance mode, which defines how the output advances through the sequencer steps. There are three advance modes: automatic, once and stepped.")]
+		HRESULT Mode([in] BSTR Channel, [out, retval] enum WX218xAdvanceSequenceModeEnum* Val);
+
+		[propput, helpcontext(128), helpstring("This property will select the sequence advance mode, which defines how the output advances through the sequencer steps. There are three advance modes: automatic, once and stepped.")]
+		HRESULT Mode([in] BSTR Channel, [in] enum WX218xAdvanceSequenceModeEnum Val);
+
+		[propget, helpcontext(129), helpstring("Set sync position to advance sequence step number")]
+		HRESULT SyncLock([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(129), helpstring("Set sync position to advance sequence step number")]
+		HRESULT SyncLock([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(574), helpstring("Sets or query advance sequence once count.")]
+		HRESULT OnceCount([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(574), helpstring("Sets or query advance sequence once count.")]
+		HRESULT OnceCount([in] BSTR Channel, [in] long Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xCarrierModulation
+	//
+
+	[
+		object,
+		uuid(f944e9c8-4f6b-44f4-876b-55ba626df90b),
+		helpstring("IWX218xCarrierModulation interface."),
+		helpcontext(130),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xCarrierModulation : IUnknown
+	{
+		[helpcontext(403), helpstring("This method programs the CW frequency.")]
+		HRESULT ConfigureCarrFreq([in] BSTR Channel, [in] double Freq);
+
+		[helpcontext(404), helpstring("Specifies the carrier function. There are three functions that could be modulated: Sine, Triangle and Square.")]
+		HRESULT ConfigureCarrWaveform([in] BSTR Channel, [in] enum WX218xCarrierModulationWaveformEnum Waveform);
+
+		[propget, helpcontext(131), helpstring("This property programs the CW frequency.")]
+		HRESULT Frequency([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(131), helpstring("This property programs the CW frequency.")]
+		HRESULT Frequency([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(132), helpstring("Specifies the carrier function. There are three functions that could be modulated: Sine, Triangle and Square.")]
+		HRESULT Waveform([in] BSTR Channel, [out, retval] enum WX218xCarrierModulationWaveformEnum* Val);
+
+		[propput, helpcontext(132), helpstring("Specifies the carrier function. There are three functions that could be modulated: Sine, Triangle and Square.")]
+		HRESULT Waveform([in] BSTR Channel, [in] enum WX218xCarrierModulationWaveformEnum Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xCouple
+	//
+
+	[
+		object,
+		uuid(214b8d58-df85-492c-86e9-ea6cea3aa851),
+		helpstring("IWX218xCouple interface."),
+		helpcontext(133),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xCouple : IUnknown
+	{
+		[helpcontext(416), helpstring("Sets  the couple state of the synchronized channels. Use this method to cause all, or just listed channels to synchronize.")]
+		HRESULT ConfigureCoupleEnabled([in] VARIANT_BOOL Enabled);
+
+		[helpcontext(417), helpstring("When couple state is ON, this method sets  the offset between the start phase of the master channel and the start phase of the slave channel.")]
+		HRESULT ConfigureCoupleOffset([in] BSTR Channel, [in] long Offset);
+
+		[helpcontext(418), helpstring("When couple state is ALL, this method sets the skew between the start phase of the master channel and the start phase of the slave channel.")]
+		HRESULT ConfigureCoupleSkew([in] double Skew);
+
+		[propget, helpcontext(134), helpstring("Sets or queries the couple state of the synchronized channels. Use this property to cause all, or just listed channels to synchronize.")]
+		HRESULT Enabled([out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(134), helpstring("Sets or queries the couple state of the synchronized channels. Use this property to cause all, or just listed channels to synchronize.")]
+		HRESULT Enabled([in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(135), helpstring("When couple state is ON, this property sets or queries the offset between the start phase of the master channel and the start phase of the slave channel.")]
+		HRESULT Offset([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(135), helpstring("When couple state is ON, this property sets or queries the offset between the start phase of the master channel and the start phase of the slave channel.")]
+		HRESULT Offset([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(136), helpstring("When couple state is ALL, this property sets or queries the skew between the start phase of the master channel and the start phase of the slave channel.")]
+		HRESULT Skew([out, retval] double* Val);
+
+		[propput, helpcontext(136), helpstring("When couple state is ALL, this property sets or queries the skew between the start phase of the master channel and the start phase of the slave channel.")]
+		HRESULT Skew([in] double Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xFM
+	//
+
+	[
+		object,
+		uuid(26fb734a-5020-4ee9-bf9d-c9e0c1b13b96),
+		helpstring("IWX218xFM interface."),
+		helpcontext(137),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xFM : IUnknown
+	{
+		[helpcontext(138), helpstring("This method configures the parameters that control the function generator's internal frequency modulation source.")]
+		HRESULT ConfigureInternal([in] double Deviation, [in] enum WX218xFMInternalWaveformEnum Waveform, [in] double Frequency);
+
+		[helpcontext(455), helpstring("This method enables or disables the frequency modulation.")]
+		HRESULT ConfigureFMEnabled([in] BSTR Channel, [in] VARIANT_BOOL Enabled);
+
+		[helpcontext(456), helpstring("This method programs marker frequency position in units of Hz.")]
+		HRESULT ConfigureFMMarker([in] BSTR Channel, [in] double Marker);
+
+		[propget, helpcontext(139), helpstring("This property enables or disables the frequency modulation.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(139), helpstring("This property enables or disables the frequency modulation.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(140), helpstring("Programs the deviation range around the carrier frequency in units of HZ.")]
+		HRESULT InternalDeviation([out, retval] double* Val);
+
+		[propput, helpcontext(140), helpstring("Programs the deviation range around the carrier frequency in units of HZ.")]
+		HRESULT InternalDeviation([in] double Val);
+
+		[propget, helpcontext(141), helpstring("Programs the frequency of the modulating waveform in units of Hz.")]
+		HRESULT InternalFrequency([out, retval] double* Val);
+
+		[propput, helpcontext(141), helpstring("Programs the frequency of the modulating waveform in units of Hz.")]
+		HRESULT InternalFrequency([in] double Val);
+
+		[propget, helpcontext(142), helpstring("This parameter selects one of the waveform shapes as the active modulating waveform.")]
+		HRESULT InternalWaveform([out, retval] enum WX218xFMInternalWaveformEnum* Val);
+
+		[propput, helpcontext(142), helpstring("This parameter selects one of the waveform shapes as the active modulating waveform.")]
+		HRESULT InternalWaveform([in] enum WX218xFMInternalWaveformEnum Val);
+
+		[propget, helpcontext(143), helpstring("This property programs marker frequency position in units of Hz.")]
+		HRESULT Marker([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(143), helpstring("This property programs marker frequency position in units of Hz.")]
+		HRESULT Marker([in] BSTR Channel, [in] double Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xMarkers
+	//
+
+	[
+		object,
+		uuid(c97f8049-93d5-4947-97fc-5d6d70bff340),
+		helpstring("IWX218xMarkers interface."),
+		helpcontext(145),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xMarkers : IUnknown
+	{
+		[helpcontext(229), helpstring("Use this method to restore marker local operation (not for 4 Ch. models, WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Refresh([in] BSTR Channel, [in] long Index);
+
+		[helpcontext(461), helpstring("Use this method to set marker control source (not for 4Ch. models, WS835x, WX218xB-D,WX128xB-D).")]
+		HRESULT ConfigureMarkerControl([in] BSTR Channel, [in] long Index, [in] enum WX218xMarkerControlEnum Control);
+
+		[helpcontext(462), helpstring("Use this method to set the delay of the marker output (not for WS835x, WX218xB-D,WX128xB-D).")]
+		HRESULT ConfigureMarkerDelay([in] BSTR Channel, [in] long Index, [in] double Delay);
+
+		[helpcontext(463), helpstring("Sets the marker outputs on and off (not for WS835x, WX218xB-D,WX128xB-D).")]
+		HRESULT ConfigureMarkerEnabled([in] BSTR Channel, [in] long Index, [in] VARIANT_BOOL Enabled);
+
+		[helpcontext(464), helpstring("Use this method to set the high level of the marker output (not for 4Ch. models,WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT ConfigureMarkerHighLevel([in] BSTR Channel, [in] long Index, [in] double HighLevel);
+
+		[helpcontext(465), helpstring("Use this method to set the low level of the marker output (not for 4Ch. models, WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT ConfigureMarkerLowLevel([in] BSTR Channel, [in] long Index, [in] double LowLevel);
+
+		[helpcontext(466), helpstring("Selects Marker Index(1 or 2) (only for 4Ch. models).")]
+		HRESULT ConfigureMarkerIndex([in] BSTR Channel, [in] long Index);
+
+		[helpcontext(467), helpstring("Sets marker position relative to the waveform start point in units of waveform points (not for WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT ConfigureMarkerPosition([in] BSTR Channel, [in] long Index, [in] long Position);
+
+		[helpcontext(468), helpstring("Use this method to set marker source (only for 4Ch. models).")]
+		HRESULT ConfigureMarkerSource([in] BSTR Channel, [in] enum WX218xMarkerSourceEnum Source);
+
+		[helpcontext(469), helpstring("Sets marker width in units of waveform points (not for WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT ConfigureMarkerWidth([in] BSTR Channel, [in] long Index, [in] long Width);
+
+		[helpcontext(501), helpstring("Use this method to restore marker local operation (only for 4Ch. models).")]
+		HRESULT MarkerRefresh([in] BSTR Channel);
+
+		[helpcontext(577), helpstring("Use this method to set the high level of the marker output for WX2184C, WX1284C models.")]
+		HRESULT ConfigureMarkerHighLevel4Ch([in] BSTR Channel, [in] double HighLevel);
+
+		[helpcontext(579), helpstring("Use this method to set the low level of the marker output for WX2184C,WX1284C models.")]
+		HRESULT ConfigureMarkerLowLevel4Ch([in] BSTR Channel, [in] double LowLevel);
+
+		[propget, helpcontext(146), helpstring("Use this property to set or query the delay of the marker output (not for WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Delay([in] BSTR Channel, [in] long Index, [out, retval] double* Val);
+
+		[propput, helpcontext(146), helpstring("Use this property to set or query the delay of the marker output (not for WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Delay([in] BSTR Channel, [in] long Index, [in] double Val);
+
+		[propget, helpcontext(147), helpstring("Sets the marker outputs on and off (not for WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Enabled([in] BSTR Channel, [in] long Index, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(147), helpstring("Sets the marker outputs on and off (not for WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Enabled([in] BSTR Channel, [in] long Index, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(148), helpstring("Use this property to set or query the high level of the marker output (not for 4 Ch. models,WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT HighLevel([in] BSTR Channel, [in] long Index, [out, retval] double* Val);
+
+		[propput, helpcontext(148), helpstring("Use this property to set or query the high level of the marker output (not for 4 Ch. models,WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT HighLevel([in] BSTR Channel, [in] long Index, [in] double Val);
+
+		[propget, helpcontext(149), helpstring("Use this property to set or query the low level of the marker output (not for 4 Ch. models,WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT LowLevel([in] BSTR Channel, [in] long Index, [out, retval] double* Val);
+
+		[propput, helpcontext(149), helpstring("Use this property to set or query the low level of the marker output (not for 4 Ch. models,WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT LowLevel([in] BSTR Channel, [in] long Index, [in] double Val);
+
+		[propget, helpcontext(150), helpstring("Sets marker position relative to the waveform start point in units of waveform points (not for WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Position([in] BSTR Channel, [in] long Index, [out, retval] long* Val);
+
+		[propput, helpcontext(150), helpstring("Sets marker position relative to the waveform start point in units of waveform points (not for WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Position([in] BSTR Channel, [in] long Index, [in] long Val);
+
+		[propget, helpcontext(151), helpstring("Sets marker width in units of waveform points (not for WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Width([in] BSTR Channel, [in] long Index, [out, retval] long* Val);
+
+		[propput, helpcontext(151), helpstring("Sets marker width in units of waveform points (not for WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Width([in] BSTR Channel, [in] long Index, [in] long Val);
+
+		[propget, helpcontext(228), helpstring("Use this property to set or query marker control source (not for 4 Ch. models,WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Control([in] BSTR Channel, [in] long Index, [out, retval] enum WX218xMarkerControlEnum* Val);
+
+		[propput, helpcontext(228), helpstring("Use this property to set or query marker control source (not for 4 Ch. models,WS835x,WX218xB-D,WX128xB-D).")]
+		HRESULT Control([in] BSTR Channel, [in] long Index, [in] enum WX218xMarkerControlEnum Val);
+
+		[propget, helpcontext(360), helpstring("Selects Marker Index.")]
+		HRESULT MarkerIndex([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(360), helpstring("Selects Marker Index.")]
+		HRESULT MarkerIndex([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(362), helpstring("Use this property to set or query marker source.")]
+		HRESULT Source([in] BSTR Channel, [out, retval] enum WX218xMarkerSourceEnum* Val);
+
+		[propput, helpcontext(362), helpstring("Use this property to set or query marker source.")]
+		HRESULT Source([in] BSTR Channel, [in] enum WX218xMarkerSourceEnum Val);
+
+		[propget, helpcontext(576), helpstring("Use this property to set or query the high level of the marker output.")]
+		HRESULT HighLevel4Ch([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(576), helpstring("Use this property to set or query the high level of the marker output.")]
+		HRESULT HighLevel4Ch([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(578), helpstring("Use this property to set or query the low level of the marker output.")]
+		HRESULT LowLevel4Ch([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(578), helpstring("Use this property to set or query the low level of the marker output.")]
+		HRESULT LowLevel4Ch([in] BSTR Channel, [in] double Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xTrigger
+	//
+
+	[
+		object,
+		uuid(b6c58a67-73cd-4bd2-9af7-43d5ddb8a50b),
+		helpstring("IWX218xTrigger interface."),
+		helpcontext(152),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xTrigger : IUnknown
+	{
+		[helpcontext(158), helpstring("This method sends a command to trigger the function generator.")]
+		HRESULT SendSoftwareTrigger();
+
+		[helpcontext(159), helpstring("Use this method to set the trigger input to accept ecl (negative) signals. The threshold level is automatically set to -1.3 V.")]
+		HRESULT SetECLLevel([in] BSTR Channel);
+
+		[helpcontext(160), helpstring("Use this method to set the trigegr input to accept ttl signals. The threshold level is automatically set to 1.6 V.")]
+		HRESULT SetTTLLevel([in] BSTR Channel);
+
+		[helpcontext(502), helpstring("Use this method to set the burst counter setting.")]
+		HRESULT ConfigureBurstCount([in] BSTR Channel, [in] long Count);
+
+		[helpcontext(503), helpstring("Use this method to set the trigger delay setting.")]
+		HRESULT ConfigureTriggerDelay([in] BSTR Channel, [in] long Delay);
+
+		[helpcontext(504), helpstring("Use this method to program the threshold level for the trigger input signals.")]
+		HRESULT ConfigureTriggerLevel([in] BSTR Channel, [in] double Level);
+
+		[helpcontext(505), helpstring("Programs the internal delayed trigger generator period in units of waveform points. Program the value using integers divisible by 8.")]
+		HRESULT ConfigureTriggerTimerDelay([in] BSTR Channel, [in] long TimerDelay);
+
+		[helpcontext(506), helpstring("Programs the internal timed trigger generator period in units of seconds.")]
+		HRESULT ConfigureTriggerTimerTime([in] BSTR Channel, [in] double TimerTime);
+
+		[helpcontext(507), helpstring("Use this method to set the state of the enable mode.")]
+		HRESULT ConfigureTrigContMode([in] BSTR Channel, [in] enum WX218xContinuousModeEnum ContMode);
+
+		[helpcontext(508), helpstring("Use this method to set the source of the enable signal.")]
+		HRESULT ConfigureTrigContSource([in] BSTR Channel, [in] enum WX218xContinuousSourceEnum Source);
+
+		[helpcontext(509), helpstring("Use this method to define the edge that will affect the trigger input.")]
+		HRESULT ConfigureTrigSlope([in] BSTR Channel, [in] enum WX218xTriggerSlopeEnum Slope);
+
+		[helpcontext(510), helpstring("Use this method to set the source of the trigger event that will stimulate the instrument to generate waveforms.")]
+		HRESULT ConfigureTrigSource([in] BSTR Channel, [in] enum WX218xTriggerSourceEnum Source);
+
+		[helpcontext(511), helpstring("Use this method to define  the trigger mode.")]
+		HRESULT ConfigureTrigTimerMode([in] BSTR Channel, [in] enum WX218xTriggerTimerModeEnum TimerMode);
+
+		[helpcontext(512), helpstring("Use this method to define the trigger mode.")]
+		HRESULT ConfigureTriggerMode([in] BSTR Channel, [in] enum WX218xTriggerModeEnum Mode);
+
+		[helpcontext(564), helpstring("Use this method to configure Trigger Impedance (only for WX218xC,WX128xC models).")]
+		HRESULT ConfigureTriggerImpedance([in] enum WX218xTriggerImpedanceEnum TriggerImpedance);
+
+		[propget, helpcontext(153), helpstring("Use this property to set or query the burst counter setting.")]
+		HRESULT BurstCount([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(153), helpstring("Use this property to set or query the burst counter setting.")]
+		HRESULT BurstCount([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(154), helpstring("Use this property to set or query the state of the enable mode.")]
+		HRESULT ContinuousMode([in] BSTR Channel, [out, retval] enum WX218xContinuousModeEnum* Val);
+
+		[propput, helpcontext(154), helpstring("Use this property to set or query the state of the enable mode.")]
+		HRESULT ContinuousMode([in] BSTR Channel, [in] enum WX218xContinuousModeEnum Val);
+
+		[propget, helpcontext(155), helpstring("Use this property to set or query the source of the enable signal.")]
+		HRESULT ContinuousSource([in] BSTR Channel, [out, retval] enum WX218xContinuousSourceEnum* Val);
+
+		[propput, helpcontext(155), helpstring("Use this property to set or query the source of the enable signal.")]
+		HRESULT ContinuousSource([in] BSTR Channel, [in] enum WX218xContinuousSourceEnum Val);
+
+		[propget, helpcontext(156), helpstring("Use this property to set or query the trigger delay setting.")]
+		HRESULT Delay([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(156), helpstring("Use this property to set or query the trigger delay setting.")]
+		HRESULT Delay([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(157), helpstring("Use this property to program or query the threshold level for the trigger input signals.")]
+		HRESULT Level([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(157), helpstring("Use this property to program or query the threshold level for the trigger input signals.")]
+		HRESULT Level([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(161), helpstring("Use this property to define or query the edge that will affect the trigger input.")]
+		HRESULT Slope([in] BSTR Channel, [out, retval] enum WX218xTriggerSlopeEnum* Val);
+
+		[propput, helpcontext(161), helpstring("Use this property to define or query the edge that will affect the trigger input.")]
+		HRESULT Slope([in] BSTR Channel, [in] enum WX218xTriggerSlopeEnum Val);
+
+		[propget, helpcontext(162), helpstring("Use this property to set or query the source of the trigger event that will stimulate the instrument to generate waveforms.")]
+		HRESULT Source([in] BSTR Channel, [out, retval] enum WX218xTriggerSourceEnum* Val);
+
+		[propput, helpcontext(162), helpstring("Use this property to set or query the source of the trigger event that will stimulate the instrument to generate waveforms.")]
+		HRESULT Source([in] BSTR Channel, [in] enum WX218xTriggerSourceEnum Val);
+
+		[propget, helpcontext(163), helpstring("Programs the internal delayed trigger generator period in units of waveform points. Program the value using integers divisible by 8.")]
+		HRESULT TimerDelay([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(163), helpstring("Programs the internal delayed trigger generator period in units of waveform points. Program the value using integers divisible by 8.")]
+		HRESULT TimerDelay([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(164), helpstring("Use this property to set or query the mode that the internal trigger generator will operate.")]
+		HRESULT TimerMode([in] BSTR Channel, [out, retval] enum WX218xTriggerTimerModeEnum* Val);
+
+		[propput, helpcontext(164), helpstring("Use this property to set or query the mode that the internal trigger generator will operate.")]
+		HRESULT TimerMode([in] BSTR Channel, [in] enum WX218xTriggerTimerModeEnum Val);
+
+		[propget, helpcontext(165), helpstring("Programs the internal timed trigger generator period in units of seconds.")]
+		HRESULT TimerTime([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(165), helpstring("Programs the internal timed trigger generator period in units of seconds.")]
+		HRESULT TimerTime([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(166), helpstring("Use this property to define or query the trigger mode.")]
+		HRESULT TriggerMode([in] BSTR Channel, [out, retval] enum WX218xTriggerModeEnum* Val);
+
+		[propput, helpcontext(166), helpstring("Use this property to define or query the trigger mode.")]
+		HRESULT TriggerMode([in] BSTR Channel, [in] enum WX218xTriggerModeEnum Val);
+
+		[propget, helpcontext(167), helpstring("Pointer to the IWX218xTriggerARM interface.")]
+		HRESULT ARM([out, retval] IWX218xTriggerARM** Val);
+
+		[propget, helpcontext(172), helpstring("Pointer to the IWX218xTriggerSmartTrigger interface.")]
+		HRESULT SmartTrigger([out, retval] IWX218xTriggerSmartTrigger** Val);
+
+		[propget, helpcontext(563), helpstring("Use this property to define or query the trigger impedance.")]
+		HRESULT TriggerImpedance([out, retval] enum WX218xTriggerImpedanceEnum* Val);
+
+		[propput, helpcontext(563), helpstring("Use this property to define or query the trigger impedance.")]
+		HRESULT TriggerImpedance([in] enum WX218xTriggerImpedanceEnum Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xTriggerARM
+	//
+
+	[
+		object,
+		uuid(d8b6d07c-b950-4ef9-bd11-1c44680d2565),
+		helpstring("IWX218xTriggerARM interface."),
+		helpcontext(167),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xTriggerARM : IUnknown
+	{
+		[helpcontext(169), helpstring("Use this method to set the event input to accept ecl (negative) signals.")]
+		HRESULT SetECLLevel([in] BSTR Channel);
+
+		[helpcontext(170), helpstring("Use this method to set the event input to accept ttl signals.")]
+		HRESULT SetTtlLevel([in] BSTR Channel);
+
+		[helpcontext(519), helpstring("This method programs the threshold level for the event input signals.")]
+		HRESULT ConfigureTrigARMLevel([in] BSTR Channel, [in] double Level);
+
+		[helpcontext(520), helpstring("Use this method to define the edge that will affect the event input.")]
+		HRESULT ConfigureTrigARMSlope([in] BSTR Channel, [in] enum WX218xArmSlopeEnum Slope);
+
+		[propget, helpcontext(168), helpstring("This property programs the threshold level for the event input signals.")]
+		HRESULT Level([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(168), helpstring("This property programs the threshold level for the event input signals.")]
+		HRESULT Level([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(171), helpstring("Use this property to define the edge that will affect the event input.")]
+		HRESULT Slope([in] BSTR Channel, [out, retval] enum WX218xArmSlopeEnum* Val);
+
+		[propput, helpcontext(171), helpstring("Use this property to define the edge that will affect the event input.")]
+		HRESULT Slope([in] BSTR Channel, [in] enum WX218xArmSlopeEnum Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xTriggerSmartTrigger
+	//
+
+	[
+		object,
+		uuid(25f6e0ef-20f1-41d5-b5ca-fe9156918623),
+		helpstring("IWX218xTriggerSmartTrigger interface."),
+		helpcontext(172),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xTriggerSmartTrigger : IUnknown
+	{
+		[helpcontext(513), helpstring("Use this method to set the status of the high pass filter.")]
+		HRESULT ConfigureSmartTrigHiPassEnabled([in] BSTR Channel, [in] VARIANT_BOOL State);
+
+		[helpcontext(514), helpstring("Programs the high pass pulse width value in units of second.")]
+		HRESULT ConfigureSmartTrigHiPassWidth([in] BSTR Channel, [in] double Width);
+
+		[helpcontext(515), helpstring("Programs the trigger holdoff period in units of second.")]
+		HRESULT ConfigureSmartTrigHoldoff([in] BSTR Channel, [in] double Holdoff);
+
+		[helpcontext(516), helpstring("Use this method to set the status of the holdoff filter.")]
+		HRESULT ConfigureSmartTrigHoldoffState([in] BSTR Channel, [in] VARIANT_BOOL State);
+
+		[helpcontext(517), helpstring("Use this method to set the status of the low pass filter.")]
+		HRESULT ConfigureSmartTrigLowPassState([in] BSTR Channel, [in] VARIANT_BOOL State);
+
+		[helpcontext(518), helpstring("Programs the low pass pulse width value in units of second.")]
+		HRESULT ConfigureSmartTrigLowPassWidth([in] BSTR Channel, [in] double Width);
+
+		[propget, helpcontext(173), helpstring("Use this property to set or query the status of the high pass filter.")]
+		HRESULT HiPassEnabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(173), helpstring("Use this property to set or query the status of the high pass filter.")]
+		HRESULT HiPassEnabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(174), helpstring("Programs the high pass pulse width value in units of second.")]
+		HRESULT HiPassWidth([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(174), helpstring("Programs the high pass pulse width value in units of second.")]
+		HRESULT HiPassWidth([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(175), helpstring("Programs the trigger holdoff period in units of second.")]
+		HRESULT Holdoff([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(175), helpstring("Programs the trigger holdoff period in units of second.")]
+		HRESULT Holdoff([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(176), helpstring("Use this property to set or query the status of the holdoff filter.")]
+		HRESULT HoldoffEnabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(176), helpstring("Use this property to set or query the status of the holdoff filter.")]
+		HRESULT HoldoffEnabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(177), helpstring("Use this property to set or query the status of the low pass filter.")]
+		HRESULT LowPassEnabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(177), helpstring("Use this property to set or query the status of the low pass filter.")]
+		HRESULT LowPassEnabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(178), helpstring("Programs the low pass pulse width value in units of second.")]
+		HRESULT LowPassWidth([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(178), helpstring("Programs the low pass pulse width value in units of second.")]
+		HRESULT LowPassWidth([in] BSTR Channel, [in] double Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xStateStorage
+	//
+
+	[
+		object,
+		uuid(6c7601bf-38fc-4ea0-88aa-499073977c17),
+		helpstring("IWX218xStateStorage interface."),
+		helpcontext(179),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xStateStorage : IUnknown
+	{
+		[helpcontext(182), helpstring("This method clear all cells.")]
+		HRESULT Clear();
+
+		[helpcontext(184), helpstring("Use this method to select update the front panel and arbitrary memory with the information stored in the active memory cell.")]
+		HRESULT Load();
+
+		[helpcontext(185), helpstring("This method configures parameters for recall operation.")]
+		HRESULT Recall([in] long Cell, [in] enum WX218xStateStorageTargetEnum Target);
+
+		[helpcontext(186), helpstring("Use this method to select update the active memory cell with the front panel settings, waveform or both.")]
+		HRESULT Save();
+
+		[helpcontext(187), helpstring("This method configures parameters for store operation.")]
+		HRESULT Store([in] long Cell, [in] enum WX218xStateStorageConfigurationEnum Configuration, [in] enum WX218xStateStorageTargetEnum Target);
+
+		[propget, helpcontext(180), helpstring("Selects an active memory cell number. Consequent recall commands will affect this cell only.")]
+		HRESULT CellRecall([out, retval] long* Val);
+
+		[propput, helpcontext(180), helpstring("Selects an active memory cell number. Consequent recall commands will affect this cell only.")]
+		HRESULT CellRecall([in] long Val);
+
+		[propget, helpcontext(181), helpstring("Selects an active memory cell number. Consequent store commands will affect this cell only.")]
+		HRESULT CellStore([out, retval] long* Val);
+
+		[propput, helpcontext(181), helpstring("Selects an active memory cell number. Consequent store commands will affect this cell only.")]
+		HRESULT CellStore([in] long Val);
+
+		[propget, helpcontext(183), helpstring("Use this property to select what you intend to store in the active memory cell.")]
+		HRESULT ConfigurationStore([out, retval] enum WX218xStateStorageConfigurationEnum* Val);
+
+		[propput, helpcontext(183), helpstring("Use this property to select what you intend to store in the active memory cell.")]
+		HRESULT ConfigurationStore([in] enum WX218xStateStorageConfigurationEnum Val);
+
+		[propget, helpcontext(188), helpstring("Use this property to select the source of your recall operation.")]
+		HRESULT TargetRecall([out, retval] enum WX218xStateStorageTargetEnum* Val);
+
+		[propput, helpcontext(188), helpstring("Use this property to select the source of your recall operation.")]
+		HRESULT TargetRecall([in] enum WX218xStateStorageTargetEnum Val);
+
+		[propget, helpcontext(189), helpstring("Use this property to select the source of your store operation.")]
+		HRESULT TargetStore([out, retval] enum WX218xStateStorageTargetEnum* Val);
+
+		[propput, helpcontext(189), helpstring("Use this property to select the source of your store operation.")]
+		HRESULT TargetStore([in] enum WX218xStateStorageTargetEnum Val);
+
+		[propget, helpcontext(231), helpstring("Use this property to query what you have store in the active memory cell.")]
+		HRESULT ConfigurationRecall([out, retval] enum WX218xStateStorageRecalConfigurationEnum* Val);
+
+		[propget, helpcontext(364), helpstring("Enables or Disables system store.")]
+		HRESULT StoreEnabled([out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(364), helpstring("Enables or Disables system store.")]
+		HRESULT StoreEnabled([in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(365), helpstring("Enables or Disables system recall.")]
+		HRESULT RecallEnabled([out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(365), helpstring("Enables or Disables system recall.")]
+		HRESULT RecallEnabled([in] VARIANT_BOOL Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xXInstrument
+	//
+
+	[
+		object,
+		uuid(54438c1e-a052-494f-bdf8-180c252e5d9d),
+		helpstring("IWX218xXInstrument interface."),
+		helpcontext(190),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xXInstrument : IUnknown
+	{
+		[helpcontext(492), helpstring("Configure the state of the synchronized instruments.")]
+		HRESULT ConfigureXInstrumentEnabled([in] VARIANT_BOOL State);
+
+		[helpcontext(493), helpstring("Use this method to define master and slave instruments. This command affects the system only when two instruments are hooked to a LAN network, synchronization cable is attached to the rear panel of both instruments and are intended to operate in synchroni")]
+		HRESULT ConfigureXInstrumentMode([in] enum WX218xXInstrumentModeEnum Mode);
+
+		[helpcontext(494), helpstring("Use this method to define master,slave and MSlave instruments. This command affects the system only when two instruments are hooked to a LAN network, synchronization cable is attached to the rear panel of both instruments and are intended to operate in sy")]
+		HRESULT ConfigureXInstrumentModeAdv([in] enum WX218xXInstrumentModeAdvEnum ModeAdv);
+
+		[helpcontext(495), helpstring("When X-Instrument state is ON, this property sets or queries the offset between the start phase of the master instrument and the start phase of the slave instrument (not for WS835x models).")]
+		HRESULT ConfigureXInstrumentOffset([in] long Offset);
+
+		[propget, helpcontext(191), helpstring("Sets or queries the state of the synchronized instruments.")]
+		HRESULT Enabled([out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(191), helpstring("Sets or queries the state of the synchronized instruments.")]
+		HRESULT Enabled([in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(192), helpstring("Use this property to define master and slave instruments. This command affects the system only when two instruments are hooked to a LAN network, synchronization cable is attached to the rear panel of both instruments and are intended to operate in synchro")]
+		HRESULT Mode([out, retval] enum WX218xXInstrumentModeEnum* Val);
+
+		[propput, helpcontext(192), helpstring("Use this property to define master and slave instruments. This command affects the system only when two instruments are hooked to a LAN network, synchronization cable is attached to the rear panel of both instruments and are intended to operate in synchro")]
+		HRESULT Mode([in] enum WX218xXInstrumentModeEnum Val);
+
+		[propget, helpcontext(193), helpstring("When X-Instrument state is ON, this property sets or queries the offset between the start phase of the master instrument and the start phase of the slave instrument.")]
+		HRESULT Offset([out, retval] long* Val);
+
+		[propput, helpcontext(193), helpstring("When X-Instrument state is ON, this property sets or queries the offset between the start phase of the master instrument and the start phase of the slave instrument.")]
+		HRESULT Offset([in] long Val);
+
+		[propget, helpcontext(491), helpstring("Use this property to define master,slave and MSlave instruments. This command affects the system only when two instruments are hooked to a LAN network, synchronization cable is attached to the rear panel of both instruments and are intended to operate in ")]
+		HRESULT ModeAdv([out, retval] enum WX218xXInstrumentModeAdvEnum* Val);
+
+		[propput, helpcontext(491), helpstring("Use this property to define master,slave and MSlave instruments. This command affects the system only when two instruments are hooked to a LAN network, synchronization cable is attached to the rear panel of both instruments and are intended to operate in ")]
+		HRESULT ModeAdv([in] enum WX218xXInstrumentModeAdvEnum Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xDigitalPulse
+	//
+
+	[
+		object,
+		uuid(fd6bcbbf-3ff4-46d3-bf01-21e77e1c0fd3),
+		helpstring("IWX218xDigitalPulse interface."),
+		helpcontext(194),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xDigitalPulse : IUnknown
+	{
+		[helpcontext(212), helpstring("Sets the maximum amplitude value  of the pulse waveform in units of volts.")]
+		HRESULT SetAmplitudeMax([in] BSTR Channel);
+
+		[helpcontext(213), helpstring("Sets the minimum amplitude value  of the pulse waveform in units of volts.")]
+		HRESULT SetAmplitudeMin([in] BSTR Channel);
+
+		[helpcontext(214), helpstring("Sets the maximum offset value of the pulse waveform in units of volts.")]
+		HRESULT SetOffsetMax([in] BSTR Channel);
+
+		[helpcontext(215), helpstring("Sets the minimum offset value of the pulse waveform in units of volts.")]
+		HRESULT SetOffsetMin([in] BSTR Channel);
+
+		[helpcontext(432), helpstring("This method programs the peak to peak amplitude of the pulse waveform in units of volts.")]
+		HRESULT ConfigureDigPulseAmplitude([in] BSTR Channel, [in] double Amplitude);
+
+		[helpcontext(433), helpstring("This method programs the delayed interval of which the output idles on the low level until the first transition to high level in units of seconds.")]
+		HRESULT ConfigureDigPulseDelay([in] BSTR Channel, [in] double Delay);
+
+		[helpcontext(434), helpstring("This method programs the delayed interval of which the output idles on the low level until the first transition to high level in units of percent.")]
+		HRESULT ConfigureDigPulseDelayPercent([in] BSTR Channel, [in] double DelayPercent);
+
+		[helpcontext(435), helpstring("This method programs the delay between two adjacent pulses when the double mode is selected in unuts of seconds.")]
+		HRESULT ConfigureDigPulseDoubleDelay([in] BSTR Channel, [in] double DoubleDelay);
+
+		[helpcontext(436), helpstring("This method programs the delay between two adjacent pulses when the double mode is selected in unuts of percent.")]
+		HRESULT ConfigureDigPulseDoubleDelayPercent([in] BSTR Channel, [in] double DoubleDelayPercent);
+
+		[helpcontext(437), helpstring("This method programs the interval it will take the trailing edge of the pulse to transition from its high to low level settings in units of seconds.")]
+		HRESULT ConfigureDigPulseFallTime([in] BSTR Channel, [in] double FallTime);
+
+		[helpcontext(438), helpstring("This method programs the interval it will take the trailing edge of the pulse to transition from its high to low level settings in units of percent.")]
+		HRESULT ConfigureDigPulseFallTimePercent([in] BSTR Channel, [in] double FallTimePercent);
+
+		[helpcontext(439), helpstring("This method programs the high level amplitude of the pulse waveform in units of volts.")]
+		HRESULT ConfigureDigPulseHighLevel([in] BSTR Channel, [in] double HighLevel);
+
+		[helpcontext(440), helpstring("This method will determine how the pulse levels are programed. Pulse level mode options are: High/Low, Amplitude/Offset, Positive and Negative.")]
+		HRESULT ConfigureDigPulseLevelControl([in] BSTR Channel, [in] enum WX218xPulseLevelControlEnum LevelControl);
+
+		[helpcontext(441), helpstring("This method programs the low level amplitude of the pulse waveform.")]
+		HRESULT ConfigureDigPulseLowLevel([in] BSTR Channel, [in] double LowLevel);
+
+		[helpcontext(442), helpstring("This method programs the mode of the pulse. Pulse mode options are: Single pulse, Delayed pulse and  Double pulse.")]
+		HRESULT ConfigureDigPulseMode([in] BSTR Channel, [in] enum WX218xPulseModeEnum Mode);
+
+		[helpcontext(443), helpstring("This method programs the offset amplitude of the pulse waveform in units of volts.")]
+		HRESULT ConfigureDigPulseOffset([in] BSTR Channel, [in] double Offset);
+
+		[helpcontext(444), helpstring("This method programs the pulse repetition rate (period) in units of seconds.")]
+		HRESULT ConfigureDigPulsePeriod([in] BSTR Channel, [in] double Period);
+
+		[helpcontext(445), helpstring("This method programs the polarity of the pulse in reference to the base line level. The polarity options are: Normal, Inverted and Complemented.")]
+		HRESULT ConfigureDigPulsePolarity([in] BSTR Channel, [in] enum WX218xPulsePolarityEnum Polarity);
+
+		[helpcontext(446), helpstring("This method programs the interval it will take the leading edge of the pulse to transition from its low to high level settings in units of seconds.")]
+		HRESULT ConfigureDigPulseRiseTime([in] BSTR Channel, [in] double RiseTime);
+
+		[helpcontext(447), helpstring("This method programs the interval it will take the leading edge of the pulse to transition from its low to high level settings in units of percent.")]
+		HRESULT ConfigureRiseTimePercent([in] BSTR Channel, [in] double RiseTimePercent);
+
+		[helpcontext(448), helpstring("This method will place the pulse output in one of three transition options: Fast, Linear or Symmetrical.")]
+		HRESULT ConfigureDigPulseTransition([in] BSTR Channel, [in] enum WX218xPulseTransitionEnum Transition);
+
+		[helpcontext(449), helpstring("This method programs the pulse width value in units of seconds.")]
+		HRESULT ConfigureDigPulseWidth([in] BSTR Channel, [in] double Width);
+
+		[helpcontext(450), helpstring("This method programs the pulse width value in units of percent.")]
+		HRESULT ConfigureDigPulseWidthPercent([in] BSTR Channel, [in] double WidthPercent);
+
+		[propget, helpcontext(195), helpstring("This property programs the peak to peak amplitude of the pulse waveform in units of volts.")]
+		HRESULT Amplitude([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(195), helpstring("This property programs the peak to peak amplitude of the pulse waveform in units of volts.")]
+		HRESULT Amplitude([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(196), helpstring("Enables the programming of pulse parameters in units of time (seconds)or units of percent.")]
+		HRESULT Configure([in] BSTR Channel, [out, retval] enum WX218xPulseConfigureEnum* Val);
+
+		[propput, helpcontext(196), helpstring("Enables the programming of pulse parameters in units of time (seconds)or units of percent.")]
+		HRESULT Configure([in] BSTR Channel, [in] enum WX218xPulseConfigureEnum Val);
+
+		[propget, helpcontext(197), helpstring("This property programs the delayed interval of which the output idles on the low level until the first transition to high level in units of seconds.")]
+		HRESULT Delay([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(197), helpstring("This property programs the delayed interval of which the output idles on the low level until the first transition to high level in units of seconds.")]
+		HRESULT Delay([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(198), helpstring("This property programs the delayed interval of which the output idles on the low level until the first transition to high level in units of percent.")]
+		HRESULT DelayPercent([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(198), helpstring("This property programs the delayed interval of which the output idles on the low level until the first transition to high level in units of percent.")]
+		HRESULT DelayPercent([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(199), helpstring("This property programs the delay between two adjacent pulses when the double mode is selected in unuts of seconds.")]
+		HRESULT DoubleDelay([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(199), helpstring("This property programs the delay between two adjacent pulses when the double mode is selected in unuts of seconds.")]
+		HRESULT DoubleDelay([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(200), helpstring("This property programs the delay between two adjacent pulses when the double mode is selected in unuts of percent.")]
+		HRESULT DoubleDelayPercent([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(200), helpstring("This property programs the delay between two adjacent pulses when the double mode is selected in unuts of percent.")]
+		HRESULT DoubleDelayPercent([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(201), helpstring("This property programs the interval it will take the trailing edge of the pulse to transition from its high to low level settings in units of seconds.")]
+		HRESULT FallTime([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(201), helpstring("This property programs the interval it will take the trailing edge of the pulse to transition from its high to low level settings in units of seconds.")]
+		HRESULT FallTime([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(202), helpstring("This property programs the interval it will take the trailing edge of the pulse to transition from its high to low level settings in units of percent.")]
+		HRESULT FallTimePercent([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(202), helpstring("This property programs the interval it will take the trailing edge of the pulse to transition from its high to low level settings in units of percent.")]
+		HRESULT FallTimePercent([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(203), helpstring("This property programs the high level amplitude of the pulse waveform in units of volts.")]
+		HRESULT HighLevel([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(203), helpstring("This property programs the high level amplitude of the pulse waveform in units of volts.")]
+		HRESULT HighLevel([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(204), helpstring("This property will determine how the pulse levels are programed. Pulse level mode options are: High/Low, Amplitude/Offset, Positive and Negative.")]
+		HRESULT LevelControl([in] BSTR Channel, [out, retval] enum WX218xPulseLevelControlEnum* Val);
+
+		[propput, helpcontext(204), helpstring("This property will determine how the pulse levels are programed. Pulse level mode options are: High/Low, Amplitude/Offset, Positive and Negative.")]
+		HRESULT LevelControl([in] BSTR Channel, [in] enum WX218xPulseLevelControlEnum Val);
+
+		[propget, helpcontext(205), helpstring("This property programs the low level amplitude of the pulse waveform.")]
+		HRESULT LowLevel([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(205), helpstring("This property programs the low level amplitude of the pulse waveform.")]
+		HRESULT LowLevel([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(206), helpstring("This property programs the mode of the pulse. Pulse mode options are: Single pulse, Delayed pulse and  Double pulse.")]
+		HRESULT Mode([in] BSTR Channel, [out, retval] enum WX218xPulseModeEnum* Val);
+
+		[propput, helpcontext(206), helpstring("This property programs the mode of the pulse. Pulse mode options are: Single pulse, Delayed pulse and  Double pulse.")]
+		HRESULT Mode([in] BSTR Channel, [in] enum WX218xPulseModeEnum Val);
+
+		[propget, helpcontext(207), helpstring("This property programs the offset amplitude of the pulse waveform in units of volts.")]
+		HRESULT Offset([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(207), helpstring("This property programs the offset amplitude of the pulse waveform in units of volts.")]
+		HRESULT Offset([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(208), helpstring("This property programs the pulse repetition rate (period) in units of seconds.")]
+		HRESULT Period([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(208), helpstring("This property programs the pulse repetition rate (period) in units of seconds.")]
+		HRESULT Period([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(209), helpstring("This property programs the polarity of the pulse in reference to the base line level. The polarity options are: Normal, Inverted and Complemented.")]
+		HRESULT Polarity([in] BSTR Channel, [out, retval] enum WX218xPulsePolarityEnum* Val);
+
+		[propput, helpcontext(209), helpstring("This property programs the polarity of the pulse in reference to the base line level. The polarity options are: Normal, Inverted and Complemented.")]
+		HRESULT Polarity([in] BSTR Channel, [in] enum WX218xPulsePolarityEnum Val);
+
+		[propget, helpcontext(210), helpstring("This property programs the interval it will take the leading edge of the pulse to transition from its low to high level settings in units of seconds.")]
+		HRESULT RiseTime([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(210), helpstring("This property programs the interval it will take the leading edge of the pulse to transition from its low to high level settings in units of seconds.")]
+		HRESULT RiseTime([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(211), helpstring("This property programs the interval it will take the leading edge of the pulse to transition from its low to high level settings in units of percent.")]
+		HRESULT RiseTimePercent([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(211), helpstring("This property programs the interval it will take the leading edge of the pulse to transition from its low to high level settings in units of percent.")]
+		HRESULT RiseTimePercent([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(216), helpstring("This method will place the pulse output in one of three transition options: Fast, Linear or Symmetrical.")]
+		HRESULT Transition([in] BSTR Channel, [out, retval] enum WX218xPulseTransitionEnum* Val);
+
+		[propput, helpcontext(216), helpstring("This method will place the pulse output in one of three transition options: Fast, Linear or Symmetrical.")]
+		HRESULT Transition([in] BSTR Channel, [in] enum WX218xPulseTransitionEnum Val);
+
+		[propget, helpcontext(217), helpstring("This property programs the pulse width value in units of seconds.")]
+		HRESULT Width([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(217), helpstring("This property programs the pulse width value in units of seconds.")]
+		HRESULT Width([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(218), helpstring("This property programs the pulse width value in units of percent.")]
+		HRESULT WidthPercent([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(218), helpstring("This property programs the pulse width value in units of percent.")]
+		HRESULT WidthPercent([in] BSTR Channel, [in] double Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xSweep
+	//
+
+	[
+		object,
+		uuid(b8c8f51d-10c8-4f4e-8279-cc05a40cc88f),
+		helpstring("IWX218xSweep interface."),
+		helpcontext(219),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xSweep : IUnknown
+	{
+		[helpcontext(521), helpstring("This method specifies if the instrument output will sweep from start-to-stop (UP) or from stop-to-start (DOWN) frequencies.")]
+		HRESULT ConfigureSweepDirection([in] BSTR Channel, [in] enum WX218xSweepDirectionEnum Direction);
+
+		[helpcontext(522), helpstring("This method configures the function generator to apply frequency sweep to the output signal.")]
+		HRESULT ConfigureSweepState([in] BSTR Channel, [in] VARIANT_BOOL State);
+
+		[helpcontext(523), helpstring("Programs the sweep start frequency in units of Hz.")]
+		HRESULT ConfigureSweepFreqStart([in] BSTR Channel, [in] double FreqStart);
+
+		[helpcontext(524), helpstring("Programs the sweep stop frequency in units of Hz.")]
+		HRESULT ConfigureSweepFreqStop([in] BSTR Channel, [in] double FreqStop);
+
+		[helpcontext(525), helpstring("Programs the marker frequency position in units of Hz.")]
+		HRESULT ConfigureSweepMarker([in] BSTR Channel, [in] double Marker);
+
+		[helpcontext(526), helpstring("This method specifies the sweep step type. Two options are available: logarithmic or linear.")]
+		HRESULT ConfigureSweepSpacing([in] BSTR Channel, [in] enum WX218xSweepSpacingEnum Spacing);
+
+		[helpcontext(527), helpstring("Programs the sweep time in units of seconds.")]
+		HRESULT ConfigureSweepTime([in] BSTR Channel, [in] double Time);
+
+		[propget, helpcontext(220), helpstring("This property specifies if the instrument output will sweep from start-to-stop (UP) or from stop-to-start (DOWN) frequencies.")]
+		HRESULT Direction([in] BSTR Channel, [out, retval] enum WX218xSweepDirectionEnum* Val);
+
+		[propput, helpcontext(220), helpstring("This property specifies if the instrument output will sweep from start-to-stop (UP) or from stop-to-start (DOWN) frequencies.")]
+		HRESULT Direction([in] BSTR Channel, [in] enum WX218xSweepDirectionEnum Val);
+
+		[propget, helpcontext(221), helpstring("This property configures the function generator to apply frequency sweep to the output signal.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(221), helpstring("This property configures the function generator to apply frequency sweep to the output signal.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(222), helpstring("Programs the sweep start frequency in units of Hz.")]
+		HRESULT FrequencyStart([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(222), helpstring("Programs the sweep start frequency in units of Hz.")]
+		HRESULT FrequencyStart([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(223), helpstring("Programs the sweep stop frequency in units of Hz.")]
+		HRESULT FrequencyStop([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(223), helpstring("Programs the sweep stop frequency in units of Hz.")]
+		HRESULT FrequencyStop([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(224), helpstring("Programs the marker frequency position in units of Hz.")]
+		HRESULT Marker([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(224), helpstring("Programs the marker frequency position in units of Hz.")]
+		HRESULT Marker([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(225), helpstring("This property specifies the sweep step type. Two options are available: logarithmic or linear.")]
+		HRESULT Spacing([in] BSTR Channel, [out, retval] enum WX218xSweepSpacingEnum* Val);
+
+		[propput, helpcontext(225), helpstring("This property specifies the sweep step type. Two options are available: logarithmic or linear.")]
+		HRESULT Spacing([in] BSTR Channel, [in] enum WX218xSweepSpacingEnum Val);
+
+		[propget, helpcontext(226), helpstring("Programs the sweep time in units of seconds.")]
+		HRESULT Time([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(226), helpstring("Programs the sweep time in units of seconds.")]
+		HRESULT Time([in] BSTR Channel, [in] double Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xDigitalPatternOutput
+	//
+
+	[
+		object,
+		uuid(4cc1f33e-5660-4cc1-a958-2ff0137dfc52),
+		helpstring("IWX218xDigitalPatternOutput interface."),
+		helpcontext(243),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xDigitalPatternOutput : IUnknown
+	{
+		[helpcontext(234), helpstring("This method creates an digital pattern waveform from array of Data values (for WX218xB-D,WX128xB-D).")]
+		HRESULT CreateDigPatternData([in] BSTR Channel, [in] SAFEARRAY(double)* Data, [in] long Segment);
+
+		[helpcontext(236), helpstring("This method loads from file and create digital pattern waveform (for WX218xB-D,WX128xB-D).")]
+		HRESULT LoadDigitalPatternFromFile([in] BSTR Channel, [in] BSTR FileName, [in] long Segment);
+
+		[helpcontext(254), helpstring("This method loads digital pattern parameters data in to the instrument (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT CreateDigPatternParamData([in] BSTR Channel, [in] SAFEARRAY(BYTE)* State, [in] SAFEARRAY(double)* Delay, [in] SAFEARRAY(double)* HighLevel, [in] SAFEARRAY(double)* LowLevel);
+
+		[helpcontext(382), helpstring("This method loads digital pattern parameters data in to the instrument (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT CreateDigPatternParamData1([in] BSTR Channel, [in] SAFEARRAY(long)* State, [in] SAFEARRAY(double)* Delay, [in] SAFEARRAY(double)* HighLevel, [in] SAFEARRAY(double)* LowLevel);
+
+		[helpcontext(419), helpstring("This method duplicates or not duplicates any arbitrary wave for sync between Arb and Dig frequency (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattArbResolution([in] BSTR Channel, [in] enum WX218xArbitraryResolutionEnum ArbResolution);
+
+		[helpcontext(420), helpstring("This method programs the digital pattern delay for specified bit index (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattBitDelay([in] BSTR Channel, [in] long BitIndex, [in] double BitDelay);
+
+		[helpcontext(421), helpstring("This merhod sets the digital pattern output on or off for specified bit index (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattBitEnabled([in] BSTR Channel, [in] long BitIndex, [in] VARIANT_BOOL BitEnabled);
+
+		[helpcontext(422), helpstring("This method programs the digital pattern high level for specified bit index (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattBitHighLevel([in] BSTR Channel, [in] long BitIndex, [in] double BitHighLevel);
+
+		[helpcontext(423), helpstring("This method programs the digital pattern low level for specified bit index (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattBitLowLevel([in] BSTR Channel, [in] long BitIndex, [in] double BitLowLevel);
+
+		[helpcontext(424), helpstring("This method programs the digital pattern delay (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattDelay([in] BSTR Channel, [in] double Delay);
+
+		[helpcontext(425), helpstring("This method programs delay mode for digital pattern output (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattDelayMode([in] BSTR Channel, [in] enum WX218xDigPatternDelayModeEnum DelayMode);
+
+		[helpcontext(426), helpstring("This method toggles emphasis on/off (for WX218xB-D,WX128xB-D).")]
+		HRESULT ConfigureDigPattEmphasisEnabled([in] BSTR Channel, [in] VARIANT_BOOL EmphasisEnabled);
+
+		[helpcontext(427), helpstring("This method sets the digital pattern output on or off (for 4Ch. models, WX218xB-D,WX128xB-D).")]
+		HRESULT ConfigureDigPattEnabled([in] BSTR Channel, [in] VARIANT_BOOL Enabled);
+
+		[helpcontext(428), helpstring("This method programs how the waveform will be download into the memories (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattFormatData([in] BSTR Channel, [in] enum WX218xDigFormatDataEnum FormatData);
+
+		[helpcontext(429), helpstring("This method programs the digital pattern high level (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattHighLevel([in] BSTR Channel, [in] double HighLevel);
+
+		[helpcontext(430), helpstring("This method programs level mode for digital pattern output (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattLevelMode([in] BSTR Channel, [in] enum WX218xDigPatternLevelModeEnum LevelMode);
+
+		[helpcontext(431), helpstring("This method programs the digital pattern low level (for 4Ch. models,WX218xB-D,WX128xB-D,WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattLowLevel([in] BSTR Channel, [in] double LowLevel);
+
+		[helpcontext(548), helpstring("Load Binary Digital Data from file to the instrument.Every point is 4 byte or 2 byte (for 4Ch. models, WX218xC,WX128xC).")]
+		HRESULT LoadDigitalDataBinaryFile([in] BSTR FileName, [in] long Segment);
+
+		[helpcontext(549), helpstring("Load Ascii Digital Data from file to the instrument.Every point is of type unsigned int in format hexa (for 4Ch. models, WX218xC,WX128xC).")]
+		HRESULT LoadDigitalDataAsciiFile([in] BSTR FileName, [in] long Segment);
+
+		[helpcontext(551), helpstring("This method programs clock for digital pattern output (for 4Ch. models, WX218xC,WX128xC).")]
+		HRESULT ConfigureDigClock([in] enum WX218xDigitalClockEnum DigClock);
+
+		[helpcontext(580), helpstring("This method programs digital port for digital pattern output (for 4Ch. models, WX218xC,WX128xC).")]
+		HRESULT ConfigureDigPattDigPort([in] enum WX218xDigPortEnum DigPort);
+
+		[propget, helpcontext(244), helpstring("This property programs the digital pattern delay for specified bit index (not for WS835x,WX218xB,WX128xB,WX218x).")]
+		HRESULT BitDelay([in] BSTR Channel, [in] long Index, [out, retval] double* Val);
+
+		[propput, helpcontext(244), helpstring("This property programs the digital pattern delay for specified bit index (not for WS835x,WX218xB,WX128xB,WX218x).")]
+		HRESULT BitDelay([in] BSTR Channel, [in] long Index, [in] double Val);
+
+		[propget, helpcontext(245), helpstring("This property programs the digital pattern high level for specified bit index (not for WS835x,WX218xB,WX128xB,WX218x).")]
+		HRESULT BitHighLevel([in] BSTR Channel, [in] long Index, [out, retval] double* Val);
+
+		[propput, helpcontext(245), helpstring("This property programs the digital pattern high level for specified bit index (not for WS835x,WX218xB,WX128xB,WX218x).")]
+		HRESULT BitHighLevel([in] BSTR Channel, [in] long Index, [in] double Val);
+
+		[propget, helpcontext(246), helpstring("This property programs the digital pattern low level for specified bit index (not for WS835x,WX218xB,WX128xB,WX218x).")]
+		HRESULT BitLowLevel([in] BSTR Channel, [in] long Index, [out, retval] double* Val);
+
+		[propput, helpcontext(246), helpstring("This property programs the digital pattern low level for specified bit index (not for WS835x,WX218xB,WX128xB,WX218x).")]
+		HRESULT BitLowLevel([in] BSTR Channel, [in] long Index, [in] double Val);
+
+		[propget, helpcontext(248), helpstring("This property programs delay mode for digital pattern output.")]
+		HRESULT DelayMode([in] BSTR Channel, [out, retval] enum WX218xDigPatternDelayModeEnum* Val);
+
+		[propput, helpcontext(248), helpstring("This property programs delay mode for digital pattern output.")]
+		HRESULT DelayMode([in] BSTR Channel, [in] enum WX218xDigPatternDelayModeEnum Val);
+
+		[propget, helpcontext(250), helpstring("This property programs level mode for digital pattern output.")]
+		HRESULT LevelMode([in] BSTR Channel, [out, retval] enum WX218xDigPatternLevelModeEnum* Val);
+
+		[propput, helpcontext(250), helpstring("This property programs level mode for digital pattern output.")]
+		HRESULT LevelMode([in] BSTR Channel, [in] enum WX218xDigPatternLevelModeEnum Val);
+
+		[propget, helpcontext(252), helpstring("This property sets the digital pattern output on or off for specified bit index (not for WS835x,WX218xB,WX128xB,WX218x).")]
+		HRESULT BitEnabled([in] BSTR Channel, [in] long Index, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(252), helpstring("This property sets the digital pattern output on or off for specified bit index (not for WS835x,WX218xB,WX128xB,WX218x).")]
+		HRESULT BitEnabled([in] BSTR Channel, [in] long Index, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(238), helpstring("This property programs the digital pattern delay.")]
+		HRESULT Delay([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(238), helpstring("This property programs the digital pattern delay.")]
+		HRESULT Delay([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(240), helpstring("This property sets the digital pattern output on or off.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(240), helpstring("This property sets the digital pattern output on or off.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(251), helpstring("This property programs the digital pattern high level.")]
+		HRESULT HighLevel([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(251), helpstring("This property programs the digital pattern high level.")]
+		HRESULT HighLevel([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(253), helpstring("This property programs the digital pattern low level.")]
+		HRESULT LowLevel([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(253), helpstring("This property programs the digital pattern low level.")]
+		HRESULT LowLevel([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(349), helpstring("Checks whether a POD is present at the port.")]
+		HRESULT PodPresent([in] BSTR Channel, [out, retval] long* Val);
+
+		[propget, helpcontext(350), helpstring("This property toggles emphasis on/off.")]
+		HRESULT EmphasisEnabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(350), helpstring("This property toggles emphasis on/off.")]
+		HRESULT EmphasisEnabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(353), helpstring("This property programs how the waveform will be download into the memories.")]
+		HRESULT FormatData([in] BSTR Channel, [out, retval] enum WX218xDigFormatDataEnum* Val);
+
+		[propput, helpcontext(353), helpstring("This property programs how the waveform will be download into the memories.")]
+		HRESULT FormatData([in] BSTR Channel, [in] enum WX218xDigFormatDataEnum Val);
+
+		[propget, helpcontext(355), helpstring("This property duplicates or not duplicates any arbitrary wave for sync between Arb and Dig frequency.")]
+		HRESULT ArbResolution([in] BSTR Channel, [out, retval] enum WX218xArbitraryResolutionEnum* Val);
+
+		[propput, helpcontext(355), helpstring("This property duplicates or not duplicates any arbitrary wave for sync between Arb and Dig frequency.")]
+		HRESULT ArbResolution([in] BSTR Channel, [in] enum WX218xArbitraryResolutionEnum Val);
+
+		[propget, helpcontext(550), helpstring("This property programs clock for digital pattern output.")]
+		HRESULT DigClock([out, retval] enum WX218xDigitalClockEnum* Val);
+
+		[propput, helpcontext(550), helpstring("This property programs clock for digital pattern output.")]
+		HRESULT DigClock([in] enum WX218xDigitalClockEnum Val);
+
+		[propget, helpcontext(558), helpstring("This property programs digital port for digital pattern output.")]
+		HRESULT DigPort([out, retval] enum WX218xDigPortEnum* Val);
+
+		[propput, helpcontext(558), helpstring("This property programs digital port for digital pattern output.")]
+		HRESULT DigPort([in] enum WX218xDigPortEnum Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xCHIRP
+	//
+
+	[
+		object,
+		uuid(ba1968fa-b591-4460-990f-ecb921ce5bd7),
+		helpstring("IWX218xCHIRP interface."),
+		helpcontext(255),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xCHIRP : IUnknown
+	{
+		[helpcontext(405), helpstring("Sets the amplitude depth for chirp modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpAmplDepth([in] BSTR Channel, [in] double AmplDepth);
+
+		[helpcontext(406), helpstring("This method configures whether the function generator applies chirp modulation to a channel (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpEnabled([in] BSTR Channel, [in] VARIANT_BOOL Enabled);
+
+		[helpcontext(407), helpstring("This method configures frequency direction up or down for chirp modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpFreqDirection([in] BSTR Channel, [in] enum WX218xChirpFreqDirectionEnum FreqDirection);
+
+		[helpcontext(408), helpstring("Sets frequency spacing linear or logarithmic for chirp modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpFreqSpacing([in] BSTR Channel, [in] enum WX218xChirpFreqSpacingEnum FreqSpacing);
+
+		[helpcontext(409), helpstring("Sets the marker frequency for chirp modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpMarkerFreq([in] BSTR Channel, [in] double MarkerFreq);
+
+		[helpcontext(410), helpstring("Sets the repetition for chirp modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpRepetition([in] BSTR Channel, [in] double Repetition);
+
+		[helpcontext(411), helpstring("Sets the start frequency for chirp modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpStartFreq([in] BSTR Channel, [in] double StartFreq);
+
+		[helpcontext(412), helpstring("Sets the stop frequency for Chirp modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpStopFreq([in] BSTR Channel, [in] double StopFreq);
+
+		[helpcontext(413), helpstring("Sets the width for chirp modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpWidth([in] BSTR Channel, [in] double Width);
+
+		[helpcontext(414), helpstring("Sets amplitude direction up or down for chirp modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpAmplDirection([in] BSTR Channel, [in] enum WX218xChirpAmplitudeDirectionEnum AmplDirection);
+
+		[helpcontext(415), helpstring("Sets chirp amplitude spacing linear or logarithmic (not for WX2181,WX2182).")]
+		HRESULT ConfigureChirpAmplSpacing([in] BSTR Channel, [in] enum WX218xChirpAmplSpacingEnum AmplSpacing);
+
+		[propget, helpcontext(256), helpstring("Sets the width for chirp modulation.")]
+		HRESULT Width([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(256), helpstring("Sets the width for chirp modulation.")]
+		HRESULT Width([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(257), helpstring("Sets the repetition for chirp modulation")]
+		HRESULT Repetition([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(257), helpstring("Sets the repetition for chirp modulation")]
+		HRESULT Repetition([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(258), helpstring("Sets the start frequency for chirp modulation.")]
+		HRESULT StartFrequency([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(258), helpstring("Sets the start frequency for chirp modulation.")]
+		HRESULT StartFrequency([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(259), helpstring("Sets the stop frequency for Chirp modulation.")]
+		HRESULT StopFrequency([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(259), helpstring("Sets the stop frequency for Chirp modulation.")]
+		HRESULT StopFrequency([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(260), helpstring("Sets the marker frequency for chirp modulation.")]
+		HRESULT MarkerFrequency([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(260), helpstring("Sets the marker frequency for chirp modulation.")]
+		HRESULT MarkerFrequency([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(261), helpstring("Sets the amplitude depth for chirp modulation.")]
+		HRESULT AmplDepth([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(261), helpstring("Sets the amplitude depth for chirp modulation.")]
+		HRESULT AmplDepth([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(263), helpstring("Sets frequency direction up or down for chirp modulation.")]
+		HRESULT FreqDirection([in] BSTR Channel, [out, retval] enum WX218xChirpFreqDirectionEnum* Val);
+
+		[propput, helpcontext(263), helpstring("Sets frequency direction up or down for chirp modulation.")]
+		HRESULT FreqDirection([in] BSTR Channel, [in] enum WX218xChirpFreqDirectionEnum Val);
+
+		[propget, helpcontext(265), helpstring("Sets frequency spacing linear or logarithmic for chirp modulation.")]
+		HRESULT FreqSpacing([in] BSTR Channel, [out, retval] enum WX218xChirpFreqSpacingEnum* Val);
+
+		[propput, helpcontext(265), helpstring("Sets frequency spacing linear or logarithmic for chirp modulation.")]
+		HRESULT FreqSpacing([in] BSTR Channel, [in] enum WX218xChirpFreqSpacingEnum Val);
+
+		[propget, helpcontext(267), helpstring("Sets amplitude direction up or down for chirp modulation.")]
+		HRESULT AmplDirection([in] BSTR Channel, [out, retval] enum WX218xChirpAmplitudeDirectionEnum* Val);
+
+		[propput, helpcontext(267), helpstring("Sets amplitude direction up or down for chirp modulation.")]
+		HRESULT AmplDirection([in] BSTR Channel, [in] enum WX218xChirpAmplitudeDirectionEnum Val);
+
+		[propget, helpcontext(269), helpstring("Sets chirp amplitude spacing linear or logarithmic.")]
+		HRESULT AmplSpacing([in] BSTR Channel, [out, retval] enum WX218xChirpAmplSpacingEnum* Val);
+
+		[propput, helpcontext(269), helpstring("Sets chirp amplitude spacing linear or logarithmic.")]
+		HRESULT AmplSpacing([in] BSTR Channel, [in] enum WX218xChirpAmplSpacingEnum Val);
+
+		[propget, helpcontext(270), helpstring("This property configures whether the function generator applies chirp modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(270), helpstring("This property configures whether the function generator applies chirp modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xFSK
+	//
+
+	[
+		object,
+		uuid(19eadc91-8a35-46f9-b007-b0f0402535dd),
+		helpstring("IWX218xFSK interface."),
+		helpcontext(271),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xFSK : IUnknown
+	{
+		[helpcontext(312), helpstring("This method loads FSK data array in to the instrument (not for WX218x models).")]
+		HRESULT CreateFSKData([in] BSTR Channel, [in] SAFEARRAY(BYTE)* Data);
+
+		[helpcontext(328), helpstring("This method loads the data from the specified FSK data file (not for WX218x models).")]
+		HRESULT LoadFSKDataFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(374), helpstring("This method loads FSK data array in to the instrument (not for WX218x models).")]
+		HRESULT CreateFSKDataAdv([in] BSTR Channel, [in] SAFEARRAY(long)* Data);
+
+		[helpcontext(457), helpstring("Sets Baud for FSK modulation (not for WX218x models).")]
+		HRESULT ConfigureFSKBaud([in] BSTR Channel, [in] double Baud);
+
+		[helpcontext(458), helpstring("This method configures whether the function generator applies FSK modulation to a channel (not for WX218x models).")]
+		HRESULT ConfigureFSKEnabled([in] BSTR Channel, [in] VARIANT_BOOL Enabled);
+
+		[helpcontext(459), helpstring("Sets marker for FSK modulation (not for WX218x models).")]
+		HRESULT ConfigureFSKMarker([in] BSTR Channel, [in] long Marker);
+
+		[helpcontext(460), helpstring("Sets Shift Frequency for FSK modulation (not for WX218x models).")]
+		HRESULT ConfigureFSKShiftFreq([in] BSTR Channel, [in] double ShiftFreq);
+
+		[propget, helpcontext(272), helpstring("Sets Shift Frequency for FSK modulation.")]
+		HRESULT ShiftFreq([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(272), helpstring("Sets Shift Frequency for FSK modulation.")]
+		HRESULT ShiftFreq([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(273), helpstring("Sets Baud for FSK modulation.")]
+		HRESULT Baud([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(273), helpstring("Sets Baud for FSK modulation.")]
+		HRESULT Baud([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(274), helpstring("Sets marker for FSK modulation.")]
+		HRESULT Marker([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(274), helpstring("Sets marker for FSK modulation.")]
+		HRESULT Marker([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(343), helpstring("This property configures whether the function generator applies FSK modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(343), helpstring("This property configures whether the function generator applies FSK modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xASK
+	//
+
+	[
+		object,
+		uuid(dd45b2ef-ec02-46a8-92a0-666c10bcef66),
+		helpstring("IWX218xASK interface."),
+		helpcontext(275),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xASK : IUnknown
+	{
+		[helpcontext(329), helpstring("This method loads ASK data array in to the instrument (not for WX2181,WX2182).")]
+		HRESULT CreateASKData([in] BSTR Channel, [in] SAFEARRAY(BYTE)* Data);
+
+		[helpcontext(330), helpstring("This method loads the data from the specified ASK data file (not for WX2181,WX2182).")]
+		HRESULT LoadASKDataFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(373), helpstring("This method loads ASK data array in to the instrument (not for WX2181,WX2182).")]
+		HRESULT CreateASKDataAdv([in] BSTR Channel, [in] SAFEARRAY(long)* Data);
+
+		[helpcontext(398), helpstring("Sets baud for ASK modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureASKBaud([in] BSTR Channel, [in] double Baud);
+
+		[helpcontext(399), helpstring("This method configures whether the function generator applies ASK modulation to a channel (not for WX2181,WX2182).")]
+		HRESULT ConfigureASKEnabled([in] BSTR Channel, [in] VARIANT_BOOL Enabled);
+
+		[helpcontext(400), helpstring("Sets marker for ASK modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureASKMarker([in] BSTR Channel, [in] long Marker);
+
+		[helpcontext(401), helpstring("Sets shift amplitude for ASK modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureASKShiftAmplitude([in] BSTR Channel, [in] double ShiftAmpl);
+
+		[helpcontext(402), helpstring("Sets start amplitude for ASK modulation (not for WX2181,WX2182).")]
+		HRESULT ConfigureASKStartAmplitude([in] BSTR Channel, [in] double StartAmpl);
+
+		[propget, helpcontext(276), helpstring("Sets start amplitude for ASK modulation.")]
+		HRESULT StartAmplitude([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(276), helpstring("Sets start amplitude for ASK modulation.")]
+		HRESULT StartAmplitude([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(277), helpstring("Sets shift amplitude for ASK modulation.")]
+		HRESULT ShiftAmplitude([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(277), helpstring("Sets shift amplitude for ASK modulation.")]
+		HRESULT ShiftAmplitude([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(278), helpstring("Sets baud for ASK modulation.")]
+		HRESULT Baud([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(278), helpstring("Sets baud for ASK modulation.")]
+		HRESULT Baud([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(279), helpstring("Sets marker for ASK modulation.")]
+		HRESULT Marker([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(279), helpstring("Sets marker for ASK modulation.")]
+		HRESULT Marker([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(344), helpstring("This property configures whether the function generator applies ASK modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(344), helpstring("This property configures whether the function generator applies ASK modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xFHOP
+	//
+
+	[
+		object,
+		uuid(c854b823-ba84-4294-be4f-383d2841465c),
+		helpstring("IWX218xFHOP interface."),
+		helpcontext(280),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xFHOP : IUnknown
+	{
+		[helpcontext(331), helpstring("This method loads the data from the specified Freq Hop Fixed data array (not for WX218x models).")]
+		HRESULT CreateFHOPFixedData([in] BSTR Channel, [in] SAFEARRAY(double)* Data);
+
+		[helpcontext(332), helpstring("This method loads the data from the specified Freq data array and Dwell time data array (not for WX218x models).")]
+		HRESULT CreateFHOPVariableData([in] BSTR Channel, [in] SAFEARRAY(double)* FreqData, [in] SAFEARRAY(double)* DwellTimeData);
+
+		[helpcontext(311), helpstring("This method loads the data from the specified FHOP fixed data file (not for WX218x models).")]
+		HRESULT LoadFHOPFixDataFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(357), helpstring("This method loads the data from the specified FHOP variable data file.Minimum file length:2*2,maximum file length:10000*2 (not for WX218x models).")]
+		HRESULT LoadFHOPVarDataFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(451), helpstring("This method selects one of the Dwell mode variables for FHOP modulation (not for WX218x models).")]
+		HRESULT ConfigureFHOPDwellMode([in] BSTR Channel, [in] enum WX218xFHOPDwellModeEnum DwellMode);
+
+		[helpcontext(452), helpstring("This method configures whether the function generator applies FHOP modulation to a channel (not for WX218x models).")]
+		HRESULT ConfigureFHOPEnabled([in] BSTR Channel, [in] VARIANT_BOOL Enabled);
+
+		[helpcontext(453), helpstring("Sets marker for FHOP modulation (not for WX218x models).")]
+		HRESULT ConfigureFHOPMarker([in] BSTR Channel, [in] long Marker);
+
+		[helpcontext(454), helpstring("Sets dwell time for FHOP modulation (not for WX218x models).")]
+		HRESULT ConfigureFHOPTime([in] BSTR Channel, [in] double Time);
+
+		[propget, helpcontext(281), helpstring("Sets dwell time for FHOP modulation.")]
+		HRESULT Time([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(281), helpstring("Sets dwell time for FHOP modulation.")]
+		HRESULT Time([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(282), helpstring("Sets marker for FHOP modulation")]
+		HRESULT Marker([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(282), helpstring("Sets marker for FHOP modulation")]
+		HRESULT Marker([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(284), helpstring("This parameter selects one of the Dwell mode variables for FHOP modulation.")]
+		HRESULT DwellMode([in] BSTR Channel, [out, retval] enum WX218xFHOPDwellModeEnum* Val);
+
+		[propput, helpcontext(284), helpstring("This parameter selects one of the Dwell mode variables for FHOP modulation.")]
+		HRESULT DwellMode([in] BSTR Channel, [in] enum WX218xFHOPDwellModeEnum Val);
+
+		[propget, helpcontext(345), helpstring("This property configures whether the function generator applies FHOP modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(345), helpstring("This property configures whether the function generator applies FHOP modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xAHOP
+	//
+
+	[
+		object,
+		uuid(d8c391ad-9e34-4ac7-b4d5-65643a21432d),
+		helpstring("IWX218xAHOP interface."),
+		helpcontext(285),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xAHOP : IUnknown
+	{
+		[helpcontext(334), helpstring("This method loads the data from the specified AHOP Fixed data array(not for WX2181,WX2182).")]
+		HRESULT CreateAHOPFixedData([in] BSTR Channel, [in] SAFEARRAY(double)* Data);
+
+		[helpcontext(335), helpstring("This method loads the data from the specified Amplitude data array and Dwell time data array(not for WX2181,WX2182).")]
+		HRESULT CreateAHOPVariableData([in] BSTR Channel, [in] SAFEARRAY(double)* AmplData, [in] SAFEARRAY(double)* DwellTimeData);
+
+		[helpcontext(336), helpstring("This method loads the data from the specified AHOP fixed data file.Minimum file length:2,maximum file length:10000(not for WX2181,WX2182).")]
+		HRESULT LoadAHOPFixDataFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(358), helpstring("This method loads the data from the specified AHOP fixed data file.Minimum file length:2*2,maximum file length:10000*2(not for WX2181,WX2182).")]
+		HRESULT LoadAHOPVarDataFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(371), helpstring("This method configures Dwell mode for AHOP modulation(not for WX2181,WX2182).")]
+		HRESULT ConfigureAHOPDwellMode([in] BSTR Channel, [in] enum WX218xAHOPDwellModeEnum DwellMode);
+
+		[helpcontext(383), helpstring("This method configures whether the function generator applies AHOP modulation to a channel(not for WX2181,WX2182).")]
+		HRESULT ConfigureAHOPEnabled([in] BSTR Channel, [in] VARIANT_BOOL Enabled);
+
+		[helpcontext(384), helpstring("Sets marker for AHOP modulation(not for WX2181,WX2182).")]
+		HRESULT ConfigureAHOPMarker([in] BSTR Channel, [in] long Marker);
+
+		[helpcontext(385), helpstring("Sets Time for AHOP modulation(not for WX2181,WX2182).")]
+		HRESULT ConfigureAHOPTime([in] BSTR Channel, [in] double Time);
+
+		[propget, helpcontext(286), helpstring("Sets Time for AHOP modulation.")]
+		HRESULT Time([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(286), helpstring("Sets Time for AHOP modulation.")]
+		HRESULT Time([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(287), helpstring("Sets marker for AHOP modulation.")]
+		HRESULT Marker([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(287), helpstring("Sets marker for AHOP modulation.")]
+		HRESULT Marker([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(333), helpstring("This parameter selects one of the Dwell mode variables for AHOP modulation.")]
+		HRESULT DwellMode([in] BSTR Channel, [out, retval] enum WX218xAHOPDwellModeEnum* Val);
+
+		[propput, helpcontext(333), helpstring("This parameter selects one of the Dwell mode variables for AHOP modulation.")]
+		HRESULT DwellMode([in] BSTR Channel, [in] enum WX218xAHOPDwellModeEnum Val);
+
+		[propget, helpcontext(346), helpstring("This property configures whether the function generator applies AHOP modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(346), helpstring("This property configures whether the function generator applies AHOP modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xPattern
+	//
+
+	[
+		object,
+		uuid(3b7fd226-21cd-42cd-943f-a6235a6362fc),
+		helpstring("IWX218xPattern interface."),
+		helpcontext(289),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xPattern : IUnknown
+	{
+		[helpcontext(308), helpstring("This method loads pattern data in to the instrument (not for WX218x models).")]
+		HRESULT CreatePatternData([in] BSTR Channel, [in] SAFEARRAY(BYTE)* Data);
+
+		[helpcontext(476), helpstring("Sets baud for predefined pattern mode (not for WX218x models).")]
+		HRESULT ConfigurePatternBaud([in] BSTR Channel, [in] double Baud);
+
+		[helpcontext(477), helpstring("Sets High Level for predefined pattern mode (not for WX218x models).")]
+		HRESULT ConfigurePatternHighLevel([in] BSTR Channel, [in] double HighLevel);
+
+		[helpcontext(478), helpstring("Sets length for predefined pattern mode (not for WX218x models).")]
+		HRESULT ConfigurePatternLength([in] BSTR Channel, [in] long Length);
+
+		[helpcontext(479), helpstring("Sets level for predefined pattern mode (not for WX218x models).")]
+		HRESULT ConfigurePatternLevel([in] BSTR Channel, [in] long Level);
+
+		[helpcontext(480), helpstring("Sets number of loop for predefined pattern mode (not for WX218x models).")]
+		HRESULT ConfigurePatternLoop([in] BSTR Channel, [in] long Loop);
+
+		[helpcontext(481), helpstring("Sets Low Level for predefined pattern mode (not for WX218x models).")]
+		HRESULT ConfigurePatternLowLevel([in] BSTR Channel, [in] double LowLevel);
+
+		[helpcontext(482), helpstring("Selects one of the two pattern modes:Composer or Predefined (not for WX218x models).")]
+		HRESULT ConfigurePatternMode([in] BSTR Channel, [in] enum WX218xPatternModeEnum Mode);
+
+		[helpcontext(483), helpstring("Sets preamble for predefined pattern mode (not for WX218x models).")]
+		HRESULT ConfigurePatternPreamble([in] BSTR Channel, [in] long Preamble);
+
+		[helpcontext(484), helpstring("Selects type for predefined pattern mode (not for WX218x models).")]
+		HRESULT ConfigurePatternPredType([in] BSTR Channel, [in] enum WX218xPatternPredefinedTypeEnum Type);
+
+		[propget, helpcontext(290), helpstring("Sets baud for predefined pattern mode.")]
+		HRESULT Baud([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(290), helpstring("Sets baud for predefined pattern mode.")]
+		HRESULT Baud([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(291), helpstring("Sets level for predefined pattern mode.")]
+		HRESULT Level([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(291), helpstring("Sets level for predefined pattern mode.")]
+		HRESULT Level([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(293), helpstring("Selects one of the two pattern modes:Composer or Predefined.")]
+		HRESULT Mode([in] BSTR Channel, [out, retval] enum WX218xPatternModeEnum* Val);
+
+		[propput, helpcontext(293), helpstring("Selects one of the two pattern modes:Composer or Predefined.")]
+		HRESULT Mode([in] BSTR Channel, [in] enum WX218xPatternModeEnum Val);
+
+		[propget, helpcontext(295), helpstring("Selects type for predefined pattern mode.")]
+		HRESULT PredefinedType([in] BSTR Channel, [out, retval] enum WX218xPatternPredefinedTypeEnum* Val);
+
+		[propput, helpcontext(295), helpstring("Selects type for predefined pattern mode.")]
+		HRESULT PredefinedType([in] BSTR Channel, [in] enum WX218xPatternPredefinedTypeEnum Val);
+
+		[propget, helpcontext(296), helpstring("Sets High Level for predefined pattern mode.")]
+		HRESULT HighLevel([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(296), helpstring("Sets High Level for predefined pattern mode.")]
+		HRESULT HighLevel([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(297), helpstring("Sets Low Level for predefined pattern mode.")]
+		HRESULT LowLevel([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(297), helpstring("Sets Low Level for predefined pattern mode.")]
+		HRESULT LowLevel([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(298), helpstring("Sets number of loop for predefined pattern mode.")]
+		HRESULT Loop([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(298), helpstring("Sets number of loop for predefined pattern mode.")]
+		HRESULT Loop([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(299), helpstring("Sets preamble for predefined pattern mode.")]
+		HRESULT Preamble([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(299), helpstring("Sets preamble for predefined pattern mode.")]
+		HRESULT Preamble([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(300), helpstring("Sets length for predefined pattern mode.")]
+		HRESULT Length([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(300), helpstring("Sets length for predefined pattern mode.")]
+		HRESULT Length([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(301), helpstring("Pointer to the IWX218xPatternComposer interface.")]
+		HRESULT Composer([out, retval] IWX218xPatternComposer** Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xPatternComposer
+	//
+
+	[
+		object,
+		uuid(1d6036f8-df37-4c92-b30c-ab885209ad73),
+		helpstring("IWX218xPatternComposer interface."),
+		helpcontext(301),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xPatternComposer : IUnknown
+	{
+		[helpcontext(305), helpstring("This method loads pattern composer start data in binary format in to the instrument.")]
+		HRESULT CreatePatternComposerFastData([in] BSTR Channel, [in] SAFEARRAY(double)* AmplLevel, [in] SAFEARRAY(double)* DwellTime);
+
+		[helpcontext(306), helpstring("This method loads pattern data file in to the instrument.")]
+		HRESULT LoadPatternFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(307), helpstring("This method loads pattern composer linear data in binary format in to the instrument.")]
+		HRESULT CreatePatternComposerLinearData([in] BSTR Channel, [in] SAFEARRAY(double)* AmplLevel, [in] SAFEARRAY(double)* DwellTime);
+
+		[helpcontext(485), helpstring("Sets fast start for pattern composer (not for 4 Ch. models, WX218x).")]
+		HRESULT ConfigurePatternCompFastStart([in] BSTR Channel, [in] double FastStart);
+
+		[helpcontext(486), helpstring("Sets linear start for pattern composer (not for 4 Ch. models, WX218x).")]
+		HRESULT ConfigurePatternCompLinearStart([in] BSTR Channel, [in] double LinearStart);
+
+		[helpcontext(487), helpstring("Sets resolution for pattern composer.")]
+		HRESULT ConfigurePatternCompResolution([in] BSTR Channel, [in] double Resolution);
+
+		[helpcontext(488), helpstring("Sets resolution type for pattern composer.")]
+		HRESULT ConfigurePatternCompResType([in] BSTR Channel, [in] enum WX218xPatternResTypeEnum ResType);
+
+		[helpcontext(489), helpstring("Sets transition type for pattern composer.")]
+		HRESULT ConfigurePatternCompTransType([in] BSTR Channel, [in] enum WX218xPatternComposerTransitionTypeEnum TransitionType);
+
+		[propget, helpcontext(303), helpstring("Sets transition type for pattern composer.")]
+		HRESULT TransitionType([in] BSTR Channel, [out, retval] enum WX218xPatternComposerTransitionTypeEnum* Val);
+
+		[propput, helpcontext(303), helpstring("Sets transition type for pattern composer.")]
+		HRESULT TransitionType([in] BSTR Channel, [in] enum WX218xPatternComposerTransitionTypeEnum Val);
+
+		[propget, helpcontext(304), helpstring("Sets linear start for pattern composer.")]
+		HRESULT LinearStart([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(304), helpstring("Sets linear start for pattern composer.")]
+		HRESULT LinearStart([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(356), helpstring("Sets resolution for pattern composer.")]
+		HRESULT Resolution([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(356), helpstring("Sets resolution for pattern composer.")]
+		HRESULT Resolution([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(309), helpstring("Sets resolution type for pattern composer.")]
+		HRESULT ResolutionType([in] BSTR Channel, [out, retval] enum WX218xPatternResTypeEnum* Val);
+
+		[propput, helpcontext(309), helpstring("Sets resolution type for pattern composer.")]
+		HRESULT ResolutionType([in] BSTR Channel, [in] enum WX218xPatternResTypeEnum Val);
+
+		[propget, helpcontext(363), helpstring("Sets fast start for pattern composer.")]
+		HRESULT FastStart([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(363), helpstring("Sets fast start for pattern composer.")]
+		HRESULT FastStart([in] BSTR Channel, [in] double Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xPSK
+	//
+
+	[
+		object,
+		uuid(41b28e43-47bb-4a5b-a05c-a46837b2f07d),
+		helpstring("IWX218xPSK interface."),
+		helpcontext(313),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xPSK : IUnknown
+	{
+		[helpcontext(338), helpstring("This method loads PSK data array in to the instrument (not for WX218x models).")]
+		HRESULT CreatePSKData([in] BSTR Channel, [in] SAFEARRAY(BYTE)* Data);
+
+		[helpcontext(339), helpstring("This method loads PSK user data array in to the instrument (not for WX218x models).")]
+		HRESULT CreatePSKUserData([in] BSTR Channel, [in] SAFEARRAY(double)* Data);
+
+		[helpcontext(340), helpstring("This method loads the data from the specified PSK data file (not for WX218x models).")]
+		HRESULT LoadPSKDataFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(337), helpstring("This method loads the data from the specified PSK User data file (not for WX218x models).")]
+		HRESULT LoadPSKUserDataFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(375), helpstring("This method loads PSK data array in to the instrument (not for WX218x models).")]
+		HRESULT CreatePSKDataAdv([in] BSTR Channel, [in] SAFEARRAY(long)* Data);
+
+		[helpcontext(540), helpstring("Programs the baud of which the symbols stream in the (n)PSK data table (not for WX218x models).")]
+		HRESULT ConfigurePSKBaud([in] BSTR Channel, [in] double Baud);
+
+		[helpcontext(541), helpstring("Sets the carrier output on and off (not for WX218x models).")]
+		HRESULT ConfigurePSKCarrierState([in] BSTR Channel, [in] VARIANT_BOOL State);
+
+		[helpcontext(542), helpstring("This method configures whether the function generator applies PSK modulation to a channel (not for WX218x models).")]
+		HRESULT ConfigurePSKState([in] BSTR Channel, [in] VARIANT_BOOL State);
+
+		[helpcontext(543), helpstring("Programs where on the data stream the instrument will generate a pulse, designated as PSK marker, or index point (not for WX218x models).")]
+		HRESULT ConfigurePSKMarker([in] BSTR Channel, [in] long Marker);
+
+		[helpcontext(544), helpstring("Sets Rate for PSK modulation (not for WX218x models).")]
+		HRESULT ConfigurePSKRate([in] BSTR Channel, [in] double Rate);
+
+		[helpcontext(545), helpstring("Sets Shift Phase for PSK modulation (not for WX218x models).")]
+		HRESULT ConfigurePSKShiftPhase([in] BSTR Channel, [in] double ShiftPhase);
+
+		[helpcontext(546), helpstring("Sets Start Phase for PSK modulation (not for WX218x models).")]
+		HRESULT ConfigurePSKStartPhase([in] BSTR Channel, [in] double StartPhase);
+
+		[helpcontext(547), helpstring("Selects type for PSK modulation (not for WX218x models).")]
+		HRESULT ConfigurePSKType([in] BSTR Channel, [in] enum WX218xPskTypeEnum Type);
+
+		[propget, helpcontext(314), helpstring("Sets Start Phase for PSK modulation.")]
+		HRESULT StartPhase([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(314), helpstring("Sets Start Phase for PSK modulation.")]
+		HRESULT StartPhase([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(315), helpstring("Sets Shift Phase for PSK modulation.")]
+		HRESULT ShiftPhase([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(315), helpstring("Sets Shift Phase for PSK modulation.")]
+		HRESULT ShiftPhase([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(316), helpstring("Sets Rate for PSK modulation.")]
+		HRESULT Rate([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(316), helpstring("Sets Rate for PSK modulation.")]
+		HRESULT Rate([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(318), helpstring("Selects type for PSK modulation.")]
+		HRESULT Type([in] BSTR Channel, [out, retval] enum WX218xPskTypeEnum* Val);
+
+		[propput, helpcontext(318), helpstring("Selects type for PSK modulation.")]
+		HRESULT Type([in] BSTR Channel, [in] enum WX218xPskTypeEnum Val);
+
+		[propget, helpcontext(319), helpstring("Programs where on the data stream the instrument will generate a pulse, designated as PSK marker, or index point.")]
+		HRESULT Marker([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(319), helpstring("Programs where on the data stream the instrument will generate a pulse, designated as PSK marker, or index point.")]
+		HRESULT Marker([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(320), helpstring("Programs the baud of which the symbols stream in the (n)PSK data table.")]
+		HRESULT Baud([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(320), helpstring("Programs the baud of which the symbols stream in the (n)PSK data table.")]
+		HRESULT Baud([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(321), helpstring("Sets the carrier output on and off.")]
+		HRESULT CarrierEnabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(321), helpstring("Sets the carrier output on and off.")]
+		HRESULT CarrierEnabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(347), helpstring("This property configures whether the function generator applies PSK modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(347), helpstring("This property configures whether the function generator applies PSK modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+	};
+
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	IWX218xQAM
+	//
+
+	[
+		object,
+		uuid(e823dbcb-3f91-422c-8ed0-08b97f979348),
+		helpstring("IWX218xQAM interface."),
+		helpcontext(322),
+		pointer_default(unique),
+		oleautomation
+	] 
+	interface IWX218xQAM : IUnknown
+	{
+		[helpcontext(341), helpstring("This method loads QAM data array in to the instrument (not for WX218x models, only for 2 Ch,4Ch models).")]
+		HRESULT CreateQAMData([in] BSTR Channel, [in] SAFEARRAY(BYTE)* Data);
+
+		[helpcontext(342), helpstring("This method loads the pre-assigned symbols for USER QAM modulation type (not for WX218x models, only for 2 Ch,4Ch models).")]
+		HRESULT CreateQAMUserData([in] BSTR Channel, [in] SAFEARRAY(double)* DataI, [in] SAFEARRAY(double)* DataQ);
+
+		[helpcontext(351), helpstring("This method loads the data from the specified QAM data file (not for WX218x models, only for 2 Ch,4Ch models).")]
+		HRESULT LoadQAMDataFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(359), helpstring("This method loads the data from the specified QAM User data file (not for WX218x models, only for 2 Ch,4Ch models).")]
+		HRESULT LoadQAMUserDataFile([in] BSTR Channel, [in] BSTR FileName);
+
+		[helpcontext(372), helpstring("This method loads QAM data array in to the instrument (not for WX218x models, only for 2 Ch,4Ch models).")]
+		HRESULT CreateQAMDataAdv([in] BSTR Channel, [in] SAFEARRAY(long)* Data);
+
+		[helpcontext(535), helpstring("Programs the baud of which the symbols stream in the (n)QAM data table (not for WX218x models, only for 2 Ch,4Ch models).")]
+		HRESULT ConfigureQAMBaud([in] BSTR Channel, [in] double Baud);
+
+		[helpcontext(536), helpstring("Sets the carrier output on and off (not for WX218x models, only for 2 Ch,4Ch models).")]
+		HRESULT ConfigureQAMCarrierState([in] BSTR Channel, [in] VARIANT_BOOL State);
+
+		[helpcontext(537), helpstring("This method configures whether the function generator applies QAM modulation to a channel (not for WX218x models, only for 2 Ch,4Ch models).")]
+		HRESULT ConfigureQAMState([in] BSTR Channel, [in] VARIANT_BOOL State);
+
+		[helpcontext(538), helpstring("Programs where on the data stream the instrument will generate a pulse, designated as QAM marker, or index point (not for WX218x models, only for 2 Ch,4Ch models).")]
+		HRESULT ConfigureQAMMarker([in] BSTR Channel, [in] long Marker);
+
+		[helpcontext(539), helpstring("Selects between the various (n)QAM modulation schemes (not for WX218x models, only for 2 Ch,4Ch models).")]
+		HRESULT ConfigureQAMType([in] BSTR Channel, [in] enum WX218xQamTypeEnum Type);
+
+		[propget, helpcontext(323), helpstring("Programs the baud of which the symbols stream in the (n)QAM data table.")]
+		HRESULT Baud([in] BSTR Channel, [out, retval] double* Val);
+
+		[propput, helpcontext(323), helpstring("Programs the baud of which the symbols stream in the (n)QAM data table.")]
+		HRESULT Baud([in] BSTR Channel, [in] double Val);
+
+		[propget, helpcontext(325), helpstring("Selects between the various (n)QAM modulation schemes.")]
+		HRESULT Type([in] BSTR Channel, [out, retval] enum WX218xQamTypeEnum* Val);
+
+		[propput, helpcontext(325), helpstring("Selects between the various (n)QAM modulation schemes.")]
+		HRESULT Type([in] BSTR Channel, [in] enum WX218xQamTypeEnum Val);
+
+		[propget, helpcontext(326), helpstring("Programs where on the data stream the instrument will generate a pulse, designated as QAM marker, or index point.")]
+		HRESULT Marker([in] BSTR Channel, [out, retval] long* Val);
+
+		[propput, helpcontext(326), helpstring("Programs where on the data stream the instrument will generate a pulse, designated as QAM marker, or index point.")]
+		HRESULT Marker([in] BSTR Channel, [in] long Val);
+
+		[propget, helpcontext(327), helpstring("Sets the carrier output on and off.")]
+		HRESULT CarrierEnabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(327), helpstring("Sets the carrier output on and off.")]
+		HRESULT CarrierEnabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+		[propget, helpcontext(348), helpstring("This property configures whether the function generator applies QAM modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [out, retval] VARIANT_BOOL* Val);
+
+		[propput, helpcontext(348), helpstring("This property configures whether the function generator applies QAM modulation to a channel.")]
+		HRESULT Enabled([in] BSTR Channel, [in] VARIANT_BOOL Val);
+
+	};
+
+
+#ifdef CUSTOM_IDL
+#include "CustomInterfaceDefinitions.idl"
+#endif
+	///////////////////////////////////////////////////////////////////////////
+	//
+	//	WX218x
+	//
+
+	[
+		uuid(185d62a6-86bc-4b0d-8fef-f35f0a0fc943),
+		helpstring(""),
+		helpcontext(4)
+	]
+	coclass WX218x
+	{
+		[default] interface IWX218x;
+		interface IIviDriver;
+		interface IIviDriverOperation;
+		interface IIviDriverIdentity;
+		interface IIviComponentIdentity;
+		interface IIviDriverUtility;
+		interface IWX218xChannel;
+		interface IIviFgenOutput;
+		interface IIviFgenTrigger;
+		interface IIviFgenStandardWaveform;
+		interface IIviFgenArbitrary;
+		interface IIviFgenArbitrarySequence;
+		interface IIviFgenArbitraryWaveform;
+		interface IIviFgenAM;
+		interface IIviFgenFM;
+		interface IIviFgen;
+		interface IWX218xAM;
+		interface IWX218xChannelSync;
+		interface IWX218xStandardWaveform;
+		interface IWX218xArbitrary;
+		interface IWX218xArbitraryWaveform;
+		interface IWX218xArbitrarySequence;
+		interface IWX218xArbitrarySequenceAdvanceSequence;
+		interface IWX218xCarrierModulation;
+		interface IWX218xCouple;
+		interface IWX218xFM;
+		interface IWX218xMarkers;
+		interface IWX218xTrigger;
+		interface IWX218xTriggerARM;
+		interface IWX218xTriggerSmartTrigger;
+		interface IWX218xStateStorage;
+		interface IWX218xXInstrument;
+		interface IWX218xDigitalPulse;
+		interface IWX218xSweep;
+		interface IWX218xDigitalPatternOutput;
+		interface IWX218xCHIRP;
+		interface IWX218xFSK;
+		interface IWX218xASK;
+		interface IWX218xFHOP;
+		interface IWX218xAHOP;
+		interface IWX218xPattern;
+		interface IWX218xPatternComposer;
+		interface IWX218xPSK;
+		interface IWX218xQAM;
+	};
+
+
+#ifdef CUSTOM_IDL
+#include "CustomClasses.idl"
+#endif
+};

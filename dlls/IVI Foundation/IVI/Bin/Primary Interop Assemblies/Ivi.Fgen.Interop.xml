@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<doc>
+	<assembly>
+		<name>Ivi.Fgen.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.Fgen.Interop.IIviFgen">
+			<summary>IVI Fgen class-compliant root interface</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgen.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of 
+			certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameter
+			is "Name=Value", 
+			where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,
+			or DriverSetup. Value is either true or false except for DriverSetup. 
+			If the Options String parameter contains an assignment for the Driver Setup attribute, 
+			the Initialize function assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgen.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument are not accessible after Close is called.</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgen.InitiateGeneration">
+			<summary>If the function generator is in the Configuration State, this function moves the function generator to the Output Generation State.  If the function generator is already in the Output Generation State, this function does nothing and returns Success.</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgen.AbortGeneration">
+			<summary>If the function generator is in the Output Generation State, this function moves the function generator to the Configuration State.  If the function generator is already in the Configuration State, the function does nothing and returns Success.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgen.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgen.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgen.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgen.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the Close method, and False at all other times.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgen.Output">
+			<summary>Reference to the class-compliant IIviFgenOutput interface</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgen.Trigger">
+			<summary>Reference to the class-compliant IIviFgenTrigger interface</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgen.StandardWaveform">
+			<summary>Reference to the class-compliant IIviFgenStandardWaveform interface</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgen.Arbitrary">
+			<summary>Reference to the class-compliant IIviFgenArbitrary interface</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgen.AM">
+			<summary>Reference to the class-compliant IIviFgenAM interface</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgen.FM">
+			<summary>Reference to the class-compliant IIviFgenFM interface</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IIviFgenOutput">
+			<summary>IVI Fgen class-compliant output interface</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenOutput.Enabled">
+			<summary>If true, the signal the function generator produces appears at the output connector.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenOutput.Enabled(System.String)">
+			<summary>If true, the signal the function generator produces appears at the output connector.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenOutput.get_Enabled(System.String)">
+			<summary>Provides an indication whether the signal the function generator produces appears at the output connector.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>True if the signal the function generator produces appears at the output connector.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenOutput.set_Enabled(System.String,System.Boolean)">
+			<summary>Sets whether the signal the function generator produces appears at the output connector.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">If true, the signal the function generator produces appears at the output connector.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenOutput.Impedance">
+			<summary>The impedance of the output channel.  The units are Ohms.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenOutput.Impedance(System.String)">
+			<summary>The impedance of the output channel.  The units are Ohms.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenOutput.get_Impedance(System.String)">
+			<summary>Retrieves a channel's impedance.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The impedance of the output channel.  The units are Ohms.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenOutput.set_Impedance(System.String,System.Double)">
+			<summary>Sets channel's impedance.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The impedance of the output channel.  The units are Ohms.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenOutput.OutputMode">
+			<summary>The mode that determines how the function generator produces waveforms. This attribute determines 
+			which extension group's functions and attributes are used to configure the waveform the function generator produces.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenOutput.OperationMode(System.String)">
+			<summary>The mode that determines how the function generator produces waveforms. This attribute determines 
+			which extension group's functions and attributes are used to configure the waveform the function generator produces.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenOutput.get_OperationMode(System.String)">
+			<summary>Retrieves a channel's operation mode.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The mode that determines how the function generator produces output on a channel.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenOutput.set_OperationMode(System.String,Ivi.Fgen.Interop.IviFgenOperationModeEnum)">
+			<summary>Sets a channel's operation mode.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The mode that determines how the function generator produces output on a channel.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenOutput.ReferenceClockSource">
+			<summary>The source of the reference clock. The function generator derives frequencies and sample rates that it 
+			uses to generate waveforms from the reference clock.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenOutput.Count">
+			<summary>The number of output channels supported by the instrument.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenOutput.Name">
+			<summary>Retrieves the name of a channel.</summary>
+		</member>
+		<member name="p:Ivi.Fgen.Interop.IIviFgenOutput.Name(System.Int32)">
+			<summary>Retrieves the name of a channel.</summary>
+			<param name="Index">The one-based index into the collection of channel names. </param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenOutput.get_Name(System.Int32)">
+			<summary>Retrieves the name of a channel.</summary>
+			<param name="Index">The one-based index into the collection of channel names. </param>
+			<returns>The name of the output channel specified.</returns>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IIviFgenTrigger">
+			<summary>IVI Fgen class-compliant trigger interface</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenTrigger.SendSoftwareTrigger">
+			<summary>Sends a software trigger, which will cause the function generator to generate output.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenTrigger.BurstCount">
+			<summary>The number of waveform cycles that the function generator produces after it receives a trigger.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenTrigger.BurstCount(System.String)">
+			<summary>The number of waveform cycles that the function generator produces after it receives a trigger.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenTrigger.get_BurstCount(System.String)">
+			<summary>Retrieves a channel's burst count.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The number of waveform cycles that the function generator produces after it receives a trigger.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenTrigger.set_BurstCount(System.String,System.Int32)">
+			<summary>Sets a channel's burst count.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The number of waveform cycles that the function generator produces after it receives a trigger.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenTrigger.InternalRate">
+			<summary>The rate at which the function generator's internal trigger source produces a trigger, in triggers per second.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenTrigger.Source">
+			<summary>The trigger source. After the function generator receives a trigger from this source, it produces a signal.</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenTrigger.get_Source(System.String)">
+			<summary>Retrieves a channel's trigger source.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The trigger source. After the function generator receives a trigger from this source, it produces a signal.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenTrigger.set_Source(System.String,Ivi.Fgen.Interop.IviFgenTriggerSourceEnum)">
+			<summary>Sets a channel's trigger source.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The trigger source. After the function generator receives a trigger from this source, it produces a signal.</param>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IIviFgenStandardWaveform">
+			<summary>IVI Fgen class-compliant standard waveform interface</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.Configure(System.String,Ivi.Fgen.Interop.IviFgenWaveformEnum,System.Double,System.Double,System.Double,System.Double)">
+			<summary>Configures the function generator attributes that affect standard waveform generation.  When the Waveform parameter is set to Waveform DC, this function ignores the Amplitude, Frequency, and Start Phase parameters.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual name in the configuration store. For single output instruments, the driver may define the empty string as valid ChannelName.</param>
+			<param name="Waveform">Specifies the standard waveform. This value sets the Waveform property</param>
+			<param name="Amplitude">Specifies the waveform amplitude. This value sets the Amplitude property</param>
+			<param name="DCOffset">Specifies the waveform's DC offset. Tthis value sets the DC Offset attribute.</param>
+			<param name="Frequency">Specifies the waveform frequency. Tthis value sets the Frequency attribute.</param>
+			<param name="StartPhase">Specifies the waveform start phase. This value sets the Start Phase attribute.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.DutyCycleHigh">
+			<summary>The duty cycle for a square waveform. This attribute affects function generator behavior only when the 
+			Waveform attribute is set to Waveform Square.  The value is expressed as a percentage.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.DutyCycleHigh(System.String)">
+			<summary>The duty cycle for a square waveform. This attribute affects function generator behavior only when the 
+			Waveform attribute is set to Waveform Square.  The value is expressed as a percentage.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.get_DutyCycleHigh(System.String)">
+			<summary>Retrieves a channel's duty cycle.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The duty cycle for a square waveform. This attribute affects function generator behavior only when the 
+			Waveform attribute is set to Waveform Square.  The value is expressed as a percentage.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.set_DutyCycleHigh(System.String,System.Double)">
+			<summary>Sets a channel's duty cycle.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The duty cycle for a square waveform. This attribute affects function generator behavior only when the 
+			Waveform attribute is set to Waveform Square.  The value is expressed as a percentage.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.Amplitude">
+			<summary>The amplitude of the standard waveform output by the function generator. When the Waveform attribute 
+			is set to Waveform DC, this attribute does not affect signal output.  The units are volts.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.Amplitude(System.String)">
+			<summary>The amplitude of the standard waveform output by the function generator. When the Waveform attribute 
+			is set to Waveform DC, this attribute does not affect signal output.  The units are volts.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.get_Amplitude(System.String)">
+			<summary>Retrieves a channel's amplitude.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The amplitude of the standard waveform output by the function generator. When the Waveform attribute 
+			is set to Waveform DC, this attribute does not affect signal output.  The units are volts.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.set_Amplitude(System.String,System.Double)">
+			<summary>Sets a channel's amplitude.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The amplitude of the standard waveform output by the function generator. When the Waveform attribute 
+			is set to Waveform DC, this attribute does not affect signal output.  The units are volts.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.DCOffset">
+			<summary>The DC offset of the standard waveform output by the function generator. If the Waveform attribute 
+			is set to Waveform DC, this attribute specifies the DC level the function generator produces.  The units are volts.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.DCOffset(System.String)">
+			<summary>The DC offset of the standard waveform output by the function generator. If the Waveform attribute 
+			is set to Waveform DC, this attribute specifies the DC level the function generator produces.  The units are volts.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.get_DCOffset(System.String)">
+			<summary>Retrieves a channel's DC offset.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The DC offset of the standard waveform output by the function generator. If the Waveform attribute 
+			is set to Waveform DC, this attribute specifies the DC level the function generator produces.  The units are volts.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.set_DCOffset(System.String,System.Double)">
+			<summary>Sets a channel's DC offset.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The DC offset of the standard waveform output by the function generator. If the Waveform attribute 
+			is set to Waveform DC, this attribute specifies the DC level the function generator produces.  The units are volts.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.Frequency">
+			<summary>The frequency of the standard waveform output by the function generator. When the Waveform 
+			attribute is set to Waveform DC, this attribute does not affect signal output.  The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.Frequency(System.String)">
+			<summary>The frequency of the standard waveform output by the function generator. When the Waveform 
+			attribute is set to Waveform DC, this attribute does not affect signal output.  The units are Hertz.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.get_Frequency(System.String)">
+			<summary>Retrieves a channel's frequency.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The frequency of the standard waveform output by the function generator. When the Waveform 
+			attribute is set to Waveform DC, this attribute does not affect signal output.  The units are Hertz.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.set_Frequency(System.String,System.Double)">
+			<summary>Sets a channel's frequency.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The frequency of the standard waveform output by the function generator. When the Waveform 
+			attribute is set to Waveform DC, this attribute does not affect signal output.  The units are Hertz.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.StartPhase">
+			<summary>The start phase of the standard waveform output by the function generator. When the Waveform 
+			attribute is set to Waveform DC, this attribute does not affect signal output.  The units are degrees.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.StartPhase(System.String)">
+			<summary>The start phase of the standard waveform output by the function generator. When the Waveform 
+			attribute is set to Waveform DC, this attribute does not affect signal output.  The units are degrees.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.get_StartPhase(System.String)">
+			<summary>Retrieves a channel's start phase.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The start phase of the standard waveform output by the function generator. When the Waveform 
+			attribute is set to Waveform DC, this attribute does not affect signal output.  The units are degrees.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.set_StartPhase(System.String,System.Double)">
+			<summary>Sets a channel's start phase.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The start phase of the standard waveform output by the function generator. When the Waveform 
+			attribute is set to Waveform DC, this attribute does not affect signal output.  The units are degrees.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.Waveform">
+			<summary>The standard waveform output by the function generator.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenStandardWaveform.Waveform(System.String)">
+			<summary>The standard waveform output by the function generator.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.get_Waveform(System.String)">
+			<summary>Retrieves a channel's waveform.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The standard waveform output by the function generator.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenStandardWaveform.set_Waveform(System.String,Ivi.Fgen.Interop.IviFgenWaveformEnum)">
+			<summary>Sets a channel's waveform.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The standard waveform output by the function generator.</param>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IIviFgenArbitrary">
+			<summary>IVI Fgen class-compliant arbitrary sequence and waveform common interface</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitrary.ClearMemory">
+			<summary>Removes all previously created arbitrary waveforms and sequences from the function generator's memory and invalidates all waveform and sequence handles.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrary.Gain">
+			<summary>The gain of the arbitrary waveform the function generator produces.  This value is unitless.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrary.Offset">
+			<summary>The offset of the arbitrary waveform the function generator produces.  The units are volts.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrary.Gain(System.String)">
+			<summary>The gain of the arbitrary waveform the function generator produces.  This value is unitless.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrary.Offset(System.String)">
+			<summary>The offset of the arbitrary waveform the function generator produces.  The units are volts.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitrary.get_Gain(System.String)">
+			<summary>Retrieves the gain.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<returns>The gain of the arbitrary waveform the function generator produces.  This value is unitless.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitrary.get_Offset(System.String)">
+			<summary>Retrieves the offset.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<returns>The offset of the arbitrary waveform the function generator produces.  The units are volts.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitrary.set_Gain(System.String,System.Double)">
+			<summary>Sets the gain.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<param name="pVal">The gain of the arbitrary waveform the function generator produces.  This value is unitless.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitrary.set_Offset(System.String,System.Double))">
+			<summary>Retrieves the offset.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<param name="pVal">The offset of the arbitrary waveform the function generator produces.  The units are volts.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrary.SampleRate">
+			<summary>The sample rate of the arbitrary waveforms the function generator produces.  The units are samples per second.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrary.Sequence">
+			<summary>Reference  to the class-compliant IIviFgenArbitrarySequence interface</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrary.Waveform">
+			<summary>Reference  to the class-compliant IIviFgenArbitraryWaveform interface</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IIviFgenArbitrarySequence">
+			<summary>IVI Fgen class-compliant arbitrary sequence interface</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitrarySequence.Configure(System.String,System.Int32,System.Double,System.Double)">
+			<summary>Configures the attributes of the function generator that affect arbitrary sequence generation.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="Handle">Specifies the handle that identifies the arbitrary sequence to produce. This value sets the 
+			Arbitrary Sequence Handle property.</param>
+			<param name="Gain">Specifies the arbitrary waveform gain. Tthis value sets the Arbitrary Gain property.</param>
+			<param name="Offset">Specifies the arbitrary waveform offset. This value sets the Arbitrary Offset property.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitrarySequence.Clear(System.Int32)">
+			<summary>Removes a previously created arbitrary sequence from the function generator's memory and invalidates the 
+			sequence's handle.</summary>
+			<param name="Handle">Specifies the handle that identifies the arbitrary sequence to clear.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitrarySequence.Create(System.Int32[]@,System.Int32[]@)">
+			<summary>Creates an arbitrary waveform sequence from an array of waveform handles and a corresponding array of loop counts, 
+			and returns a handle that identifies the sequence.  The handle is used by the Configure, and Clear methods.</summary>
+			<param name="WfmHandle">Specifies the array of waveform handles for the new arbitrary sequence. Each WfmHandle array 
+			element has a corresponding LoopCount array element that specifies how many times that waveform is repeated.</param>
+			<param name="LoopCount">Specifies the array of loop counts for the new arbitrary sequence. Each LoopCount array element 
+			corresponds to a WfmHandle array element and indicates how many times to repeat that waveform. Each element of the 
+			LoopCount array must be less than or equal to the maximum number of loop counts the function generator allows. The 
+			function generator's maximum loop count is stored in the Loop Count Max attribute.</param>
+			<returns>Returns the handle that identifies the new arbitrary sequence.</returns>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrarySequence.LengthMax">
+			<summary>The maximum number of arbitrary waveforms that the function generator allows in an arbitrary sequence.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrarySequence.LengthMin">
+			<summary>The minimum number of arbitrary waveforms that the function generator allows in an arbitrary sequence.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrarySequence.LoopCountMax">
+			<summary>The maximum number of times that the function generator can repeat a waveform in a sequence.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitrarySequence.NumberSequencesMax">
+			<summary>The maximum number of arbitrary sequences that the function generator allows.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform">
+			<summary>IVI Fgen class-compliant arbitrary waveform interface</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.Configure(System.String,System.Int32,System.Double,System.Double)">
+			<summary>Configures the attributes of the function generator that affect arbitrary waveform generation.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="Handle">Specifies the handle that identifies the arbitrary waveform to produce. This value sets the 
+			Arbitrary Waveform Handle attribute.</param>
+			<param name="Gain">Specifies the arbitrary waveform gain. This value sets the Arbitrary Gain attribute.</param>
+			<param name="Offset">Specifies the arbitrary waveform offset. This value sets the Arbitrary Offset attribute.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.Clear(System.Int32)">
+			<summary>Removes a previously created arbitrary waveform from the function generator's memory and invalidates the 
+			waveform's handle.</summary>
+			<param name="Handle">Specifies the handle that identifies the arbitrary waveform to clear.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.Create(System.Double[]@)">
+			<summary>Creates an arbitrary waveform and returns a handle to it. The handle is used by the Configure, Clear, and 
+			ArbitrarySequence.Create methods.</summary>
+			<param name="Data">Specifies the array of data to use for the new arbitrary waveform. The array must have at least 
+			as many elements as the value in the Size parameter. The array's elements must be normalized between -1.00 and +1.00.</param>
+			<returns>Returns the handle that identifies the new arbitrary waveform.</returns>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.Frequency">
+			<summary>The rate at which an entire arbitrary waveform is generated.  The units are in Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.Frequency(System.String)">
+			<summary>The rate at which an entire arbitrary waveform is generated.  The units are in Hertz.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.get_Frequency(System.String)">
+			<summary>The rate at which an entire arbitrary waveform is generated.  The units are in Hertz.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<returns>The frequency.</returns>			
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.set_Frequency(System.String,System.Double)">
+			<summary>The rate at which an entire arbitrary waveform is generated.  The units are in Hertz.</summary>
+			<param name="ChannelName">The ChannelName parameter may be a string defined by the driver or supplied as a virtual 
+			name in the configuration store. For single output instruments, the driver may define the empty string as valid 
+			ChannelName.</param>
+			<param name="pVal">The frequency.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.NumberWaveformsMax">
+			<summary>The maximum number of arbitrary waveforms that the function generator allows.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.Quantum">
+			<summary>The size of each arbitrary waveform must be a multiple of a quantum value. This attribute returns the 
+			quantum value the function generator allows. For example, if this attribute returns a value of 8, all waveform 
+			sizes must be a multiple of 8.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.SizeMax">
+			<summary>The maximum number of points the function generator allows in an arbitrary waveform.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenArbitraryWaveform.SizeMin">
+			<summary>The minimum number of points the function generator allows in an arbitrary waveform.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IIviFgenAM">
+			<summary>IVI Fgen class-compliant AM interface</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenAM.ConfigureInternal(System.Double,Ivi.Fgen.Interop.IviFgenAMInternalWaveformEnum,System.Double)">
+			<summary>Configures the attributes that control the function generator's internal amplitude modulating waveform source.</summary>
+			<param name="Depth">Specifies the internal modulation depth. This value sets the AM Internal Depth property.</param>
+			<param name="Waveform">Specifies the waveform the function generator uses for the internal modulating waveform source. This value sets the AM Internal Waveform property.</param>
+			<param name="Frequency">Specifies the frequency of the internal modulating waveform source. This value sets the AM Internal Frequency property.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenAM.Enabled">
+			<summary>If true, the function generator applies amplitude modulation to the signal that the function generator produces.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenAM.Enabled(System.String)">
+			<summary>If true, the function generator applies amplitude modulation to the signal that the function generator produces.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenAM.get_Enabled(System.String)">
+			<summary>Provides an indication whether AM is enabled on a channel.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<returns>True if the function generator applies amplitude modulation to the signal that the function generator produces.</returns>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenAM.Source">
+			<summary>The source of the signal that the function generator uses as the modulating waveform. Applies only when the AM Enabled attribute is set to True.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenAM.Source(System.String)">
+			<summary>The source of the signal that the function generator uses as the modulating waveform. Applies only when the AM Enabled attribute is set to True.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenAM.get_Source(System.String)">
+			<summary>The source of the signal that the function generator uses as the modulating waveform. Applies only when the AM Enabled 
+			attribute is set to True.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<returns>One of the values of IviFgenAMSourceEnum.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenAM.set_Enabled(System.String,System.Boolean)">
+			<summary>Enables or disables AM on a channel.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<param name="pVal">True enables AM.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenAM.set_Source(System.String,Ivi.Fgen.Interop.IviFgenAMSourceEnum)">
+			<summary>Selects the source of the signal that the function generator uses as the modulating waveform. 
+			Applies only when the AM Enabled attribute is set to True.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<param name="pVal">One of the values of IviFgenAMSourceEnum.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenAM.InternalDepth">
+			<summary>The extent of modulation the function generator applies to the carrier waveform when the AM Source attribute is set to AM Internal. The unit is percentage. Applies only when the AM Source attribute is set to AM Internal.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenAM.InternalFrequency">
+			<summary>The frequency of the internal modulating waveform source. The units are Hertz. Applies only when the AM Source attribute is set to AM Internal.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenAM.InternalWaveform">
+			<summary>The waveform of the internal modulating waveform source.  Applies only when the AM Source attribute is set to AM Internal.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IIviFgenFM">
+			<summary>IVI Fgen class-compliant FM interface</summary>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenFM.ConfigureInternal(System.Double,Ivi.Fgen.Interop.IviFgenFMInternalWaveformEnum,System.Double)">
+			<summary>Configures the attributes that control the function generator's internal frequency modulating waveform source.</summary>
+			<param name="Deviation">Specifies the internal modulation deviation. This value sets the FM Internal Deviation property.</param>
+			<param name="Waveform">Specifies the waveform the function generator uses for the internal modulating waveform source. This value sets the FM Internal Waveform property.</param>
+			<param name="Frequency">Specifies the frequency of the internal modulating waveform source. This value setsthe FM Internal Frequency property.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenFM.Enabled">
+			<summary>If true, the function generator applies frequency modulation to the carrier waveform.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenFM.Source">
+			<summary>The source of the signal that the function generator uses as the modulating waveform. Applies only when the FM Enabled attribute is set to True.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenFM.Enabled(System.String)">
+			<summary>If true, the function generator applies frequency modulation to the carrier waveform.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenFM.Source(System.String)">
+			<summary>The source of the signal that the function generator uses as the modulating waveform. Applies only when the FM Enabled attribute is set to True.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenFM.get_Enabled(System.String)">
+			<summary>Provides an indication whether FM is enabled on a channel.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<returns>True if the function generator applies frequency modulation to the signal that the function generator produces.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenFM.get_Source(System.String)">
+			<summary>The source of the signal that the function generator uses as the modulating waveform. 
+			Applies only when the FM Enabled attribute is set to True.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<returns>One of the values of IviFgenFMSourceEnum.</returns>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenFM.set_Enabled(System.String,System.Boolean)">
+			<summary>Enables or disables AM on a channel.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<param name="pVal">True enables FM.</param>
+		</member>
+		<member name="M:Ivi.Fgen.Interop.IIviFgenFM.set_Source(System.String,Ivi.Fgen.Interop.IviFgenFMSourceEnum)">
+			<summary>Selects the source of the signal that the function generator uses as the modulating waveform. 
+			Applies only when the FM Enabled attribute is set to True.</summary>
+			<param name="ChannelName">The name of a channel.</param>
+			<param name="pVal">One of the values of IviFgenFMSourceEnum.</param>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenFM.InternalDeviation">
+			<summary>The maximum frequency deviation the function generator applies to the carrier waveform when the FM Source attribute is set to FM Internal. Applies only when the FM Source attribute is set to FM Internal.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenFM.InternalFrequency">
+			<summary>The frequency of the internal modulating waveform source.  The units are hertz. Applies only when the FM Source attribute is set to FM Internal.</summary>
+		</member>
+		<member name="P:Ivi.Fgen.Interop.IIviFgenFM.InternalWaveform">
+			<summary>The waveform of the internal modulating waveform source. Applies only when the FM Source attribute is set to FM Internal.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IviFgenOutputModeEnum">
+			<summary>IVI Fgen class-compliant values for output Mode</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenOutputModeEnum.IviFgenOutputModeFunction">
+			<summary>The driver uses the attributes and functions of the IviFgenStdFunc extension group to configure the function generator's output signal.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenOutputModeEnum.IviFgenOutputModeArbitrary">
+			<summary>The driver uses the attributes and functions of the IviFgenArbWfm extension group to configure the function generator's output signal.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenOutputModeEnum.IviFgenOutputModeSequence">
+			<summary>The driver uses the attributes and functions of the IviFgenArbSeq extension group to configure the function generator's output signal.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IviFgenOperationModeEnum">
+			<summary>IVI Fgen class-compliant values for output OperationMode</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenOperationModeEnum.IviFgenOperationModeContinuous">
+			<summary>When in the Output Generation State, the function generator produces output continuously.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenOperationModeEnum.IviFgenOperationModeBurst">
+			<summary>When in the Output Generation State, the function generator produces a burst of waveform cycles based on a trigger condition. A burst consists of a discrete number of waveform cycles.  The user uses the attribute of the IviFgenTrigger Extension Group to configure the trigger, and the attributes of the IviFgenBurst extension group to configure how the function generator produces bursts.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IviFgenReferenceClockSourceEnum">
+			<summary>IVI Fgen class-compliant values for output ReferenceClockSource</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenReferenceClockSourceEnum.IviFgenReferenceClockSourceInternal">
+			<summary>The function generator produces the reference clock signal internally.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenReferenceClockSourceEnum.IviFgenReferenceClockSourceExternal">
+			<summary>The function generator receives the reference clock signal from an external source.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenReferenceClockSourceEnum.IviFgenReferenceClockSourceRTSI">
+			<summary>The function generator receives the reference clock signal from the RTSI clock source.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum">
+			<summary>IVI Fgen class-compliant values for Trigger Source</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceExternal">
+			<summary>The function generator does not produce an output signal until it receives a trigger on its external trigger input terminal.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceSoftware">
+			<summary>The function generator does not produce an output signal until the Send Software Trigger function executes.  Refer to the Standardized Cross Class Capabilities specification for a complete description of this value and the Send Software Trigger function.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceInternal">
+			<summary>The function generator does not produce an output signal until it receives a trigger from its internal trigger source.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceTTL0">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the TTL0 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceTTL1">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the TTL1 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceTTL2">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the TTL2 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceTTL3">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the TTL3 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceTTL4">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the TTL4 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceTTL5">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the TTL5 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceTTL6">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the TTL6 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceTTL7">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the TTL7 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceECL0">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the ECL0 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceECL1">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the ECL1 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourcePXIStar">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the PXI Star bus.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceRTSI0">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the RTSI 0 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceRTSI1">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the RTSI 1 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceRTSI2">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the RTSI 2 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceRTSI3">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the RTSI 3 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceRTSI4">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the RTSI 4 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceRTSI5">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the RTSI 5 line.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenTriggerSourceEnum.IviFgenTriggerSourceRTSI6">
+			<summary>The function generator does not produce an output signal until it receives a trigger from the RTSI 6 line.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IviFgenWaveformEnum">
+			<summary>IVI Fgen class-compliant values for Standard Waveform</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenWaveformEnum.IviFgenWaveformSine">
+			<summary>Configures the function generator to produce a sinusoid waveform. </summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenWaveformEnum.IviFgenWaveformSquare">
+			<summary>Configures the function generator to produce a square waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenWaveformEnum.IviFgenWaveformTriangle">
+			<summary>Configures the function generator to produce a triangular waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenWaveformEnum.IviFgenWaveformRampUp">
+			<summary>Configures the function generator to produce a positive ramp waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenWaveformEnum.IviFgenWaveformRampDown">
+			<summary>Configures the function generator to produce a negative ramp waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenWaveformEnum.IviFgenWaveformDC">
+			<summary>Configures the function generator to produce a constant voltage.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IviFgenAMInternalWaveformEnum">
+			<summary>IVI Fgen class-compliant values for AM Internal Waveform</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenAMInternalWaveformEnum.IviFgenAMInternalWaveformSine">
+			<summary>The function generator uses a sinusoid waveform as the modulating waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenAMInternalWaveformEnum.IviFgenAMInternalWaveformSquare">
+			<summary>The function generator uses a square waveform as the modulating waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenAMInternalWaveformEnum.IviFgenAMInternalWaveformTriangle">
+			<summary>The function generator uses a triangle waveform as the modulating waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenAMInternalWaveformEnum.IviFgenAMInternalWaveformRampUp">
+			<summary>The function generator uses a positive ramp waveform as the modulating waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenAMInternalWaveformEnum.IviFgenAMInternalWaveformRampDown">
+			<summary>The function generator uses a negative ramp waveform as the modulating waveform.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IviFgenAMSourceEnum">
+			<summary>IVI Fgen class-compliant values for AM Source</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenAMSourceEnum.IviFgenAMSourceInternal">
+			<summary>The function generator uses an internally generated waveform as the modulating waveform.  You use the AM Internal Depth, AM Internal Waveform, and AM Internal Frequency attributes to configure the internally generated modulating waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenAMSourceEnum.IviFgenAMSourceExternal">
+			<summary>The function generator uses a waveform from an external source as the modulating waveform.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IviFgenFMInternalWaveformEnum">
+			<summary>IVI Fgen class-compliant values for FM Internal Waveform</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenFMInternalWaveformEnum.IviFgenFMInternalWaveformSine">
+			<summary>The function generator uses a sinusoid waveform as the modulating waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenFMInternalWaveformEnum.IviFgenFMInternalWaveformSquare">
+			<summary>The function generator uses a square waveform as the modulating waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenFMInternalWaveformEnum.IviFgenFMInternalWaveformTriangle">
+			<summary>The function generator uses a triangle waveform as the modulating waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenFMInternalWaveformEnum.IviFgenFMInternalWaveformRampUp">
+			<summary>The function generator uses a positive ramp waveform as the modulating waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenFMInternalWaveformEnum.IviFgenFMInternalWaveformRampDown">
+			<summary>The function generator uses a negative ramp waveform as the modulating waveform.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IviFgenFMSourceEnum">
+			<summary>IVI Fgen class-compliant values for FM Source</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenFMSourceEnum.IviFgenFMSourceInternal">
+			<summary>The function generator uses an internally generated waveform as the modulating waveform.  You use the FM Internal Deviation, FM Internal Waveform, and FM Internal Frequency attributes to configure the internally generated modulating waveform.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenFMSourceEnum.IviFgenFMSourceExternal">
+			<summary>The function generator uses a waveform from an external source as the modulating waveform.</summary>
+		</member>
+		<member name="T:Ivi.Fgen.Interop.IviFgenErrorCodesEnum">
+			<summary>IVI Fgen class defined HRESULTS</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenErrorCodesEnum.E_IVIFGEN_TRIGGER_NOT_SOFTWARE">
+			<summary>The trigger source is not set to software trigger.</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenErrorCodesEnum.E_IVIFGEN_NO_WFMS_AVAILABLE">
+			<summary>No Waveforms Available</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenErrorCodesEnum.E_IVIFGEN_WFM_IN_USE">
+			<summary>Waveform In Use</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenErrorCodesEnum.E_IVIFGEN_NO_SEQS_AVAILABLE">
+			<summary>No Sequences Available</summary>
+		</member>
+		<member name="F:Ivi.Fgen.Interop.IviFgenErrorCodesEnum.E_IVIFGEN_SEQ_IN_USE">
+			<summary>Sequence In Use</summary>
+		</member>
+	</members>
+</doc>

@@ -1,0 +1,121 @@
+[DAQ cards]
+[[master]]
+channels = 0, 1, 2, 3, 4, 5, 6, 7
+card number = 0
+[[slaves]]
+[[[1]]]
+channels = 8, 9, 10, 11, 12, 13, 14, 15
+card number = 1
+[DAQ channels]
+[[0]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool1_freq.txt
+chNum = 0
+default value = 6.09035409035
+chName = TEST
+chLimits = -10.0, 10.0
+[[1]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool1_amp_at_100MHz.txt
+chNum = 1
+default value = 3.66788766789
+chName = MOT cooling 1 - amp
+chLimits = -10.0, 10.0
+[[2]]
+UIvisible = True
+calibrationFname = ""
+chNum = 2
+default value = 0.0
+chName = MOT cooling (upper)
+chLimits = -10.0, 10.0
+[[3]]
+UIvisible = True
+calibrationFname = ""
+chNum = 3
+default value = 0.0
+chName = Absorbtion imaging
+chLimits = -10.0, 10.0
+[[4]]
+UIvisible = True
+calibrationFname = ""
+chNum = 4
+default value = 0.0
+chName = ch 4
+chLimits = -10.0, 10.0
+[[5]]
+UIvisible = True
+calibrationFname = ""
+chNum = 5
+default value = 0.0
+chName = ch 5
+chLimits = -10.0, 10.0
+[[6]]
+UIvisible = True
+calibrationFname = ""
+chNum = 6
+default value = 0.0
+chName = ch 6
+chLimits = -10.0, 10.0
+[[7]]
+UIvisible = True
+calibrationFname = ""
+chNum = 7
+default value = 0.0
+chName = ch 7
+chLimits = -10.0, 10.0
+[[8]]
+UIvisible = True
+calibrationFname = ""
+chNum = 8
+default value = 0.0
+chName = 8
+chLimits = -10.0, 10.0
+[[9]]
+UIvisible = True
+calibrationFname = ""
+chNum = 9
+default value = 0.0
+chName = 9
+chLimits = -10.0, 10.0
+[[10]]
+UIvisible = True
+calibrationFname = ""
+chNum = 10
+default value = 0.0
+chName = 10
+chLimits = -10.0, 10.0
+[[11]]
+UIvisible = True
+calibrationFname = ""
+chNum = 11
+default value = 0.0
+chName = 11
+chLimits = -10.0, 10.0
+[[12]]
+UIvisible = True
+calibrationFname = ""
+chNum = 12
+default value = 0.0
+chName = 12
+chLimits = -10.0, 10.0
+[[13]]
+UIvisible = True
+calibrationFname = ""
+chNum = 13
+default value = 0.0
+chName = 13
+chLimits = -10.0, 10.0
+[[14]]
+UIvisible = True
+calibrationFname = ""
+chNum = 14
+default value = 0.0
+chName = 14
+chLimits = -10.0, 10.0
+[[15]]
+UIvisible = True
+calibrationFname = ""
+chNum = 15
+default value = 0.0
+chName = 15
+chLimits = -10.0, 10.0

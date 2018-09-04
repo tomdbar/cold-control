@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<doc>
+	<assembly>
+		<name>Ivi.SessionFactory.Interop
+		</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.SessionFactory.Interop.IIviSessionFactory">
+			<summary>IIviSessionFactory Interface</summary>
+		</member>
+		<member name="T:Ivi.SessionFactory.Interop.IviSessionFactory">
+			<summary>Same as IIviSessionFactory Interface</summary>
+		</member>
+		<member name="M:Ivi.SessionFactory.Interop.IIviSessionFactory.CreateDriver(System.String)">
+			<summary>The CreateDriver method creates an instance of an IVI-COM driver and
+					 returns a System.Object to the caller. The creation process uses the 
+					 Configuration Server to map the provided LogicalName to the ProgID of 
+                     an actual driver. The ProgID used to create the driver is retrieved 
+					 configuration store.
+			</summary>
+			<param name="LogicalName">Logical name of the IVI-COM driver to create.
+			</param>
+			<returns>System.Object which must be cast to the appropriate IVI instrument class.
+			</returns>
+		</member>
+		<member name="M:Ivi.SessionFactory.Interop.IIviSessionFactory.CreateSession(System.String)">
+			<summary>The CreateSession method creates an instance of an IVI-COM role and 
+                     returns a System.Object to the caller. The creation process uses the 
+					 Configuration Server to map the provided LogicalName to the ProgID of 
+                     an actual role. The ProgID used to create the role is retrieved from 
+					 the appropriate IviSession entry in the configuration store.
+			</summary>
+			<param name="LogicalName">Logical name of the IVI-COM driver to create.
+			</param>
+			<returns>System.Object which must be cast to the role's type.
+			</returns>
+		</member>
+		<member name="T:Ivi.SessionFactory.Interop.IviSessionFactoryClass">
+			<summary>IviSessionFactoryClass object</summary>
+		</member>
+		<member name="M:Ivi.SessionFactory.Interop.IviSessionFactoryClass.#ctor">
+		    <summary>Constructor for IviSessionFactoryClass.</summary>
+		</member>
+		<member name="M:Ivi.SessionFactory.Interop.IviSessionFactoryClass.CreateDriver(System.String)">
+			<summary>The CreateDriver method creates an instance of an IVI-COM driver and
+					 returns a System.Object to the caller. The creation process uses the 
+					 Configuration Server to map the provided LogicalName to the ProgID of 
+                     an actual driver. The ProgID used to create the driver is retrieved 
+					 configuration store.
+			</summary>
+			<param name="LogicalName">Logical name of the IVI-COM driver to create.
+			</param>
+			<returns>System.Object which must be cast to the appropriate IVI instrument class.
+			</returns>
+		</member>
+		<member name="M:Ivi.SessionFactory.Interop.IviSessionFactoryClass.CreateSession(System.String)">
+			<summary>The CreateSession method creates an instance of an IVI-COM role and 
+                     returns a System.Object to the caller. The creation process uses the 
+					 Configuration Server to map the provided LogicalName to the ProgID of 
+                     an actual role. The ProgID used to create the role is retrieved from 
+					 the appropriate IviSession entry in the configuration store.
+			</summary>
+			<param name="LogicalName">Logical name of the IVI-COM driver to create.
+			</param>
+			<returns>System.Object which must be cast to the role's type.
+			</returns>
+		</member>
+	</members>
+</doc>

@@ -1,0 +1,1156 @@
+<doc>
+	<assembly>
+		<name>Ivi.Digitizer.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizer">
+			<summary>IVI Digitizer class-compliant root interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizer.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameteris "Name=Value", where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,or DriverSetup. Value is either true or false except for DriverSetup. If the Options String parameter contains an assignment for the Driver Setup attribute, the Initialize function assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizer.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument are not accessible after Close is called.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the Close method, and False at all other times.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.Acquisition">
+			<summary>Pointer to the class-compliant IIviDigitizerAcquistion interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.Trigger">
+			<summary>Pointer to the class-compliant IIviDigitizerTrigger interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.Channels">
+			<summary>Pointer to the IIviDigitizerChannels interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.Calibration">
+			<summary>Pointer to the class-compliant IIviDigitizerCalibration interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.Temperature">
+			<summary>Pointer to the class-compliant IIviDigitizerTemperature interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.ReferenceOscillator">
+			<summary>Pointer to the class-compliant IIviDigitizerReference Oscillator interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.SampleClock">
+			<summary>Pointer to the class-compliant IIviDigitizerSampleClock interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizer.Arm">
+			<summary>Pointer to the class-compliant IIviDigitizerArm</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerAcquisition">
+			<summary>IVI Digitizer class-compliant acquistion interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.Initiate">
+			<summary>Initiates a waveform acquisition.  The digitizer leaves the Idle state and waits for a trigger.  The digitizer acquires a waveform for each enabled channel.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.Abort">
+			<summary>Aborts an acquisition and returns the digitizer to the Idle state.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.WaitForAcquisitionComplete(System.Int32)">
+			<summary>Waits until the configured acquisition is complete.  If no acquisition is currently running, this function returns immediately.   If the acquisition does not complete  within the time period the user specified with the MaxTimeMilliseconds parameter, the function returns the Max Time Exceeded error.</summary>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time the end-user allows for this function to complete.  The units are  milliseconds.  Defined values:
+Max Time Infinite - The function waits indefinitely for the acquisition to complete.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.ConfigureAcquisition(System.Int64,System.Int64,System.Double)">
+			<summary>This function configures the most commonly configured attributes of the digitizer acquisition sub-system. These attributes are the samples per record, the number of records, and the sample rate.</summary>
+			<param name="NumRecordsToAcquire">Specifies the number of records in the acquisition. This value sets the Num Records to Acquire attribute.</param>
+			<param name="RecordSize">Specifies the number of samples in each record.  This value sets the Record Size attribute.</param>
+			<param name="SampleRate">Specifies the sample rate in samples per second.  This value sets the Sample Rate attribute.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.QueryMinWaveformMemory(System.Int32,System.Int64,System.Int64,System.Int64)">
+			<summary>This function is used to determine the minimum amount of memory that is needed to fetch or read data from the digitizer with maximum performance.</summary>
+			<param name="DataWidth">Specifies the size of the sampled data that will be retrieved. The value of this parameter must be 8, 16, 32 or 64, corresponding to the intended Read/Fetch function.</param>
+			<param name="NumRecords">Specifies the number of records that will be read.</param>
+			<param name="OffsetWithinRecord">Specifies the start index within the record from which the data should be retrieved.</param>
+			<param name="NumPointsPerRecord">Specifies the number of data points to return.</param>
+			<returns>The minimum buffer size in samples needed for a subsequent Read or Fetch call with the same readout parameters.</returns>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.MaxSamplesPerChannel">
+			<summary>Returns the maximum number of samples per channel that can be captured.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.NumAcquiredRecords">
+			<summary>Gets the total number of records acquired since the acquistion was last initiated.  You may call this method while an acquisition is in progress.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.SampleRate">
+			<summary>Specifies the rate of the sample clock in samples per second.  This number represents the inverse of the interval between samples in the acquisition record.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.TimeInterleavedChannelListAuto">
+			<summary>Specifies whether or not the instrument should automatically combine enabled channels to satisfy user-specified sample rates.  When set to True, the instrument will automatically combine channels to meet the sample rate requirements specified via the Sample Rate attribute.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.MinRecordSize">
+			<summary>Indicates the minimum waveform record size.  If the digitizer can support any arbitrary size record, then this attribute returns 1.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.RecordSize">
+			<summary>Specifies the number of samples to acquire in each waveform record.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.NumRecordsToAcquire">
+			<summary>Specifies the number of waveform records to acquire.  One waveform record is acquired for each recognized trigger.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.SampleMode">
+			<summary>Specifies the sample mode used by the digitizer.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.Status">
+			<summary>Pointer to the IIviDigitizerAcquisitionStatus interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisition.MaxFirstValidPointValue">
+			<summary>Returns the maximum value that the First Valid Point parameter of the readout functions may assume. This value is necessary to calculate the minimum size of the required data buffer to retrieved the entire acquisition.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerTrigger">
+			<summary>IVI Digitizer class-compliant trigger interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerTrigger.SendSoftwareTrigger">
+			<summary>Refer to IVI-3.3: Standard Cross-Class Capabilities Specification for the prototype and complete description of this function.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTrigger.ActiveSource">
+			<summary>Specifies the source the digitizer monitors for the trigger event. The value specified here must be one of the valid repeated capability names for the TriggerSource repeated capability.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTrigger.MultiTrigger">
+			<summary>Pointer to the class-compliant IIviDigitizerMultiTrigger interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTrigger.Sources">
+			<summary>Pointer to the IIviDigitizerTriggerSources interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTrigger.Modifier">
+			<summary>Specifies the trigger modifier. The trigger modifier determines the digitizer's behavior in the absence of the configured trigger.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTrigger.PretriggerSamples">
+			<summary>Specifies the number of samples that must be collected before a trigger event will be recognized.  The Pretrigger Samples attribute affects instrument operation only when the digitizer requires multiple acquisitions to build a complete waveform.  If Trigger Holdoff and Pretrigger Samples are are both non-zero, then both conditions must be satisfied before the digitizer will accept a trigger.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTrigger.Holdoff">
+			<summary>Specifies the length of time the digitizer waits after it detects a trigger until the digitizer enables the trigger subsystem to detect another trigger. The units are seconds. The Trigger Holdoff attribute affects instrument operation only when the digitizer requires multiple acquisitions to build a complete waveform.  If Trigger Holdoff and PreTriggerSamples are are both non-zero, then both conditions must be satisfied before the digitizer will accept a trigger.  Note:	Many digitizers have a small, non-zero value as the minimum value for this attribute. To configure the instrument to use the shortest trigger hold-off, the user can specify a value of zero for this attribute. Therefore, the IVI Class-Compliant specific driver shall coerce any value between zero and the minimum value to the minimum value. No other coercion is allowed on this attribute.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTrigger.Delay">
+			<summary>Specifies the length of time from the trigger event to the first point in the waveform record. If the value is positive, the first point in the waveform record occurs after the trigger event. If the value is negative, the first point in the waveform record occurs before the trigger event. The units are seconds.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTrigger.OutputEnabled">
+			<summary>Specifies whether or not an accepted trigger appears at an output of the digitizer.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerChannel">
+			<summary>IVI Digitizer class-compliant channel interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannel.Configure(System.Double,System.Double,Ivi.Digitizer.Interop.IviDigitizerVerticalCouplingEnum,System.Boolean)">
+			<summary>This function configures the most commonly configured attributes of the digitizer channel sub-system. These attributes are the range, offset, coupling, probe attenuation, and whether the channel is enabled.</summary>
+			<param name="Range">Specifies the vertical range. This value sets the Vertical Range attribute.</param>
+			<param name="Offset">Specifies the vertical offset. This value sets the Vertical Offset attribute.</param>
+			<param name="Coupling">Specifies how to couple the input signal. This value sets the Vertical</param>
+			<param name="Enabled">Specifies if the channel is enabled for acquisition. This value sets the Channel Enabled attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.Coupling">
+			<summary>Specifies how the digitizer couples the input signal for the channel.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.InputImpedance">
+			<summary>The input impedance of this channel.  The units are Ohms.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.Range">
+			<summary>The absolute value of the input range the digitizer can acquire for the channel.  The units are Volts.  For example, to acquire a sine wave spanning -5.0 to 5.0 volts, set Range to 10.0 volts.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.Offset">
+			<summary>The location of the center of the range that you specify with the Range attribute.  The units are Volts, with respect to ground.  For example, to acquire a sine wave spanning 0.0 to 10.0 volts, set Offset to 5.0 volts.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.Filter">
+			<summary>Pointer to the IIviDigitizerFilterinterface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.Enabled">
+			<summary>Specifies whether the digitizer acquires a waveform for the channel.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.Temperature">
+			<summary>Indicates the temperature of the channel.  The units are governed by the Temperature Units attribute.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.Measurement">
+			<summary>Pointer to the class-compliant IIviDigitizerChannelMeasurement interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.TimeInterleavedChannelList">
+			<summary>This attribute is used to combine this channel with one or more other channels to achieve higher effective sampling rates and/or greater memory depth.  The string provided here specifies which channels should operate in combined mode with the current channel.  This attribute is a comma-separated list of two one or more channel names.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.Downconversion">
+			<summary>Pointer to the IIviDigitizerDownconversion interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.DataInterleavedChannelList">
+			<summary>This attribute is used to combine this channel with one or more other channels to interleave the returned data. The string provided here specifies which channels should operate in combined mode with the current channel.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.InputConnectorSelection">
+			<summary>Some digitizers include multiple connectors for each digitizer input channel.  These connectors are often simply a matter of convenience for system cabling ? multiple signals can be routed to the various connectors, the the desired signal can be sent into the digitizer by changing an internal switch.  With other digitizers, the connectors may be of different types or even different impedances.  This attribute is used to determine which connector is to be used.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannel.MultiRecordMeasurement">
+			<summary>Pointer to the IIviDigitizerChannelMultiRecordMeasurement interface.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerChannels">
+			<summary>IVI Digitizer class-compliant channel collection interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannels.Count">
+			<summary>Returns the number of channels available on the device.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannels.Item(System.String)">
+			<summary>An interface reference pointer to the IIviDigitizerChannel interface which is selected by the channel name.</summary>
+			<param name="Name">The name of a channel. It may be either a name returned by the Name attribute or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannels.get_Item(System.String)">
+			<summary>An interface reference pointer to the IIviDigitizerChannel interface which is selected by the channel name.</summary>
+			<param name="Name">The name of a channel. It may be either a name returned by the Name attribute or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+			<returns>An interface reference pointer to the IIviDigitizerChannel interface which is selected by the channel name.</returns>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannels.Name(System.Int32)">
+			<summary>Returns the physical repeated capability identifier defined by the specific driver for the Channel that corresponds to the one-based index that the user specifies. Valid values for the Index parameter are between one and the value of the Channel Count attribute. If the user passes an invalid value for the Index parameter, the value of this attribute is an empty string. </summary>
+			<param name="Index">One based index into the collection of channels.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannels.get_Name(System.Int32)">
+			<summary>Returns the physical repeated capability identifier defined by the specific driver for the Channel that corresponds to the one-based index that the user specifies. Valid values for the Index parameter are between one and the value of the Channel Count attribute. If the user passes an invalid value for the Index parameter, the value of this attribute is an empty string. </summary>
+			<param name="Index">One based index into the collection of channels.</param>
+			<returns>Returns the physical repeated capability identifier defined by the specific driver for the Channel that corresponds to the one-based index that the user specifies. Valid values for the Index parameter are between one and the value of the Channel Count attribute. If the user passes an invalid value for the Index parameter, the value of this attribute is an empty string. </returns>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerChannelFilter">
+			<summary>IVI Digitizer class-compliant channel filter interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelFilter.Configure(System.Double,System.Double)">
+			<summary>This function is used to configure the minimum and maximum input filter frequencies for a specified channel.</summary>
+			<param name="MinFrequency">Specifies the minimum input filter frequency.  This value sets the Input Filter Min Frequency attribute.  See the attribute description for more details.</param>
+			<param name="MaxFrequency">Specifies the maximum input filter frequency.  This value sets the Input Filter Max Frequency attribute.  See the attribute description for more details.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannelFilter.MaxFrequency">
+			<summary>Specifies the maximum input filter frequency.  Specifying a value of zero means that the device should be set to the full bandwidth that the filter can deliver without being bypassed.  The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannelFilter.MinFrequency">
+			<summary>Specifies the minimum input filter frequency.  Specifying a value of zero means that the device should be set to the full bandwidth that the filter can deliver without being bypassed.  The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannelFilter.Bypass">
+			<summary>Specifies whether or not to bypass the input filter.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerCalibration">
+			<summary>IVI Digitizer class-compliant calibration interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerCalibration.SelfCalibrate">
+			<summary>Executes all internal calibrations.  If the digitizer does not support calibration, this function silently succeeds.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerTemperature">
+			<summary>IVI Digitizer class-compliant temperature interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTemperature.Units">
+			<summary>Specifies the temperature units returned by the Board Temperature and the Channel Temperature attributes.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTemperature.BoardTemperature">
+			<summary>Indicates the temperature of the entire board.  The units are governed by the Temperature Units attribute.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerReferenceOscillator">
+			<summary>IVI Digitizer class-compliant reference oscillator interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerReferenceOscillator.Configure(Ivi.Digitizer.Interop.IviDigitizerReferenceOscillatorSourceEnum,System.Double)">
+			<summary>Configures the digitizer's reference oscillator.</summary>
+			<param name="Source">Specifies the source of the reference frequency signal. The driver uses this value to set the Reference Oscillator Source attribute. See the attribute description for more details.</param>
+			<param name="Frequency">Specifies the frequency of the external reference oscillator. This parameter is only used if the Source is set to External. The driver uses this value to set the Reference Oscillator Frequency attribute. See the attribute description for more details.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerReferenceOscillator.Source">
+			<summary>Specifies the reference frequency source used.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerReferenceOscillator.ExternalFrequency">
+			<summary>Specifies the frequency of the external signal which is as a frequency reference. This value is used only if the Reference Oscillator Source attribute is set to External. The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerReferenceOscillator.OutputEnabled">
+			<summary>Specifies whether or not the reference frequency signal appears at an output of the digitizer.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerSampleClock">
+			<summary>IVI Digitizer class-compliant sample clock interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerSampleClock.Configure(Ivi.Digitizer.Interop.IviDigitizerSampleClockSourceEnum,System.Double,System.Double)">
+			<summary>Configures the digitizer's sample clock.</summary>
+			<param name="Source">Specifies the source of the sample clock signal. The driver uses this value to set the Sample Clock Source attribute. See the attribute description for more details.</param>
+			<param name="Frequency">Specifies the frequency of the external sample clock. This parameter is only used if the Sample Clock Source attribute is set to External. The driver uses this value to set the External Sample Clock Frequency attribute. See the attribute description for more details.</param>
+			<param name="Divider">Specifies the value by which the external sample clock should be divided.  This value is used only if the Sample Clock Source attribute is set to External.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerSampleClock.Source">
+			<summary>Specifies the clock used to pace acquisition sampling.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerSampleClock.ExternalFrequency">
+			<summary>Specifies the frequency of the external signal which is as a sample clock. This value is used only if the Sample Clock Source attribute is set to External. The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerSampleClock.OutputEnabled">
+			<summary>Specifies whether or not the sample clock appears at a reference output of the digitizer.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerSampleClock.ExternalDivider">
+			<summary>Specifies the value by which the external sample clock should be divided.  This value is used only if the Sample Clock Source attribute is set to External.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerTriggerEdge">
+			<summary>IVI Digitizer class-compliant edge triggering interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerTriggerEdge.Configure(System.Double,Ivi.Digitizer.Interop.IviDigitizerTriggerSlopeEnum)">
+			<summary>This function sets the edge triggering attributes. An edge trigger occurs when the trigger signal that the end-user specifies with the Source parameter passes through the voltage threshold that the end-user specifies with the level parameter and has the slope that the end-user specifies with the Slope parameter.  This function affects instrument behavior only if the Trigger Type is Edge Trigger. Set the Trigger Type and Trigger Coupling before calling this function.  If the trigger source is one of the analog input channels, an application program should configure the vertical range, vertical coupling, probe attenuation, and the maximum input frequency before calling this function.</summary>
+			<param name="Level">Specifies the trigger level. This value sets the Trigger Level attribute.</param>
+			<param name="Slope">Specifies the trigger slope. This value sets the Trigger Slope attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerEdge.Slope">
+			<summary>Specifies whether a rising or a falling edge triggers the digitizer.  This attribute affects instrument operation only when the Trigger Type attribute is set to Edge Trigger.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerTriggerGlitch">
+			<summary>IVI Digitizer class-compliant glitch triggering interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerTriggerGlitch.Configure(System.Double,System.Double,Ivi.Digitizer.Interop.IviDigitizerGlitchPolarityEnum,Ivi.Digitizer.Interop.IviDigitizerGlitchConditionEnum)">
+			<summary>This function configures the glitch trigger. A glitch trigger occurs when the trigger signal has a pulse with a width that is less than or greater than the glitch width. The end user specifies which comparison criterion to use with the GlitchCondition parameter. The end-user specifies the glitch width with the GlitchWidth parameter. The end-user specifies the polarity of the pulse with the GlitchPolarity parameter. The trigger does not actually occur until the edge of a pulse that corresponds to the GlitchWidth and GlitchPolarity crosses the threshold the end-user specifies in the TriggerLevel parameter.  This function affects instrument behavior only if the trigger type is Glitch Trigger. Set the trigger type and trigger coupling before calling this function.</summary>
+			<param name="Level">Specifies the trigger level. This value sets the Trigger Level attribute.</param>
+			<param name="Width">Specifies the glitch triggering glitch width in seconds. This value sets the Glitch Width attribute.</param>
+			<param name="Polarity">Specifies the glitch polarity. This value sets the Glitch Polarity attribute.</param>
+			<param name="Condition">Specifies the glitch condition. This value sets the Glitch Condition attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerGlitch.Width">
+			<summary>Specifies the glitch width. The units are seconds. The digitizer triggers when it detects a pulse with a width less than or greater than this value, depending on the Glitch Condition attribute.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerGlitch.Condition">
+			<summary>Specifies the glitch condition. This attribute determines whether the glitch trigger happens when the digitizer detects a pulse with a width less than or greater than the width value.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerGlitch.Polarity">
+			<summary>Specifies the polarity of the glitch that triggers the digitizer.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerTriggerRunt">
+			<summary>IVI Digitizer class-compliant runt triggering interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerTriggerRunt.Configure(System.Double,System.Double,Ivi.Digitizer.Interop.IviDigitizerRuntPolarityEnum)">
+			<summary>This function configures the runt trigger. A runt trigger occurs when the trigger signal crosses one of the runt thresholds twice without crossing the other runt threshold. The end-user specifies the runt thresholds with the RuntLowThreshold and RuntHighThreshold parameters. The end-user specifies the polarity of the runt with the RuntPolarity parameter.  This function affects instrument behavior only if the trigger type is Runt Trigger. Set the trigger type and trigger coupling before calling this function.</summary>
+			<param name="ThresholdLow">Sets the runt triggering low threshold in volts.</param>
+			<param name="ThresholdHigh">Sets the runt triggering high threshold in volts.</param>
+			<param name="Polarity">Sets the runt polarity.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerRunt.Polarity">
+			<summary>Specifies the polarity of the runt that triggers the digitizer.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerRunt.ThresholdHigh">
+			<summary>The high threshold the digitizer uses for runt triggering.  The units are Volts.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerRunt.ThresholdLow">
+			<summary>The low threshold the digitizer uses for runt triggering.  The units are Volts.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerTriggerTV">
+			<summary>IVI Digitizer class-compliant TV triggering interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerTriggerTV.Configure(Ivi.Digitizer.Interop.IviDigitizerTVSignalFormatEnum,Ivi.Digitizer.Interop.IviDigitizerTVTriggerEventEnum,Ivi.Digitizer.Interop.IviDigitizerTVTriggerPolarityEnum)">
+			<summary>This function configures the digitizer for TV triggering. It configures the TV signal format, the event and the signal polarity.  This function affects instrument behavior only if the trigger type is TV Trigger. Set the Trigger Type and Trigger Coupling before calling this function.
+</summary>
+			<param name="SignalFormat">Specifies the TV trigger signal format. This value sets the TV Trigger Signal Format attribute.</param>
+			<param name="Event">Specifies the TV trigger event. This value sets the TV Trigger Event attribute.</param>
+			<param name="Polarity">Specifies the polarity of the TV trigger. This value sets the TV Trigger Polarity attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerTV.Polarity">
+			<summary>Specifies the polarity of the TV signal.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerTV.Event">
+			<summary>Specifies the event on which the digitizer triggers.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerTV.LineNumber">
+			<summary>Specifies the line on which the digitizer triggers. The driver uses this attribute when the TV Trigger Event is set to TV Event Line Number. The line number setting is independent of the field. This means that to trigger on the first line of the second field, the user must configure the line number to the value of 263 (if we presume that field one had 262 lines).</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerTV.SignalFormat">
+			<summary>Specifies the format of TV signal on which the digitizer triggers.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerTriggerWidth">
+			<summary>IVI Digitizer class-compliant width triggering interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerTriggerWidth.Configure(System.Double,System.Double,System.Double,Ivi.Digitizer.Interop.IviDigitizerWidthPolarityEnum,Ivi.Digitizer.Interop.IviDigitizerWidthConditionEnum)">
+			<summary>Configures the width trigger Source, Level, ThresholdLow, ThresholdHigh, Polarity, and Condition.  A width trigger occurs when a pulse, that passes through Level, with a width between or outside, the width thresholds is detected.</summary>
+			<param name="Level">Trigger Level. This value sets the Trigger Level attribute.</param>
+			<param name="ThresholdLow">Sets the width triggering low threshold in seconds. This value sets the Width Low Threshold attribute.</param>
+			<param name="ThresholdHigh">Sets the width triggering high threshold in seconds. This value sets the Width High Threshold attribute.</param>
+			<param name="Polarity">Sets the width polarity. This value sets the Width Polarity attribute.</param>
+			<param name="Condition">Specifies whether a pulse that is within or outside the user-specified thresholds trigger waveform acquisition. This value sets the Width Condition attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerWidth.Polarity">
+			<summary>Specifies the polarity of the pulse that triggers the digitizer.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerWidth.Condition">
+			<summary>Specifies whether a pulse that is within or outside the high and low thresholds triggers the digitizer. The end-user specifies the high and low thresholds with the Width High Threshold and Width Low Threshold attributes.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerWidth.ThresholdHigh">
+			<summary>Specifies the high width threshold time in seconds.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerWidth.ThresholdLow">
+			<summary>Specifies the low width threshold time in seconds.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerTriggerWindow">
+			<summary>IVI Digitizer class-compliant window triggering interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerTriggerWindow.Configure(System.Double,System.Double,Ivi.Digitizer.Interop.IviDigitizerWindowConditionEnum)">
+			<summary>Configures the window trigger Source, ThresholdLow, ThresholdHigh, and Condition.  A window trigger occurs when a signal that enters or leaves a given voltage range is detected.</summary>
+			<param name="ThresholdLow">Sets the window triggering low threshold in Volts. This value sets the Window Low Threshold attribute.</param>
+			<param name="ThresholdHigh">Sets the window triggering high threshold in Volts. This value sets the Window High Threshold attribute.</param>
+			<param name="Condition">Specifies whether a pulse that is within or outside the user-specified thresholds trigger waveform acquisition. This value sets the Width Condition attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerWindow.Condition">
+			<summary>Specifies whether a signal that is entering or leaving the voltage window defined by the high and low thresholds triggers the digitizer. The end-user specifies the high and low thresholds with the Window High Threshold and Window Low Threshold attributes.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerWindow.ThresholdHigh">
+			<summary>Specifies the high window threshold voltage in Volts.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerWindow.ThresholdLow">
+			<summary>Specifies the low window threshold voltage in Volts.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerChannelMeasurement">
+			<summary>IVI Digitizer class-compliant measurement interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMeasurement.FetchWaveformReal64(System.Double[]@,System.Int64@,System.Int64@,System.Double@,System.Double@,System.Double@,System.Double@)">
+			<summary>Returns a previously acquired waveform for this channel. The acquisition must be made prior to calling this method.  Call this method separately for each channel.</summary>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMeasurement.FetchWaveformInt8(System.Byte[]@,System.Int64@,System.Int64@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+			<summary>Returns a previously acquired waveform for this channel. The acquisition must be made prior to calling this method.  Call this method separately for each channel.</summary>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+			<param name="ScaleFactor">Scaling factor for the waveform data.</param>
+			<param name="ScaleOffset">Scaling offset for the waveform data.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMeasurement.FetchWaveformInt16(System.Int16[]@,System.Int64@,System.Int64@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+			<summary>This function returns the waveform the digitizer acquired for the specified channel. The waveform is from a previously initiated acquisition.</summary>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+			<param name="ScaleFactor">Scaling factor for the waveform data.</param>
+			<param name="ScaleOffset">Scaling offset for the waveform data.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMeasurement.FetchWaveformInt32(System.Int32[]@,System.Int64@,System.Int64@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+			<summary>Returns a previously acquired waveform for this channel. The acquisition must be made prior to calling this method.  Call this method separately for each channel.</summary>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+			<param name="ScaleFactor">Scaling factor for the waveform data.</param>
+			<param name="ScaleOffset">Scaling offset for the waveform data.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMeasurement.ReadWaveformInt16(System.Int32,System.Int16[]@,System.Int64@,System.Int64@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+			<summary>Initiates an acquisition on all enabled channels, waits (up to MaxTimeMilliseconds) for the acquisition to complete, and returns the waveform for this channel.  Call FetchWaveform to obtain the waveforms for other channels.</summary>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time the end-user allows for this method to complete in milliseconds. The values defined in IviDigitizerTimeOutEnum are also allowed.</param>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+			<param name="ScaleFactor">Scaling factor for the waveform data.</param>
+			<param name="ScaleOffset">Scaling offset for the waveform data.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMeasurement.ReadWaveformInt32(System.Int32,System.Int32[]@,System.Int64@,System.Int64@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+			<summary>Initiates an acquisition on all enabled channels, waits (up to MaxTimeMilliseconds) for the acquisition to complete, and returns the waveform for this channel.  Call FetchWaveform to obtain the waveforms for other channels.</summary>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time the end-user allows for this method to complete in milliseconds. The values defined in IviDigitizerTimeOutEnum are also allowed.</param>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+			<param name="ScaleFactor">Scaling factor for the waveform data.</param>
+			<param name="ScaleOffset">Scaling offset for the waveform data.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMeasurement.ReadWaveformInt8(System.Int32,System.Byte[]@,System.Int64@,System.Int64@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+			<summary>Initiates an acquisition on all enabled channels, waits (up to MaxTimeMilliseconds) for the acquisition to complete, and returns the waveform for this channel.  Call FetchWaveform to obtain the waveforms for other channels.</summary>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time the end-user allows for this method to complete in milliseconds. The values defined in IviDigitizerTimeOutEnum are also allowed.</param>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+			<param name="ScaleFactor">Scaling factor for the waveform data.</param>
+			<param name="ScaleOffset">Scaling offset for the waveform data.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMeasurement.ReadWaveformReal64(System.Int32,System.Double[]@,System.Int64@,System.Int64@,System.Double@,System.Double@,System.Double@,System.Double@)">
+			<summary>Initiates an acquisition on all enabled channels, waits (up to MaxTimeMilliseconds) for the acquisition to complete, and returns the waveform for this channel.  Call FetchWaveform to obtain the waveforms for other channels.</summary>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time the end-user allows for this method to complete in milliseconds. The values defined in IviDigitizerTimeOutEnum are also allowed.</param>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerArm">
+			<summary>IVI Digitizer class-compliant arm interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerArm.SendSoftwareArm">
+			<summary>This function follows semantics similar to Send Software Trigger.  Refer to IVI-3.3: Standard Cross-Class Capabilities Specification for the prototype and complete description of the Send Software Trigger function.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArm.ActiveSource">
+			<summary>Specifies the source the digitizer monitors for the arm event. The value specified here must be one of the valid repeated capability names for the ArmSource repeated capability.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArm.Count">
+			<summary>Specifies the number of times the arm has to occur to complete the arm loop; that is, the number of arms that are accepted before the acquisition must be initiated again.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArm.MultiArm">
+			<summary>Pointer to the class-compliant IIviDigitizerArmMultiArm interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArm.Sources">
+			<summary>Pointer to the IIviDigitizerArmSources interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArm.Delay">
+			<summary>Specifies the delay from when the arm logic is satisfied until the waiting for trigger state is entered.  The units are seconds.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArm.OutputEnabled">
+			<summary>Specifies whether or not an accepted arm appears at an output of the digitizer.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerArmEdge">
+			<summary>IVI Digitizer class-compliant edge arming interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerArmEdge.Configure(System.Double,Ivi.Digitizer.Interop.IviDigitizerTriggerSlopeEnum)">
+			<summary>This function sets the edge arming attributes. An edge occurs when the arm signal that the end-user specifies with the Source parameter passes through the voltage threshold that the end-user specifies with the Level parameter and has the slope that the end-user specifies with the Slope parameter.  This function affects instrument behavior only if the Arm Type is Edge Arm. Set the Arm Type and Arm Coupling before calling this function.  If the arm source is one of the analog input channels, an application program should configure the vertical range, vertical coupling, probe attenuation, and the maximum input frequency before calling this function.</summary>
+			<param name="Level">Specifies the arm level. This value sets the Trigger Level attribute.</param>
+			<param name="Slope">Specifies the trigger slope. This value sets the Trigger Slope attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmEdge.Slope">
+			<summary>Specifies whether a rising or a falling edge arms the digitizer.  This attribute affects instrument operation only when the Arm Type attribute is set to Edge Arm.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerArmGlitch">
+			<summary>IVI Digitizer class-compliant glitch arming interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerArmGlitch.Configure(System.Double,System.Double,Ivi.Digitizer.Interop.IviDigitizerGlitchPolarityEnum,Ivi.Digitizer.Interop.IviDigitizerGlitchConditionEnum)">
+			<summary>This function configures the glitch arm. A glitch arm occurs when the arm signal has a pulse with a width that is less than or greater than the glitch width. The end user specifies which comparison criterion to use with the GlitchCondition parameter. The end-user specifies the glitch width with the GlitchWidth parameter. The end-user specifies the polarity of the pulse with the GlitchPolarity parameter. The arm does not actually occur until the edge of a pulse that corresponds to the GlitchWidth and GlitchPolarity crosses the threshold the end-user specifies in the TriggerLevel parameter.  This function affects instrument behavior only if the arm type is Glitch Arm. Set the arm type and arm coupling before calling this function.</summary>
+			<param name="Level">Specifies the arm level. This value sets the Arm Level attribute.</param>
+			<param name="Width">Specifies the glitch arming glitch width in seconds. This value sets the Glitch Width attribute.</param>
+			<param name="Polarity">Specifies the glitch polarity. This value sets the Glitch Polarity attribute.</param>
+			<param name="Condition">Specifies the glitch condition. This value sets the Glitch Condition attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmGlitch.Condition">
+			<summary>Specifies the glitch condition. This attribute determines whether the glitch arm happens when the digitizer detects a pulse with a width less than or greater than the width value.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmGlitch.Width">
+			<summary>Specifies the glitch width. The units are seconds. The digitizer triggers when it detects a pulse with a width less than or greater than this value, depending on the Glitch Condition attribute.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmGlitch.Polarity">
+			<summary>Specifies the polarity of the glitch that arms the digitizer.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerArmRunt">
+			<summary>IVI Digitizer class-compliant runt arming interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerArmRunt.Configure(System.Double,System.Double,Ivi.Digitizer.Interop.IviDigitizerRuntPolarityEnum)">
+			<summary>This function configures the runt arm. A runt occurs when the arm signal crosses one of the runt thresholds twice without crossing the other runt threshold. The end-user specifies the runt thresholds with the RuntLowThreshold and RuntHighThreshold parameters. The end-user specifies the polarity of the runt with the RuntPolarity parameter.  This function affects instrument behavior only if the arm type is Runt Trigger. Set the arm type and trigger coupling before calling this function.</summary>
+			<param name="ThresholdLow">Sets the runt triggering low threshold in volts.</param>
+			<param name="ThresholdHigh">Sets the runt triggering high threshold in volts.</param>
+			<param name="Polarity">Sets the runt polarity.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmRunt.Polarity">
+			<summary>Specifies the polarity of the runt that arms the digitizer.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmRunt.ThresholdHigh">
+			<summary>The high threshold the digitizer uses for runt arming.  The units are Volts.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmRunt.ThresholdLow">
+			<summary>The low threshold the digitizer uses for runt arming.  The units are Volts.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerArmTV">
+			<summary>IVI Digitizer class-compliant TV arming interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerArmTV.Configure(Ivi.Digitizer.Interop.IviDigitizerTVSignalFormatEnum,Ivi.Digitizer.Interop.IviDigitizerTVTriggerEventEnum,Ivi.Digitizer.Interop.IviDigitizerTVTriggerPolarityEnum)">
+			<summary>This function configures the digitizer for TV arming.  It configures the TV signal format, the event and the signal polarity.  This function affects instrument behavior only if the arm type is TV Arm. Set the Arm Type and Arm Coupling before calling this function.
+</summary>
+			<param name="SignalFormat">Specifies the TV arm signal format. This value sets the TV Arm Signal Format attribute.</param>
+			<param name="Event">Specifies the TV arm event. This value sets the TV Arm Event attribute.</param>
+			<param name="Polarity">Specifies the polarity of the TV arm signal.  This value sets the TV Arm Polarity attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmTV.Event">
+			<summary>Specifies the event on which the digitizer arms.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmTV.LineNumber">
+			<summary>Specifies the line on which the digitizer arms.  The driver uses this attribute when the TV Arm Event is set to TV Event Line Number. The line number setting is independent of the field. This means that to arm on the first line of the second field, the user must configure the line number to the value of 263 (if we presume that field one had 262 lines).</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmTV.Polarity">
+			<summary>Specifies the polarity of the TV signal.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmTV.SignalFormat">
+			<summary>Specifies the format of TV signal on which the digitizer arms.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerArmWidth">
+			<summary>IVI Digitizer class-compliant width arming interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerArmWidth.Configure(System.Double,System.Double,System.Double,Ivi.Digitizer.Interop.IviDigitizerWidthPolarityEnum,Ivi.Digitizer.Interop.IviDigitizerWidthConditionEnum)">
+			<summary>Configures the width arm Source, Level, ThresholdLow, ThresholdHigh, Polarity, and Condition.  A width arm occurs when a pulse, that passes through Level, with a width between or outside, the width thresholds is detected.</summary>
+			<param name="Level">Arm Level. This value sets the Arm Level attribute.</param>
+			<param name="ThresholdLow">Sets the width arming low threshold in seconds. This value sets the Width Low Threshold attribute.</param>
+			<param name="ThresholdHigh">Sets the width arming high threshold in seconds. This value sets the Width High Threshold attribute.</param>
+			<param name="Polarity">Sets the width polarity. This value sets the Width Polarity attribute.</param>
+			<param name="Condition">Specifies whether a pulse that is within or outside the user-specified thresholds arm waveform acquisition. This value sets the Width Condition attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmWidth.Condition">
+			<summary>Specifies whether a pulse that is within or outside the high and low thresholds arms the digitizer. The end-user specifies the high and low thresholds with the Width High Threshold and Width Low Threshold attributes.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmWidth.Polarity">
+			<summary>Specifies the polarity of the pulse that arms the digitizer.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmWidth.ThresholdHigh">
+			<summary>Specifies the high width threshold time in seconds.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmWidth.ThresholdLow">
+			<summary>Specifies the low width threshold time in seconds.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerArmWindow">
+			<summary>IVI Digitizer class-compliant window arming interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerArmWindow.Configure(System.Double,System.Double,Ivi.Digitizer.Interop.IviDigitizerWindowConditionEnum)">
+			<summary>Configures the window Arm Source, ThresholdLow, ThresholdHigh, and Condition.  A window arm occurs when a signal that enters or leaves a given voltage range is detected.</summary>
+			<param name="ThresholdLow">Sets the window arming low threshold in Volts. This value sets the Window Low Threshold attribute.</param>
+			<param name="ThresholdHigh">Sets the window arming high threshold in Volts. This value sets the Window High Threshold attribute.</param>
+			<param name="Condition">Specifies whether a pulse that is within or outside the user-specified thresholds arm waveform acquisition. This value sets the Width Condition attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmWindow.Condition">
+			<summary>Specifies whether a signal that is entering or leaving the voltage window defined by the high and low thresholds arms the digitizer. The end-user specifies the high and low thresholds with the Window High Threshold and Window Low Threshold attributes.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmWindow.ThresholdHigh">
+			<summary>Specifies the high window threshold voltage in Volts.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmWindow.ThresholdLow">
+			<summary>Specifies the low window threshold voltage in Volts.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerMultiArm">
+			<summary>IVI Digitizer class-compliant multi-arm interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerMultiArm.Configure(System.String,Ivi.Digitizer.Interop.IviDigitizerArmSourceOperatorEnum)">
+			<summary>Configures the digitizer to arm based on multiple arm sources. The digitizer can be instructed to arm when any one of multiple arm source conditions are met or when all specified arm source conditions are met.</summary>
+			<param name="SourceList">A comma separated list of source names to be used in a multi arm scenario. The driver uses this value to set the Arm Source List attribute.</param>
+			<param name="Operator">Specifies the boolean operation to apply to the arm sources specified by the SourceList parameter.  The driver uses this value to set the Arm Source Operator attribute</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerMultiArm.SourceList">
+			<summary>A comma separated list of source names to be used in a multi arm scenario.  This attribute only affects instrument behavior when the Arm Source Operator attribute is set to AND or OR.  When Arm Source Operator is set to AND, the arm conditions associated with each source in this list must be simultaneously satsified in order to arm the digitizer.  When Arm Source Operator is set to OR, the first arm source in the list that satisfies its arm conditions will arm the digitizer.  Any valid name used for the Arm Source attribute may be used in this list.  An arm source may appear only once in the list.  If a name in the list is not recognized, the driver returns the Unknown Channel Name error.  See IVI-3.2 for the definition of this error.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerMultiArm.SourceOperator">
+			<summary>Specifies the boolean operation to apply to the arm sources specified by the Arm Source List attribute.  See the definition of that attribute for details.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerMultiTrigger">
+			<summary>IVI Digitizer class-compliant multi-trigger interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerMultiTrigger.Configure(System.String,Ivi.Digitizer.Interop.IviDigitizerTriggerSourceOperatorEnum)">
+			<summary>Configures the digitizer to trigger based on multiple trigger sources.  The digitizer can be instructed to trigger when any one of multiple trigger source conditions are met or when all specified trigger source conditions are met.</summary>
+			<param name="SourceList">A comma separated list of source names to be used in a multi trigger scenario. The driver uses this value to set the Trigger Source List attribute.</param>
+			<param name="Operator">Specifies the boolean operation to apply to the trigger sources specified by the SourceList parameter.  The driver uses this value to set the Trigger Source Operator attribute.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerMultiTrigger.SourceList">
+			<summary>A comma separated list of source names to be used in a multi trigger scenario.  This attribute only affects instrument behavior when the Trigger Source Operator attribute is set to AND or OR.  When Trigger Source Operator is set to AND, the trigger conditions associated with each source in this list must be simultaneously satsified in order to trigger the digitizer.  When Trigger Source Operator is set to OR, the first trigger source in the list that satisfies its trigger conditions will trigger the digitizer.  Any valid name used for the Trigger Source attribute may be used in this list.  A trigger source may appear only once in the list.  If a name in the list is not recognized, the driver returns the Unknown Channel Name error.  See IVI-3.2 for the definition of this error.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerMultiTrigger.SourceOperator">
+			<summary>Specifies the boolean operation to apply to the arm sources specified by the Arm Source List attribute.  See the definition of that attribute for details.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource">
+			<summary>IVI Digitizer class-compliant trigger source interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource.Coupling">
+			<summary>Specifies how the digitizer couples the trigger source.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource.Hysteresis">
+			<summary>Specifies the trigger hysteresis in Volts.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource.Level">
+			<summary>Specifies the voltage threshold for the trigger sub-system. The units are Volts. This attribute affects instrument behavior only when the Trigger Type is set to one of the following values: Edge Trigger, Glitch Trigger, or Width Trigger.
+This attribute, along with the Trigger Slope, Trigger Source, and Trigger Coupling attributes, defines the trigger event when the Trigger Type is set to Edge Trigger.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource.Type">
+			<summary>The kind of event that triggers the digitizer.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource.Edge">
+			<summary>Pointer to the class-compliant IIviDigitizerTriggerEdge interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource.Glitch">
+			<summary>Pointer to the class-compliant IIviDigitizerTriggerGlitch interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource.Runt">
+			<summary>Pointer to the class-compliant IIviDigitizerTriggerRunt interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource.TV">
+			<summary>Pointer to the class-compliant IIviDigitizerTriggerTV interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource.Width">
+			<summary>Pointer to the class-compliant IIviDigitizerTriggerWidth interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSource.Window">
+			<summary>Pointer to the class-compliant IIviDigitizerTriggerWindow interface.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerTriggerSources">
+			<summary>IVI Digitizer class-compliant trigger source collection interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSources.Count">
+			<summary>The number of trigger sources.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSources.Item(System.String)">
+			<summary>An interface reference pointer to the IIviDigitizerTriggerSource interface which is selected by the source name.</summary>
+			<param name="Name">The name of a source. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerTriggerSources.get_Item(System.String)">
+			<summary>An interface reference pointer to the IIviDigitizerTriggerSource interface which is selected by the source name.</summary>
+			<param name="Name">The name of a source. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+			<returns>An interface reference pointer to the IIviDigitizerTriggerSource interface which is selected by the source name.</returns>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerTriggerSources.Name(System.Int32)">
+			<summary>The source name for a given index.</summary>
+			<param name="Index">One based index into the collection of sources.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerTriggerSources.get_Name(System.Int32)">
+			<summary>The source name for a given index.</summary>
+			<param name="Index">One based index into the collection of sources.</param>
+			<returns>The source name for a given index.</returns>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerArmSource">
+			<summary>IVI Digitizer class-compliant arm source interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSource.Coupling">
+			<summary>Specifies how the digitizer couples the arm source.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSource.Hysteresis">
+			<summary>Specifies the arm hysteresis in Volts.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSource.Level">
+			<summary>Specifies the voltage threshold for the arm sub-system. The units are Volts. This attribute affects instrument behavior only when the Arm Type is set to one of the following values: Edge Trigger, Glitch Trigger, or Width Trigger.
+This attribute, along with the Arm Slope, Arm Source, and Arm Coupling attributes, defines the trigger event when the Arm Type is set to Edge Trigger.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSource.Type">
+			<summary>The kind of event that arms the digitizer.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSource.Edge">
+			<summary>Pointer to the class-compliant IIviDigitizerArmEdge interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSource.Glitch">
+			<summary>Pointer to the class-compliant IIviDigitizerArmGlitch interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSource.Runt">
+			<summary>Pointer to the class-compliant IIviDigitizerArmRunt interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSource.TV">
+			<summary>Pointer to the class-compliant IIviDigitizerArmTV interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSource.Width">
+			<summary>Pointer to the class-compliant IIviDigitizerArmWidth interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSource.Window">
+			<summary>Pointer to the class-compliant IIviDigitizerArmWindow interface.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerArmSources">
+			<summary>IVI Digitizer class-compliant arm source collection interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSources.Count">
+			<summary>The number of sources.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSources.Item(System.String)">
+			<summary>An interface reference pointer to the IIviDigitizerArmSource interface which is selected by the source name.</summary>
+			<param name="Name">The name of a source. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerArmSources.get_Item(System.String)">
+			<summary>An interface reference pointer to the IIviDigitizerArmSource interface which is selected by the source name.</summary>
+			<param name="Name">The name of a source. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+			<returns>An interface reference pointer to the IIviDigitizerArmSource interface which is selected by the source name.</returns>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerArmSources.Name(System.Int32)">
+			<summary>The source name for a given index.</summary>
+			<param name="Index">One based index into the collection of sources.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerArmSources.get_Name(System.Int32)">
+			<summary>The source name for a given index.</summary>
+			<param name="Index">One based index into the collection of sources.</param>
+			<returns>The source name for a given index.</returns>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerChannelDownconversion">
+			<summary>IVI Digitizer class-compliant downconversion interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelDownconversion.Configure(System.Boolean,System.Double)">
+			<summary>Configures how the digitizer performs downconversion.</summary>
+			<param name="Enabled">Enables or disables downversion. The driver uses this value to set the Downconversion Enabled attribute. See the attribute description for more details.</param>
+			<param name="CenterFrequency">Specifies the center frequency, in Hz, from which the digitizer should downconvert. The driver uses this value to set the Downconversion Center Frequency attribute. See the attribute description for more details.</param>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannelDownconversion.Enabled">
+			<summary>Enables or disables downconversion.  When enabled, the Read and Fetch functions return data according to the setting of the Fetch IQ Interleaved Data attribute.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannelDownconversion.CenterFrequency">
+			<summary>Specifies the center frequency, in Hz, from which the digitizer should downconvert.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerChannelDownconversion.IQInterleaved">
+			<summary>Controls how the Read and Fetch functions return data when downconversion is enabled.  When this attribute is True and downconversion is enabled, the data returned from the Read and Fetch functions is interleaved I-Q data points.  When this attribute is False and downconversion is enabled, the Read and Fetch functions return data with all I data points in sequence followed by all Q data points.  This attribute has no effect when the Downconversion Enabled attribute is False.  </summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerAcquisitionStatus">
+			<summary>IVI Digitizer class-compliant acquistion status interface.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisitionStatus.IsIdle">
+			<summary>Returns whether the device is currently in the Idle state.  If the driver cannot query the digitizer to return its state, the driver returns the value Unknown.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisitionStatus.IsMeasuring">
+			<summary>Returns whether the device is currently in the Measuring state.  If the driver cannot query the digitizer to return its state, the driver returns the value Unknown.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisitionStatus.IsWaitingForArm">
+			<summary>Returns whether the device is currently in the Waiting For Arm state.  If the driver cannot query the digitizer to return its state, the driver returns the value Unknown.</summary>
+		</member>
+		<member name="P:Ivi.Digitizer.Interop.IIviDigitizerAcquisitionStatus.IsWaitingForTrigger">
+			<summary>Returns whether the device is currently in the Waiting For Trigger state.  If the driver cannot query the digitizer to return its state, the driver returns the value Unknown.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IIviDigitizerChannelMultiRecordMeasurement">
+			<summary>IVI Digitizer class-compliant multi-record measurement interface.</summary>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMultiRecordMeasurement.FetchMultiRecordWaveformInt16(System.Int64,System.Int64,System.Int64,System.Int64,System.Int16[]@,System.Int64@,System.Int64[]@,System.Int64[]@,System.Double[]@,System.Double[]@,System.Double[]@,System.Double@,System.Double@,System.Double@)">
+			<summary>This function returns the (multi-record) waveform the digitizer acquired for the specified channel. The waveform is from a previously initiated acquisition.</summary>
+			<param name="FirstRecord">Specifies the number of the first record to read.</param>
+			<param name="NumRecords">Specifies the number of consecutive records to read.</param>
+			<param name="OffsetWithinRecord">Specifies the start index within the record from which the data should be retrieved</param>
+			<param name="NumPointsPerRecord">Specifies the number of data points per record to return.  This number may be larger than the amount of data available.</param>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualRecords">Indicates how many records in the acquisition completed successfully.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument for each completed record. This is an array of size at least NumRecords or a NULL pointer.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array for each completed record.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+			<param name="ScaleFactor">Scaling factor for the waveform data.</param>
+			<param name="ScaleOffset">Scaling offset for the waveform data.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMultiRecordMeasurement.FetchMultiRecordWaveformInt8(System.Int64,System.Int64,System.Int64,System.Int64,System.Byte[]@,System.Int64@,System.Int64[]@,System.Int64[]@,System.Double[]@,System.Double[]@,System.Double[]@,System.Double@,System.Double@,System.Double@)">
+			<summary>This function returns the (multi-record) waveform the digitizer acquired for the specified channel. The waveform is from a previously initiated acquisition.</summary>
+			<param name="FirstRecord">Specifies the number of the first record to read.</param>
+			<param name="NumRecords">Specifies the number of consecutive records to read.</param>
+			<param name="OffsetWithinRecord">Specifies the start index within the record from which the data should be retrieved</param>
+			<param name="NumPointsPerRecord">Specifies the number of data points per record to return.  This number may be larger than the amount of data available.</param>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualRecords">Indicates how many records in the acquisition completed successfully.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument for each completed record. This is an array of size at least NumRecords or a NULL pointer.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array for each completed record.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+			<param name="ScaleFactor">Scaling factor for the waveform data.</param>
+			<param name="ScaleOffset">Scaling offset for the waveform data.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMultiRecordMeasurement.FetchMultiRecordWaveformInt32(System.Int64,System.Int64,System.Int64,System.Int64,System.Int32[]@,System.Int64@,System.Int64[]@,System.Int64[]@,System.Double[]@,System.Double[]@,System.Double[]@,System.Double@,System.Double@,System.Double@)">
+			<summary>This function returns the (multi-record) waveform the digitizer acquired for the specified channel. The waveform is from a previously initiated acquisition.</summary>
+			<param name="FirstRecord">Specifies the number of the first record to read.</param>
+			<param name="NumRecords">Specifies the number of consecutive records to read.</param>
+			<param name="OffsetWithinRecord">Specifies the start index within the record from which the data should be retrieved</param>
+			<param name="NumPointsPerRecord">Specifies the number of data points per record to return.  This number may be larger than the amount of data available.</param>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualRecords">Indicates how many records in the acquisition completed successfully.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument for each completed record. This is an array of size at least NumRecords or a NULL pointer.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array for each completed record.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+			<param name="ScaleFactor">Scaling factor for the waveform data.</param>
+			<param name="ScaleOffset">Scaling offset for the waveform data.</param>
+		</member>
+		<member name="M:Ivi.Digitizer.Interop.IIviDigitizerChannelMultiRecordMeasurement.FetchMultiRecordWaveformReal64(System.Int64,System.Int64,System.Int64,System.Int64,System.Double[]@,System.Int64@,System.Int64[]@,System.Int64[]@,System.Double[]@,System.Double[]@,System.Double[]@,System.Double@)">
+			<summary>This function returns the (multi-record) waveform the digitizer acquired for the specified channel. The waveform is from a previously initiated acquisition.</summary>
+			<param name="FirstRecord">Specifies the number of the first record to read.</param>
+			<param name="NumRecords">Specifies the number of consecutive records to read.</param>
+			<param name="OffsetWithinRecord">Specifies the start index within the record from which the data should be retrieved</param>
+			<param name="NumPointsPerRecord">Specifies the number of data points per record to return.  This number may be larger than the amount of data available.</param>
+			<param name="WaveformArray">Buffer into which the acquired waveform is stored.</param>
+			<param name="ActualRecords">Indicates how many records in the acquisition completed successfully.</param>
+			<param name="ActualPoints">Indicates how many data points were actually retrieved from the instrument for each completed record. This is an array of size at least NumRecords or a NULL pointer.</param>
+			<param name="FirstValidPoint">Indicates the index of the first valid data point in the output data array for each completed record.</param>
+			<param name="InitialXOffset">The time in relation to the Trigger Event of the first point in the waveform in seconds. Negative values mean that the first point in the waveform array was acquired before the trigger event.</param>
+			<param name="InitialXTimeSeconds">Specifies the seconds portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="InitialXTimeFraction">Specifies the fractional portion of the absolute time at which the first data point was acquired.  Note that the actual time is the sum of InitialXTimeSeconds and InitialXTimeFraction.</param>
+			<param name="XIncrement">The time between points in the acquired waveform in seconds.</param>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerVerticalCouplingEnum">
+			<summary>Defined values for channel Coupling.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerVerticalCouplingEnum.IviDigitizerVerticalCouplingAC">
+			<summary>The digitizer AC couples the input signal.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerVerticalCouplingEnum.IviDigitizerVerticalCouplingDC">
+			<summary>The digitizer DC couples the input signal.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerVerticalCouplingEnum.IviDigitizerVerticalCouplingGnd">
+			<summary>The digitizer couples the channel to the ground.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerTriggerTypeEnum">
+			<summary>Defined values for trigger type</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerTypeEnum.IviDigitizerTriggerEdge">
+			<summary>Configures the digitizer for edge triggering. An edge trigger occurs when the trigger signal specified with the Trigger Source attribute passes the voltage threshold specified with the Trigger Level attribute and has the slope specified with the Trigger Slope attribute.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerTypeEnum.IviDigitizerTriggerWidth">
+			<summary>Configures the digitizer for width triggering. Use the IviDigitizerWidthTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerTypeEnum.IviDigitizerTriggerRunt">
+			<summary>Configures the digitizer for runt triggering. Use the IviDigitizerRuntTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerTypeEnum.IviDigitizerTriggerGlitch">
+			<summary>Configures the digitizer for glitch triggering. Use the IviDigitizerGlitchTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerTypeEnum.IviDigitizerTriggerTV">
+			<summary>Configures the digitizer for triggering on TV signals. Use the IviDigitizerTVTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerTypeEnum.IviDigitizerTriggerWindow">
+			<summary>Configures the digitizer for window triggering. Use the IviDigitizerWindowTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerTemperatureUnitsEnum">
+			<summary>Defined values for the temperature units.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTemperatureUnitsEnum.IviDigitizerTemperatureUnitsCelsius">
+			<summary>Temperature values returned from the digitizer are in degrees Celsius.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTemperatureUnitsEnum.IviDigitizerTemperatureUnitsFahrenheit">
+			<summary>Temperature values returned from the digitizer are in degrees Fahrenheit.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTemperatureUnitsEnum.IviDigitizerTemperatureUnitsKelvin">
+			<summary>Temperature values returned from the digitizer are in degrees Kelvin.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerReferenceOscillatorSourceEnum">
+			<summary>Defined values for the reference oscillator source.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerReferenceOscillatorSourceEnum.IviDigitizerReferenceOscillatorSourceInternal">
+			<summary>The internal reference oscillator is used.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerReferenceOscillatorSourceEnum.IviDigitizerReferenceOscillatorSourceExternal">
+			<summary>An external reference oscillator is used.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerSampleClockSourceEnum">
+			<summary>Defined values for the sample clock source.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerSampleClockSourceEnum.IviDigitizerSampleClockSourceInternal">
+			<summary>The internal sample clock is used.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerSampleClockSourceEnum.IviDigitizerSampleClockSourceExternal">
+			<summary>An external sample clock is used.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerTriggerSlopeEnum">
+			<summary>Defined values for edge trigger slope.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerSlopeEnum.IviDigitizerTriggerSlopeNegative">
+			<summary>A negative (falling) edge passing through the trigger level triggers the digitizer.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerSlopeEnum.IviDigitizerTriggerSlopePositive">
+			<summary>A positive (rising) edge passing through the trigger level triggers the digitizer.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerGlitchPolarityEnum">
+			<summary>Defined values for glitch trigger Polarity</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerGlitchPolarityEnum.IviDigitizerGlitchPolarityPositive">
+			<summary>The digitizer triggers on a positive glitch.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerGlitchPolarityEnum.IviDigitizerGlitchPolarityNegative">
+			<summary>The digitizer triggers on a negative glitch.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerGlitchPolarityEnum.IviDigitizerGlitchPolarityEither">
+			<summary>The digitizer triggers on either a positive or negative glitch.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerGlitchConditionEnum">
+			<summary>Defined values values for glitch trigger condition.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerGlitchConditionEnum.IviDigitizerGlitchConditionLessThan">
+			<summary>The digitizer triggers when the pulse width is less than the value you specify with the Glitch Width attribute.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerGlitchConditionEnum.IviDigitizerGlitchConditionGreaterThan">
+			<summary>The digitizer triggers when the pulse width is greater than the value you specify with the Glitch Width attribute.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerRuntPolarityEnum">
+			<summary>Defined values for runt trigger polarity</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerRuntPolarityEnum.IviDigitizerRuntPolarityPositive">
+			<summary>The digitizer triggers on a positive runt. A positive runt occurs when a rising edge crosses the low runt threshold and does not cross the high runt threshold before re-crossing the low runt threshold.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerRuntPolarityEnum.IviDigitizerRuntPolarityNegative">
+			<summary>The digitizer triggers on a negative runt. A negative runt occurs when a falling edge crosses the high runt threshold and does not cross the low runt threshold before re-crossing the high runt threshold.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerRuntPolarityEnum.IviDigitizerRuntPolarityEither">
+			<summary>The digitizer triggers on either a positive or negative runt.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerTVTriggerPolarityEnum">
+			<summary>Defined values for TV trigger Polarity</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTVTriggerPolarityEnum.IviDigitizerTVTriggerPolarityPositive">
+			<summary>Configures the digitizer to trigger on a positive video sync pulse.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTVTriggerPolarityEnum.IviDigitizerTVTriggerPolarityNegative">
+			<summary>Configures the digitizer to trigger on a negative video sync pulse.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerTVTriggerEventEnum">
+			<summary>Defined values for TV trigger Event</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTVTriggerEventEnum.IviDigitizerTVTriggerEventField1">
+			<summary>Sets the digitizer to trigger on field 1 of the video signal.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTVTriggerEventEnum.IviDigitizerTVTriggerEventField2">
+			<summary>Sets the digitizer to trigger on field 2 of the video signal.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTVTriggerEventEnum.IviDigitizerTVTriggerEventAnyField">
+			<summary>Sets the digitizer to trigger on any field.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTVTriggerEventEnum.IviDigitizerTVTriggerEventAnyLine">
+			<summary>Sets the digitizer to trigger on any line.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTVTriggerEventEnum.IviDigitizerTVTriggerEventLineNumber">
+			<summary>Sets the digitizer to trigger on a specific line number you specify with the TV Trigger Line Number attribute.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerTVSignalFormatEnum">
+			<summary>Defined values for TV trigger SignalFormat</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTVSignalFormatEnum.IviDigitizerTVSignalFormatNTSC">
+			<summary>Configures the digitizer to trigger on the NTSC signal format.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTVSignalFormatEnum.IviDigitizerTVSignalFormatPAL">
+			<summary>Configures the digitizer to trigger on the PAL signal format</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTVSignalFormatEnum.IviDigitizerTVSignalFormatSECAM">
+			<summary>Configures the digitizer to trigger on the SECAM signal format</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerWidthConditionEnum">
+			<summary>Defined values for width trigger Condition</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerWidthConditionEnum.IviDigitizerWidthConditionWithin">
+			<summary>Configures the digitizer to trigger on signals when they enter the given triggering window. The end-user specifies the high and low thresholds with the Window Trigger High Threshold and Window Trigger Low Threshold properties.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerWidthConditionEnum.IviDigitizerWidthConditionOutside">
+			<summary>Configures the digitizer to trigger on signals when they leave the given triggering window.  The end-user specifies the high and low thresholds with the Window Trigger High Threshold and Window Trigger Low Threshold properties.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerWidthPolarityEnum">
+			<summary>Defined values for width trigger Polarity</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerWidthPolarityEnum.IviDigitizerWidthPolarityPositive">
+			<summary>Configures the digitizer to trigger on positive pulses that have a width that meets the condition the user specifies with the Width Condition attribute.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerWidthPolarityEnum.IviDigitizerWidthPolarityNegative">
+			<summary>Configures the digitizer to trigger on negative pulses that have a width that meets the condition the user specifies with the Width Condition attribute.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerWidthPolarityEnum.IviDigitizerWidthPolarityEither">
+			<summary>Configures the digitizer to trigger on either positive or negative pulses that have a width that meets the condition the user specifies with the Width Condition attribute.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerWindowConditionEnum">
+			<summary>Defined values for window trigger Condition.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerWindowConditionEnum.IviDigitizerWindowConditionEntering">
+			<summary>Configures the digitizer to trigger on pulses that have a width that is less than the high threshold and greater than the low threshold. The end-user specifies the high and low thresholds with the Width High Threshold and Width Low Threshold properties.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerWindowConditionEnum.IviDigitizerWindowConditionLeaving">
+			<summary>Configures the digitizer to trigger on pulses that have a width that is either greater than the high threshold or less than a low threshold. The end-user specifies the high and low thresholds with the Width High Threshold and Width Low Threshold properties.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerTriggerCouplingEnum">
+			<summary>Defined values for trigger Coupling.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerCouplingEnum.IviDigitizerTriggerCouplingAC">
+			<summary>The digitizer AC couples the trigger signal.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerCouplingEnum.IviDigitizerTriggerCouplingDC">
+			<summary>The digitizer DC couples the trigger signal.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerCouplingEnum.IviDigitizerTriggerCouplingNoiseReject">
+			<summary>The digitizer filters out the noise from the arm signal.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerCouplingEnum.IviDigitizerTriggerCouplingHFReject">
+			<summary>The digitizer filters out the high frequencies from the arm signal.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerCouplingEnum.IviDigitizerTriggerCouplingLFReject">
+			<summary>The digitizer filters out the low frequencies from the arm signal.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerArmTypeEnum">
+			<summary>Defined values for trigger type</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerArmTypeEnum.IviDigitizerArmEdge">
+			<summary>Configures the digitizer for edge triggering. An edge trigger occurs when the trigger signal specified with the Trigger Source attribute passes the voltage threshold specified with the Trigger Level attribute and has the slope specified with the Trigger Slope attribute.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerArmTypeEnum.IviDigitizerArmWidth">
+			<summary>Configures the digitizer for width triggering. Use the IviDigitizerWidthTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerArmTypeEnum.IviDigitizerArmRunt">
+			<summary>Configures the digitizer for runt triggering. Use the IviDigitizerRuntTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerArmTypeEnum.IviDigitizerArmGlitch">
+			<summary>Configures the digitizer for glitch triggering. Use the IviDigitizerGlitchTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerArmTypeEnum.IviDigitizerArmTV">
+			<summary>Configures the digitizer for triggering on TV signals. Use the IviDigitizerTVTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerArmTypeEnum.IviDigitizerArmWindow">
+			<summary>Configures the digitizer for window triggering. Use the IviDigitizerWindowTrigger extension properties and methods to configure the trigger.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerTimeOutEnum">
+			<summary>Defined values for the MaxTimeMilliseconds parameter of the measurement Read and Fetch methods.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTimeOutEnum.IviDigitizerTimeOutImmediate">
+			<summary>The method returns immediately. If no valid measurement value exists, the method returns an error.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTimeOutEnum.IviDigitizerTimeOutInfinite">
+			<summary>The method waits indefinitely for the measurement to complete.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerArmSourceOperatorEnum">
+			<summary>Defined values for the arm source operator.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerArmSourceOperatorEnum.IviDigitizerArmSourceOperatorAND">
+			<summary>Arm sources are AND'd together.  The digitizer arms when all configured arm source conditions are satisfied.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerArmSourceOperatorEnum.IviDigitizerArmSourceOperatorOR">
+			<summary>Arm sources are OR'd together.  The digitizer arms when the first configured arm source condition is satisfied.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerArmSourceOperatorEnum.IviDigitizerArmSourceOperatorNone">
+			<summary>No operator is applied to the configured list of arm sources.  The arm source list is ignored, and the digitizer arms when the currently configured arm source, given by the Arm Source attribute, and its associated arm conditions are satisfied.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerTriggerSourceOperatorEnum">
+			<summary>Defined values for the trigger source operator.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerSourceOperatorEnum.IviDigitizerTriggerSourceOperatorAND">
+			<summary>Trigger sources are AND'd together.  The digitizer triggers when all configured trigger source conditions are satisfied.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerSourceOperatorEnum.IviDigitizerTriggerSourceOperatorOR">
+			<summary>Trigger sources are OR'd together.  The digitizer triggers when the first configured trigger source condition is satisfied.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerSourceOperatorEnum.IviDigitizerTriggerSourceOperatorNone">
+			<summary>No operator is applied to the configured list of trigger sources.  The trigger source list is ignored, and the digitizer triggers when the currently configured trigger source, given by the Trigger Source attribute, and its associated trigger conditions are satisfied.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerSampleModeEnum">
+			<summary>Defined values for acquisition SampleMode.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerSampleModeEnum.IviDigitizerSampleModeRealTime">
+			<summary>Real-time sampling is used.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerSampleModeEnum.IviDigitizerSampleModeEquivalentTime">
+			<summary>Equivalent-time sampling is used.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerTriggerModifierEnum">
+			<summary>Defined values for trigger modifier.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerModifierEnum.IviDigitizerTriggerModifierNone">
+			<summary>The digitizer waits until the trigger the end-user specifies occurs.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerModifierEnum.IviDigitizerTriggerModifierAuto">
+			<summary>The digitizer automatically triggers if the configured trigger does not occur within the digitizer timeout period.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerTriggerModifierEnum.IviDigitizerTriggerModifierAutoLevel">
+			<summary>The digitizer adjusts the trigger level if the trigger the end-user specifies does not occur.</summary>
+		</member>
+		<member name="T:Ivi.Digitizer.Interop.IviDigitizerAcquisitionStatusResultEnum">
+			<summary>Defined values for the acquisition status result.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerAcquisitionStatusResultEnum.IviDigitizerAcquisitionStatusResultTrue">
+			<summary>The digitizer is currently in the Idle state.</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerAcquisitionStatusResultEnum.IviDigitizerAcquisitionStatusResultFalse">
+			<summary>The digitizer is not currently in the Idle state..</summary>
+		</member>
+		<member name="F:Ivi.Digitizer.Interop.IviDigitizerAcquisitionStatusResultEnum.IviDigitizerAcquisitionStatusResultUnknown">
+			<summary>The driver cannot query the instrument to determine if the digitizer is in the Idle state.</summary>
+		</member>
+	</members>
+</doc>

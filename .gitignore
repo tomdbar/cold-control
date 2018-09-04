@@ -1,0 +1,6 @@
+.pydevproject
+.project
+.DS_Store
+.settings
+labbook/**
+exceptions

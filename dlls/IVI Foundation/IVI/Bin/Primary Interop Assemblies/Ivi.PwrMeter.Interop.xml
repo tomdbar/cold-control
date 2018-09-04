@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<doc>
+	<assembly>
+		<name>Ivi.PwrMeter.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.PwrMeter.Interop.IIviPwrMeter">
+			<summary>IVI PwrMeter class-compliant root interface</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeter.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of 
+			certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameter
+			is "Name=Value", 
+			where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,
+			or DriverSetup. Value is either true or false except for DriverSetup. 
+			If the Options String parameter contains an assignment for the Driver Setup attribute, 
+			the Initialize function assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeter.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument are not accessible after Close is called.</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeter.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeter.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeter.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeter.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the Close method, and False at all other times.</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeter.Channels">
+			<summary>Reference to the class-compliant IIviPwrMeterChannels interface</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeter.Measurement">
+			<summary>Reference to the class-compliant IIviPwrMeterMeasurement interface</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeter.ReferenceOscillator">
+			<summary>Reference to the class-compliant IIviPwrReferenceOscillator interface</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeter.Trigger">
+			<summary>Reference to the class-compliant IIviPwrMeterTrigger interface</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IIviPwrMeterChannels">
+			<summary>Class-compliant IIviPwrMeter interface containing methods and properties that apply to all channels in the instrument. A particular channel can be referenced using the Item property</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.IsCalibrationComplete">
+			<summary>Class-compliant IIviPwrMeter method that queries the instrument to determine the status of all calibration operations</summary>
+			<returns>Returns the status of the calibration.</returns>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.IsZeroComplete">
+			<summary>Class-compliant IIviPwrMeter method that queries the instrument to determine the status of all zero operations</summary>
+			<returns>Returns the status of the zeroing.</returns>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.Zero">
+			<summary>Class-compliant IIviPwrMeter method that performs a zero operation on all enabled channels</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.Count">
+			<summary>Class-compliant IIviPwrMeter property that indicates the number of channels available on the instrument</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.Item">
+			<summary>Class-compliant IIviPwrMeter property that is used to reference a Channel interface for a given channel. The Name property can be used to determine the name of a particular channel</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.Item(System.String)">
+			<summary>Class-compliant IIviPwrMeter property that is used to reference a Channel interface for a given channel. The Name property can be used to determine the name of a particular channel</summary>
+			<param name="OutputName">The name of a channel. It may be either a name returned by the Name property or
+			a name mapped to a particular repeated capability in the session in the configuration store.</param>
+			<returns>A pointer to a class-compliant IIviPwrMeterChannel interface.</returns>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.get_Item(System.String)">
+			<summary>Gets a pointer to a channel object.</summary>
+			<param name="OutputName">The name of a channel. It may be either a name returned by get_Name or
+			a name mapped to a particular repeated capability in the session in the configuration store.</param>
+			<returns>A pointer to a class-compliant IIviPwrMeterChannel interface.</returns>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.Name">
+			<summary>Class-compliant IIviPwrMeter property that returns the name of a particular channel</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.Name(System.Int32)">
+			<summary>Class-compliant IIviPwrMeter property that returns the name of a particular channel</summary>
+			<param name="Index">One based index into the collection of channels.</param>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.get_Name(System.Int32)">
+			<summary>Gets the name of a channel.</summary>
+			<param name="Index">One based index into the collection of channels.</param>
+			<returns>The string associated by the driver to the value of Index without ever referring 
+			to the configuration store.</returns>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannels.Units">
+			<summary>Class-compliant IIviPwrMeter property specifying the unit to which the RF power is converted after measurement</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IIviPwrMeterChannel">
+			<summary>Class-compliant IIviPwrMeter interface containing methods and properties that applyto a particular channel</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterChannel.Calibrate">
+			<summary>Class-compliant IIviPwrMeter method that performs a calibration on a particular channel and sensor. This method returns only after calibration is complete</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterChannel.Zero">
+			<summary>Class-compliant IIviPwrMeter method that performs a zero operation on a particular channel</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannel.Averaging">
+			<summary>Reference to the class-compliant IIviPwrMeterAveraging interface</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannel.CorrectionFrequency">
+			<summary>Class-compliant IIviPwrMeter property specifying the frequency of the input signal in Hertz. The instrument uses this value to determine the appropriate correction factor for the sensor</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannel.DutyCycle">
+			<summary>Reference to the class-compliant IIviPwrMeterDutyCycleCorrection interface</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannel.Enabled">
+			<summary>Class-compliant IIviPwrMeter property specifying whether the power meter should take a measurement on a particular input channel. The power meter will take a measurement on a channel only if that channel is enabled</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannel.Offset">
+			<summary>Class-compliant IIviPwrMeter property specifying an offset to be added to the measured value in units of dB.  This property can be used to compensate for system losses or gains between the unit under test and the power sensor</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterChannel.Range">
+			<summary>Reference to the class-compliant IIviPwrMeterRange interface</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IIviPwrMeterAveraging">
+			<summary>Class-compliant IIviPwrMeter interface containing methods and properties concerning averaging</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterAveraging.AutoEnabled">
+			<summary>Class-compliant IIviPwrMeter property specifying whether auto-averaging is enabled or disabled for a particular input channel</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterAveraging.Count">
+			<summary>Class-compliant IIviPwrMeter property specifying the averaging count. When the Auto Averaging Enabled attribute is set to False, the driver filters the input signal by averaging it the number of times specified by this property</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IIviPwrMeterDutyCycleCorrection">
+			<summary>Class-compliant IIviPwrMeter interface containing methods and properties concerning duty cycle correction</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterDutyCycleCorrection.Configure(System.Boolean,System.Double)">
+			<summary>Class-compliant IIviPwrMeter method that enables or disables duty cycle correction and sets the duty cycle for pulse power measurements</summary>
+			<param name="Enabled">Enables or disables the duty cycle correction. This parameter sets the Duty Cycle Correction Enabled property.</param>
+			<param name="Value">Specifies the expected value of the duty cycle correction. This parameter sets the Duty Cycle Correction property.</param>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterDutyCycleCorrection.Enabled">
+			<summary>Class-compliant IIviPwrMeter property specifying whether duty cycle correction is enabled on a particular channel</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterDutyCycleCorrection.Value">
+			<summary>Class-compliant IIviPwrMeter property specifying the duty cycle correction the power meter uses to calculate the pulse power of a pulse-modulated signal. The value of this attribute is specified as a percentage</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IIviPwrMeterRange">
+			<summary>Class-compliant IIviPwrMeter interface containing methods and properties concerning the meter and sensor range selection.</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterRange.Configure(System.Double,System.Double)">
+			<summary>Class-compliant IIviPwrMeter method that configures the lower and upper range values for a particular channel</summary>
+			<param name="Lower">The lower limit of the expected value of the measurement.  This parameter is sets the Range.Lower property.</param>
+			<param name="Upper">The upper limit of the expected value of the measurement. This parameter sets the Range.Upper property.</param>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterRange.AutoEnabled">
+			<summary>Class-compliant IIviPwrMeter property specifying if the power meter should set the best range for the measurement. If True, the instrument automatically sets the best range.  If False, set the range using the Range.Upper and Range.Lower properties</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterRange.Lower">
+			<summary>Class-compliant IIviPwrMeter property specifying the lower limit (minimum) of the expected value of the measurement. The value of this property is specified in the same units as the value of the Channels.Units property</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterRange.Upper">
+			<summary>Class-compliant IIviPwrMeter property specifying the upper limit (maximum) of the expected value of the measurement. The value of this property is specified in the same units as the value of the Channels.Units property</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement">
+			<summary>Class-compliant IIviPwrMeter interface containing methods and properties for initiating and retreiving measurements</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement.Abort">
+			<summary>Class-compliant IIviPwrMeter method that aborts all previously initiated measurements and returns the power meter to the Idle state.</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement.Configure(Ivi.PwrMeter.Interop.IviPwrMeterMeasurementOperatorEnum,System.String,System.String)">
+			<summary>Class-compliant IIviPwrMeter method that configures the instrument to take single or dual channel measurements</summary>
+			<param name="Operator">The math function applied to the operands.</param>
+			<param name="Operand1">The name of the channel from which the value for the first operand of the math function is measured.</param>
+			<param name="Operand2">The name of the channel from which the value for the second operand of the math function is measured.</param>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement.Fetch">
+			<summary>Class-compliant IIviPwrMeter method that returns the result of a previously configured and initiated 1 or 2 channel measurement. Measurement.Configure can be used to set up the measurement. Measurement.Initiate initiates that measurement</summary>
+			<returns>Measured value</returns>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement.FetchChannel(System.String)">
+			<summary>Class-compliant IIviPwrMeter method that returns the result from a previously initiated measurement on a specified channel. Initiate initiates that measurement. The meaurement result will be returned in the units specified by the Unit property</summary>
+			<param name="ChannelName">The name of the channel from which to fetch the measurement.</param>
+			<returns>Measured value</returns>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement.Initiate">
+			<summary>Class-compliant IIviPwrMeter method that initiates a measurement on all enabled channels. When this method executes, the power meter leaves the Idle state</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement.IsMeasurementComplete">
+			<summary>Class-compliant IIviPwrMeter method that queries the instrument to determine the status of the measurement initiated by the Initiate method. This method returns a status of Measurement only when measurements are complete on all enabled channels.</summary>
+			<returns>Returns the status of the measurement.</returns>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement.QueryResultRangeType(System.Double)">
+			<summary>Class-compliant IIviPwrMeter method that takes a measurement value returned from Fetch, Fetch Channel, Read, or Read Channel and determines if the value is a valid measurement value or a value indicating that an out-of-range condition occurred.</summary>
+			<param name="MeasurementValue">The measurement value returned by one of the Fetch or Read functions.</param>
+			<returns>Returns whether the MeasurementValue is a valid measurement or a value indicating that the power meter encountered an out-of-range condition.</returns>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement.Read(System.Int32)">
+			<summary>Class-compliant IIviPwrMeter method that initiates a previously configured measurement, waits until the power meter has returned to the Idle state, then returns the result of that measurement. Measurement.Configure can be used to set up the measurement</summary>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time in milliseconds to wait for a return value. It may also be one of the values in IviPwrMeterTimeOutEnum.</param>
+			<returns>Measured value.</returns>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement.ReadChannel(System.String,System.Int32)">
+			<summary>Class-compliant IIviPwrMeter method that initiates a measurement, waits until the power meter has returned to the Idle state, then returns the result of the measurement on the specified channel</summary>
+			<param name="ChannelName">The name of the channel from which to take the measurement.</param>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time in seconds to wait for a return value. It may also be one of the values in IviPwrMeterTimeOutEnum.</param>
+			<returns>Measured value.</returns>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterMeasurement.SendSoftwareTrigger">
+			<summary>Class-compliant IIviPwrMeter method that sends a software trigger to the instrument</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IIviPwrMeterReferenceOscillator">
+			<summary>Class-compliant IIviPwrMeter interface containing methods and properties concerning the Reference Oscillator</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterReferenceOscillator.Configure(System.Double,System.Double)">
+			<summary>Class-compliant IIviPwrMeter method that sets the frequency and power level of the signal generated by the reference oscillator</summary>
+			<param name="Frequency">The frequency of the reference oscillator. This parameter sets the Reference Oscillator Frequency property.</param>
+			<param name="Level">The power level of the reference oscillator. This parameter sets the Reference Oscillator Level property</param>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterReferenceOscillator.Enabled">
+			<summary>Class-compliant IIviPwrMeter property specifying if the internal reference oscillator is enabled</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterReferenceOscillator.Frequency">
+			<summary>Class-compliant IIviPwrMeter property specifying the frequency of the signal generated by the reference oscillator in Hertz</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterReferenceOscillator.Level">
+			<summary>Class-compliant IIviPwrMeter property specifying the power level of the signal generated by the reference oscillator in dBm</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IIviPwrMeterTrigger">
+			<summary>Class-compliant IIviPwrMeter interface containing methods and properties concerning the triggering capabilities of the instrument</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterTrigger.Source">
+			<summary>Class-compliant IIviPwrMeter property specifying the trigger source that the power meter monitors for a trigger event</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterTrigger.Internal">
+			<summary>Reference to the class-compliant IIviPwrMeterInternalTrigger interface</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IIviPwrMeterInternalTrigger">
+			<summary>Class-compliant IIviPwrMeter interface containing methods and properties concerning the internal triggering capabilties of the instrument</summary>
+		</member>
+		<member name="M:Ivi.PwrMeter.Interop.IIviPwrMeterInternalTrigger.Configure(System.String,Ivi.PwrMeter.Interop.IviPwrMeterInternalTriggerSlopeEnum)">
+			<summary>Class-compliant IIviPwrMeter method that configures the internal trigger event source, slope and level</summary>
+			<param name="EventSource">The name of the channel to use as the internal trigger event source. The driver uses this value to set the Internal Trigger Event Source attribute. See the attribute description for more information.</param>
+			<param name="Slope">The internal trigger slope. This value sets the Internal Trigger Slope property.</param>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterInternalTrigger.EventSource">
+			<summary>Class-compliant IIviPwrMeter property specifying the channel that the power meter uses to monitor the internal trigger event</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterInternalTrigger.Level">
+			<summary>Class-compliant IIviPwrMeter property specifying the trigger level for the measurement signal. The value of this property is specified in the same unit as the value of the Channels.Units property</summary>
+		</member>
+		<member name="P:Ivi.PwrMeter.Interop.IIviPwrMeterInternalTrigger.Slope">
+			<summary>Class-compliant IIviPwrMeter property specifying whether the power meter should trigger on the rising or falling edge of the measurement signal</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IviPwrMeterCalibrationStatusEnum">
+			<summary>IVI PwrMeter class-compliant values for Calibration Status</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterCalibrationStatusEnum.IviPwrMeterCalibrationStatusComplete">
+			<summary>The power meter has completed the calibration.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterCalibrationStatusEnum.IviPwrMeterCalibrationStatusInProgress">
+			<summary>The power meter is still performing calibration.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterCalibrationStatusEnum.IviPwrMeterCalibrationStatusUnknown">
+			<summary>The power meter cannot determine the status of the calibration.</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IviPwrMeterZeroStatusEnum">
+			<summary>IVI PwrMeter class-compliant values for Zero Status</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterZeroStatusEnum.IviPwrMeterZeroStatusComplete">
+			<summary>The power meter has completed all zero correction operations.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterZeroStatusEnum.IviPwrMeterZeroStatusInProgress">
+			<summary>The power meter is still performing zero correction on one or more channels.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterZeroStatusEnum.IviPwrMeterZeroStatusUnknown">
+			<summary>The power meter cannot determine the status of zero correction operations.</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IviPwrMeterUnitsEnum">
+			<summary>IVI PwrMeter class-compliant values for Units</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterUnitsEnum.IviPwrMeterUnitsdBm">
+			<summary>Sets the units to dBm.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterUnitsEnum.IviPwrMeterUnitsdBmV">
+			<summary>Sets the units to dB millivolts.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterUnitsEnum.IviPwrMeterUnitsdBuV">
+			<summary>Sets the units to dB microvolts.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterUnitsEnum.IviPwrMeterUnitsWatts">
+			<summary>Sets the units to Watts.</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IviPwrMeterMeasurementOperatorEnum">
+			<summary>IVI PwrMeter class-compliant values for Measurement Operator</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterMeasurementOperatorEnum.IviPwrMeterMeasurementOperatorNone">
+			<summary>Operand1</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterMeasurementOperatorEnum.IviPwrMeterMeasurementOperatorDifference">
+			<summary>Operand1 - Operand2</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterMeasurementOperatorEnum.IviPwrMeterMeasurementOperatorSum">
+			<summary> Operand1 + Operand2</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterMeasurementOperatorEnum.IviPwrMeterMeasurementOperatorQuotient">
+			<summary>Operand1 / Operand2</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IviPwrMeterMeasurementStatusEnum">
+			<summary>IVI PwrMeter class-compliant values for Measurement Status</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterMeasurementStatusEnum.IviPwrMeterMeasurementStatusComplete">
+			<summary>The power meter has completed the measurement on all enabled channels.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterMeasurementStatusEnum.IviPwrMeterMeasurementStatusInProgress">
+			<summary>The power meter is still taking a measurement on one or more enabled channels.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterMeasurementStatusEnum.IviPwrMeterMeasurementStatusUnknown">
+			<summary>The power meter cannot determine the status of the measurement.</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IviPwrMeterResultRangeEnum">
+			<summary>IVI PwrMeter class-compliant values for Result Range</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterResultRangeEnum.IviPwrMeterResultRangeInRange">
+			<summary>The measurement is within the current range limits.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterResultRangeEnum.IviPwrMeterResultRangeUnderRange">
+			<summary>The measurement is below the current lower range limit.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterResultRangeEnum.IviPwrMeterResultRangeOverRange">
+			<summary>The measurement is above the current upper range limit.</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum">
+			<summary>IVI PwrMeter class-compliant values for Trigger Source</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceImmediate">
+			<summary>The power meter exits the Wait-For-Trigger state immediately after entering.  It does not wait for a trigger of any kind.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceExternal">
+			<summary>The power meter exits the Wait-For-Trigger state when a trigger occurs on the external trigger input.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceInternal">
+			<summary>The power meter exits the Wait-For-Trigger state when an internal trigger event occurs on the measurement signal.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceSoftware">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a software trigger.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceTTL0">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on TTL0.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceTTL1">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on TTL1.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceTTL2">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on TTL2.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceTTL3">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on TTL3.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceTTL4">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on TTL4.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceTTL5">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on TTL6.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceTTL6">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on TTL6.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceTTL7">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on TTL7.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceECL0">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on ECL0.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceECL1">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on ECL1.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourcePXIStar">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on PXI Star trigger bus.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceRTSI0">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on the RTSI0 line.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceRTSI1">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on the RTSI1 line.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceRTSI2">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on the RTSI2 line.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceRTSI3">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on the RTSI3 line.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceRTSI4">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on the RTSI4 line.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceRTSI5">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on the RTS5 line.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTriggerSourceEnum.IviPwrMeterTriggerSourceRTSI6">
+			<summary>The power meter exits the Wait-For-Trigger state when it receives a trigger on the RTSI6 line.</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IviPwrMeterInternalTriggerSlopeEnum">
+			<summary>IVI PwrMeter class-compliant values for Internal Trigger Slope</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterInternalTriggerSlopeEnum.IviPwrMeterInternalTriggerSlopeNegative">
+			<summary>Sets the trigger event to occur on the falling edge of the trigger pulse.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterInternalTriggerSlopeEnum.IviPwrMeterInternalTriggerSlopePositive">
+			<summary>Sets the trigger event to occur on the rising edge of the trigger pulse.</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IviPwrMeterErrorCodesEnum">
+			<summary>IVI PwrMeter class-compliant Errors</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterErrorCodesEnum.S_IVIPWRMETER_WARN_UNDER_RANGE">
+			<summary>Measurement is under range.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterErrorCodesEnum.S_IVIPWRMETER_WARN_OVER_RANGE">
+			<summary>Measurement is over range.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterErrorCodesEnum.E_IVIPWRMETER_CHANNEL_NOT_ENABLED">
+			<summary>The specified channel is not enabled for measurement.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterErrorCodesEnum.E_IVIPWRMETER_MAX_TIME_EXCEEDED">
+			<summary>Maximum timeout exceeded before operation could complete.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterErrorCodesEnum.E_IVIPWRMETER_TRIGGER_NOT_SOFTWARE">
+			<summary>The trigger source is not set to software trigger.</summary>
+		</member>
+		<member name="T:Ivi.PwrMeter.Interop.IviPwrMeterTimeOutEnum">
+			<summary>IVI PwrMeter class-compliant values for Time Out</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTimeOutEnum.IviPwrMeterTimeOutInfinite">
+			<summary>The function waits indefinitely for the measurement to complete.</summary>
+		</member>
+		<member name="F:Ivi.PwrMeter.Interop.IviPwrMeterTimeOutEnum.IviPwrMeterTimeOutImmediate">
+			<summary>The function returns immediately. If no valid measurement value exists, the function returns an error.</summary>
+		</member>
+	</members>
+</doc>

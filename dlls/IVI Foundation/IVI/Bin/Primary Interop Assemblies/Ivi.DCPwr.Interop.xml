@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<doc>
+	<assembly>
+		<name>Ivi.DCPwr.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.DCPwr.Interop.IIviDCPwr">
+			<summary>IviDCPwr class-compliant root interface</summary>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwr.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of 
+			certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameter
+			is "Name=Value", 
+			where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,
+			or DriverSetup. Value is either true or false except for DriverSetup. 
+			If the Options String parameter contains an assignment for the Driver Setup attribute, 
+			the Initialize function assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwr.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument are not accessible after Close is called.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwr.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwr.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwr.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwr.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the Close method, and False at all other times.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwr.Outputs">
+			<summary>Pointer to the class-compliant IIviDCPwrOutputs interface</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwr.Trigger">
+			<summary>Pointer to the class-compliant IIviDCPwrTrigger interface</summary>
+		</member>
+		<member name="T:Ivi.DCPwr.Interop.IIviDCPwrOutputs">
+			<summary>IviDCPwr class-compliant IIviDCPwrOutputs collection interface</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutputs.Item">
+			<summary>Pointer to a class-compliant IIviDCPwrOutput interface.  </summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutputs.Item(System.String)">
+			<summary>Pointer to a class-compliant IIviDCPwrOutput interface.  </summary>
+			<param name="OutputName">The name of a output. It may be either a name returned by the Name property or
+			a name mapped to a particular repeated capability in the session in the configuration store.</param>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrOutputs.get_Item(System.String)">
+			<summary>Gets a pointer to an output object.</summary>
+			<param name="OutputName">The name of a output. It may be either a name returned by get_Name or
+			a name mapped to a particular repeated capability in the session in the configuration store.</param>
+			<returns>A pointer to a class-compliant IIviDCPwrOutput interface.</returns>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutputs.Count">
+			<summary>property Count contains how many outputs this DC power supply has. It is also the maximum valid value 
+			for the Index parameter to the Name method of the Outputs interface.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutputs.Name">
+			<summary>property Name is the string associated by the driver to the value of Index without ever referring to 
+			the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutputs.Name(System.Int32)">
+			<summary>property Name is the string associated by the driver to the value of Index without ever referring to 
+			the configuration store.</summary>
+			<param name="Index">One based index into the collection of outputs.</param>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrOutputs.get_Name(System.Int32)">
+			<summary>Gets the name of an output.</summary>
+			<param name="Index">One based index into the collection of outputs.</param>
+			<returns>The string associated by the driver to the value of Index without ever referring 
+			to the configuration store.</returns>
+		</member>
+		<member name="T:Ivi.DCPwr.Interop.IIviDCPwrOutput">
+			<summary>IviDCPwr class-compliant IIviDCPwrOutput interface</summary>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrOutput.ConfigureCurrentLimit(Ivi.DCPwr.Interop.IviDCPwrCurrentLimitBehaviorEnum,System.Double)">
+			<summary>method Configure Current Limit specifies the output current limit value and the behavior of the power supply when the output current is greater than or equal to that value.</summary>
+			<param name="Behavior">Specifies the behavior of the power supply when the  output current is greater than or equal to the value of the Limit parameter.   The driver uses this value to set the Current Limit Behavior attribute. See the attribute description for more details.</param>
+			<param name="Limit">Specifies the power supply's output current limit. The driver uses this value to set the Current Limit attribute. </param>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrOutput.ConfigureRange(Ivi.DCPwr.Interop.IviDCPwrRangeTypeEnum,System.Double)">
+			<summary>method Configure Range specifies the output's range, either current or voltage.</summary>
+			<param name="RangeType">The kind of range to be configured, either Current or Voltage.</param>
+			<param name="Range">The range in which the power supply operates.  This value is coerced to the closest value the instrument supports that is greater than or equal to the value specified.</param>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrOutput.ConfigureOVP(System.Boolean,System.Double)">
+			<summary>method Configure OVP specifies the over-voltage limit and the behavior of the power supply when the output voltage is greater than or equal to the limit.</summary>
+			<param name="Enabled">Specifies the behavior of the power supply when the ouptut voltage is greater than or equal to the value of the Limit parameter.   This value sets the OVP Enabled property.</param>
+			<param name="Limit">Specifies the power supply's over-voltage protection limit. This value sets the OVP Limit property</param>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrOutput.Measure(Ivi.DCPwr.Interop.IviDCPwrMeasurementTypeEnum)">
+			<summary>method Measure takes a measurement on the output signal and returns the measured value.</summary>
+			<param name="MeasurementType">The type of measurement to take, either Current or Volatge</param>
+			<returns>The measured value.</returns>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrOutput.QueryCurrentLimitMax(System.Double)">
+			<summary>method Query Current Limit Max returns the maximum programmable current limit that the power supply accepts for a particular voltage level on an output.</summary>
+			<param name="VoltageLevel">The voltage level for which to determine the maximum programmable current limit.</param>
+			<returns>Returns the maximum programmable current limit for the specified voltage level.</returns>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrOutput.QueryState(Ivi.DCPwr.Interop.IviDCPwrOutputStateEnum)">
+			<summary>method Query State returns whether the power supply is in a particular output state.</summary>
+			<param name="OutputState">The output state for which to query. Allowed values are those defined in the IviDCPwrOutputStateEnum enumeration.</param>
+			<returns>Returns True if the power supply is currently in the state specified with the OutputState parameter, and False if it is not.</returns>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrOutput.QueryVoltageLevelMax(System.Double)">
+			<summary>method Query Voltage Level Max returns the maximum programmable voltage level that the power supply accepts for a particular current limit on an output.</summary>
+			<param name="CurrentLimit">The current limit for which to determine the maximum programmable voltage level.</param>
+			<returns>Returns the maximum programmable voltage level for the specified current limit.</returns>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrOutput.ResetOutputProtection">
+			<summary>method Reset Output Protection resets the power supply's output protection after an over-voltage or over-current condition occurs.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutput.Enabled">
+			<summary>property Enabled specifies whether the signal the power supply produces appears at the output connector.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutput.TriggerSource">
+			<summary>property Source specifies the trigger source.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutput.TriggeredCurrentLimit">
+			<summary>property Triggered Current Limit specifies the value to which the power supply sets the current limit after a trigger event occurs.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutput.TriggeredVoltageLevel">
+			<summary>property Triggerd Voltage Level specifies the value to  which the power supply sets the voltage level after a trigger event occurs.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutput.VoltageLevel">
+			<summary>property Voltage Level specifies the voltage level the DC power supply attempts to generate. The units are Volts.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutput.CurrentLimit">
+			<summary>propety Current Limit specifies the output current limit. The units are Amps.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutput.CurrentLimitBehavior">
+			<summary>property Current Limit Behavior specifies the behavior of the power supply when the output current is equal to or greater than the value of the Current Limit property.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutput.OVPLimit">
+			<summary>property OVP Limit specifies the voltage the power supply allows. The units are Volts.</summary>
+		</member>
+		<member name="P:Ivi.DCPwr.Interop.IIviDCPwrOutput.OVPEnabled">
+			<summary>property OVP Enabled specifies whether the power supply provides over-voltage protection. If this property is set to True, the power supply disables the output when the output voltage is greater than or equal to the OVP Limit.</summary>
+		</member>
+		<member name="T:Ivi.DCPwr.Interop.IIviDCPwrTrigger">
+			<summary>IviDCPwr class-compliant IIviDCPwrTrigger interface</summary>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrTrigger.Abort">
+			<summary>method Abort returns the power supply to the ignore triggers state if the power supply is currently waiting for a trigger to change the output signal.  If the power supply is not waiting for a trigger, this method does nothing.</summary>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrTrigger.Initiate">
+			<summary>method Initiate causes the power supply to wait for a trigger if the power supply is not currently waiting for a trigger. If the power supply is already waiting for a trigger, this method does nothing</summary>
+		</member>
+		<member name="M:Ivi.DCPwr.Interop.IIviDCPwrTrigger.SendSoftwareTrigger">
+			<summary>method Send Software Trigger supplies a trigger signal when the trigger source is set to Software Trigger</summary>
+		</member>
+		<member name="T:Ivi.DCPwr.Interop.IviDCPwrCurrentLimitBehaviorEnum">
+			<summary>IviDCPwr class-compliant values for the CurrentLimitBehavior property in the Output interface.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrCurrentLimitBehaviorEnum.IviDCPwrCurrentLimitRegulate">
+			<summary>The power supply restricts the output voltage such that the output current is not greater than the value of the Current Limit attribute.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrCurrentLimitBehaviorEnum.IviDCPwrCurrentLimitTrip">
+			<summary>The power supply disables the output when the output current is equal to or greater than the value of the Current Limit attribute.</summary>
+		</member>
+		<member name="T:Ivi.DCPwr.Interop.IviDCPwrRangeTypeEnum">
+			<summary>IviDCPwr class-compliant values for the RangeType parameter of the ConfigureRange method in the Output interface.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrRangeTypeEnum.IviDCPwrRangeCurrent">
+			<summary>Current range is set by the Range parameter.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrRangeTypeEnum.IviDCPwrRangeVoltage">
+			<summary>Voltage range is set by the Range parameter.</summary>
+		</member>
+		<member name="T:Ivi.DCPwr.Interop.IviDCPwrMeasurementTypeEnum">
+			<summary>IviDCPwr class-compliant values for the MeasurementType parameter of the Measure method in Output interface.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrMeasurementTypeEnum.IviDCPwrMeasurementCurrent">
+			<summary>Current is measured.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrMeasurementTypeEnum.IviDCPwrMeasurementVoltage">
+			<summary>Voltage is measured.</summary>
+		</member>
+		<member name="T:Ivi.DCPwr.Interop.IviDCPwrOutputStateEnum">
+			<summary>IviDCPwr class-compliant values for the OutputState parameter of the QueryState method in the Output interface.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrOutputStateEnum.IviDCPwrOutputConstantVoltage">
+			<summary>Return value indicates whether a constant voltage condition exists.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrOutputStateEnum.IviDCPwrOutputConstantCurrent">
+			<summary>Return value indicates whether a constant current condition exists.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrOutputStateEnum.IviDCPwrOutputOverVoltage">
+			<summary>Return value indicates whether an over-voltage condition exists.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrOutputStateEnum.IviDCPwrOutputOverCurrent">
+			<summary>Return value indicates whether an over-current condition exists.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrOutputStateEnum.IviDCPwrOutputUnregulated">
+			<summary>Return value indicates whether an unregulated condition exists.</summary>
+		</member>
+		<member name="T:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum">
+			<summary>IviDCPwr class-compliant values for the Source property in the Trigger interface.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceImmediate">
+			<summary>The power supply does not wait for a trigger before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceExternal">
+			<summary>The power supply waits for an external trigger before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceSwTrigFunc">
+			<summary>The power supply waits for the Send Software Trigger function to execute before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceTTL0">
+			<summary>The power supply waits for a trigger on the TTL 0 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceTTL1">
+			<summary>The power supply waits for a trigger on the TTL 1 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceTTL2">
+			<summary>The power supply waits for a trigger on the TTL 2 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceTTL3">
+			<summary>The power supply waits for a trigger on the TTL 3 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceTTL4">
+			<summary>The power supply waits for a trigger on the TTL 4 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceTTL5">
+			<summary>The power supply waits for a trigger on the TTL 5 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceTTL6">
+			<summary>The power supply waits for a trigger on the TTL 6 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceTTL7">
+			<summary>The power supply waits for a trigger on the TTL 7 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceECL0">
+			<summary>The power supply waits for a trigger on the ECL 0 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceECL1">
+			<summary>The power supply waits for a trigger on the ECL 1 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourcePXIStar">
+			<summary>The power supply waits for a trigger on the PXI Star line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceRTSI0">
+			<summary>The power supply waits for a trigger on the RTSI 0 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceRTSI1">
+			<summary>The power supply waits for a trigger on the RTSI 1 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceRTSI2">
+			<summary>The power supply waits for a trigger on the RTSI 2 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceRTSI3">
+			<summary>The power supply waits for a trigger on the RTSI 3 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceRTSI4">
+			<summary>The power supply waits for a trigger on the RTSI 4 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceRTSI5">
+			<summary>The power supply waits for a trigger on the RTSI 5 line before changing the output signal.</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrTriggerSourceEnum.IviDCPwrTriggerSourceRTSI6">
+			<summary>The power supply waits for a trigger on the RTSI 6 line before changing the output signal.</summary>
+		</member>
+		<member name="T:Ivi.DCPwr.Interop.IviDCPwrErrorCodesEnum">
+			<summary>IviDCPwr class defined HRESULTS</summary>
+		</member>
+		<member name="F:Ivi.DCPwr.Interop.IviDCPwrErrorCodesEnum.E_IVIDCPWR_TRIGGER_NOT_SOFTWARE">
+			<summary>The trigger source is not set to software trigger.</summary>
+		</member>
+	</members>
+</doc>

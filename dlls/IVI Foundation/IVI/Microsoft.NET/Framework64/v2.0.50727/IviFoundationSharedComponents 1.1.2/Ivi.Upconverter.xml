@@ -1,0 +1,1369 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivi.Upconverter</name>
+    </assembly>
+    <members>
+        <member name="T:Ivi.Upconverter.AlcSource">
+            <summary>
+            Defined values for selecting the ALC source.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.AlcSource.Internal">
+            <summary>
+            The ALC is controlled by an internal measurement source.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.AlcSource.External">
+            <summary>
+            The ALC is controlled by an external voltage.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.ExternalCoupling">
+            <summary>
+            Values for AM, FM, and PM external coupling and IF input coupling.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.ExternalCoupling.AC">
+            <summary>
+            The external source is coupled for AC only.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.ExternalCoupling.DC">
+            <summary>
+            The external source is coupled for both DC and AC
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.FrequencyGain">
+            <summary>
+            A frequency and gain value pair.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.FrequencyGain.#ctor(System.Double,System.Double)">
+            <summary>
+            Constructs a frequency/gain value pair.
+            </summary>
+            <param name="frequency">A frequency value. The units are Hertz.</param>
+            <param name="gain">A gain value. The units are dBm.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.FrequencyGain.Frequency">
+            <summary>
+            A frequency value.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.FrequencyGain.Gain">
+            <summary>
+            A gain value.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.FrequencyPower">
+            <summary>
+            A frequency and power value pair.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.FrequencyPower.#ctor(System.Double,System.Double)">
+            <summary>
+            Constructs a frequency/power value pair.
+            </summary>
+            <param name="frequency">A frequency value. The units are Hertz.</param>
+            <param name="power">A power value. The units are dBm.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.FrequencyPower.Frequency">
+            <summary>
+            Returns an array of frequency values.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.FrequencyPower.Power">
+            <summary>
+            Returns an array of power values.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.Errors">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.Errors.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.Errors.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.Errors.ListName">
+            <summary>
+              Looks up a localized string similar to List name: .
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.Errors.ListUnknown">
+            <summary>
+              Looks up a localized string similar to The selected list is not defined..
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IviUpconverter">
+            <summary>
+            The IviUpconverter class allows clients to create instances of drivers that implement the class-compliant
+            IviUpconverter interfaces, based on information in the IVI configuration store.  This allows clients to
+            interchange IVI.NET class-compliant IviUpconverter drivers without modifying or rebuilding the client program
+            source code.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IviUpconverter.Create(System.String)">
+            <summary>
+            Create an instance of an IviUpconverter class-compliant driver and return an IIviUpconverter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviUpconverter driver to be created.</param>
+            <returns>
+            An IIviUpconverter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.Upconverter.IviUpconverter.Create(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Create an instance of an IviUpconverter class-compliant driver and return an IIviUpconverter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviUpconverter driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <returns>
+            An IIviUpconverter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.Upconverter.IviUpconverter.Create(System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Create an instance of an IviUpconverter class-compliant driver and return an IIviUpconverter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviUpconverter driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviUpconverter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="M:Ivi.Upconverter.IviUpconverter.Create(System.String,System.Boolean,System.Boolean,Ivi.Driver.LockType,System.String,System.String)">
+            <summary>
+            Create an instance of an IviUpconverter class-compliant driver and return an IIviUpconverter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviUpconverter driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="lockType">Specifies whether to use .NET AppDomain-wide locking or machine-wide locking.</param>
+            <param name="accessKey">Specifies a user-selectable access key to identify the lock.  Driver instances 
+            that are created with the same accessKey will be protected from simultaneous access by multiple threads 
+            within a process or across processes, depending upon the value of the lockType parameter. </param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviUpconverter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="T:Ivi.Upconverter.Scaling">
+            <summary>
+            Values for the AM and frequency step scaling modes.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.Scaling.Linear">
+            <summary>
+            Linear attenuation for amplitude modulation.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.Scaling.Logarithmic">
+            <summary>
+            Logarithmic attenuation for amplitude modulation.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.CalibrationStatus">
+            <summary>
+            Defined values for the calibration status.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.CalibrationStatus.Complete">
+            <summary>
+            The upconverter has completed the calibration.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.CalibrationStatus.InProgress">
+            <summary>
+            The upconverter is still performing the calibration.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.CalibrationStatus.StatusUnknown">
+            <summary>
+            The upconverter cannot determine the status of the calibration.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.CalibrationStatus.Failed">
+            <summary>
+            The upconverter calibration failed.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverter">
+            <summary>
+            IviUpconverter class-compliant root interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverter.SendSoftwareTrigger">
+            <summary>
+            Sends a software trigger.  Refer to IVI-3.3: Standard Cross Class Capabilities, Section 2 Software
+            Triggering Capability for the complete description of this function.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverter.Alc">
+            <summary>
+            A reference to the IIviUpconverterAlc interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverter.AnalogModulation">
+            <summary>
+            A reference to the IIviUpconverterAnalogModulation interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverter.ExternalLO">
+            <summary>
+            A reference to the IIviUpconverterExternalLO interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverter.IFInput">
+            <summary>
+            A reference to the IIviUpconverterIFInput interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverter.IQ">
+            <summary>
+            A reference to the IIviUpconverterIQ interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverter.PulseModulation">
+            <summary>
+            A reference to the IIviUpconverterPulseModulation interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverter.ReferenceOscillator">
+            <summary>
+            A reference to the IIviUpconverterReferenceOscillator interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverter.RFOutput">
+            <summary>
+            A reference to the IIviUpconverterRFOutput interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverter.Sweep">
+            <summary>
+            A reference to the IIviUpconverterSweep interface.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterAlc">
+            <summary>
+            IviUpconverter class-compliant ALC interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterAlc.Configure(Ivi.Upconverter.AlcSource,System.Double)">
+            <summary>
+            Configures ALC source and ALC bandwidth for the upconverter's RF output.
+            </summary>
+            <param name="source">The source for the ALC. Refer to the Source property for details.</param>
+            <param name="bandwidth">The ALC bandwidth. Refer to the Bandwidth property for details.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAlc.Bandwidth">
+            <summary>
+            The bandwidth of the level control. Narrow bandwidth impoves noise and allows AM with modulation
+            frequencies beyond bandwidth frequency. The units are Hertz.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAlc.Enabled">
+            <summary>
+            True if the Automatic Level Control (ALC) is enabled, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAlc.Source">
+            <summary>
+            The source of the controlling voltage for the Automatic Level Control. The RF level at the sensor point
+            is held constant.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterAM">
+            <summary>
+            IviUpconverter class-compliant analog modulation interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterAM.Configure(System.String,Ivi.Upconverter.Scaling,System.Double)">
+            <summary>
+            Configures the signal source, scaling, and depth for the upconverter's amplitude modulation.
+            </summary>
+            <param name="source">The source of the signal that the signal generator uses to modulate the output
+            signal. Refer to the Source property for details.</param>
+            <param name="scaling">The scaling of the modulation. Refer to the Scaling property for details.</param>
+            <param name="depth">The extent of modulation. Refer to the Depth property for details.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAM.Depth">
+            <summary>
+            The extent of modulation the upconverter applies to the RF output signal with the modulating signal as a
+            result of summing all sources -- internal and external.  The amount of the specified modulation depth is
+            achieved with a modulating voltage indicated by the NominalVoltage property. If the Scaling property is
+            set to Scaling.Linear, then the units are percent (%). If the Scaling property is set to
+            Scaling.Logarithmic, then the units are dBm.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAM.Enabled">
+            <summary>
+            True if the amplitude modulation of the RF output signal is enabled, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAM.ExternalCoupling">
+            <summary>
+            The coupling of the external source of the modulating signal.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAM.NominalVoltage">
+            <summary>
+            The voltage at which the instrument achieves the amount of modulation specified by the Depth property.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAM.Scaling">
+            <summary>
+            The characteristic for amplitude modulation - linear or logarithmic. The units of the Depth property are
+            determined by this property.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAM.Source">
+            <summary>
+            The source of the signal that is used as the modulating signal.  Multiple sources are specified by a
+            comma separated list.  The voltages of all specified sources (internal and external) are summed.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterAnalogModulation">
+            <summary>
+            IviUpconverter class-compliant analog modulation interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAnalogModulation.AM">
+            <summary>
+            A reference to the IIviUpconverterAM interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAnalogModulation.FM">
+            <summary>
+            A reference to the IIviUpconverterFM interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAnalogModulation.PM">
+            <summary>
+            A reference to the IIviUpconverterPM interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAnalogModulation.Source">
+            <summary>
+            A reference to the IIviUpconverterAnalogModulationSource interface.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterAnalogModulationSource">
+            <summary>
+            IviUpconverter class-compliant analog modulation source interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterAnalogModulationSource.GetName(System.Int32)">
+            <summary>
+            Returns the physical repeated capability identifier defined by the specific driver for the modulation
+            source that corresponds to the zero-based index that the user specifies.  If the user passes an invalid
+            value for the index parameter, the method returns an empty string.
+            </summary>
+            <param name="index">A zero-based index that defines which physical repeated capability identifier to
+            return. Valid values for the Index parameter are between zero and the value of the Analog Modulation
+            Source Count attribute, minus one.</param>
+            <returns>The physical repeated capability identifier defined by the specific driver for the Modulation
+            Source that corresponds to the zero-based index that the user specifies.  If the user passes an
+            invalid value for the Index parameter, the method returns an empty string.</returns>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterAnalogModulationSource.Count">
+            <summary>
+            Returns the number of analog modulation sources available on the device.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterExternalLO">
+            <summary>
+            IviUpconverter class-compliant external local oscillator interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterExternalLO.Enabled">
+            <summary>
+            True if the external LO is enabled, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterExternalLO.Frequency">
+            <summary>
+            The frequency of the external LO. The units are Hertz.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterFM">
+            <summary>
+            IviUpconverter class-compliant frequency modulation interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterFM.Configure(System.String,System.Double)">
+            <summary>
+            Configures deviation for the upconverter's frequency modulation.
+            </summary>
+            <param name="source">The modulating source. Refer to the Source property for details.</param>
+            <param name="deviation">The extent of modulation. Refer to the Deviation attribute property for details.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFM.Deviation">
+            <summary>
+            The extent of modulation (peak frequency deviation) the signal generator applies to the RF-signal (carrier
+            waveform) with the modulating signal as a result of summing all sources, internal and external.  The
+            amount of the specified FM modulation deviation is achieved with a modulating voltage dicated by the
+            NominalVoltage property.  The units are Hertz.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFM.Enabled">
+            <summary>
+            True if frequency modulation of the RF output signal is enabled, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFM.ExternalCoupling">
+            <summary>
+            The coupling of the external source of the modulating signal.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFM.NominalVoltage">
+            <summary>
+            The voltage at which the instrument achieves the amount of modulation specified by the Deviation property.
+            The units are Volts.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFM.Source">
+            <summary>
+            The source of the signal that is used as the modulating signal.  Multiple sources are specified by a
+            comma separated list.  The voltages of all specified sources (internal and external) are summed.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterFrequencyStep">
+            <summary>
+            IviUpconverter class-compliant frequency step interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterFrequencyStep.ConfigureDwell(System.Boolean,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures single step enabling and dwell for frequency stepping.
+            </summary>
+            <param name="singleStepEnabled">If true, the trigger initiates the next step.  Refer to the
+            SingleStepEnabled property for details.</param>
+            <param name="dwell">The duration of one frequency step.  Refer to the Dwell property for details.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterFrequencyStep.ConfigureStartStop(System.Double,System.Double,Ivi.Upconverter.Scaling,System.Double)">
+            <summary>
+            Configures start frequency, stop frequency, scaling, adn step size for the generator's RF output signal.
+            </summary>
+            <param name="start">The start frequency of the step sweep. Refer to the Start property for details.</param>
+            <param name="stop">The stop frequency of the step sweep. Refer to the Stop property for details.</param>
+            <param name="scaling">The scaling of the step sweep. Refer to the Scaling property for details.</param>
+            <param name="stepSize">The size of one step. Refer to the Size attribute property for details.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterFrequencyStep.Reset">
+            <summary>
+            Resets the current frequency step to the frequency step start value.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFrequencyStep.Dwell">
+            <summary>
+            The duration of one step.  Dwell time starts immediately after a trigger or next step; no settling time
+            is added. This attribute is ignored if the SingleStepEnabled property is set to True.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFrequencyStep.Scaling">
+            <summary>
+            Specifies the spacing of the steps as either linear or logarithmic.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFrequencyStep.SingleStepEnabled">
+            <summary>
+            True if single step mode is enabled, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFrequencyStep.Size">
+            <summary>
+            The step size. The units are Hertz if the Scaling property is set to Scaling.Linear and is unitless
+            (factor) if the Scaling property is set to Scaling.Logarithmic.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFrequencyStep.Start">
+            <summary>
+            The start frequency of the stepped sweep. If the stop frequency is less than the start frequency, the
+            frequency decreases during the sweep. The units are Hertz.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFrequencyStep.Stop">
+            <summary>
+            The stop frequency of the stepped sweep. If the stop frequency is less than the start frequency, the
+            frequency decreases during the sweep. The units are Hertz.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterFrequencySweep">
+            <summary>
+            IviUpconverter class-compliant frequency sweep interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterFrequencySweep.ConfigureCenterSpan(System.Double,System.Double)">
+            <summary>
+            Configures the center frequency and the frequency span for the sweep.
+            </summary>
+            <param name="center">The center frequency of the sweep. The center frequency and frequency span
+            together are used to determine the values of the Start and Stop properties.</param>
+            <param name="span">The frequency span of the sweep. The center frequency and frequency span
+            together are used to determine the values of the Start and Stop properties.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterFrequencySweep.ConfigureStartStop(System.Double,System.Double)">
+            <summary>
+            Configures the start and the stop frequency for the sweep.
+            </summary>
+            <param name="start">The start frequency of the sweep.  Refer to the Start property for details.</param>
+            <param name="stop">The stop frequency of the sweep.  Refer to the Stop property for details.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFrequencySweep.Start">
+            <summary>
+            The start frequency of the sweep.  If the stop frequency is less than the start frequency, the frequency
+            decreases during the sweep. The units are Hertz.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFrequencySweep.Stop">
+            <summary>
+            The stop frequency of the sweep. If the stop frequency is less than the start frequency, the frequency
+            decreases during the sweep. The units are Hertz.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterFrequencySweep.Time">
+            <summary>
+            The duration of one sweep from start to stop frequency.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterGainStep">
+            <summary>
+            IviUpconverter class-compliant gain step interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterGainStep.ConfigureDwell(System.Boolean,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures single step enabling and dwell for gain stepping.
+            </summary>
+            <param name="singleStepEnabled">If true, the trigger initiates the next step.  Refer to the
+            SingleStepEnabled property for details.</param>
+            <param name="dwell">The duration of one gain step. Refer to the Dwell property for details.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterGainStep.ConfigureStartStop(System.Double,System.Double,System.Double)">
+            <summary>
+            Configures start power, stop power, and step size for gain steps of the upconverter.
+            </summary>
+            <param name="start">The start power of the stepping.  Refer to the Start property for details.</param>
+            <param name="stop">The stop power of the stepping.  Refer to the Stop property for details.</param>
+            <param name="stepSize">The size of one step. Refer to the Size property for details.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterGainStep.Reset">
+            <summary>
+            Resets the stepping if single step is enabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterGainStep.Dwell">
+            <summary>
+            The duration of one step. This property is ignored if the SingleStepEnabled property is set to true.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterGainStep.SingleStepEnabled">
+            <summary>
+            True if single step mode is enabled, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterGainStep.Size">
+            <summary>
+            The step size. The units are dB.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterGainStep.Start">
+            <summary>
+            The start gain of the stepped sweep. If the stop gain is less than the start gain, the gain decreases in
+            value during the sweep. The units are dB.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterGainStep.Stop">
+            <summary>
+            The stop gain of the stepped sweep. If the stop gain is less than the start gain, the gain decreases in
+            value during the sweep. The units are dB.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterGainSweep">
+            <summary>
+            IviUpconverter class-compliant gain sweep.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterGainSweep.ConfigureStartStop(System.Double,System.Double)">
+            <summary>
+            Configures the start and the stop power for the sweep.
+            </summary>
+            <param name="start">The start power of the sweep.  Refer to the Start property for details.</param>
+            <param name="stop">The stop power of the sweep. Refer to the Stop property for details.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterGainSweep.Start">
+            <summary>
+            The start power of the sweep. If the stop power is less than the start power, the power decreases in value
+            during the sweep. The units are dBm.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterGainSweep.Stop">
+            <summary>
+            The stop power of the sweep. If the stop power is less than the start power, the power decreases in value
+            during the sweep. The units are dBm.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterGainSweep.Time">
+            <summary>
+            The duration of one sweep from start to stop power.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterIFInput">
+            <summary>
+            IviUpconverter class-compliant IF input interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterIFInput.GetName(System.Int32)">
+            <summary>
+            Returns the physical repeated capability identifier defined by the specific driver for the IF input that
+            corresponds to the zero-based index that the user specifies. If the user passes an invalid value for the
+            index parameter, the value of this attribute is an empty string.
+            </summary>
+            <param name="index">A zero-based index that defines which physical repeated capability identifier to
+            return.  Valid values for the index parameter are between zero and the value of the Count property, minus
+            one.</param>
+            <returns>The physical repeated capability identifier defined by the specific driver for the IF input that
+            corresponds to the zero-based index that the user specifies.  If the user passes an invalid value for the
+            index parameter, the value of this attribute is an empty string.</returns>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIFInput.ActiveIFInput">
+            <summary>
+            The IF input that is currently active.  Subsequent calls to functions and attributes that are based on
+            the IF Input repeated capability will be applied to the Active IF Input specified here.  The values for
+            this property correspond to the allowed repeated capability names for the IF Input repeated capability.
+            [Use the GetName method or refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <summary>
+            The trigger source.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIFInput.Attenuation">
+            <summary>
+            The amount of attenuation (or gain) to apply to the IF input of the upconverter. The units are dB.
+            Positive values for this property represent attenuation while negative values represent gain.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIFInput.AutoCorrectionsEnabled">
+            <summary>
+            If true, automatic global corrections are enabled on the device.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIFInput.Bypass">
+            <summary>
+            If true, the IF input signal is routed directly to the RF output indicated by the
+            IIviUpconverterRFOutput.ActiveRFOutput property.  If false, the IF input signal is routed into the front
+            end of the upconverter and follows the normal signal path, as dictated by other downstream path control
+            properties.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIFInput.Count">
+            <summary>
+            The number of IF inputs available on the device.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIFInput.Coupling">
+            <summary>
+            The coupling applied to IF input.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIFInput.Frequency">
+            <summary>
+            The frequency of the IF input. The units are Hertz.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterIQ">
+            <summary>
+            IviUpconverter class-compliant IQ interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterIQ.Calibrate">
+            <summary>
+            Calibrates of the IQ modulator.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIQ.Enabled">
+            <summary>
+            True if the IQ (vector) modulation of the RF output signal is enabled, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIQ.Impairment">
+            <summary>
+            A reference to the IIviUpconverterIQImpairment interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIQ.NominalVoltage">
+            <summary>
+            The voltage at which the instrument achieves full modulation. The value is calculated as SQRT(I2+Q2).
+            The units are Volts.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIQ.SwapEnabled">
+            <summary>
+            If true, enables the inverse phase rotation of the IQ signal by swapping the I and Q inputs.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterIQImpairment">
+            <summary>
+            IviUpconverter class-compliant IQ impairment interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterIQImpairment.Configure(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Configures iOffset, qOffset, ratio, and skew to simulate or correct impairment for the upconverter's IQ
+            (vector) modulation.
+            </summary>
+            <param name="iOffset">An offset to the I-path of IQ signals.  Refer to the IOffset property for details.</param>
+            <param name="qOffset">An offset to the Q-path of IQ signals.  Refer to the QOffset property for details.</param>
+            <param name="ratio">The gain imbalance to the IQ signals.  Refer to the Ratio property for details.</param>
+            <param name="skew">The angle offset to the IQ signals.  Refer to the Skew property for details.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIQImpairment.Enabled">
+            <summary>
+            True if impairment properties are enabled, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIQImpairment.IOffset">
+            <summary>
+            An origin offset voltage to the I signal. The range of values allowed is -100% to +100%. The value is
+            expressed as percentage (%).
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIQImpairment.QOffset">
+            <summary>
+            An origin offset voltage to the Q signal. The range of values allowed is -100% to +100%. The value is
+            expressed as percentage (%).
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIQImpairment.Ratio">
+            <summary>
+            The gain imbalance between the I and Q channels. For no imbalance this value is set to 0 %. The value is
+            expressed as percentage (%).
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterIQImpairment.Skew">
+            <summary>
+            The adjustment of the phase angle between the I and Q vectors. If zero, the phase angle is 90 degrees.
+            The units are degrees.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterList">
+            <summary>
+            IviUpconverter class-compliant sweep list interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterList.ClearAll">
+            <summary>
+            Deletes all lists from the pool of lists.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterList.ConfigureDwell(System.Boolean,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures single step enabling and dwell to control the stepping.
+            </summary>
+            <param name="singleStepEnabled">If true, the trigger initiates transitions to the next list step. Refer to
+            the SingleStepEnabled property for details.</param>
+            <param name="dwell"> The duration of one list step. Refer to the Dwell property for details.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterList.CreateFrequency(System.String,System.Double[])">
+            <summary>
+            Creates a named list of frequency values.
+            </summary>
+            <param name="name">The name of the list to be created.</param>
+            <param name="frequencyList">The array of frequency values to become elements of the list.  The units are
+            Hertz.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterList.CreateFrequencyGain(System.String,Ivi.Upconverter.FrequencyGain[])">
+            <summary>
+            Creates a named list of frequency and gain value pairs.
+            </summary>
+            <param name="name">The name of the list to be created.</param>
+            <param name="frequencyGainList">A set of frequency and gain value pairs.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterList.CreateFrequencyPower(System.String,Ivi.Upconverter.FrequencyPower[])">
+            <summary>
+            Creates a named list of frequency and power value pairs.
+            </summary>
+            <param name="name">The name of the list to be created.</param>
+            <param name="frequencyPowerList">An array of frequency and power value pairs.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterList.CreateGain(System.String,System.Double[])">
+            <summary>
+            Creates a named list of gain values.
+            </summary>
+            <param name="name">The name of the list to be created.</param>
+            <param name="gainList">The array of gain values to become elements of the list. The units are dB.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterList.CreatePower(System.String,System.Double[])">
+            <summary>
+            Creates a named list of power values.
+            </summary>
+            <param name="name">The name of the list to be created.</param>
+            <param name="powerList">The array of power values to become elements of the list. The units are dB.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterList.Reset">
+            <summary>
+            Resets the stepping if single step is enabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterList.Dwell">
+            <summary>
+            The duration of one step. This attribute is ignored if the SingleStepEnabled property is set to true.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterList.SelectedName">
+            <summary>
+            The name of the selected list to become active. The name is a list created by the CreateFrequency,
+            CreateFrequencyGain, CreateFrequencyPower, CreateGain, or CreatePower methods.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterList.SingleStepEnabled">
+            <summary>
+            True if single step mode is enabled, otherwise false.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterPM">
+            <summary>
+            IviUpconverter class-compliant phase modulation interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterPM.Configure(System.String,System.Double)">
+            <summary>
+            Configures the modulating signal source and peak phase deviation for phase modulation.
+            </summary>
+            <param name="source">The source of the signal the signal generator uses to modulate the output signal.
+            Refer to the Source property for details.</param>
+            <param name="deviation">The extent of modulation. Refer to the Deviation property for details.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPM.Deviation">
+            <summary>
+            The extent of modulation (peak phase deviation) the signal generator applies to the RF-signal (carrier
+            waveform) with the modulating signal as a result of summing all sources, internal and external.  The
+            amount of the specified PM modulation deviation is achieved with a modulating voltage of PM Nominal
+            Voltage.  The units are radians.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPM.Enabled">
+            <summary>
+            If true, the upconverter enables phase modulation of the RF output signal.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPM.ExternalCoupling">
+            <summary>
+            The coupling of the external source of the modulating signal.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPM.NominalVoltage">
+            <summary>
+            The voltage at which the instrument achieves the amount of modulation specified by the PM Deviation
+            attribute.  The units are Volts.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPM.Source">
+            <summary>
+            The source of the signal that is used as the modulating signal.  Multiple sources are specified by a
+            comma separated list.  The voltages of all specified sources (internal and external) are summed.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterPowerStep">
+            <summary>
+            IviUpconverter class-compliant power step interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterPowerStep.ConfigureDwell(System.Boolean,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Configures single step enabling and dwell for power stepping.
+            </summary>
+            <param name="singleStepEnabled">If true, the trigger initiates the next step.  Refer to the
+            SingleStepEnabled property for details.</param>
+            <param name="dwell">The duration of one power step.  Refer to the Dwell property for details.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterPowerStep.ConfigureStartStop(System.Double,System.Double,System.Double)">
+            <summary>
+            Configures start power, stop power, and step size for the power steps of the generator's RF output signal.
+            </summary>
+            <param name="start">The start power of the stepping. Refer to the Start property for details.</param>
+            <param name="stop">The stop power of the stepping. Refer to the Stop property for details.</param>
+            <param name="stepSize">The size of one step. Refer to the Size property for details.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterPowerStep.Reset">
+            <summary>
+            Resets the stepping if single step is enabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPowerStep.Dwell">
+            <summary>
+            The duration of one step.  This attribute is ignored if SingleStepEnabled is set to true.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPowerStep.SingleStepEnabled">
+            <summary>
+            If true, single step mode is enabled and the trigger initiates the next step, otherwise it is disabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPowerStep.Size">
+            <summary>
+            The step size. The units are dBm.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPowerStep.Start">
+            <summary>
+            The start power of the stepped sweep. If the stop power is less than the start power, the power decreases
+            in value during the sweep. The units are dBm.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPowerStep.Stop">
+            <summary>
+            The stop power of the stepped sweep. If the stop power is less than the start power, the power decreases
+            in value during the sweep. The units are dBm.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterPowerSweep">
+            <summary>
+            IviUpconverter class-compliant power sweep interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterPowerSweep.ConfigureStartStop(System.Double,System.Double)">
+            <summary>
+            Configures start power and stop power for a power sweep.
+            </summary>
+            <param name="start">The start power of the sweep. Refer to the Start property for details.</param>
+            <param name="stop">The stop power of the sweep. Refer to the Stop property for details.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPowerSweep.Start">
+            <summary>
+            The start power of the sweep. If the stop power is less than the start power, the power decreases in value
+            during the sweep. The units are dBm.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPowerSweep.Stop">
+            <summary>
+            The stop power of the sweep. If the stop power is less than the start power, the power decreases in value
+            during the sweep. The units are dBm.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPowerSweep.Time">
+            <summary>
+            The duration of one sweep from start to stop power.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterPulseModulation">
+            <summary>
+            IviUpconverter class-compliant pulse modulation interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPulseModulation.Enabled">
+            <summary>
+            True if pulse modulation of the RF output signal is enabled, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterPulseModulation.ExternalPolarity">
+            <summary>
+            The polarity of the external source signal.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterRFOutput">
+            <summary>
+            IviUpconverter class-compliant RF output interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterRFOutput.Calibrate">
+            <summary>
+            Performs calibration on the entire device. This call can be blocking or can be non-blocking, depending on
+            the instrument implementation.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterRFOutput.GetName(System.Int32)">
+            <summary>
+            Returns the physical repeated capability identifier defined by the specific driver for the RF Output that
+            corresponds to the zero-based index that the user specifies. If the user passes an invalid value for the
+            index parameter, the method returns an empty string.
+            </summary>
+            <param name="index">A zero-based index that defines which physical repeated capability identifier to
+            return.  Valid values for the index parameter are between zero and the value of the RF Output Count
+            property, minus one.</param>
+            <returns>Returns the physical repeated capability identifier defined by the specific driver for the RF
+            Output that corresponds to the zero-based index that the user specifies.  If the user passes an invalid
+            value for the index parameter, the method returns an empty string.</returns>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterRFOutput.IsCalibrationComplete">
+            <summary>
+            Queries the instrument to determine the status of all calibration operations initiated by the Calibrate
+            function.
+            </summary>
+            <returns>The calibration status of the device.</returns>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterRFOutput.WaitUntilReady(Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Waits until all of the signals flowing through the upconverter have settled. If the signals did not settle
+            within the time period the user specified with the maximumTime parameter, the method throws
+            a Max Time Exceeded exception.
+            </summary>
+            <param name="maximumTime">Specifies the maximum time the end-user allows for this function to complete. 
+            PrecisionTimeSpan.MaxValue indicates that the method waits indefinitely for the upconverter to settle.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterRFOutput.ActiveRFOutput">
+            <summary>
+            The RF output that is currently active.  Subsequent calls to methods and properties that are based on
+            the RF Output repeated capability will be applied to the Active RF Output specified here.  The values for
+            this attribute correspond to the allowed repeated capability names for the RF Output repeated capability.
+            Note that this property does not enable the specified output.  This property only controls the RF Output
+            repeated capability instance to which other methods and properties apply.  Use the Enabled property to
+            route the RF signal to a specific output.
+            [Use the GetName method or refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterRFOutput.AttenuatorHoldEnabled">
+            <summary>
+            If true, the attenuator hold is enabled, otherwise it is disabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterRFOutput.Bandwidth">
+            <summary>
+            The maximum effective RF signal bandwidth that the upconverter can present to a digitizer.  The units
+            are Hertz.  This value is a measure of the spectral width between two points for which the amplitude
+            profile is 3 dB below a peak close to mid band.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterRFOutput.Count">
+            <summary>
+            The number of RF Outputs available on the device.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterRFOutput.Enabled">
+            <summary>
+            if true, the RF output is enabled, otherwise it is disabled. Only a single RF Output can be enabled at a
+            time.  Thus, when this property is set to true for a particular RF output, all other RF outputs are
+            disabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterRFOutput.Frequency">
+            <summary>
+            The frequency of the RF output. The units are Hertz.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterRFOutput.Gain">
+            <summary>
+            The amount of gain (or attenuation) to apply to the RF output of the upconverter. The units are dB.
+            Positive values for this property represent signal gain while negative values represent attenuation.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterRFOutput.IsReady">
+            <summary>
+            If true, the upconverter has settled from changes to either the IF input signal or changes to device
+            control properties, such as Gain, Frequency, or IIviUpconverterIFInput.Attenuation.  This property
+            indicates whether or not the RF output is valid for processing by another downstream system component,
+            such as a digitizer.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterRFOutput.Level">
+            <summary>
+            The amount of gain (or attenuation) to apply to the RF output of the upconverter.  The units are dBm.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterRFOutput.ReadyTrigger">
+            <summary>
+            The a trigger that should be fired when the RF output has settled to a point that is suitable for
+            processing by downstream components.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterSweep">
+            <summary>
+            IviUpconverter class-compliant sweep interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterSweep.Configure(Ivi.Upconverter.SweepMode,System.String)">
+            <summary>
+            Configures the sweep mode and trigger source for the upconverter.
+            </summary>
+            <param name="mode">The sweep mode of the RF signal generator.  Refer to the Mode property for details.</param>
+            <param name="triggerSource">The way to start the sweep or run the sweep continuously.  Refer to the
+            TriggerSource property for details.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterSweep.FrequencyStep">
+            <summary>
+            A reference to the IIviUpconverterFrequencyStep interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterSweep.FrequencySweep">
+            <summary>
+            A reference to the IIviUpconverterFrequencySweep interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterSweep.GainStep">
+            <summary>
+            A reference to the IIviUpconverterGainStep interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterSweep.GainSweep">
+            <summary>
+            A reference to the IIviUpconverterGainSweep interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterSweep.IsSweeping">
+            <summary>
+            True if the upconverter is currently sweeping the RF output signal, otherwise false.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterSweep.List">
+            <summary>
+            A reference to the IIviUpconverterList interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterSweep.Mode">
+            <summary>
+            The mode of operation of the upconverter.   The RF output signal may be a continuous wave or the
+            frequency, the power level or both may be swept or stepped.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterSweep.PowerStep">
+            <summary>
+            A reference to the IIviUpconverterPowerStep interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterSweep.PowerSweep">
+            <summary>
+            A reference to the IIviUpconverterPowerSweep interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterSweep.TriggerSource">
+            <summary>
+            The way to start the sweep or run the sweep continuously.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.IIviUpconverterReferenceOscillator">
+            <summary>
+            IviUpconverter class-compliant reference oscillator interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.IIviUpconverterReferenceOscillator.Configure(Ivi.Upconverter.ReferenceOscillatorSource,System.Double)">
+            <summary>
+            Configures reference frequency signal source and frequency for the upconverters reference oscillator.
+            </summary>
+            <param name="source">The source of the reference frequency signal.  Refer to the Source property for
+            details.</param>
+            <param name="frequency">The frequency of the external reference oscillator.  This parameter is
+            only used if the Source is set to ReferenceOscillatorSource.External.  Refer to the Frequency property
+            for more details.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterReferenceOscillator.ExternalFrequency">
+            <summary>
+            The frequency of the external signal that is used as reference for internal RF frequency generation. This
+            value is used only if Source is set to ReferenceOscillatorSource.External. The units are Hertz.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterReferenceOscillator.OutputEnabled">
+            <summary>
+            True if the Reference output is enabled, otherwise false.  Many upconverters support the ability to output
+            their frequency reference.  This attribute allows the user to enable or disable that output.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.IIviUpconverterReferenceOscillator.Source">
+            <summary>
+            Specifies the reference oscillator source used to generate the precise RF output frequency.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.PulseModulationExternalPolarity">
+            <summary>
+            Values for the pulse modulation external polarity.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.PulseModulationExternalPolarity.Normal">
+            <summary>
+            The signal generator modulates the carrier signal with normal pulse polarity. Increasing the positive
+            pulse voltage level results in higher RF level.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.PulseModulationExternalPolarity.Inverse">
+            <summary>
+            The signal generator modulates the carrier signal with inverted pulse polarity. Increasing the positive
+            pulse voltage level results in lower RF level.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.ReferenceOscillatorSource">
+            <summary>
+            Defined values for the reference oscillator source.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.ReferenceOscillatorSource.Internal">
+            <summary>
+            The upconverter uses the internal reference oscillator.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.ReferenceOscillatorSource.External">
+            <summary>
+            The upconverter uses an external reference oscillator.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.SweepMode">
+            <summary>
+            Values for the sweep mode.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.SweepMode.None">
+            <summary>
+            The RF output of the upconverter is a non-swept signal (Continuous Wave). Frequency and power level settings
+            from the base capability group are used.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.SweepMode.FrequencySweep">
+            <summary>
+            The upconverter sweeps the RF output signal's frequency in an analog form (non-stepped). Refer to
+            IviUpconverterFrequencySweep extension group.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.SweepMode.PowerSweep">
+            <summary>
+            The upconverter sweeps the RF output signal's power in an analog form (non-stepped). Refer to
+            IviUpconverterPowerSweep extension group.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.SweepMode.GainSweep">
+            <summary>
+            The upconverter sweeps the upconverter s gain in an analog form (non-stepped).
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.SweepMode.FrequencyStep">
+            <summary>
+            The upconverter sweeps the RF output signal's frequency in steps. Refer to IviUpconverterFrequencyStep
+            extension group.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.SweepMode.PowerStep">
+            <summary>
+            The upconverter sweeps the RF output signal's power level in steps. Refer to IviUpconverterPowerStep
+            extension group.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.SweepMode.GainStep">
+            <summary>
+            The upconverter sweeps the upconverter s gain in steps.
+            </summary>
+        </member>
+        <member name="F:Ivi.Upconverter.SweepMode.List">
+            <summary>
+            The upconverter uses two lists with frequency and power level values to sweep the RF output signal. Refer
+            to IviUpconverterList extension group.
+            </summary>
+        </member>
+        <member name="T:Ivi.Upconverter.ListUnknownException">
+            <summary>
+            Upconverter list is unknown.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.ListUnknownException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified list name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="listName">The list name.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.ListUnknownException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Upconverter.ListUnknownException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.ListUnknownException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Upconverter.ListUnknownException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Upconverter.ListUnknownException.ListName">
+            <summary>
+            The list name.
+            </summary>
+        </member>
+        <member name="P:Ivi.Upconverter.ListUnknownException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+    </members>
+</doc>

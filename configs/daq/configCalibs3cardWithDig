@@ -1,0 +1,207 @@
+[DAQ cards]
+[[master]]
+channels = 0, 1, 2, 3, 4, 5, 6, 7
+card number = 0
+dios = 
+[[slaves]]
+[[[1]]]
+channels = 8, 9, 10, 11, 12, 13, 14, 15
+card number = 1
+dios = 4
+[[[2]]]
+channels = 16, 17, 18, 19, 20, 21, 22, 23
+card number = 2
+dios = 8, 9
+
+[DIOs]
+[[0]]
+dioName = 'Cav. trans. mirror down'
+dioNum=4
+port = A
+line = 0
+direction = Out
+enabled state = Low
+[[1]]
+dioName = 'Enable MOT curr. control'
+dioNum=8
+port = A
+line = 0
+direction = Out
+enabled state = Low
+[[2]]
+dioName = 'Enable x comp. curr. control'
+dioNum=9
+port = B
+line = 0
+direction = Out
+enabled state = Low
+
+[DAQ channels]
+[[0]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_upper\cool_upper_freq.txt
+chNum = 0
+default value = 6.10
+chName = Cool upper - freq
+chLimits = 0, 10
+[[1]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_lower\cool_lower_freq.txt
+chNum = 1
+default value = 6.10
+chName = Cool lower - freq
+chLimits = 0, 10
+[[2]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_center\cool_center_freq.txt
+chNum = 2
+default value = 6.05
+chName = Cool center - freq
+chLimits = 0, 10
+[[3]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_repump\cool_repump_freq.txt
+chNum = 3
+default value = 3.84
+chName = STIRAP depump - freq
+chLimits = 0, 10
+[[4]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_upper\cool_upper_amp_at_100MHz_new.txt
+chNum = 4
+default value = 2.49084249084
+chName = Cool upper - amp
+chLimits = 0, 10
+[[5]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_lower\cool_lower_amp_at_100MHz_new.txt
+chNum = 5
+default value = 3.32112332112
+chName = Cool lower - amp
+chLimits = 0, 10
+[[6]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_center\cool_center_amp_at_100MHz_new.txt
+chNum = 6
+default value = 2.75946275946
+chName = Cool center - amp
+chLimits = 0, 10
+[[7]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_repump\cool_repump_amp_at_78.5MHz.txt
+chNum = 7
+default value = 0
+chName = STIRAP depump - amp
+chLimits = 0, 10
+[[8]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\stirap_ref\stirap_freq.txt
+chNum = 8
+default value = 7.874
+chName = STIRAP ref - freq
+chLimits = 0, 10
+[[9]]
+UIvisible = True
+calibrationFname = ""
+chNum = 9
+default value = 0
+chName = STIRAP ref - amp
+chLimits = 0, 10
+[[10]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cavity_lock\cavity_lock_freq.txt
+chNum = 10
+default value = 2.17
+chName = Cavity lock - freq
+chLimits = 0, 10
+[[11]]
+UIvisible = True
+calibrationFname = ""
+chNum = 11
+default value = 0
+chName = y comp. coils current (/2)
+chLimits = 0, 10
+[[12]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\abs_imaging\abs_imaging_freq.txt
+chNum = 12
+default value = 7.3553
+chName = Abs imaging - freq
+chLimits = 0, 10
+[[13]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\abs_imaging\abs_imaging_amp_at_107.25MHz.txt
+chNum = 13
+default value = 0
+chName = Abs imaging - amp
+chLimits = 0, 10
+[[14]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\depump\depump_freq.txt
+chNum = 14
+default value = 7.25
+chName = UNUSED:Depump - freq
+chLimits = 0, 10
+[[15]]
+UIvisible = True
+calibrationFname = ""
+chNum = 15
+default value = 0
+chName = UNUSED:Depump - amp
+chLimits = 0, 10
+[[16]]
+UIvisible = True
+calibrationFname = ""
+chNum = 16
+default value = 5
+chName = MOT coils current
+chLimits = 0, 10
+[[17]]
+UIvisible = True
+calibrationFname = ""
+chNum = 17
+default value = 0.0
+chName = Bias coils current
+chLimits = 0, 10
+[[18]]
+UIvisible = True
+calibrationFname = ""
+chNum = 18
+default value = 0
+chName = x comp. coils current
+chLimits = 0, 10
+[[19]]
+UIvisible = True
+calibrationFname = ""
+chNum = 19
+default value = 0
+chName = Cavity lock - amp
+chLimits = 0, 10
+[[20]]
+UIvisible = True
+calibrationFname = ""
+chNum = 20
+default value = 4
+chName = MOT Repumping
+chLimits =0,5
+[[21]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\repump_offset_lock_vco\repump_offset_lock_vco_freq.txt
+chNum = 21
+default value = -6.5
+chName = STIRAP offset VCO
+chLimits = -10, 10
+[[22]]
+UIvisible = True
+calibrationFname = ""
+chNum = 22
+default value = 0
+chName = AWG trigger
+chLimits = 0,5
+[[23]]
+UIvisible = True
+calibrationFname = ""
+chNum = 23
+default value = 0
+chName = Cavity PID Hold
+chLimits = -10,10

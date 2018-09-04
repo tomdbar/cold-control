@@ -1,0 +1,80 @@
+; Installation inf for USBTMC devices
+;
+; Copyright (c) IVI Foundation, Inc, 2010
+;
+
+;--------- Version Section ---------------------------------------------------
+[Version]
+Signature=$WINDOWS NT$
+Provider=%ProviderName%
+Class=USBTestAndMeasurementDevice
+ClassGUID={A9FDBB24-128A-11d5-9961-00108335E361}
+DriverVer=08/14/2013,16.3.17614.0
+CatalogFile=ausbtmc.cat
+
+;--------- SourceDiskNames and SourceDiskFiles Section -----------------------
+[SourceDisksNames.x86]
+1=%DiskDescription%,,,i386
+
+[SourceDisksNames.amd64]
+1=%DiskDescription%,,,amd64
+
+[SourceDisksFiles]
+ausbtmc.sys=1
+
+;--------- ClassInstall Section -------------------------------
+[ClassInstall32]
+Addreg=UsbtmcClassAddReg
+
+[UsbtmcClassAddReg]
+HKR,,,,%UsbTmcClassName%
+HKR,,Icon,,"-20"
+
+;--------- DestinationDirs Section -------------------------------------------
+
+[DestinationDirs]
+Usbtmc_Files_Driver = 10,System32\Drivers
+
+;--------- Manufacturer and Models Sections ----------------------------------
+[Manufacturer]
+%MfgName%=Mfg0,NTx86,NTamd64
+
+[Mfg0]
+%DeviceDesc%=Usbtmc_DDI, USB\Class_FE&SubClass_03&PROT_00
+%DeviceDesc%=Usbtmc_DDI, USB\Class_FE&SubClass_03&PROT_01
+
+[Mfg0.NTx86]
+%DeviceDesc%=Usbtmc_DDI, USB\Class_FE&SubClass_03&PROT_00
+%DeviceDesc%=Usbtmc_DDI, USB\Class_FE&SubClass_03&PROT_01
+
+[Mfg0.NTamd64]
+%DeviceDesc%=Usbtmc_DDI, USB\Class_FE&SubClass_03&PROT_00
+%DeviceDesc%=Usbtmc_DDI, USB\Class_FE&SubClass_03&PROT_01
+                         
+;---------- DDInstall Sections -----------------------------------------------
+[Usbtmc_DDI]
+CopyFiles=Usbtmc_Files_Driver
+CopyInf=ausbtmc.inf
+
+[Usbtmc_DDI.Services]
+Addservice = Usbtmc, 0x00000002, Usbtmc_AddService
+
+[Usbtmc_AddService]
+DisplayName    = %SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\ausbtmc.sys
+
+; --------- Files -------------
+[Usbtmc_Files_Driver]
+ausbtmc.sys
+
+;--------- Strings Section ---------------------------------------------------
+[Strings]
+MfgName="IVI Foundation, Inc"
+DeviceDesc="USB Test and Measurement Device (IVI)"
+SvcDesc="ausbtmc"
+ProviderName="IVI Foundation, Inc"
+DiskDescription="USBTMC Driver Installation"
+UsbTmcClassName="USB Test and Measurement Devices"

@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<doc>
+	<assembly>
+		<name>Ivi.Dmm.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.Dmm.Interop.IIviDmm">
+			<summary>IVI DMM class-compliant root interface</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmm.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of 
+			certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameter
+			is "Name=Value", 
+			where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,
+			or DriverSetup. Value is either true or false except for DriverSetup. 
+			If the Options String parameter contains an assignment for the Driver Setup attribute, 
+			the Initialize function assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmm.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument are not accessible after Close is called.</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmm.Configure(Ivi.Dmm.Interop.IviDmmFunctionEnum,System.Double,System.Double)">
+			<summary>Configures the Function, Range, and Resolution properties.  If the value of the Range parameter is Auto Range On, then the Resolution parameter is ignored.</summary>
+			<param name="Function">Determines the units for the Range and Resolution Absolute parameters, and the measurement values that are returned by the Read, Read Multiple Point, Fetch, and Fetch Multiple Point methods.</param>
+			<param name="Range">The measurement range. Positive values represent the absolute value of the maximum measurement expected. The driver coerces this value to the appropriate range for the instrument. Negative values represent the Auto Range mode.</param>
+			<param name="Resolution">The measurement resolution in absolute units.</param>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the Close method, and False at all other times.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Function">
+			<summary>The measurement function.  This property determines the units for Range and Resolution and the values returned by the Read, Read Multiple Point, Fetch, and Fetch Multiple Point methods.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Range">
+			<summary>The measurement range, coerced by the driver to the appropriate range for the instrument.  Positive values set the absolute value of the maximum measurement expected.  Negative values set Auto Range mode.  Units are determined by Function.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Resolution">
+			<summary>The measurement resolution in absolute units.  Units are determined by Function.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.AC">
+			<summary>Pointer to the class-compliant IIviDmmAc interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Advanced">
+			<summary>Pointer to the class-compliant IIviDmmAdvanced interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Frequency">
+			<summary>Pointer to the class-compliant IIviDmmFrequency interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Measurement">
+			<summary>Pointer to the class-compliant IIviDmmMeasurement interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Temperature">
+			<summary>Pointer to the class-compliant IIviDmmTemperature interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmm.Trigger">
+			<summary>Pointer to the class-compliant IIviDmmTrigger interface</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IIviDmmAC">
+			<summary>IVI DMM class-compliant AC interface</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmAC.ConfigureBandwidth(System.Double,System.Double)">
+			<summary>Configures the FrequencyMax and FrequencyMin properties for DMMs that take AC voltage or AC current measurements.</summary>
+			<param name="MinFreq">The minimum frequency component of the input signal for AC measurements.</param>
+			<param name="MaxFreq">The maximum frequency component of the input signal for AC measurements.</param>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmAC.FrequencyMax">
+			<summary>The maximum frequency component of the input signal for AC measurements.  The value of this property affects instrument behavior only when the Function property is set to an AC voltage or AC current measurement.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmAC.FrequencyMin">
+			<summary>The minimum frequency component of the input signal for AC measurements.  The value of this property affects instrument behavior only when the Function property is set to an AC voltage or AC current measurement.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IIviDmmAdvanced">
+			<summary>IVI DMM class-compliant advanced features interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmAdvanced.ActualRange">
+			<summary>The actual range that the DMM is currently using, even if it is auto-ranging.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmAdvanced.ApertureTime">
+			<summary>The measurement aperture time (also known as integration time) based on the present configuration.  Units are specified by the property ApertureTimeUnits.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmAdvanced.ApertureTimeUnits">
+			<summary>The units for the ApertureTime property.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmAdvanced.AutoZero">
+			<summary>The auto-zero mode.  When the auto-zero mode is enabled, the DMM internally disconnects the input signal and takes a Zero Reading. The DMM then subtracts the Zero Reading from the measurement.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmAdvanced.PowerlineFrequency">
+			<summary>The power line frequency in Hertz.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IIviDmmFrequency">
+			<summary>IVI DMM class-compliant frequency interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmFrequency.VoltageRange">
+			<summary>The expected maximum voltage level of the input signal for frequency and period measurements. Positive values set the manual range. Negative values set Auto Range mode.  The units are specified in Volts RMS.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IIviDmmMeasurement">
+			<summary>IVI DMM class-compliant measurement interface</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmMeasurement.Initiate">
+			<summary>Initiates a measurement. When this method executes, the DMM leaves the idle state and waits for a trigger.</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmMeasurement.Abort">
+			<summary>Aborts a previously initiated measurement and returns the DMM to the idle state.</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmMeasurement.Fetch(System.Int32)">
+			<summary>Returns the measured value from a measurement that the Initiate method initiates.  If an overrange condition occurs, the value contains IEEE NaN and the method returns an overrange error.</summary>
+			<param name="MaxTimeMilliseconds">The maximum time allowed for the measurement to complete in milliseconds. May also be a value defined in IviDmmMaxTimeEnum.</param>
+			<returns>Measurement value.</returns>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmMeasurement.FetchMultiPoint(System.Int32)">
+			<summary>Returns an array of values from a measurement that the Initiate method initiates.  If an overrange condition occurs, the corresponding element of the array contains IEEE NaN and the method returns an overrange error.</summary>
+			<param name="MaxTimeMilliseconds">The maximum time allowed for the measurement to complete in milliseconds. May also be a value defined in IviDmmMaxTimeEnum.</param>
+			<returns>Array of measured values.</returns>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmMeasurement.Read(System.Int32)">
+			<summary>Initiates a measurement, waits for the DMM to return to the idle state, and returns the measured value.  If an overrange condition occurrs, the value contains IEEE NaN and the method returns an overrange error.</summary>
+			<param name="MaxTimeMilliseconds">The maximum time allowed for the measurement to complete in milliseconds. May also be a value defined in IviDmmMaxTimeEnum.</param>
+			<returns>Measurement value.</returns>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmMeasurement.ReadMultiPoint(System.Int32)">
+			<summary>Initiates a measurement, waits for the DMM to return to the idle state, and returns an array of values.  If an overrange condition occurs, the corresponding element of the array contains IEEE NaN and the method returns an overrange error.</summary>
+			<param name="MaxTimeMilliseconds">The maximum time allowed for the measurement to complete in milliseconds. May also be a value defined in IviDmmMaxTimeEnum.</param>
+			<returns>Array of measured values.</returns>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmMeasurement.SendSoftwareTrigger">
+			<summary>Sends a software trigger, which causes the DMM to take a measurement.</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmMeasurement.IsOverRange(System.Double)">
+			<summary>Takes a measurement value obtained from one of the Read or Fetch methods and determines if the value is a valid measurement value or a value indicating that an overrange condition occurred.</summary>
+			<param name="MeasurementValue">The measurement value from one of the Read or Fetch functions.</param>
+			<returns>True if the measurement value indicates an overrange condition and false otherwise.</returns>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IIviDmmTemperature">
+			<summary>IVI DMM class-compliant temperature interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmTemperature.TransducerType">
+			<summary>The type of device used to measure the temperature. This property affects instrument behavior only when Function is set to a temperature measurement.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmTemperature.RTD">
+			<summary>Pointer to the class-compliant IIviDmmRtd interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmTemperature.Thermocouple">
+			<summary>Pointer to the class-compliant IIviDmmThermocouple interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmTemperature.Thermistor">
+			<summary>Pointer to the class-compliant IIviDmmThermistor interface</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IIviDmmRTD">
+			<summary>IVI DMM class-compliant RTD interface</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmRTD.Configure(System.Double,System.Double)">
+			<summary>Configures the Alpha and Resistance parameters for a resistance temperature device.</summary>
+			<param name="Alpha">The alpha parameter for a resistance temperature device (RTD).</param>
+			<param name="Resistance">The R0 parameter (resistance) for a resistance temperature device (RTD) also known as the RTD reference value.</param>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmRTD.Alpha">
+			<summary>The alpha parameter for a resistance temperature device (RTD).  Applies only when the Temperature Transducer Type is set to 2 Wire RTD or 4 Wire RTD.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmRTD.Resistance">
+			<summary>The R0 parameter (resistance) for a resistance temperature device (RTD). Also known as the RTD reference value.  Applies only when the Temperature Transducer Type is set to 2 Wire RTD or 4 Wire RTD.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IIviDmmThermocouple">
+			<summary>IVI DMM class-compliant thermocouple interface</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmThermocouple.Configure(Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum,Ivi.Dmm.Interop.IviDmmRefJunctionTypeEnum)">
+			<summary>Configures the thermocouple Type and RefJunctionType properties of a thermocouple.  Applies only when the Temperature Transducer Type is Thermocouple.</summary>
+			<param name="Type">The type of thermocouple used to measure the temperature.</param>
+			<param name="RefJunctionType">The type of reference junction used in the reference junction compensation.</param>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmThermocouple.FixedRefJunction">
+			<summary>The external reference junction temperature when a fixed reference junction thermocouple is used to measure temperature, or the thermocouple junction temperature of an instrument without an internal temperature sensor, in degrees Celcius.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmThermocouple.RefJunctionType">
+			<summary>The type of reference junction to be used in the reference junction compensation of a thermocouple measurement. Applies only when the Temperature Transducer Type is Thermocouple.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmThermocouple.Type">
+			<summary>The type of thermocouple used to measure the temperature. Applies only when the Temperature Transducer Type is Thermocouple.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IIviDmmThermistor">
+			<summary>IVI DMM class-compliant thermistor interface</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmThermistor.Resistance">
+			<summary>The resistance of the thermistor in Ohms.  Applies only when the Temperature Transducer Type property is Thermistor.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IIviDmmTrigger">
+			<summary>IVI DMM class-compliant trigger interface</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmTrigger.Configure(Ivi.Dmm.Interop.IviDmmTriggerSourceEnum,System.Double)">
+			<summary>Configures the trigger Source and Delay properties.</summary>
+			<param name="TriggerSource">Trigger source.</param>
+			<param name="TriggerDelay">The length of time between when the DMM receives the trigger and when it takes a measurement. Use positive values to set the trigger delay in seconds. Negative values are reserved for the auto delay mode.</param>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmTrigger.Slope">
+			<summary>The polarity of the external trigger slope, which determines whether the DMM triggers on either the rising or the falling edge of the external trigger source.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmTrigger.Delay">
+			<summary>The interval between the time when the DMM receives the trigger and the time when it takes a measurement. Positive values set the trigger delay in seconds. Negative values set auto delay mode.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmTrigger.Source">
+			<summary>The trigger source.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmTrigger.MultiPoint">
+			<summary>Pointer to the class-compliant IIviDmmMultipoint interface</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IIviDmmMultiPoint">
+			<summary>IVI DMM class-compliant multipoint interface</summary>
+		</member>
+		<member name="M:Ivi.Dmm.Interop.IIviDmmMultiPoint.Configure(System.Int32,System.Int32,Ivi.Dmm.Interop.IviDmmSampleTriggerEnum,System.Double)">
+			<summary>Configures multipoint trigger Count, SampleCount, SampleTrigger and SampleInterval properties.</summary>
+			<param name="TriggerCount">The number of triggers the DMM accepts before it returns to the idle state.</param>
+			<param name="SampleCount">The number of measurements the DMM takes each time it receives a trigger.</param>
+			<param name="SampleTrigger">The sample trigger source. If the value of the Sample Count is greater than 1, the DMM enters the Wait-For-Sample-Trigger state after taking a single measurement. When the event specified by this parameter occurs, the DMM exits the Wait-For-Sample-Trigger state and takes the next measurement.</param>
+			<param name="SampleInterval">The interval between samples in seconds.</param>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmMultiPoint.MeasurementComplete">
+			<summary>The destination of the measurement-complete signal generated after each measurement.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmMultiPoint.Count">
+			<summary>The number of triggers the DMM accepts before it returns to the idle state.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmMultiPoint.SampleCount">
+			<summary>The number of measurements the DMM takes each time it receives a trigger.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmMultiPoint.SampleInterval">
+			<summary>The interval between samples in seconds. Applies only when Sample Count is greater than 1 and Sample Trigger is Interval.</summary>
+		</member>
+		<member name="P:Ivi.Dmm.Interop.IIviDmmMultiPoint.SampleTrigger">
+			<summary>The sample trigger source.  If the value of the Sample Count is greater than 1, the DMM enters the Wait-For-Sample-Trigger state after taking a single measurement.  When a sample trigger occurs, the DMM takes the next measurement.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmFunctionEnum">
+			<summary>IVI DMM class-compliant values for Function</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunctionDCVolts">
+			<summary>Sets the DMM to measure DC voltage.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunctionACVolts">
+			<summary>Sets the DMM to measure AC voltage.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunctionDCCurrent">
+			<summary>Sets the DMM to measure DC current..</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunctionACCurrent">
+			<summary>Sets the DMM to measure AC current.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunction2WireRes">
+			<summary>Sets the DMM to measure 2-wire resistance.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunction4WireRes">
+			<summary>Sets the DMM to measure 4-wire resistance.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunctionACPlusDCVolts">
+			<summary>Sets the DMM to measure AC plus DC voltage.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunctionACPlusDCCurrent">
+			<summary>Sets the DMM to measure AC plus DC current.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunctionFreq">
+			<summary>Sets the DMM to measure frequency.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunctionPeriod">
+			<summary>Sets the DMM to measure period.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFunctionEnum.IviDmmFunctionTemperature">
+			<summary>Sets the DMM to measure temperature.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmApertureTimeUnitsEnum">
+			<summary>IVI DMM class-compliant values for ApertureTimeUnits</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmApertureTimeUnitsEnum.IviDmmApertureSeconds">
+			<summary>Units for the value returned by Aperture Time are seconds.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmApertureTimeUnitsEnum.IviDmmAperturePowerLineCycles">
+			<summary>Units for the value returned by Aperture Time are Power Line Cycles.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmAutoZeroEnum">
+			<summary>IVI DMM class-compliant values for AutoZero</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmAutoZeroEnum.IviDmmAutoZeroOff">
+			<summary>Disables the auto-zero feature.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmAutoZeroEnum.IviDmmAutoZeroOn">
+			<summary>The DMM to take a Zero Reading for each measurement.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmAutoZeroEnum.IviDmmAutoZeroOnce">
+			<summary>The DMM takes one a Zero Reading immediately and then disables the auto-zero feature.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmTransducerTypeEnum">
+			<summary>IVI DMM class-compliant values for temperature TransducerType</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTransducerTypeEnum.IviDmmTransducerTypeThermocouple">
+			<summary>Sets the DMM to measure temperature using a thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTransducerTypeEnum.IviDmmTransducerTypeThermistor">
+			<summary>Sets the DMM to measure temperature using a thermistor.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTransducerTypeEnum.IviDmmTransducerType2WireRtd">
+			<summary>Sets the DMM to measure temperature using a 2-wire temperature resistance device.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTransducerTypeEnum.IviDmmTransducerType4WireRtd">
+			<summary>Sets the DMM to measure temperature using a 4-wire temperature resistance device.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum">
+			<summary>IVI DMM class-compliant values for thermocouple Type</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeB">
+			<summary>Sets the DMM to measure temperature from a B-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeC">
+			<summary>Sets the DMM to measure temperature from a C-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeD">
+			<summary>Sets the DMM to measure temperature from a D-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeE">
+			<summary>Sets the DMM to measure temperature from a E-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeG">
+			<summary>Sets the DMM to measure temperature from a G-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeJ">
+			<summary>Sets the DMM to measure temperature from a J-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeK">
+			<summary>Sets the DMM to measure temperature from a K-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeN">
+			<summary>Sets the DMM to measure temperature from a N-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeR">
+			<summary>Sets the DMM to measure temperature from a R-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeS">
+			<summary>Sets the DMM to measure temperature from a S-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeT">
+			<summary>Sets the DMM to measure temperature from a T-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeU">
+			<summary>Sets the DMM to measure temperature from a U-type thermocouple.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmThermocoupleTypeEnum.IviDmmThermocoupleTypeV">
+			<summary>Sets the DMM to measure temperature from a V-type thermocouple.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmRefJunctionTypeEnum">
+			<summary>IVI DMM class-compliant values for thermocouple RefJunctionType</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmRefJunctionTypeEnum.IviDmmRefJunctionTypeInternal">
+			<summary>Sets the DMM to use an internal sensor at the thermocouple junction for the junction compensation.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmRefJunctionTypeEnum.IviDmmRefJunctionTypeFixed">
+			<summary>Sets the DMM to use an internal sensor at the thermocouple junction for the junction compensation.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum">
+			<summary>IVI DMM class-compliant values for trigger Source</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceImmediate">
+			<summary>The DMM exits the Wait-For-Trigger state immediately after entering. It does not wait for a trigger of any kind.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceExternal">
+			<summary>The DMM exits the Wait-For-Trigger state when a trigger occurs on the external trigger input.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceSwTrigFunc">
+			<summary>The DMM exits the Wait-For-Trigger state when the Send Software Trigger function executes.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceTTL0">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on TTL0.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceTTL1">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on TTL1.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceTTL2">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on TTL2.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceTTL3">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on TTL3.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceTTL4">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on TTL4.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceTTL5">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on TTL5.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceTTL6">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on TTL6.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceTTL7">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on TTL7.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceECL0">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on ECL0.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceECL1">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on ECL1.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourcePXIStar">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on the PXI Star trigger bus.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceRTSI0">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on RTSI0.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceRTSI1">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on RTSI1.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceRTSI2">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on RTSI2.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceRTSI3">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on RTSI3.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceRTSI4">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on RTSI4.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceRTSI5">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on RTSI5.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSourceEnum.IviDmmTriggerSourceRTSI6">
+			<summary>The DMM exits the Wait-For-Trigger state when it receives a trigger on RTSI6.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmTriggerSlopeEnum">
+			<summary>IVI DMM class-compliant values for trigger Slope</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSlopeEnum.IviDmmTriggerSlopePositive">
+			<summary>Sets the trigger event to occur on the rising edge of the trigger pulse.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerSlopeEnum.IviDmmTriggerSlopeNegative">
+			<summary>Sets the trigger event to occur on the rising edge of the trigger pulse.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum">
+			<summary>IVI DMM class-compliant values for multipoint SampleTrigger</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerImmediate">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state immediately after entering. It does not wait for a trigger of any kind.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerExternal">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when a trigger occurs on the external trigger input.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerSwTrigFunc">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when the Send Software Trigger function executes.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerTTL0">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on TTL0.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerTTL1">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on TTL1.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerTTL2">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on TTL2.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerTTL3">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on TTL3.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerTTL4">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on TTL4.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerTTL5">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on TTL5.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerTTL6">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on TTL6.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerTTL7">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on TTL7.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerECL0">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on ECL0.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerECL1">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on ECL1.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerPXIStar">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on the PXI Star trigger bus.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerRTSI0">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on RTSI0.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerRTSI1">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on RTSI1.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerRTSI2">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on RTSI2.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerRTSI3">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on RTSI3.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerRTSI4">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on RTSI4.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerRTSI5">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on RTSI5.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerRTSI6">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when it receives a trigger on RTSI6.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmSampleTriggerEnum.IviDmmSampleTriggerInterval">
+			<summary>The DMM exits the Wait-For-Sample-Trigger state when the length of time specified by the Sample Interval attribute elapses.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum">
+			<summary>IVI DMM class-compliant values for multipoint MeasurementComplete</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestNone">
+			<summary>The measurement complete signal is not routed.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestExternal">
+			<summary>Routes the measurement complete signal to the external connector.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestTTL0">
+			<summary>Routes the measurement complete signal to TTL0.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestTTL1">
+			<summary>Routes the measurement complete signal to TTL1.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestTTL2">
+			<summary>Routes the measurement complete signal to TTL2.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestTTL3">
+			<summary>Routes the measurement complete signal to TTL3.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestTTL4">
+			<summary>Routes the measurement complete signal to TTL4.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestTTL5">
+			<summary>Routes the measurement complete signal to TTL5.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestTTL6">
+			<summary>Routes the measurement complete signal to TTL6.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestTTL7">
+			<summary>Routes the measurement complete signal to TTL7.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestECL0">
+			<summary>Routes the measurement complete signal to ECL0.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestECL1">
+			<summary>Routes the measurement complete signal to ECL1.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestPXIStar">
+			<summary>Routes the measurement complete signal to the PXI Star trigger bus.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestRTSI0">
+			<summary>Routes the measurement complete signal to RTSI0.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestRTSI1">
+			<summary>Routes the measurement complete signal to RTSI1.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestRTSI2">
+			<summary>Routes the measurement complete signal to RTSI2.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestRTSI3">
+			<summary>Routes the measurement complete signal to RTSI3.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestRTSI4">
+			<summary>Routes the measurement complete signal to RTSI4.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestRTSI5">
+			<summary>Routes the measurement complete signal to RTSI5.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMeasCompleteDestEnum.IviDmmMeasCompleteDestRTSI6">
+			<summary>Routes the measurement complete signal to RTSI6.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmErrorCodesEnum">
+			<summary>IVI DMM class defined HRESULTS</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmErrorCodesEnum.E_IVIDMM_TRIGGER_NOT_SOFTWARE">
+			<summary>The trigger source is not set to software trigger.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmErrorCodesEnum.E_IVIDMM_MAX_TIME_EXCEEDED">
+			<summary>Max Time Exceeded</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmErrorCodesEnum.S_IVIDMM_OVER_RANGE">
+			<summary>Over Range</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmAutoRangeEnum">
+			<summary>IVI DMM class-compliant AutoRange values that can be used for Range</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmAutoRangeEnum.IviDmmAutoRangeOn">
+			<summary>Sets the DMM to calculate the range before each measurement automatically.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmAutoRangeEnum.IviDmmAutoRangeOff">
+			<summary>Disables auto-ranging.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmAutoRangeEnum.IviDmmAutoRangeOnce">
+			<summary>Sets the DMM to calculate the range before the next measurement and then disable auto-ranging.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmFrequencyVoltageRangeEnum">
+			<summary>IVI DMM class-compliant values for frequency VoltageRange</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFrequencyVoltageRangeEnum.IviDmmFrequencyVoltageRangeAutoRangeOn">
+			<summary>Sets the DMM to calculate the frequency voltage range before each measurement automatically.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmFrequencyVoltageRangeEnum.IviDmmFrequencyVoltageRangeAutoRangeOff">
+			<summary>Disables auto-ranging.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmMaxTimeEnum">
+			<summary>IVI DMM class-compliant values for MaxTime</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMaxTimeEnum.IviDmmMaxTimeInfinite">
+			<summary>Wait indefinitely for the measurement to complete.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmMaxTimeEnum.IviDmmMaxTimeImmediate">
+			<summary>Return immediately. If no valid measurement value exists, return an error.</summary>
+		</member>
+		<member name="T:Ivi.Dmm.Interop.IviDmmTriggerDelayEnum">
+			<summary>IVI DMM class-compliant values for trigger Delay</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerDelayEnum.IviDmmTriggerDelayAutoDelayOn">
+			<summary>Sets the DMM to calculate the trigger delay before each measurement.</summary>
+		</member>
+		<member name="F:Ivi.Dmm.Interop.IviDmmTriggerDelayEnum.IviDmmTriggerDelayAutoDelayOff">
+			<summary>Stops the DMM from calculating the trigger delay.</summary>
+		</member>
+	</members>
+</doc>

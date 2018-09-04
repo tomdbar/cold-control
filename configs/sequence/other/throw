@@ -1,0 +1,111 @@
+date = 06/09/16
+time = 17:58:38
+[notes]
+user = '''Default user notes...
+
+
+
+
+'''
+config_ch_assignments = "(0, 'Cool upper - freq')", "(1, 'Cool lower - freq')", "(2, 'Cool center - freq')", "(3, 'Cool repump - freq')", "(4, 'Cool upper - amp')", "(5, 'Cool lower - amp')", "(6, 'Cool center - amp')", "(7, 'Cool repump - amp')", "(8, 'STIRAP - freq')", "(9, 'STIRAP - amp')", "(10, 'Cavity lock - freq')", "(11, 'Cavity lock - amp')", "(12, 'Abs imaging - freq')", "(13, 'Abs imaging - amp')", "(14, '14 - unused')", "(15, 'Camera trigger')", "(16, 'MOT coils - current')", "(17, '17 - MOT coils - trigger')", "(18, '18 - unused')", "(19, '19 - unused')", "(20, '20 - unused')", "(21, '21 - unused')", "(22, '22 - unused')", "(23, '23 - unused')"
+[sequence]
+t_step = 10.0
+global_timings = "(5350.0, 'Cool off')", "(4000.0, 'Molasses start')", "(5000.0, 'Throw start')"
+n_samples = 1001
+[sequence channels]
+[[0]]
+tV_pairs = "(0.0, 6.46364074875929)", "(4000.0, 5.725991529410224)"
+V_interval_styles = 0, 0
+chNum = 0
+[[1]]
+tV_pairs = "(0.0, 6.471620917059827)", "(4000.0, 5.728646848727703)", "(5000.0, 5.9168206705866915)"
+V_interval_styles = 0, 0, 0
+chNum = 1
+[[2]]
+tV_pairs = "(0.0, 6.412889352434814)", "(4000.0, 5.674554494861339)", "(5000.0, 5.769435579689713)"
+V_interval_styles = 0, 0, 0
+chNum = 2
+[[3]]
+tV_pairs = "(0.0, 2.050923155428587)",
+V_interval_styles = 0,
+chNum = 3
+[[4]]
+tV_pairs = "(0.0, 3.45787545788)", "(4000.0, 2.1474351661696893)", "(5350.0, 0.02442002442)"
+V_interval_styles = 0, 0, 0
+chNum = 4
+[[5]]
+tV_pairs = "(0.0, 3.41391941392)", "(4000.0, 2.6900159463136526)", "(5350.0, 0.263736263736)"
+V_interval_styles = 0, 0, 0
+chNum = 5
+[[6]]
+tV_pairs = "(0.0, 4.66910866911)", "(4000.0, 2.0398465343031598)", "(5350.0, 0.043956043956)"
+V_interval_styles = 0, 0, 0
+chNum = 6
+[[7]]
+tV_pairs = "(0.0, 5.06471306471)", "(5350.0, 0.0)"
+V_interval_styles = 0, 0
+chNum = 7
+[[8]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 8
+[[9]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 9
+[[10]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 10
+[[11]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 11
+[[12]]
+tV_pairs = "(0.0, 7.355114577696655)",
+V_interval_styles = 0,
+chNum = 12
+[[13]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 13
+[[14]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 14
+[[15]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 15
+[[16]]
+tV_pairs = "(0.0, 5.0)", "(4000.0, 0.0)"
+V_interval_styles = 0, 0
+chNum = 16
+[[17]]
+tV_pairs = "(0.0, 5.0)", "(4000.0, 0.0)"
+V_interval_styles = 0, 0
+chNum = 17
+[[18]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 18
+[[19]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 19
+[[20]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 20
+[[21]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 21
+[[22]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 22
+[[23]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 23

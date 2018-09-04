@@ -1,0 +1,152 @@
+date = 26/10/16
+time = 15:20:55
+save location = Z:/Results017_New/data
+mot reload = 750000
+iterations = 100
+waveform sequence = '[0,1],[2,3],[3,3]'
+waveform stitch delays = '[0,0],[0,0],[0,0]'
+interleave waveforms = True
+[waveforms]
+[[0]]
+modulation frequency = 62250000
+phases = ,
+filename = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\waveforms\new\Sin2 pulse\416 long\sin2_70_416.csv
+[[1]]
+modulation frequency = 88250000
+phases = ,
+filename = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\waveforms\new\Sin2 pulse\416 long\sin2_100_416.csv
+[[2]]
+modulation frequency = 101000000
+phases = ,
+filename = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\waveforms\new\Tophat\400 long\208_middle_drive\tophat_100_400.csv
+[[3]]
+modulation frequency = 125750000
+phases = ,
+filename = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\waveforms\new\Tophat\400 long\208_middle_drive\tophat_100_400.csv
+[AWG]
+sample rate = 1242290000.0
+burst count = 6250
+waveform output channels = channel1, channel2, channel3
+waveform output channel lags = 0.478, 0.360, 0.586 
+marked channels = channel1,
+marker width = 0.1
+waveform aom calibrations locations = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy/calibrations/stirap_awg, C:\Users\apc\Documents\Python Scripts\Cold Control Heavy/calibrations/depump_awg, C:\Users\apc\Documents\Python Scripts\Cold Control Heavy/calibrations/repump_awg,
+[TDC]
+counter channels = 0,4
+marker channel = 3
+timestamp buffer size = 1000000
+[notes]
+user = '''Default user notes...
+
+
+
+
+
+
+
+
+
+
+'''
+config_ch_assignments = "(0, 'Cool upper - freq')", "(1, 'Cool lower - freq')", "(2, 'Cool center - freq')", "(3, 'Cool repump - freq')", "(4, 'Cool upper - amp')", "(5, 'Cool lower - amp')", "(6, 'Cool center - amp')", "(7, 'Cool repump - amp')", "(8, 'STIRAP ref - freq')", "(9, 'STIRAP ref - amp')", "(10, 'Cavity lock - freq')", "(11, 'Cavity lock - amp')", "(12, 'Abs imaging - freq')", "(13, 'Abs imaging - amp')", "(14, '14 - unused')", "(15, 'Camera trigger')", "(16, 'MOT coils current')", "(17, 'AWG trigger')", "(18, 'Bias coils current')", "(19, '19 - unused')", "(20, '20 - unused')", "(21, '21 - unused')", "(22, '22 - unused')", "(23, '23 - unused')"
+[sequence]
+t_step = 10.0
+global_timings = "(6000.0, 'Cool off')", "(5000.0, 'Throw start')", "(10000.0, 'AWG start')", "(27000.0, 'AWG end')", "(5350.0, 'Repump off')"
+n_samples = 3001
+[sequence channels]
+[[0]]
+tV_pairs = "(0.0, 6.098919432921334)", "(5000.0, 5.537633860027764)"
+V_interval_styles = 0, 0
+chNum = 0
+[[1]]
+tV_pairs = "(0.0, 6.103347153084332)", "(4000.0, 6.103347153084332)", "(5000.0, 5.633401404568744)"
+V_interval_styles = 0, 0, 0
+chNum = 1
+[[2]]
+tV_pairs = "(0.0, 6.0491989854320405)", "(4000.0, 6.0491989854320405)", "(5000.0, 5.674554494861339)"
+V_interval_styles = 0, 0, 0
+chNum = 2
+[[3]]
+tV_pairs = "(0.0, 2.050923155428587)",
+V_interval_styles = 0,
+chNum = 3
+[[4]]
+tV_pairs = "(0.0, 3.45787545788)", "(5000.0, 1.8533324869840826)", "(6000.0, 0.02442002442)"
+V_interval_styles = 0, 0, 0
+chNum = 4
+[[5]]
+tV_pairs = "(0.0, 3.41391941392)", "(5000.0, 2.650684391449362)", "(6000.0, 0.263736263736)"
+V_interval_styles = 0, 0, 0
+chNum = 5
+[[6]]
+tV_pairs = "(0.0, 4.66910866911)", "(5000.0, 2.0398465343031598)", "(6000.0, 0.043956043956)"
+V_interval_styles = 0, 0, 0
+chNum = 6
+[[7]]
+tV_pairs = "(0.0, 5.06471306471)", "(5350.0, 0.0)"
+V_interval_styles = 0, 0
+chNum = 7
+[[8]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 8
+[[9]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 9
+[[10]]
+tV_pairs = "(0.0, 4.26768300367029)",
+V_interval_styles = 0,
+chNum = 10
+[[11]]
+tV_pairs = "(0.0, 5.0)",
+V_interval_styles = 0,
+chNum = 11
+[[12]]
+tV_pairs = "(0.0, 7.355114577696655)",
+V_interval_styles = 0,
+chNum = 12
+[[13]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 13
+[[14]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 14
+[[15]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 15
+[[16]]
+tV_pairs = "(0.0, 5.0)", "(5000.0, 0.0)"
+V_interval_styles = 0, 0
+chNum = 16
+[[17]]
+tV_pairs = "(0.0, 0.0)", "(10000.0, 2.5)", "(27000.0, 0.0)"
+V_interval_styles = 0, 0, 0
+chNum = 17
+[[18]]
+tV_pairs = "(0.0, 0.0)", "(8000.0, 2.0)", "(27000.0, 0.0)"
+V_interval_styles = 0, 0, 0
+chNum = 18
+[[19]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 19
+[[20]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 20
+[[21]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 21
+[[22]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 22
+[[23]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 23

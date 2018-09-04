@@ -1,0 +1,1944 @@
+FPAttributeValueFile
+n SubType="IVI"
+n SubVersion="1"
+
+v AMInternalWaveform DataType="i"
+ WX218X_VAL_AM_INTERNAL_SINE (1)
+  "The function generator uses a sinusoid waveform as the modulating waveform."
+
+ WX218X_VAL_AM_INTERNAL_SQUARE (2)
+  "The function generator uses a square waveform as the modulating waveform."
+
+ WX218X_VAL_AM_INTERNAL_TRIANGLE (3)
+  "The function generator uses a triangle waveform as the modulating waveform."
+
+ WX218X_VAL_AM_INTERNAL_RAMP_UP (4)
+  "The function generator uses a positive ramp waveform as the modulating waveform."
+
+ WX218X_VAL_AM_INTERNAL_RAMP_DOWN (5)
+  "The function generator uses a negative ramp waveform as the modulating waveform."
+
+
+v AMSource DataType="i"
+ WX218X_VAL_AM_INTERNAL (0)
+  "The function generator uses an internally generated waveform as the modulating waveform. "
+  " You use the AM Internal Depth, AM Internal Waveform, and AM Internal Frequency attributes "
+  "to configure the internally generated modulating waveform."
+
+ WX218X_VAL_AM_EXTERNAL (1)
+  "The function generator uses a waveform from an external source as the modulating "
+  "waveform."
+
+
+v FMInternalWaveform DataType="i"
+ WX218X_VAL_FM_INTERNAL_SINE (1)
+  "The function generator uses a sinusoid waveform as the modulating waveform."
+
+ WX218X_VAL_FM_INTERNAL_SQUARE (2)
+  "The function generator uses a square waveform as the modulating waveform."
+
+ WX218X_VAL_FM_INTERNAL_TRIANGLE (3)
+  "The function generator uses a triangle waveform as the modulating waveform."
+
+ WX218X_VAL_FM_INTERNAL_RAMP_UP (4)
+  "The function generator uses a positive ramp waveform as the modulating waveform."
+
+ WX218X_VAL_FM_INTERNAL_RAMP_DOWN (5)
+  "The function generator uses a negative ramp waveform as the modulating waveform."
+
+
+v FMSource DataType="i"
+ WX218X_VAL_FM_INTERNAL (0)
+  "The function generator uses an internally generated waveform as the modulating waveform. "
+  " You use the FM Internal Deviation, FM Internal Waveform, and FM Internal Frequency "
+  "attributes to configure the internally generated modulating waveform."
+
+ WX218X_VAL_FM_EXTERNAL (1)
+  "The function generator uses a waveform from an external source as the modulating "
+  "waveform."
+
+
+v OperationMode DataType="i"
+ WX218X_VAL_OPERATE_CONTINUOUS (0)
+  "When in the Output Generation State, the function generator produces output continuously."
+
+ WX218X_VAL_OPERATE_BURST (1)
+  "When in the Output Generation State, the function generator produces a burst of waveform "
+  "cycles based on a trigger condition. A burst consists of a discrete number of waveform "
+  "cycles.  The user uses the attribute of the IviFgenTrigger Extension Group to configure "
+  "the trigger, and the attributes of the IviFgenBurst extension group to configure "
+  "how the function generator produces bursts."
+
+
+v OutputMode DataType="i"
+ WX218X_VAL_OUTPUT_FUNC (0)
+  "The driver uses the attributes and functions of the IviFgenStdFunc extension group "
+  "to configure the function generator's output signal."
+
+ WX218X_VAL_OUTPUT_ARB (1)
+  "The driver uses the attributes and functions of the IviFgenArbWfm extension group "
+  "to configure the function generator's output signal."
+
+ WX218X_VAL_OUTPUT_SEQ (2)
+  "The driver uses the attributes and functions of the IviFgenArbSeq extension group "
+  "to configure the function generator's output signal."
+
+
+v ReferenceClockSource DataType="i"
+ WX218X_VAL_REF_CLOCK_INTERNAL (0)
+  "The function generator produces the reference clock signal internally."
+
+ WX218X_VAL_REF_CLOCK_EXTERNAL (1)
+  "The function generator receives the reference clock signal from an external source."
+
+ WX218X_VAL_REF_CLOCK_RTSI_CLOCK (101)
+  "The function generator receives the reference clock signal from the RTSI clock source."
+
+
+v Waveform DataType="i"
+ WX218X_VAL_WFM_SINE (1)
+  "Configures the function generator to produce a sinusoid waveform."
+
+ WX218X_VAL_WFM_SQUARE (2)
+  "Configures the function generator to produce a square waveform."
+
+ WX218X_VAL_WFM_TRIANGLE (3)
+  "Configures the function generator to produce a triangular waveform."
+
+ WX218X_VAL_WFM_RAMP_UP (4)
+  "Configures the function generator to produce a positive ramp waveform."
+
+ WX218X_VAL_WFM_RAMP_DOWN (5)
+  "Configures the function generator to produce a negative ramp waveform."
+
+ WX218X_VAL_WFM_DC (6)
+  "Configures the function generator to produce a constant voltage."
+
+
+v TriggerSource DataType="i"
+ WX218X_VAL_EXTERNAL (1)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "on its external trigger input terminal."
+
+ WX218X_VAL_SOFTWARE_TRIG (2)
+  "The function generator does not produce an output signal until the Send Software "
+  "Trigger function executes.  Refer to the Standardized Cross Class Capabilities specification "
+  "for a complete description of this value and the Send Software Trigger function."
+
+ WX218X_VAL_INTERNAL_TRIGGER (3)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from its internal trigger source."
+
+ WX218X_VAL_TTL0 (111)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the TTL0 line."
+
+ WX218X_VAL_TTL1 (112)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the TTL1 line."
+
+ WX218X_VAL_TTL2 (113)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the TTL2 line."
+
+ WX218X_VAL_TTL3 (114)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the TTL3 line."
+
+ WX218X_VAL_TTL4 (115)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the TTL4 line."
+
+ WX218X_VAL_TTL5 (116)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the TTL5 line."
+
+ WX218X_VAL_TTL6 (117)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the TTL6 line."
+
+ WX218X_VAL_TTL7 (118)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the TTL7 line."
+
+ WX218X_VAL_ECL0 (119)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the ECL0 line."
+
+ WX218X_VAL_ECL1 (120)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the ECL1 line."
+
+ WX218X_VAL_PXI_STAR (131)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the PXI Star bus."
+
+ WX218X_VAL_RTSI_0 (141)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the RTSI 0 line."
+
+ WX218X_VAL_RTSI_1 (142)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the RTSI 1 line."
+
+ WX218X_VAL_RTSI_2 (143)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the RTSI 2 line."
+
+ WX218X_VAL_RTSI_3 (144)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the RTSI 3 line."
+
+ WX218X_VAL_RTSI_4 (145)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the RTSI 4 line."
+
+ WX218X_VAL_RTSI_5 (146)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the RTSI 5 line."
+
+ WX218X_VAL_RTSI_6 (147)
+  "The function generator does not produce an output signal until it receives a trigger "
+  "from the RTSI 6 line."
+
+
+v AMInternalWaveform2 DataType="i"
+ WX218X_VAL_AM_INTERNAL_WAVEFORM_SINE (1)
+  "Selects the sine shape as the modulating waveform."
+
+ WX218X_VAL_AM_INTERNAL_WAVEFORM_TRIANGLE (3)
+  "Selects the triangle shape as the modulating waveform."
+
+ WX218X_VAL_AM_INTERNAL_WAVEFORM_SQUARE (2)
+  "Selects the square shape as the modulating waveform."
+
+ WX218X_VAL_AM_INTERNAL_WAVEFORM_RAMP (4)
+  "Selects the ramp shape as the modulating waveform."
+
+
+v OutputCouple DataType="i"
+ WX218X_VAL_OUTPUT_COUPLEDC (0)
+  "Selects a DC-coupled amplifier path for the output amplifier."
+
+ WX218X_VAL_OUTPUT_COUPLEAC (1)
+  "Selects the AC-coupled path for the output amplifier."
+
+ WX218X_VAL_OUTPUT_COUPLEHV (2)
+  "Selects the HV-coupled path for the output amplifier.For WX2181B, WX2182B"
+
+
+v OperationMode2 DataType="i"
+ WX218X_VAL_OPERATION_MODE_CONTINUOUS (0)
+  "Generate output continuously."
+
+ WX218X_VAL_OPERATION_MODE_BURST (1)
+  "Generate a burst of waveforms when a trigger occurs."
+
+ WX218X_VAL_OPERATION_MODE_TRIGGER (2)
+  "Trigger operation mode."
+
+ WX218X_VAL_OPERATION_MODE_GATE (3)
+  "Gate operation mode."
+
+
+v OutputMode2 DataType="i"
+ WX218X_VAL_OUTPUT_MODE_FUNCTION (0)
+  "Selects the standard waveform shapes."
+
+ WX218X_VAL_OUTPUT_MODE_ARBITRARY (1)
+  "Selects the arbitrary waveform shapes."
+
+ WX218X_VAL_OUTPUT_MODE_SEQUENCE (2)
+  "Selects the sequenced waveform output.(Not for WS8351,WS8352)"
+
+ WX218X_VAL_OUTPUT_MODEA_SEQUENCE (3)
+  "Selects the advanced sequencing waveform output.(Not for WS8351,WS8352)"
+
+ WX218X_VAL_OUTPUT_MODE_MODULATION (4)
+  "Selects the modulated waveforms."
+
+ WX218X_VAL_OUTPUT_MODED_PULSE (5)
+  "Selects the digital pulse function."
+
+ WX218X_VAL_OUTPUT_MODE_PATTERN (6)
+  "Sets pattern output mode. (Not for WX2181,WX2182)"
+
+
+v ReferenceClockSource2 DataType="i"
+ WX218X_VAL_REFERENCE_CLOCK_SOURCE_INTERNAL (0)
+  "Selects an internal source."
+
+ WX218X_VAL_REFERENCE_CLOCK_SOURCE_EXTERNAL (1)
+  "Re-routes the 10 MHz source to the external reference input."
+
+
+v ExtFrequency DataType="i"
+ WX218X_VAL_EXT_FREQUENCY10M (0)
+  "10M External Frequency (for WX2184)."
+
+ WX218X_VAL_EXT_FREQUENCY20M (1)
+  "20M External Frequency (for WX2184)."
+
+ WX218X_VAL_EXT_FREQUENCY50M (2)
+  "50M External Frequency (for WX2184)."
+
+ WX218X_VAL_EXT_FREQUENCY100M (3)
+  "100M External Frequency (for WX2184)."
+
+
+v OutputSyncFunction DataType="i"
+ WX218X_VAL_OUTPUT_SYNC_FUNCTION_PULSE (0)
+  "Selects the pulse shape as the output waveform for the sync output."
+
+ WX218X_VAL_OUTPUT_SYNC_FUNCTIONWCOM (1)
+  "Selects the waveform complete pulse option. The sync output will transition high "
+  "at the beginning of the waveform and will return to low after the waveform has cycle "
+  "been completed."
+
+
+v OutputSyncSource DataType="i"
+ WX218X_VAL_OUTPUT_SYNC_SOURCECH1 (0)
+  "Selects channel 1 as the source for generating the sync pulse."
+
+ WX218X_VAL_OUTPUT_SYNC_SOURCECH2 (1)
+  "Defines channel 2 as the source for generating the sync pulse."
+
+ WX218X_VAL_OUTPUT_SYNC_SOURCECH3 (2)
+  "Defines channel 3 as the source for generating the sync pulse (for WX2184)."
+
+ WX218X_VAL_OUTPUT_SYNC_SOURCECH4 (3)
+  "Defines channel 4 as the source for generating the sync pulse (for WX2184)."
+
+
+v Waveform2 DataType="i"
+ WX218X_VAL_WAVEFORM_SINE (1)
+  "Configures the function generator to produce a sinusoid waveform."
+
+ WX218X_VAL_WAVEFORM_SQUARE (2)
+  "Configures the function generator to produce a square waveform."
+
+ WX218X_VAL_WAVEFORM_TRIANGLE (3)
+  "Configures the function generator to produce a triangle waveform."
+
+ WX218X_VAL_WAVEFORM_RAMP_UP (4)
+  "Configures the function generator to produce a ramp waveform."
+
+ WX218X_VAL_WAVEFORM_RAMP_DOWN (5)
+  "Configures the function generator to produce a ramp waveform."
+
+ WX218X_VAL_WAVEFORMDC (6)
+  "Configures the function generator to produce a dc waveform."
+
+ WX218X_VAL_WAVEFORM_SINC (7)
+  "Configures the function generator to produce a sinc waveform."
+
+ WX218X_VAL_WAVEFORM_GAUSSIAN (8)
+  "Configures the function generator to produce a gaussian waveform."
+
+ WX218X_VAL_WAVEFORM_EXPONENTIAL (9)
+  "Configures the function generator to produce a exponential waveform."
+
+ WX218X_VAL_WAVEFORM_NOISE (10)
+  "Configures the function generator to produce a noise waveform."
+
+
+v SampleRateSource DataType="i"
+ WX218X_VAL_SAMPLE_RATE_SOURCE_INTERNAL (0)
+  "Selects the internal clock generator as the main clock source."
+
+ WX218X_VAL_SAMPLE_RATE_SOURCE_EXTERNAL (1)
+  "Activates the external sample clock input."
+
+
+v ArbitrarySource DataType="i"
+ WX218X_VAL_ARBITRARY_SOURCE_BUS (0)
+  "Defines that waveform segments will be switched only when a remote command has been "
+  "received."
+
+ WX218X_VAL_ARBITRARY_SOURCE_EXTERNAL (1)
+  "Defines that the segment control is transferred to a rear panel connector."
+
+
+v ArbitraryTiming DataType="i"
+ WX218X_VAL_ARBITRARY_TIMING_COHERENT (0)
+  "Defines that when a new waveform segments is selected, the transition to the new "
+  "waveform will occur only when the current waveform has reached its end point."
+
+ WX218X_VAL_ARBITRARY_TIMING_IMMEDIATE (1)
+  "Defines that when a new waveform segments is selected, the current waveform will "
+  "be aborted and the transition to the new waveform will occur immediately without "
+  "waiting for the current waveform to reach its end point."
+
+
+v FreqDivider DataType="i"
+ WX218X_VAL_FREQ_DIVIDER_DIV1 (0)
+
+ WX218X_VAL_FREQ_DIVIDER_DIV2 (1)
+
+ WX218X_VAL_FREQ_DIVIDER_DIV4 (2)
+
+ WX218X_VAL_FREQ_DIVIDER_DIV8 (3)
+
+ WX218X_VAL_FREQ_DIVIDER_DIV16 (4)
+
+
+v TraceMode DataType="i"
+ WX218X_VAL_TRACE_MODE_SINGLE (0)
+  "Selects the Single trace mode for download waveforms."
+
+ WX218X_VAL_TRACE_MODE_DUPLICATE (1)
+  "Selects the Duplicate trace mode for download waveforms."
+
+ WX218X_VAL_TRACE_MODE_ZERO (2)
+  "Selects the Zero trace mode for download waveforms."
+
+ WX218X_VAL_TRACE_MODE_COMBINE (3)
+  "Selects the Combine trace mode for download waveforms."
+
+
+v ArbDownloadRecord DataType="i"
+ WX218X_VAL_ARB_DOWNLOAD_RECORD_ENABLE (0)
+  "Record all downloaded waves on internal flash (for Trace mode Single)."
+
+ WX218X_VAL_ARB_DOWNLOAD_RECORD_DISABLE (1)
+  "Doesn't record all downloaded waves on internal flash (not for Trace mode Single)."
+
+
+v SequenceAdvanceMode DataType="i"
+ WX218X_VAL_SEQUENCE_ADVANCE_MODE_AUTO (0)
+  "Specifies continuous advance where the generator steps continuously to the end of "
+  "the sequence table and repeats the sequence from the start."
+
+ WX218X_VAL_SEQUENCE_ADVANCE_MODE_ONCE (1)
+  "Selects the once sequence advance mode, where the generator steps through the sequence "
+  "table automatically once except if the seq:once:coun programmed a value greater than "
+  "1."
+
+ WX218X_VAL_SEQUENCE_ADVANCE_MODE_STEP (2)
+  "Specifies the stepped sequence advance mode, where the generator steps to the next "
+  "waveform only when a valid event signal has been received."
+
+
+v SequenceJumpEvent DataType="i"
+ WX218X_VAL_SEQUENCE_JUMP_EVENT_BUS (0)
+  "Defines that sequence will advance to the next step only when a remote command has "
+  "been received."
+
+ WX218X_VAL_SEQUENCE_JUMP_EVENT_EVENT (1)
+  "Defines that sequence will advance to the next step only when a valid signal has "
+  "been asserted to the Event input."
+
+
+v SequenceSource DataType="i"
+ WX218X_VAL_SEQUENCE_SOURCE_BUS (0)
+  "Defines that sequences will be switched only when a remote command has been received."
+
+ WX218X_VAL_SEQUENCE_SOURCE_EXTERNAL (1)
+  "Defines that the sequence control is transferred to a rear panel connector."
+
+
+v SequenceTiming DataType="i"
+ WX218X_VAL_SEQUENCE_TIMING_COHERENT (0)
+  "Defines that when a new sequence is selected, the transition to the new sequence "
+  "will occur only when the current sequence has reached its end point."
+
+ WX218X_VAL_SEQUENCE_TIMING_IMMEDIATE (1)
+  "Defines that when a new sequence is selected, the current sequence will be aborted "
+  "and the transition to the new sequence will occur immediately without waiting for "
+  "the current sequence to reach its end point."
+
+
+v SequencePrestep DataType="i"
+ WX218X_VAL_SEQUENCE_PRESTEP_WAVE (0)
+  "Sets Wave Prestep for Sequence."
+
+ WX218X_VAL_SEQUENCE_PRESTEPDC (1)
+  "Sets DC Prestep for Sequence."
+
+
+v AdvanceSequenceMode DataType="i"
+ WX218X_VAL_ADVANCE_SEQUENCE_MODE_AUTO (0)
+  "Specifies continuous advance where the generator steps continuously to the end of "
+  "the sequence table and repeats the sequence from the start."
+
+ WX218X_VAL_ADVANCE_SEQUENCE_MODE_ONCE (1)
+  "Selects the once sequence advance mode, where the generator steps through the sequence "
+  "table automatically once except if the aseq:once:coun programmed a value greater "
+  "than 1."
+
+ WX218X_VAL_ADVANCE_SEQUENCE_MODE_STEP (2)
+  "Specifies the stepped sequence advance mode, where the generator steps to the next "
+  "sequence only when a valid event signal has been received."
+
+
+v CarrierModulationWaveform DataType="i"
+ WX218X_VAL_CARRIER_MODULATION_WAVEFORM_SINE (0)
+  "Selects sine as the modulated waveform."
+
+ WX218X_VAL_CARRIER_MODULATION_WAVEFORM_TRIANGLE (1)
+  "Selects triangle as the modulated waveform."
+
+ WX218X_VAL_CARRIER_MODULATION_WAVEFORM_SQUARE (2)
+  "Selects square as the modulated waveform."
+
+
+v FMInternalWaveform2 DataType="i"
+ WX218X_VAL_FM_INTERNAL_WAVEFORM_SINE (1)
+  "Selects the sine shape as the modulating waveform."
+
+ WX218X_VAL_FM_INTERNAL_WAVEFORM_TRIANGLE (3)
+  "Selects the triangle shape as the modulating waveform."
+
+ WX218X_VAL_FM_INTERNAL_WAVEFORM_SQUARE (2)
+  "Selects the square shape as the modulating waveform."
+
+ WX218X_VAL_FM_INTERNAL_WAVEFORM_RAMP (4)
+  "Selects the ramp shape as the modulating waveform."
+
+
+v MarkerSource DataType="i"
+ WX218X_VAL_MARKER_SOURCE_WAVE (0)
+  "Wave marker source."
+
+ WX218X_VAL_MARKER_SOURCE_USER (1)
+  "User marker source."
+
+
+v ContinuousMode DataType="i"
+ WX218X_VAL_CONTINUOUS_MODE_SELF (0)
+  "In continuous run mode, waveforms are generated at the output connector as soon as "
+  "they are selected."
+
+ WX218X_VAL_CONTINUOUS_MODE_ARMED (1)
+  "The instrument generates waveforms at the output connector only after an enab command "
+  "is executed. For an immediate and unconditional termination of the output waveform "
+  "use the abor command."
+
+
+v ContinuousSource DataType="i"
+ WX218X_VAL_CONTINUOUS_SOURCE_BUS (0)
+  "Defines the source of the enable signal as a remote command. Signals at the event "
+  "input will be ignored. In continuous run mode, waveforms are generated at the output "
+  "connector as soon as a remote enable command is executed."
+
+ WX218X_VAL_CONTINUOUS_SOURCE_EVENT (1)
+  "Defines the source of the enable signal as the event input connector. Remote enable "
+  "commands will be ignored. In continuous run mode, waveforms are generated at the "
+  "output connector as soon as a valid event signal is sensed at the event input connector."
+
+ WX218X_VAL_CONTINUOUS_SOURCE_TRIGGER (2)
+  "Defines the source of the enable signal as the front panel trigger input connector. "
+  "Remote enable commands will be ignored. In continuous run mode, waveforms are generated "
+  "at the output connector as soon as a valid event signal is sensed at the event input "
+  "connector."
+
+
+v TriggerSlope DataType="i"
+ WX218X_VAL_TRIGGER_SLOPE_POSITIVE (0)
+  "Selects the positive going edge."
+
+ WX218X_VAL_TRIGGER_SLOPE_NEGATIVE (1)
+  "Selects the negative going edge."
+
+ WX218X_VAL_TRIGGER_SLOPE_EITHER (2)
+  "Selects both positive and negative going edges.Not supported for WX2184."
+
+
+v TriggerSource2 DataType="i"
+ WX218X_VAL_TRIGGER_SOURCE_EXTERNAL (1)
+  "Selects the TRIG IN connector as the input source. The manual trigger can be used "
+  "in case external triggers are not available. All other inputs are ignored."
+
+ WX218X_VAL_TRIGGER_SOURCE_SOFTWARE (2)
+  "Selects the remote controller as the trigger source. Only software commands are accepted; "
+  "TRIG IN, Event IN and manual triggers are ignored."
+
+ WX218X_VAL_TRIGGER_SOURCE_TIMER (4)
+  "Activates the built in internal trigger generator. BUS and external trigger are ignored. "
+  "The period of the internal trigger is programmable and can be used to replace an "
+  "external trigger source."
+
+ WX218X_VAL_TRIGGER_SOURCE_EVENT (5)
+  "Selects the Event IN connector as the input source. All other inputs are ignored."
+
+
+v TriggerTimerMode DataType="i"
+ WX218X_VAL_TRIGGER_TIMER_MODE_TIME (0)
+  "Selects the timed internal trigger generator. The generator will automatically issue "
+  "periodical triggers that stimulate the output to generate single cycle waveforms. "
+  "The periods are programmed in units of seconds from waveform start to waveform start."
+
+ WX218X_VAL_TRIGGER_TIMER_MODE_DELAY (1)
+  "Selects the delayed internal trigger generator. The generator will automatically "
+  "issue periodical triggers that stimulate the output to generate single cycle waveforms. "
+  "The periods are programmed in units of waveform points from waveform end to waveform "
+  "start."
+
+
+v TriggerMode DataType="i"
+ WX218X_VAL_TRIGGER_MODE_NORMAL (0)
+  "Selects the normal trigger mode."
+
+ WX218X_VAL_TRIGGER_MODE_OVERRIDE (1)
+  "Selects the override trigger mode."
+
+
+v TriggerImpedance DataType="i"
+ WX218X_VAL_TRIGGER_IMPEDANCE50 (0)
+
+ WX218X_VAL_TRIGGER_IMPEDANCE10K (1)
+
+
+v ArmSlope DataType="i"
+ WX218X_VAL_ARM_SLOPE_POSITIVE (0)
+  "Selects the positive going edge."
+
+ WX218X_VAL_ARM_SLOPE_NEGATIVE (1)
+  "Selects the negative going edge."
+
+ WX218X_VAL_ARM_SLOPE_EITHER (2)
+  "Selects both positive and negative going edges."
+
+
+v StateStorageConfiguration DataType="i"
+ WX218X_VAL_STATE_STORAGE_CONFIGURATION_SETUP (0)
+  "Selects front panel configuration to be stored in the active memory cell."
+
+ WX218X_VAL_STATE_STORAGE_CONFIGURATION_WAVE (1)
+  "Selects the current arbitrary waveform to be stored in the active memory cell."
+
+ WX218X_VAL_STATE_STORAGE_CONFIGURATION_ALL (2)
+  "Will store both front panel configuration and waveform in the active memory cell."
+
+
+v StateStorageTarget DataType="i"
+ WX218X_VAL_STATE_STORAGE_TARGETINT (0)
+  "Selects the internal flash memory as the target for the store/recall operation. Waveform "
+  "size for this option is limited to 100 k points."
+
+ WX218X_VAL_STATE_STORAGE_TARGETUSB (1)
+  "Selects the front panel USB input as the target for the store/recall operation. Waveform "
+  "size for this option is limited only by the size of the disk-on-key flash."
+
+
+v StateStorageRecalConfiguration DataType="i"
+ WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_SETUP (0)
+  "Front panel configuration was stored in the active memory cell."
+
+ WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_WAVE (1)
+  "Arbitrary waveform was stored in the active memory cell."
+
+ WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_ALL (2)
+  "Was store both front panel configuration and waveform in the active memory cell."
+
+ WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_EMPTY (3)
+  "Was nothing store in the active memory cell."
+
+
+v XInstrumentMode DataType="i"
+ WX218X_VAL_X_INSTRUMENT_MODE_MASTER (0)
+  "Defines the active instrument as the controlling master in a two-instrument system."
+
+ WX218X_VAL_X_INSTRUMENT_MODE_SLAVE (1)
+  "Defines the active instrument as the controlling slave in a two-instrument system."
+
+
+v XInstrumentModeAdv DataType="i"
+ WX218X_VAL_X_INSTRUMENT_MODE_ADV_MASTER (0)
+  "Defines the active instrument as the controlling master in a two-instrument system."
+
+ WX218X_VAL_X_INSTRUMENT_MODE_ADV_SLAVE (1)
+  "Defines the active instrument as the controlling slave in a two-instrument system."
+
+ WX218X_VAL_X_INSTRUMENT_MODE_ADVM_SLAVE (2)
+  "Defines the active instrument as the controlling MSlave."
+
+
+v PulseConfigure DataType="i"
+ WX218X_VAL_PULSE_CONFIGURE_TIME (0)
+  "Enables the programming of pulse parameters in units of time (seconds)."
+
+ WX218X_VAL_PULSE_CONFIGURE_PERCENT (1)
+  "Enables the programming of certain pulse parameters in units of percent."
+
+
+v PulseLevelControl DataType="i"
+ WX218X_VAL_PULSE_LEVEL_CONTROLHLOW (0)
+  "Programs pulse level using high level and low level parameters."
+
+ WX218X_VAL_PULSE_LEVEL_CONTROLA_OFFSET (1)
+  "Programs pulse level using the amplitude and offset parameters."
+
+ WX218X_VAL_PULSE_LEVEL_CONTROL_POSITIVE (2)
+  "Programs pulse level using the high level parameters. The low level remains at 0 "
+  "V at all times."
+
+ WX218X_VAL_PULSE_LEVEL_CONTROL_NEGATIVE (3)
+  "Programs pulse level using the low level parameters. The high level remains at 0 "
+  "V at all times."
+
+
+v PulseMode DataType="i"
+ WX218X_VAL_PULSE_MODE_SINGLE (0)
+  "Programs single pulse output, which generates normal pulses."
+
+ WX218X_VAL_PULSE_MODE_DELAYED (1)
+  "Programs a delayed pulse mode, which generates normal pulses that are delayed from "
+  "the SYNC output."
+
+ WX218X_VAL_PULSE_MODE_DOUBLE (2)
+  "Programs a double pulse mode, which generates a pair of single pulses that are displaced "
+  "by a double delay period."
+
+
+v PulsePolarity DataType="i"
+ WX218X_VAL_PULSE_POLARITY_NORMAL (0)
+  "Programs normal pulse output."
+
+ WX218X_VAL_PULSE_POLARITY_COMPLEMENT (1)
+  "Programs complemented pulse output."
+
+ WX218X_VAL_PULSE_POLARITY_INVERTED (2)
+  "Programs an inverted pulse output."
+
+
+v PulseTransition DataType="i"
+ WX218X_VAL_PULSE_TRANSITION_FAST (0)
+  "Programs the fast transitions mode. In this mode the leading and trailing edges will "
+  "transition as fast as the instrument allows."
+
+ WX218X_VAL_PULSE_TRANSITION_LINEAR (1)
+  "Selects linear transitions."
+
+ WX218X_VAL_PULSE_TRANSITION_SYMMETRICAL (2)
+  "Programs a special mode where the transitions are symmetrical for both the leading "
+  "and trailing edges (lead time = trail time)."
+
+
+v SweepDirection DataType="i"
+ WX218X_VAL_SWEEP_DIRECTION_UP (0)
+  "Selects the sweep up direction."
+
+ WX218X_VAL_SWEEP_DIRECTION_DOWN (1)
+  "Selects the sweep down direction."
+
+
+v SweepSpacing DataType="i"
+ WX218X_VAL_SWEEP_SPACING_LIN (0)
+  "Selects the linear sweep spacing."
+
+ WX218X_VAL_SWEEP_SPACING_LOG (1)
+  "Select the logarithmic sweep spacing."
+
+
+v PatternMode DataType="i"
+ WX218X_VAL_PATTERN_MODE_COMPOSER (0)
+  "Sets pattern mode as composer."
+
+ WX218X_VAL_PATTERN_MODE_PREDEFINED (1)
+  "Sets pattern mode as predefined."
+
+
+v PatternPredefinedType DataType="i"
+ WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS7 (0)
+  "Sets type PRBS7 as predefined type for pattern mode."
+
+ WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS9 (1)
+  "Sets type PRBS9 as predefined type for pattern mode."
+
+ WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS11 (2)
+  "Sets type PRBS11 as predefined type for pattern mode."
+
+ WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS15 (3)
+  "Sets type PRBS15 as predefined type for pattern mode."
+
+ WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS23 (4)
+  "Sets type PRBS23 as predefined type for pattern mode."
+
+ WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS31 (5)
+  "Sets type PRBS31 as predefined type for pattern mode."
+
+ WX218X_VAL_PATTERN_PREDEFINED_TYPEUSER (6)
+  "Sets type USER as predefined type for pattern mode."
+
+
+v PatternComposerTransitionType DataType="i"
+ WX218X_VAL_PATTERN_COMPOSER_TRANSITION_TYPE_FAST (0)
+  "Sets fast transition type for pattern composer."
+
+ WX218X_VAL_PATTERN_COMPOSER_TRANSITION_TYPE_LINEAR (1)
+  "Sets linear transition type for pattern composer."
+
+
+v PatternResType DataType="i"
+ WX218X_VAL_PATTERN_RES_TYPE_AUTO (0)
+  "Sets Auto pattern resolution type."
+
+ WX218X_VAL_PATTERN_RES_TYPE_USER (1)
+  "Sets User pattern resolution type."
+
+
+v DigPatternDelayMode DataType="i"
+ WX218X_VAL_DIG_PATTERN_DELAY_MODE_COMMON (0)
+  "Sets delay mode as Common for Digital Pattern Output."
+
+ WX218X_VAL_DIG_PATTERN_DELAY_MODE_SEPARATE (1)
+  "Sets delay mode as Separate for Digital Pattern Output."
+
+
+v DigPatternLevelMode DataType="i"
+ WX218X_VAL_DIG_PATTERN_LEVEL_MODE_COMMON (0)
+  "Sets level mode as Common for Digital Pattern Output."
+
+ WX218X_VAL_DIG_PATTERN_LEVEL_MODE_SEPARATE (1)
+  "Sets level mode as Separate for Digital Pattern Output."
+
+
+v DigFormatData DataType="i"
+ WX218X_VAL_DIG_FORMAT_DATA_SEPARATE (0)
+  "Will download the waveform only into one memory:Arbitrary or Digital."
+
+ WX218X_VAL_DIG_FORMAT_DATA_COMMON (1)
+  "Will download the waveform into both of the memories:Arbitrary and Digital."
+
+
+v ArbitraryResolution DataType="i"
+ WX218X_VAL_ARBITRARY_RESOLUTION1P (0)
+  "Not duplicate any arbitrary wave for sync between Arb and Dig frequency."
+
+ WX218X_VAL_ARBITRARY_RESOLUTION2P (1)
+  "Will duplicate any arbitrary wave for sync between Arb and Dig frequency."
+
+
+v DigitalClock DataType="i"
+ WX218X_VAL_DIGITAL_CLOCKSDR (0)
+  "Programs Digital Clock SDR."
+
+ WX218X_VAL_DIGITAL_CLOCKDDR (1)
+  "Programs Digital Clock DDR."
+
+
+v DigPort DataType="i"
+ WX218X_VAL_DIG_PORT_PORT1 (0)
+
+ WX218X_VAL_DIG_PORT_PORT2 (1)
+
+ WX218X_VAL_DIG_PORT_PORT_BOTH (2)
+
+
+v ChirpFreqDirection DataType="i"
+ WX218X_VAL_CHIRP_FREQ_DIRECTION_UP (0)
+  "Sets Chirp Frequency Direction Up."
+
+ WX218X_VAL_CHIRP_FREQ_DIRECTION_DOWN (1)
+  "Sets Chirp Frequency Direction Down."
+
+
+v ChirpFreqSpacing DataType="i"
+ WX218X_VAL_CHIRP_FREQ_SPACING_LINEAR (0)
+  "Sets chirp frequency space linear."
+
+ WX218X_VAL_CHIRP_FREQ_SPACING_LOG (1)
+  "Sets chirp frequency space logarithmic."
+
+
+v ChirpAmplitudeDirection DataType="i"
+ WX218X_VAL_CHIRP_AMPLITUDE_DIRECTION_UP (0)
+  "Sets chirp amplitude direction up."
+
+ WX218X_VAL_CHIRP_AMPLITUDE_DIRECTION_DOWN (1)
+  "Sets chirp amplitude direction down."
+
+
+v ChirpAmplSpacing DataType="i"
+ WX218X_VAL_CHIRP_AMPL_SPACING_LIN (0)
+  "Sets chirp amplitude spacing linear."
+
+ WX218X_VAL_CHIRP_AMPL_SPACING_LOG (1)
+  "Sets chirp amplitude spacing logarithmic."
+
+
+v FHOPDwellMode DataType="i"
+ WX218X_VAL_FHOP_DWELL_MODE_FIXED (0)
+  "Selects Fixed Dwell mode for FHOP modulation."
+
+ WX218X_VAL_FHOP_DWELL_MODE_VARIABLE (1)
+  "Selects Variable Dwell mode for FHOP modulation."
+
+
+v AHOPDwellMode DataType="i"
+ WX218X_VAL_AHOP_DWELL_MODE_FIXED (0)
+  "Sets Dwell Mode as Fixed for AHOP modulation."
+
+ WX218X_VAL_AHOP_DWELL_MODE_VARIABLE (1)
+  "Sets Dwell Mode as Variable for AHOP modulation."
+
+
+v PskType DataType="i"
+ WX218X_VAL_PSK_TYPEPSK (0)
+  "Selects the PSK modulation function."
+
+ WX218X_VAL_PSK_TYPEBPSK (1)
+  "Selects the Binary Phase Shift Keying modulation type."
+
+ WX218X_VAL_PSK_TYPEQPSK (2)
+  "Selects the Quadrature Phase Shift Keying modulation type."
+
+ WX218X_VAL_PSK_TYPEOQPSK (3)
+  "Selects the Offset Phase Shift Keying modulation type."
+
+ WX218X_VAL_PSK_TYPEDQPSK (4)
+  "Selects the P/4-shifted Differentially encoded QPSK modulation type."
+
+ WX218X_VAL_PSK_TYPE8PSK (5)
+  "Selects the 8-phase Shift Keying modulation type."
+
+ WX218X_VAL_PSK_TYPE16PSK (6)
+  "Selects the 16-phase Shift Keying modulation type."
+
+ WX218X_VAL_PSK_TYPEUSER (7)
+  "Selects the User PSK modulation type."
+
+
+v QamType DataType="i"
+ WX218X_VAL_QAM_TYPE16QAM (0)
+  "Selects the 16 Quadrature Amplitude Modulation modulation type."
+
+ WX218X_VAL_QAM_TYPE64QAM (1)
+  "Selects the 64 Quadrature Amplitude Modulation modulation type."
+
+ WX218X_VAL_QAM_TYPE256QAM (2)
+  "Selects the 256 Quadrature Amplitude Modulation modulation type."
+
+ WX218X_VAL_QAM_TYPEUSER (3)
+  "Selects the User QAM modulation type."
+
+
+0 wx218x_GetAttributeViInt32 3 4 false g DataType="ViInt32"
+0 wx218x_SetAttributeViInt32 3 4 false s DataType="ViInt32"
+0 wx218x_CheckAttributeViInt32 3 4 false s DataType="ViInt32"
+0 wx218x_GetAttributeViReal64 3 4 false g DataType="ViReal64"
+0 wx218x_SetAttributeViReal64 3 4 false s DataType="ViReal64"
+0 wx218x_CheckAttributeViReal64 3 4 false s DataType="ViReal64"
+0 wx218x_GetAttributeViSession 3 4 false g DataType="ViSession"
+0 wx218x_SetAttributeViSession 3 4 false s DataType="ViSession"
+0 wx218x_CheckAttributeViSession 3 4 false s DataType="ViSession"
+0 wx218x_GetAttributeViBoolean 3 4 false g DataType="ViBoolean"
+0 wx218x_SetAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 wx218x_CheckAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 wx218x_GetAttributeViString 3 5 false g DataType="ViString"
+0 wx218x_SetAttributeViString 3 4 false s DataType="ViString"
+0 wx218x_CheckAttributeViString 3 4 false s DataType="ViString"
+1 all "Inherent IVI Attributes"
+
+2 all "Advanced Session Information"
+
+3 all "Driver Setup" WX218X_ATTR_DRIVER_SETUP ViString g 
+ "The driver setup string.  It is either specified in the Configuration Store or passed "
+ "in the OptionString parameter of the Initialize function.  Driver setup is empty "
+ "if the driver is not initialized."
+
+3 all "I/O Resource Descriptor" WX218X_ATTR_IO_RESOURCE_DESCRIPTOR ViString g 
+ "The resource descriptor specifies the connection to a physical device.  It is either "
+ "specified in the Configuration Store or passed in the ResourceName parameter of the "
+ "Initialize function.  It is empty if the driver is not initialized."
+
+3 all "Logical Name" WX218X_ATTR_LOGICAL_NAME ViString g 
+ "Logical Name identifies a driver session in the Configuration Store.  If Logical "
+ "Name is not empty, the driver was initialized from information in the driver session. "
+ " If it is empty, the driver was initialized without using the Configuration Store."
+
+2 all "Driver Capabilities"
+
+3 all "Class Group Capabilities" WX218X_ATTR_GROUP_CAPABILITIES ViString g 
+ "A comma-separated list of the class capability groups implemented by the driver. "
+ " Capability group names are documented in the IVI class specifications.  If the driver "
+ "is not class compliant, the driver returns an empty string."
+
+3 all "Supported Instrument Models" WX218X_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString g 
+ "A comma-separated list of instrument models that the IVI specific driver can control. "
+ " The string does not include an abbreviation for the manufacturer if it is the same "
+ "for all models."
+
+2 all "Driver Identification"
+
+3 all "Specific Driver Class Spec Major Version" WX218X_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g 
+ "Returns the major version number of the class specification in accordance with which "
+ "the IVI specific driver was developed. Zero is returned if the driver is not compliant "
+ "with a class specification."
+
+3 all "Specific Driver Class Spec Minor Version" WX218X_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g 
+ "Returns the minor version number of the class specification in accordance with which "
+ "the IVI specific driver was developed. Zero is returned if the driver is not compliant "
+ "with a class specification."
+
+3 all "Specific Driver Description" WX218X_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g 
+ "Returns a brief description of the IVI specific driver. The string that this attribute "
+ "returns contains a maximum of 256 bytes including the NUL byte."
+
+3 all "Specific Driver Prefix" WX218X_ATTR_SPECIFIC_DRIVER_PREFIX ViString g 
+ "Returns the case-sensitive prefix of the user-callable functions that the IVI-C specific "
+ "driver exports. The string that this attribute returns contains a maximum of 32 bytes "
+ "including the NUL byte."
+
+3 all "Specific Driver Revision" WX218X_ATTR_SPECIFIC_DRIVER_REVISION ViString g 
+ "Returns version information about the IVI specific driver. The string that this attribute "
+ "returns contains a maximum of 256 bytes including the NUL byte."
+
+3 all "Specific Driver Vendor" WX218X_ATTR_SPECIFIC_DRIVER_VENDOR ViString g 
+ "Returns the name of the vendor that supplies the IVI specific driver. The string "
+ "that this attribute returns contains a maximum of 256 bytes including the NUL byte."
+
+2 all "Instrument Identification"
+
+3 all "Instrument Firmware Revision" WX218X_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g 
+ "The firmware revision reported by the physical instrument.  If Simulation is enabled "
+ "or the instrument is not capable of reporting the firmware revision, a string is "
+ "returned that explains the condition."
+
+3 all "Instrument Manufacturer" WX218X_ATTR_INSTRUMENT_MANUFACTURER ViString g 
+ "The name of the manufacturer reported by the physical instrument.  If Simulation "
+ "is enabled or the instrument is not capable of reporting the name of the manufacturer, "
+ "a string is returned that explains the condition. Manufacturer is limited to 256 "
+ "bytes"
+
+3 all "Instrument Model" WX218X_ATTR_INSTRUMENT_MODEL ViString g 
+ "The model number or name reported by the physical instrument.  If Simulation is enabled "
+ "or the instrument is not capable of reporting the model number or name, a string "
+ "is returned that explains the condition.  Model is limited to 256 bytes"
+
+2 all "User Options"
+
+3 all "Cache" WX218X_ATTR_CACHE ViBoolean gs 
+ "Drivers may choose to always cache some instrument settings, never cache others, "
+ "and optionally cache others, to avoid unecessary I/O to the instrument.  If True, "
+ "the driver caches optionally cached instrument settings."
+
+3 all "Interchange Check" WX218X_ATTR_INTERCHANGE_CHECK ViBoolean gs 
+ "If True, the driver maintains a record of interchangeability warnings.  If the driver "
+ "does not support interchangeability checking, attempts to set InterchangeCheck to "
+ "True return an error."
+
+3 all "Query Instrument Status" WX218X_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs 
+ "If True, the driver queries the instrument status at the end of each method or property "
+ "that performs I/O to the instrument.  If an error is reported, use ErrorQuery to "
+ "retrieve error messages one at a time from the instrument."
+
+3 all "Range Check" WX218X_ATTR_RANGE_CHECK ViBoolean gs 
+ "Drivers may choose to always validate some property/parameter values, never validate "
+ "others, and optionally validate others, to avoid sending invalid commands to the "
+ "instrument.  If True, the driver performs optional validations."
+
+3 all "Record Value Coercions" WX218X_ATTR_RECORD_COERCIONS ViBoolean gs 
+ "If True, the driver keeps a list of the value coercions it makes for ViInt32 and "
+ "ViReal64 attributes.  If the driver does not support coercion recording, attempts "
+ "to set RecordCoercions to True will return an error."
+
+3 all "Simulate" WX218X_ATTR_SIMULATE ViBoolean gs 
+ "If True, the driver does not perform I/O to the instrument, and returns simulated "
+ "values for output parameters."
+
+1 all "AM"
+
+2 all "AM Enabled" WX218X_ATTR_AM_ENABLED ViBoolean gs 
+ "If true, the function generator applies amplitude modulation to the signal that the "
+ "function generator produces."
+
+2 all "AM Internal Depth" WX218X_ATTR_AM_INTERNAL_DEPTH ViReal64 gs 
+ "The extent of modulation the function generator applies to the carrier waveform when "
+ "the AM Source attribute is set to AM Internal. The unit is percentage. Applies only "
+ "when the AM Source attribute is set to AM Internal."
+
+2 all "AM Internal Frequency" WX218X_ATTR_AM_INTERNAL_FREQUENCY ViReal64 gs 
+ "The frequency of the internal modulating waveform source. The units are Hertz. Applies "
+ "only when the AM Source attribute is set to AM Internal."
+
+2 all "AM Internal Waveform" WX218X_ATTR_AM_INTERNAL_WAVEFORM ViInt32 gs AMInternalWaveform
+ "The waveform of the internal modulating waveform source.  Applies only when the AM "
+ "Source attribute is set to AM Internal."
+
+2 all "AM Source" WX218X_ATTR_AM_SOURCE ViInt32 gs AMSource
+ "The source of the signal that the function generator uses as the modulating waveform. "
+ "Applies only when the AM Enabled attribute is set to True."
+
+1 all "Arbitrary"
+
+2 all "Arbitrary Gain" WX218X_ATTR_ARB_GAIN ViReal64 gs 
+ "The gain of the arbitrary waveform the function generator produces.  This value is "
+ "unitless."
+
+2 all "Arbitrary Offset" WX218X_ATTR_ARB_OFFSET ViReal64 gs 
+ "The offset of the arbitrary waveform the function generator produces.  The units "
+ "are volts."
+
+2 all "Arbitrary Sample Rate" WX218X_ATTR_ARB_SAMPLE_RATE ViReal64 gs 
+ "The sample rate of the arbitrary waveforms the function generator produces.  The "
+ "units are samples per second."
+
+2 all "Sequence"
+
+3 all "Arbitrary Sequence Handle" WX218X_ATTR_ARB_SEQUENCE_HANDLE ViInt32 gs 
+ "Identifies which arbitrary sequence the function generator produces. You create arbitrary "
+ "sequences with the Create Arbitrary Sequence function. This function returns a handle "
+ "that identifies the particular sequence. To configure the function generator to produce "
+ "a specific sequence, set this attribute to the sequence's handle."
+
+3 all "Loop Count Max" WX218X_ATTR_MAX_LOOP_COUNT ViInt32 g 
+ "The maximum number of times that the function generator can repeat a waveform in "
+ "a sequence."
+
+3 all "Number Sequences Max" WX218X_ATTR_MAX_NUM_SEQUENCES ViInt32 g 
+ "The maximum number of arbitrary sequences that the function generator allows."
+
+3 all "Sequence Length Max" WX218X_ATTR_MAX_SEQUENCE_LENGTH ViInt32 g 
+ "The maximum number of arbitrary waveforms that the function generator allows in an "
+ "arbitrary sequence."
+
+3 all "Sequence Length Min" WX218X_ATTR_MIN_SEQUENCE_LENGTH ViInt32 g 
+ "The minimum number of arbitrary waveforms that the function generator allows in an "
+ "arbitrary sequence."
+
+2 all "Waveform"
+
+3 all "Arbitrary Frequency" WX218X_ATTR_ARB_FREQUENCY ViReal64 gs 
+ "The rate at which an entire arbitrary waveform is generated.  The units are in Hertz."
+
+3 all "Arbitrary Waveform Handle" WX218X_ATTR_ARB_WAVEFORM_HANDLE ViInt32 gs 
+ "Identifies which arbitrary waveform the function generator produces. You create arbitrary "
+ "waveforms with the Create Arbitrary Waveform function. This function returns a handle "
+ "that identifies the particular waveform. To configure the function generator to produce "
+ "a specific waveform, set this attribute to the waveform's handle."
+
+3 all "Number Waveforms Max" WX218X_ATTR_MAX_NUM_WAVEFORMS ViInt32 g 
+ "The maximum number of arbitrary waveforms that the function generator allows."
+
+3 all "Waveform Quantum" WX218X_ATTR_WAVEFORM_QUANTUM ViInt32 g 
+ "The size of each arbitrary waveform must be a multiple of a quantum value. This attribute "
+ "returns the quantum value the function generator allows. For example, if this attribute "
+ "returns a value of 8, all waveform sizes must be a multiple of 8."
+
+3 all "Waveform Size Max" WX218X_ATTR_MAX_WAVEFORM_SIZE ViInt32 g 
+ "The maximum number of points the function generator allows in an arbitrary waveform."
+
+3 all "Waveform Size Min" WX218X_ATTR_MIN_WAVEFORM_SIZE ViInt32 g 
+ "The minimum number of points the function generator allows in an arbitrary waveform."
+
+1 all "FM"
+
+2 all "FM Enabled" WX218X_ATTR_FM_ENABLED ViBoolean gs 
+ "If true, the function generator applies amplitude modulation to the carrier waveform."
+
+2 all "FM Internal Depth" WX218X_ATTR_FM_INTERNAL_DEVIATION ViReal64 gs 
+ "The maximum frequency deviation the function generator applies to the carrier waveform "
+ "when the FM Source attribute is set to FM Internal. Applies only when the FM Source "
+ "attribute is set to FM Internal."
+
+2 all "FM Internal Frequency" WX218X_ATTR_FM_INTERNAL_FREQUENCY ViReal64 gs 
+ "The frequency of the internal modulating waveform source.  The units are hertz. Applies "
+ "only when the FM Source attribute is set to FM Internal."
+
+2 all "FM Internal Waveform" WX218X_ATTR_FM_INTERNAL_WAVEFORM ViInt32 gs FMInternalWaveform
+ "The waveform of the internal modulating waveform source. Applies only when the FM "
+ "Source attribute is set to FM Internal."
+
+2 all "FM Source" WX218X_ATTR_FM_SOURCE ViInt32 gs FMSource
+ "The source of the signal that the function generator uses as the modulating waveform. "
+ "Applies only when the FM Enabled attribute is set to True."
+
+1 all "Instrument Specific"
+
+2 all "Active Channel" WX218X_ATTR_ACTIVE_CHANNEL ViString gs 
+ "Sets the active channel for programming."
+
+2 all "Skew" WX218X_ATTR_SKEW ViReal64 gs 
+ "Fine skew adjustment."
+
+2 all "AHOP"
+
+3 all "Dwell Mode" WX218X_ATTR_DWELL_MODE ViInt32 gs AHOPDwellMode
+ "This parameter selects one of the Dwell mode variables for AHOP modulation."
+
+3 all "Enabled" WX218X_ATTR_ENABLED_AHOP ViBoolean gs 
+ "This property configures whether the function generator applies AHOP modulation to "
+ "a channel."
+
+3 all "Marker" WX218X_ATTR_MARKER ViInt32 gs 
+ "Sets marker for AHOP modulation."
+
+3 all "Time" WX218X_ATTR_TIME ViReal64 gs 
+ "Sets Time for AHOP modulation."
+
+2 all "AM"
+
+3 all "Enabled" WX218X_ATTR_ENABLED_AM ViBoolean gs 
+ "This property configures whether the function generator applies amplitude modulation "
+ "to a channel."
+
+3 all "Internal Depth" WX218X_ATTR_INTERNAL_DEPTH_AM ViReal64 gs 
+ "Programs the depth of the modulating waveform in units of percent."
+
+3 all "Internal Frequency" WX218X_ATTR_INTERNAL_FREQUENCY_AM ViReal64 gs 
+ "Programs the frequency of the modulating waveform in units of Hz."
+
+3 all "Internal Waveform" WX218X_ATTR_INTERNAL_WAVEFORM_AM ViInt32 gs AMInternalWaveform2
+ "Select one of the waveform shapes as the active modulating waveform."
+
+2 all "Arbitrary"
+
+3 all "Clock Divider" WX218X_ATTR_CLOCK_DIVIDER ViInt32 gs 
+ "Will set the external sample clock frequency divider."
+
+3 all "Freq Rast Divider" WX218X_ATTR_FREQ_RAST_DIVIDER ViInt32 gs FreqDivider
+
+3 all "Gain" WX218X_ATTR_GAIN ViReal64 gs 
+ "Specifies the factor by which the function generator scales the arbitrary waveforms."
+
+3 all "Offset" WX218X_ATTR_OFFSET ViReal64 gs 
+ "Specifies the value the function generator adds to the arbitrary waveforms."
+
+3 all "Sample Rate" WX218X_ATTR_SAMPLE_RATE ViReal64 gs 
+ "Will set the sample clock frequency of the arbitrary and sequenced waveform in units "
+ "of Sa/s."
+
+3 all "Sample Rate Source" WX218X_ATTR_SAMPLE_RATE_SOURCE ViInt32 gs SampleRateSource
+ "Selects the internal or external sample clock input."
+
+3 all "Source" WX218X_ATTR_ARB_SOURCE ViInt32 gs ArbitrarySource
+ "Use this property to set or query the source of the segment select command."
+
+3 all "Timing" WX218X_ATTR_ARB_TIMING ViInt32 gs ArbitraryTiming
+ "Use this property to set or query the timing characteristics of the trace select "
+ "command."
+
+3 all "Sequence"
+
+4 all "Advance Mode" WX218X_ATTR_ADVANCE_MODE ViInt32 gs SequenceAdvanceMode
+ "Selects the sequence advance mode."
+
+4 all "Jump Event" WX218X_ATTR_SEQ_JUMP_EVENT ViInt32 gs SequenceJumpEvent
+ "Use this property to set or query the source of the jump signal."
+
+4 all "Length Max" WX218X_ATTR_LENGTH_MAX ViInt32 g 
+ "Returns the maximum number of arbitrary waveforms the function generator allows in "
+ "a sequence."
+
+4 all "Length Min" WX218X_ATTR_LENGTH_MIN ViInt32 g 
+ "Returns the minimum number of arbitrary waveforms the function generator allows in "
+ "a sequence."
+
+4 all "Loop Count Max" WX218X_ATTR_LOOP_COUNT_MAX ViInt32 g 
+ "Returns the maximum number of times the function generator can repeat an arbitrary "
+ "waveform in a sequence."
+
+4 all "Number Sequence Max" WX218X_ATTR_NUMBER_SEQUENCE_MAX ViInt32 g 
+ "Returns the maximum number of loops that the advanced sequence can execute when its "
+ "advance mode is programmed to ONCE."
+
+4 all "Once Count" WX218X_ATTR_SEQ_ONCE_COUNT ViInt32 gs 
+ "Sets or query sequence once count."
+
+4 all "Prestep" WX218X_ATTR_PRESTEP ViInt32 gs SequencePrestep
+ "Sets Sequence Prestep as Wave or DC."
+
+4 all "Quick Sequence" WX218X_ATTR_QUICK_SEQUENCE ViInt32 gs 
+ "If user want to download sequence table in quick mode, he must set this proprty to "
+ "1, else to 0."
+
+4 all "Source" WX218X_ATTR_SEQ_SOURCE ViInt32 gs SequenceSource
+ "Use this property to set or query the source of the sequence."
+
+4 all "Sync Lock" WX218X_ATTR_SEQ_SYNC_LOCK ViInt32 gs 
+ "Set sync position to sequence step number."
+
+4 all "Timing" WX218X_ATTR_SEQ_TIMING ViInt32 gs SequenceTiming
+ "Use this property to set or query the timing characteristics of the sequence select "
+ "command."
+
+4 all "AdvanceSequence"
+
+5 all "Mode" WX218X_ATTR_ADV_SEQ_MODE ViInt32 gs AdvanceSequenceMode
+ "This property will select the sequence advance mode, which defines how the output "
+ "advances through the sequencer steps. There are three advance modes: automatic, once "
+ "and stepped."
+
+5 all "Once Count" WX218X_ATTR_ASEQ_ONCE_COUNT ViInt32 gs 
+ "Sets or query advance sequence once count."
+
+5 all "Sync Lock" WX218X_ATTR_SYNC_LOCK ViInt32 gs 
+ "Set sync position to advance sequence step number"
+
+3 all "Waveform"
+
+4 all "Download Record" WX218X_ATTR_DOWNLOAD_RECORD ViInt32 gs ArbDownloadRecord
+ "Enable or Disable record all downloaded waves on internal flash."
+
+4 all "Fast Download" WX218X_ATTR_FAST_DOWNLOAD ViInt32 gs 
+
+4 all "Number Waveforms Max" WX218X_ATTR_NUMBER_WAVEFORMS_MAX ViInt32 g 
+ "Returns the maximum number of arbitrary waveforms that the function generator allows."
+
+4 all "Quantum" WX218X_ATTR_QUANTUM ViInt32 g 
+ "The size (i.e. number of points) of each waveform must be a multiple of a constant "
+ "quantum value."
+
+4 all "Size Max" WX218X_ATTR_WAVEFORM_SIZE_MAX ViInt32 g 
+ "Returns the maximum number of points the function generator allows in a waveform."
+
+4 all "Size Min" WX218X_ATTR_WAVEFORM_SIZE_MIN ViInt32 g 
+ "Returns the minimum number of points the function generator allows in a waveform."
+
+4 all "Trace Mode" WX218X_ATTR_TRACE_MODE ViInt32 gs TraceMode
+ "Use this property to set or query the trace mode."
+
+2 all "ASK"
+
+3 all "Baud" WX218X_ATTR_ASK_BAUD ViReal64 gs 
+ "Sets baud for ASK modulation."
+
+3 all "Enabled" WX218X_ATTR_ENABLED_ASK ViBoolean gs 
+ "This property configures whether the function generator applies ASK modulation to "
+ "a channel."
+
+3 all "Marker" WX218X_ATTR_ASK_MARKER ViInt32 gs 
+ "Sets marker for ASK modulation."
+
+3 all "Shift Amplitude" WX218X_ATTR_ASK_SHIFT_AMPLITUDE ViReal64 gs 
+ "Sets shift amplitude for ASK modulation."
+
+3 all "Start Amplitude" WX218X_ATTR_ASK_START_AMPLITUDE ViReal64 gs 
+ "Sets start amplitude for ASK modulation."
+
+2 all "CarrierModulation"
+
+3 all "Frequency" WX218X_ATTR_CARR_FREQUENCY ViReal64 gs 
+ "This property programs the CW frequency."
+
+3 all "Waveform" WX218X_ATTR_CARR_WAVEFORM ViInt32 gs CarrierModulationWaveform
+ "Specifies the carrier function. There are three functions that could be modulated: "
+ "Sine, Triangle and Square."
+
+2 all "CHIRP"
+
+3 all "Ampl Depth" WX218X_ATTR_CHIRP_AMPL_DEPTH ViReal64 gs 
+ "Sets the amplitude depth for chirp modulation."
+
+3 all "Ampl Direction" WX218X_ATTR_CHIRP_AMPL_DIRECTION ViInt32 gs ChirpAmplitudeDirection
+ "Sets amplitude direction up or down for chirp modulation."
+
+3 all "Ampl Spacing" WX218X_ATTR_CHIRP_AMPL_SPACING ViInt32 gs ChirpAmplSpacing
+ "Sets chirp amplitude spacing linear or logarithmic."
+
+3 all "Enabled" WX218X_ATTR_CHIRP_ENABLED ViBoolean gs 
+ "This property configures whether the function generator applies chirp modulation "
+ "to a channel."
+
+3 all "Freq Direction" WX218X_ATTR_CHIRP_FREQ_DIRECTION ViInt32 gs ChirpFreqDirection
+ "Sets frequency direction up or down for chirp modulation."
+
+3 all "Freq Spacing" WX218X_ATTR_CHIRP_FREQ_SPACING ViInt32 gs ChirpFreqSpacing
+ "Sets frequency spacing linear or logarithmic for chirp modulation."
+
+3 all "Marker Frequency" WX218X_ATTR_CHIRP_MARKER_FREQUENCY ViReal64 gs 
+ "Sets the marker frequency for chirp modulation."
+
+3 all "Repetition" WX218X_ATTR_CHIRP_REPETITION ViReal64 gs 
+ "Sets the repetition for chirp modulation"
+
+3 all "Start Frequency" WX218X_ATTR_CHIRP_START_FREQUENCY ViReal64 gs 
+ "Sets the start frequency for chirp modulation."
+
+3 all "Stop Frequency" WX218X_ATTR_CHIRP_STOP_FREQUENCY ViReal64 gs 
+ "Sets the stop frequency for Chirp modulation."
+
+3 all "Width" WX218X_ATTR_CHIRP_WIDTH ViReal64 gs 
+ "Sets the width for chirp modulation."
+
+2 all "Couple"
+
+3 all "Enabled" WX218X_ATTR_COUPLE_ENABLED ViBoolean gs 
+ "Sets or queries the couple state of the synchronized channels. Use this property "
+ "to cause all, or just listed channels to synchronize."
+
+3 all "Offset" WX218X_ATTR_COURSE_OFFSET ViInt32 gs 
+ "When couple state is ON, this property sets or queries the offset between the start "
+ "phase of the master channel and the start phase of the slave channel."
+
+3 all "Skew" WX218X_ATTR_FINE_SKEW ViReal64 gs 
+ "When couple state is ALL, this property sets or queries the skew between the start "
+ "phase of the master channel and the start phase of the slave channel."
+
+2 all "DigitalPatternOutput"
+
+3 all "Arb Resolution" WX218X_ATTR_ARB_RESOLUTION ViInt32 gs ArbitraryResolution
+ "This property duplicates or not duplicates any arbitrary wave for sync between Arb "
+ "and Dig frequency."
+
+3 all "Delay" WX218X_ATTR_DIG_PATTERN_DELAY ViReal64 gs 
+ "This property programs the digital pattern delay."
+
+3 all "Delay Mode" WX218X_ATTR_DIG_DELAY_MODE ViInt32 gs DigPatternDelayMode
+ "This property programs delay mode for digital pattern output."
+
+3 all "Dig Clock" WX218X_ATTR_DIG_CLOCK ViInt32 gs DigitalClock
+ "This property programs clock for digital pattern output."
+
+3 all "Dig Port" WX218X_ATTR_DIG_PORT ViInt32 gs DigPort
+ "This property programs digital port for digital pattern output."
+
+3 all "DigPatternEnabled" WX218X_ATTR_DIG_PATTERN_ENABLED ViBoolean gs 
+ "This property sets the digital pattern output on or off."
+
+3 all "Emphasis Enabled" WX218X_ATTR_DIG_EMPHASIS_ENABLED ViBoolean gs 
+ "This property toggles emphasis on/off."
+
+3 all "Format Data" WX218X_ATTR_FORMAT_DATA ViInt32 gs DigFormatData
+ "This property programs how the waveform will be download into the memories."
+
+3 all "High Level" WX218X_ATTR_DIG_HIGH_LEVEL ViReal64 gs 
+ "This property programs the digital pattern high level."
+
+3 all "Level Mode" WX218X_ATTR_DIG_LEVEL_MODE ViInt32 gs DigPatternLevelMode
+ "This property programs level mode for digital pattern output."
+
+3 all "Low Level" WX218X_ATTR_DIG_LOW_LEVEL ViReal64 gs 
+ "This property programs the digital pattern low level."
+
+3 all "Pod Present" WX218X_ATTR_DIG_POD_PRESENT ViInt32 g 
+ "Checks whether a POD is present at the port."
+
+2 all "DigitalPulse"
+
+3 all "Amplitude" WX218X_ATTR_DIG_PULSE_AMPLITUDE ViReal64 gs 
+ "This property programs the peak to peak amplitude of the pulse waveform in units "
+ "of volts."
+
+3 all "Configure" WX218X_ATTR_DIG_PULSE_CONFIGURE ViInt32 gs PulseConfigure
+ "Enables the programming of pulse parameters in units of time (seconds)or units of "
+ "percent."
+
+3 all "Delay" WX218X_ATTR_DIG_PULSE_DELAY ViReal64 gs 
+ "This property programs the delayed interval of which the output idles on the low "
+ "level until the first transition to high level in units of seconds."
+
+3 all "Delay Percent" WX218X_ATTR_DIG_PULSE_DELAY_PERCENT ViReal64 gs 
+ "This property programs the delayed interval of which the output idles on the low "
+ "level until the first transition to high level in units of percent."
+
+3 all "Double Delay" WX218X_ATTR_DIG_PULSE_DOUBLE_DELAY ViReal64 gs 
+ "This property programs the delay between two adjacent pulses when the double mode "
+ "is selected in unuts of seconds."
+
+3 all "Double Delay Percent" WX218X_ATTR_DIG_PULSE_DOUBLE_DELAY_PERCENT ViReal64 gs 
+ "This property programs the delay between two adjacent pulses when the double mode "
+ "is selected in unuts of percent."
+
+3 all "Fall Time" WX218X_ATTR_DIG_PULSE_FALL_TIME ViReal64 gs 
+ "This property programs the interval it will take the trailing edge of the pulse to "
+ "transition from its high to low level settings in units of seconds."
+
+3 all "Fall Time Percent" WX218X_ATTR_DIG_PULSE_FALL_TIME_PERCENT ViReal64 gs 
+ "This property programs the interval it will take the trailing edge of the pulse to "
+ "transition from its high to low level settings in units of percent."
+
+3 all "High Level" WX218X_ATTR_DIG_PULSE_HIGH_LEVEL ViReal64 gs 
+ "This property programs the high level amplitude of the pulse waveform in units of "
+ "volts."
+
+3 all "Level Control" WX218X_ATTR_DIG_PULSE_LEVEL_CONTROL ViInt32 gs PulseLevelControl
+ "This property will determine how the pulse levels are programed. Pulse level mode "
+ "options are: High/Low, Amplitude/Offset, Positive and Negative."
+
+3 all "Low Level" WX218X_ATTR_DIG_PULSE_LOW_LEVEL ViReal64 gs 
+ "This property programs the low level amplitude of the pulse waveform."
+
+3 all "Mode" WX218X_ATTR_DIG_PULSE_MODE ViInt32 gs PulseMode
+ "This property programs the mode of the pulse. Pulse mode options are: Single pulse, "
+ "Delayed pulse and  Double pulse."
+
+3 all "Offset" WX218X_ATTR_DIG_PULSE_OFFSET ViReal64 gs 
+ "This property programs the offset amplitude of the pulse waveform in units of volts."
+
+3 all "Period" WX218X_ATTR_DIG_PULSE_PERIOD ViReal64 gs 
+ "This property programs the pulse repetition rate (period) in units of seconds."
+
+3 all "Polarity" WX218X_ATTR_DIG_PULSE_POLARITY ViInt32 gs PulsePolarity
+ "This property programs the polarity of the pulse in reference to the base line level. "
+ "The polarity options are: Normal, Inverted and Complemented."
+
+3 all "Rise Time" WX218X_ATTR_DIG_PULSE_RISE_TIME ViReal64 gs 
+ "This property programs the interval it will take the leading edge of the pulse to "
+ "transition from its low to high level settings in units of seconds."
+
+3 all "Rise Time Percent" WX218X_ATTR_DIG_PULSE_RISE_TIME_PERCENT ViReal64 gs 
+ "This property programs the interval it will take the leading edge of the pulse to "
+ "transition from its low to high level settings in units of percent."
+
+3 all "Transition" WX218X_ATTR_DIG_PULSE_TRANSITION ViInt32 gs PulseTransition
+ "This method will place the pulse output in one of three transition options: Fast, "
+ "Linear or Symmetrical."
+
+3 all "Width" WX218X_ATTR_DIG_PULSE_WIDTH ViReal64 gs 
+ "This property programs the pulse width value in units of seconds."
+
+3 all "Width Percent" WX218X_ATTR_DIG_PULSE_WIDTH_PERCENT ViReal64 gs 
+ "This property programs the pulse width value in units of percent."
+
+2 all "FHOP"
+
+3 all "Dwell Mode" WX218X_ATTR_FHOP_DWELL_MODE ViInt32 gs FHOPDwellMode
+ "This parameter selects one of the Dwell mode variables for FHOP modulation."
+
+3 all "Enabled" WX218X_ATTR_ENABLED_FHOP ViBoolean gs 
+ "This property configures whether the function generator applies FHOP modulation to "
+ "a channel."
+
+3 all "Marker" WX218X_ATTR_FHOP_MARKER ViInt32 gs 
+ "Sets marker for FHOP modulation"
+
+3 all "Time" WX218X_ATTR_FHOP_TIME ViReal64 gs 
+ "Sets dwell time for FHOP modulation."
+
+2 all "FM"
+
+3 all "Enabled" WX218X_ATTR_ENABLED_FM ViBoolean gs 
+ "This property enables or disables the frequency modulation."
+
+3 all "Internal Deviation" WX218X_ATTR_INTERNAL_DEVIATION_FM ViReal64 gs 
+ "Programs the deviation range around the carrier frequency in units of HZ."
+
+3 all "Internal Frequency" WX218X_ATTR_INTERNAL_FREQUENCY_FM ViReal64 gs 
+ "Programs the frequency of the modulating waveform in units of Hz."
+
+3 all "Internal Waveform" WX218X_ATTR_INTERNAL_WAVEFORM_FM ViInt32 gs FMInternalWaveform2
+ "This parameter selects one of the waveform shapes as the active modulating waveform."
+
+3 all "Marker" WX218X_ATTR_FM_MARKER ViReal64 gs 
+ "This property programs marker frequency position in units of Hz."
+
+2 all "FSK"
+
+3 all "Baud" WX218X_ATTR_FSK_BAUD ViReal64 gs 
+ "Sets Baud for FSK modulation."
+
+3 all "Enabled" WX218X_ATTR_ENABLED_FSK ViBoolean gs 
+ "This property configures whether the function generator applies FSK modulation to "
+ "a channel."
+
+3 all "Marker" WX218X_ATTR_FSK_MARKER ViInt32 gs 
+ "Sets marker for FSK modulation."
+
+3 all "Shift Freq" WX218X_ATTR_FSK_SHIFT_FREQ ViReal64 gs 
+ "Sets Shift Frequency for FSK modulation."
+
+2 all "Markers"
+
+3 all "Low Level4 Ch" WX218X_ATTR_LOW_LEVEL4_CH ViReal64 gs 
+ "Use this property to set or query the low level of the marker output."
+
+3 all "Marker High Level4 Ch" WX218X_ATTR_MARKER_HIGH_LEVEL4_CH ViReal64 gs 
+ "Use this property to set or query the high level of the marker output."
+
+3 all "Marker Index" WX218X_ATTR_MARKER_INDEX ViInt32 gs 
+ "Selects Marker Index."
+
+3 all "Marker Source" WX218X_ATTR_MARKER_SOURCE ViInt32 gs MarkerSource
+ "Use this property to set or query marker source."
+
+2 all "Output"
+
+3 all "Couple" WX218X_ATTR_COUPLE ViInt32 gs OutputCouple
+ "Use this property to set or query the type of the output amplifier that will be placed "
+ "between the DAC and the output connectors. The instrument has three separate amplifiers "
+ "for the output path: DC, AC and HV."
+
+3 all "Enabled" WX218X_ATTR_ENABLED_OUTPUT ViBoolean gs 
+ "Sets the output on and off."
+
+3 all "Ext Frequency" WX218X_ATTR_EXT_FREQUENCY ViInt32 gs ExtFrequency
+ "Use this property to set or query the external frequency."
+
+3 all "Operation Mode" WX218X_ATTR_OPERATION_MODE2 ViInt32 gs OperationMode2
+ "This property configures the operation mode of the function generator."
+
+3 all "Output Mode" WX218X_ATTR_OUTPUT_MODE2 ViInt32 gs OutputMode2
+ "Use this property to set or query the type of waveform that will be available at "
+ "the output connector."
+
+3 all "Ref Ext Frequency" WX218X_ATTR_REF_EXT_FREQUENCY ViReal64 gs 
+ "Use this property to set or query the frequency range that will be applied to the "
+ "reference oscillator input."
+
+3 all "Reference Clock Source" WX218X_ATTR_REFERENCE_CLOCK_SOURCE ViInt32 gs ReferenceClockSource2
+ "Use this property to set or query the source of the 10 MHz reference."
+
+3 all "Sync"
+
+4 all "Enabled" WX218X_ATTR_SYNC_ENABLED ViBoolean gs 
+ "This property will set or query the state of the sync output."
+
+4 all "Function" WX218X_ATTR_SYNC_FUNCTION ViInt32 gs OutputSyncFunction
+ "Use this property to set or query the shape of the sync pulse."
+
+4 all "Position" WX218X_ATTR_SYNC_POSITION ViInt32 gs 
+ "Sets the SYNC position in waveform points."
+
+4 all "Source" WX218X_ATTR_SYNC_SOURCE ViInt32 gs OutputSyncSource
+ "Use this property to set or query the source of the sync pulse."
+
+4 all "Width" WX218X_ATTR_SYNC_WIDTH ViInt32 gs 
+ "Sets the SYNC width in waveform points."
+
+2 all "Pattern"
+
+3 all "Baud" WX218X_ATTR_PATTERN_BAUD ViReal64 gs 
+ "Sets baud for predefined pattern mode."
+
+3 all "High Level" WX218X_ATTR_PATTERN_HIGH_LEVEL ViReal64 gs 
+ "Sets High Level for predefined pattern mode."
+
+3 all "Length" WX218X_ATTR_PATTERN_LENGTH ViInt32 gs 
+ "Sets length for predefined pattern mode."
+
+3 all "Level" WX218X_ATTR_PATTERN_LEVEL ViInt32 gs 
+ "Sets level for predefined pattern mode."
+
+3 all "Loop" WX218X_ATTR_PATTERN_LOOP ViInt32 gs 
+ "Sets number of loop for predefined pattern mode."
+
+3 all "Low Level" WX218X_ATTR_PATTERN_LOW_LEVEL ViReal64 gs 
+ "Sets Low Level for predefined pattern mode."
+
+3 all "Mode" WX218X_ATTR_PATTERN_MODE ViInt32 gs PatternMode
+ "Selects one of the two pattern modes:Composer or Predefined."
+
+3 all "Preamble" WX218X_ATTR_PREAMBLE ViInt32 gs 
+ "Sets preamble for predefined pattern mode."
+
+3 all "Predefined Type" WX218X_ATTR_PATTERN_PREDEFINED_TYPE ViInt32 gs PatternPredefinedType
+ "Selects type for predefined pattern mode."
+
+3 all "Composer"
+
+4 all "Fast Start" WX218X_ATTR_FAST_START ViReal64 gs 
+ "Sets fast start for pattern composer."
+
+4 all "Linear Start" WX218X_ATTR_PATT_COMP_LINEAR_START ViReal64 gs 
+ "Sets linear start for pattern composer."
+
+4 all "PattCompResolution" WX218X_ATTR_PATT_COMP_RESOLUTION ViReal64 gs 
+ "Sets resolution for pattern composer."
+
+4 all "Resolution Type" WX218X_ATTR_PATTERN_COMPOSER_RESOLUTION_TYPE ViInt32 gs PatternResType
+ "Sets resolution type for pattern composer."
+
+4 all "Transition Type" WX218X_ATTR_PATTERN_COMPOSER_TRANSITION_TYPE ViInt32 gs PatternComposerTransitionType
+ "Sets transition type for pattern composer."
+
+2 all "PSK"
+
+3 all "Baud" WX218X_ATTR_PSK_BAUD ViReal64 gs 
+ "Programs the baud of which the symbols stream in the (n)PSK data table."
+
+3 all "Carrier Enabled" WX218X_ATTR_PSK_CARRIER_ENABLED ViBoolean gs 
+ "Sets the carrier output on and off."
+
+3 all "Enabled" WX218X_ATTR_ENABLED_PSK ViBoolean gs 
+ "This property configures whether the function generator applies PSK modulation to "
+ "a channel."
+
+3 all "Marker" WX218X_ATTR_PSK_MARKER ViInt32 gs 
+ "Programs where on the data stream the instrument will generate a pulse, designated "
+ "as PSK marker, or index point."
+
+3 all "Rate" WX218X_ATTR_PSK_RATE ViReal64 gs 
+ "Sets Rate for PSK modulation."
+
+3 all "Shift Phase" WX218X_ATTR_PSK_SHIFT_PHASE ViReal64 gs 
+ "Sets Shift Phase for PSK modulation."
+
+3 all "Start Phase" WX218X_ATTR_PSK_START_PHASE ViReal64 gs 
+ "Sets Start Phase for PSK modulation."
+
+3 all "Type" WX218X_ATTR_TYPE ViInt32 gs PskType
+ "Selects type for PSK modulation."
+
+2 all "QAM"
+
+3 all "Baud" WX218X_ATTR_QAM_BAUD ViReal64 gs 
+ "Programs the baud of which the symbols stream in the (n)QAM data table."
+
+3 all "Carrier Enabled" WX218X_ATTR_CARRIER_ENABLED ViBoolean gs 
+ "Sets the carrier output on and off."
+
+3 all "Enabled" WX218X_ATTR_ENABLED_QAM ViBoolean gs 
+ "This property configures whether the function generator applies QAM modulation to "
+ "a channel."
+
+3 all "Marker" WX218X_ATTR_MARKER2 ViInt32 gs 
+ "Programs where on the data stream the instrument will generate a pulse, designated "
+ "as QAM marker, or index point."
+
+3 all "Type" WX218X_ATTR_QAM_TYPE ViInt32 gs QamType
+ "Selects between the various (n)QAM modulation schemes."
+
+2 all "StandardWaveform"
+
+3 all "Amplitude" WX218X_ATTR_AMPLITUDE ViReal64 gs 
+ "Sets the amplitude of the standard waveform."
+
+3 all "Dc Level" WX218X_ATTR_DC_LEVEL ViReal64 gs 
+ "Programs the DC offset parameter in units of volts."
+
+3 all "DC Offset" WX218X_ATTR_DC_OFFSET ViReal64 gs 
+ "Use this property to set or query the dc offset of the output waveform."
+
+3 all "Duty Cycle High" WX218X_ATTR_DUTY_CYCLE_HIGH ViReal64 gs 
+ "Programs the duty cycle of the standard square waveform in units of percent."
+
+3 all "Exp Exponent" WX218X_ATTR_EXP_EXPONENT ViInt32 gs 
+ "Programs the exponent parameter."
+
+3 all "Frequency" WX218X_ATTR_FREQUENCY ViReal64 gs 
+ "Use this property to set or query the frequency of the standard waveforms in units "
+ "of hertz (Hz)."
+
+3 all "Gauss Exponent" WX218X_ATTR_GAUSS_EXPONENT ViInt32 gs 
+ "Use this property to set or query the exponent for the standard Gaussian pulse waveform."
+
+3 all "Hv Amplitude" WX218X_ATTR_HV_AMPLITUDE ViReal64 gs 
+ "Sets the HV amplitude of the standard waveform."
+
+3 all "Power" WX218X_ATTR_POWER ViReal64 gs 
+ "Use this property to set or query the output power."
+
+3 all "Ramp Delay" WX218X_ATTR_RAMP_DELAY ViReal64 gs 
+ "Programs the ramp delay parameter in units of percent."
+
+3 all "Ramp Fall Time" WX218X_ATTR_RAMP_FALL_TIME ViReal64 gs 
+ "Programs the ramp fall time parameter in units of percent."
+
+3 all "Ramp Rise Time" WX218X_ATTR_RAMP_RISE_TIME ViReal64 gs 
+ "Programs the ramp rise time parameter in units of percent."
+
+3 all "SincN Cycle" WX218X_ATTR_SINCN_CYCLE ViInt32 gs 
+ "Use this property to set or query the number of cycles of the standard SINC pulse "
+ "waveform."
+
+3 all "Start Phase" WX218X_ATTR_START_PHASE ViReal64 gs 
+ "Sets the horizontal offset of the standard waveform."
+
+3 all "Waveform" WX218X_ATTR_WAVEFORM ViInt32 gs Waveform2
+ "Selects the standard waveform that you want the function generator to produce."
+
+2 all "StateStorage"
+
+3 all "Cell Recall" WX218X_ATTR_CELL_RECALL ViInt32 gs 
+ "Selects an active memory cell number. Consequent recall commands will affect this "
+ "cell only."
+
+3 all "Cell Store" WX218X_ATTR_CELL_STORE ViInt32 gs 
+ "Selects an active memory cell number. Consequent store commands will affect this "
+ "cell only."
+
+3 all "Configuration Recall" WX218X_ATTR_CONFIGURATION_RECALL ViInt32 g StateStorageRecalConfiguration
+ "Use this property to query what you have store in the active memory cell."
+
+3 all "Configuration Store" WX218X_ATTR_CONFIGURATION_STORE ViInt32 gs StateStorageConfiguration
+ "Use this property to select what you intend to store in the active memory cell."
+
+3 all "Recall Enabled" WX218X_ATTR_RECALL_ENABLED ViBoolean gs 
+ "Enables or Disables system recall."
+
+3 all "Store Enabled" WX218X_ATTR_STORE_ENABLED ViBoolean gs 
+ "Enables or Disables system store."
+
+3 all "Target Recall" WX218X_ATTR_TARGET_RECALL ViInt32 gs StateStorageTarget
+ "Use this property to select the source of your recall operation."
+
+3 all "Target Store" WX218X_ATTR_TARGET_STORE ViInt32 gs StateStorageTarget
+ "Use this property to select the source of your store operation."
+
+2 all "Sweep"
+
+3 all "Direction" WX218X_ATTR_SWEEP_DIRECTION ViInt32 gs SweepDirection
+ "This property specifies if the instrument output will sweep from start-to-stop (UP) "
+ "or from stop-to-start (DOWN) frequencies."
+
+3 all "Enabled" WX218X_ATTR_SWEEP_ENABLED ViBoolean gs 
+ "This property configures the function generator to apply frequency sweep to the output "
+ "signal."
+
+3 all "Frequency Start" WX218X_ATTR_SWEEP_FREQUENCY_START ViReal64 gs 
+ "Programs the sweep start frequency in units of Hz."
+
+3 all "Frequency Stop" WX218X_ATTR_SWEEP_FREQUENCY_STOP ViReal64 gs 
+ "Programs the sweep stop frequency in units of Hz."
+
+3 all "Marker" WX218X_ATTR_SWEEP_MARKER ViReal64 gs 
+ "Programs the marker frequency position in units of Hz."
+
+3 all "Spacing" WX218X_ATTR_SWEEP_SPACING ViInt32 gs SweepSpacing
+ "This property specifies the sweep step type. Two options are available: logarithmic "
+ "or linear."
+
+3 all "Time" WX218X_ATTR_SWEEP_TIME ViReal64 gs 
+ "Programs the sweep time in units of seconds."
+
+2 all "Trigger"
+
+3 all "Burst Count" WX218X_ATTR_BURST_COUNT2 ViInt32 gs 
+ "Use this property to set or query the burst counter setting."
+
+3 all "Continuous Mode" WX218X_ATTR_CONTINUOUS_MODE ViInt32 gs ContinuousMode
+ "Use this property to set or query the state of the enable mode."
+
+3 all "Continuous Source" WX218X_ATTR_CONTINUOUS_SOURCE ViInt32 gs ContinuousSource
+ "Use this property to set or query the source of the enable signal."
+
+3 all "Delay" WX218X_ATTR_TRIG_DELAY ViInt32 gs 
+ "Use this property to set or query the trigger delay setting."
+
+3 all "Level" WX218X_ATTR_TRIG_LEVEL ViReal64 gs 
+ "Use this property to program or query the threshold level for the trigger input signals."
+
+3 all "Slope" WX218X_ATTR_TRIG_SLOPE ViInt32 gs TriggerSlope
+ "Use this property to define or query the edge that will affect the trigger input."
+
+3 all "Source" WX218X_ATTR_TRIG_SOURCE ViInt32 gs TriggerSource2
+ "Use this property to set or query the source of the trigger event that will stimulate "
+ "the instrument to generate waveforms."
+
+3 all "Timer Delay" WX218X_ATTR_TRIG_TIMER_DELAY ViInt32 gs 
+ "Programs the internal delayed trigger generator period in units of waveform points. "
+ "Program the value using integers divisible by 8."
+
+3 all "Timer Mode" WX218X_ATTR_TRIG_TIMER_MODE ViInt32 gs TriggerTimerMode
+ "Use this property to set or query the mode that the internal trigger generator will "
+ "operate."
+
+3 all "Timer Time" WX218X_ATTR_TRIG_TIMER_TIME ViReal64 gs 
+ "Programs the internal timed trigger generator period in units of seconds."
+
+3 all "Trigger Impedance" WX218X_ATTR_TRIGGER_IMPEDANCE ViInt32 gs TriggerImpedance
+ "Use this property to define or query the trigger impedance."
+
+3 all "Trigger Mode" WX218X_ATTR_TRIG_TRIGGER_MODE ViInt32 gs TriggerMode
+ "Use this property to define or query the trigger mode."
+
+3 all "ARM"
+
+4 all "Level" WX218X_ATTR_ARM_LEVEL ViReal64 gs 
+ "This property programs the threshold level for the event input signals."
+
+4 all "Slope" WX218X_ATTR_ARM_SLOPE ViInt32 gs ArmSlope
+ "Use this property to define the edge that will affect the event input."
+
+3 all "SmartTrigger"
+
+4 all "Hi Pass Enabled" WX218X_ATTR_HI_PASS_ENABLED ViBoolean gs 
+ "Use this property to set or query the status of the high pass filter."
+
+4 all "Hi Pass Width" WX218X_ATTR_HI_PASS_WIDTH ViReal64 gs 
+ "Programs the high pass pulse width value in units of second."
+
+4 all "Holdoff" WX218X_ATTR_HOLDOFF ViReal64 gs 
+ "Programs the trigger holdoff period in units of second."
+
+4 all "Holdoff Enabled" WX218X_ATTR_HOLDOFF_ENABLED ViBoolean gs 
+ "Use this property to set or query the status of the holdoff filter."
+
+4 all "Low Pass Enabled" WX218X_ATTR_LOW_PASS_ENABLED ViBoolean gs 
+ "Use this property to set or query the status of the low pass filter."
+
+4 all "Low Pass Width" WX218X_ATTR_LOW_PASS_WIDTH ViReal64 gs 
+ "Programs the low pass pulse width value in units of second."
+
+2 all "XInstrument"
+
+3 all "Enabled" WX218X_ATTR_XINSTR_ENABLED ViBoolean gs 
+ "Sets or queries the state of the synchronized instruments."
+
+3 all "Mode" WX218X_ATTR_XINSTR_MODE ViInt32 gs XInstrumentMode
+ "Use this property to define master and slave instruments. This command affects the "
+ "system only when two instruments are hooked to a LAN network, synchronization cable "
+ "is attached to the rear panel of both instruments and are intended to operate in "
+ "synchronized mode."
+
+3 all "Mode Adv" WX218X_ATTR_MODE_ADV ViInt32 gs XInstrumentModeAdv
+ "Use this property to define master,slave and MSlave instruments. This command affects "
+ "the system only when two instruments are hooked to a LAN network, synchronization "
+ "cable is attached to the rear panel of both instruments and are intended to operate "
+ "in synchronized mode."
+
+3 all "Offset" WX218X_ATTR_XINSTR_OFFSET ViInt32 gs 
+ "When X-Instrument state is ON, this property sets or queries the offset between the "
+ "start phase of the master instrument and the start phase of the slave instrument."
+
+1 all "Output"
+
+2 all "Operation Mode" WX218X_ATTR_OPERATION_MODE ViInt32 gs OperationMode
+ "The mode that determines how the function generator produces waveforms. This attribute "
+ "determines which extension group's functions and attributes are used to configure "
+ "the waveform the function generator produces."
+
+2 all "Output Count" WX218X_ATTR_CHANNEL_COUNT ViInt32 g 
+ "The number of output channels supported by the instrument."
+
+2 all "Output Enabled" WX218X_ATTR_OUTPUT_ENABLED ViBoolean gs 
+ "If true, the signal the function generator produces appears at the output connector."
+
+2 all "Output Impedance" WX218X_ATTR_OUTPUT_IMPEDANCE ViReal64 gs 
+ "The impedance of the output channel.  The units are Ohms."
+
+2 all "Output Mode" WX218X_ATTR_OUTPUT_MODE ViInt32 gs OutputMode
+ "The mode that determines how the function generator produces waveforms. This attribute "
+ "determines which extension group's functions and attributes are used to configure "
+ "the waveform the function generator produces."
+
+2 all "Reference Clock Source" WX218X_ATTR_REF_CLOCK_SOURCE ViInt32 gs ReferenceClockSource
+ "The source of the reference clock. The function generator derives frequencies and "
+ "sample rates that it uses to generate waveforms from the reference clock."
+
+1 all "StandardWaveform"
+
+2 all "Amplitude" WX218X_ATTR_FUNC_AMPLITUDE ViReal64 gs 
+ "The amplitude of the standard waveform output by the function generator. When the "
+ "Waveform attribute is set to Waveform DC, this attribute does not affect signal output. "
+ " The units are volts."
+
+2 all "DC Offset" WX218X_ATTR_FUNC_DC_OFFSET ViReal64 gs 
+ "The DC offset of the standard waveform output by the function generator. If the Waveform "
+ "attribute is set to Waveform DC, this attribute specifies the DC level the function "
+ "generator produces.  The units are volts."
+
+2 all "Duty Cycle High" WX218X_ATTR_FUNC_DUTY_CYCLE_HIGH ViReal64 gs 
+ "The duty cycle for a square waveform. This attribute affects function generator behavior "
+ "only when the Waveform attribute is set to Waveform Square.  The value is expressed "
+ "as a percentage."
+
+2 all "Frequency" WX218X_ATTR_FUNC_FREQUENCY ViReal64 gs 
+ "The frequency of the standard waveform output by the function generator. When the "
+ "Waveform attribute is set to Waveform DC, this attribute does not affect signal output. "
+ " The units are Hertz."
+
+2 all "Start Phase" WX218X_ATTR_FUNC_START_PHASE ViReal64 gs 
+ "The start phase of the standard waveform output by the function generator. When the "
+ "Waveform attribute is set to Waveform DC, this attribute does not affect signal output. "
+ " The units are degrees."
+
+2 all "Waveform" WX218X_ATTR_FUNC_WAVEFORM ViInt32 gs Waveform
+ "The standard waveform output by the function generator."
+
+1 all "Trigger"
+
+2 all "Burst Count" WX218X_ATTR_BURST_COUNT ViInt32 gs 
+ "The number of waveform cycles that the function generator produces after it receives "
+ "a trigger."
+
+2 all "Internal Trigger Rate" WX218X_ATTR_INTERNAL_TRIGGER_RATE ViReal64 gs 
+ "The rate at which the function generator's internal trigger source produces a trigger, "
+ "in triggers per second."
+
+2 all "Trigger Source" WX218X_ATTR_TRIGGER_SOURCE ViInt32 gs TriggerSource
+ "The trigger source. After the function generator receives a trigger from this source, "
+ "it produces a signal."

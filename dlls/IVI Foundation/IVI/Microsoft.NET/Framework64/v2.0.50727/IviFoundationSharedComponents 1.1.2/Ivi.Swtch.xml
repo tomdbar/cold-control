@@ -1,0 +1,1401 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivi.Swtch</name>
+    </assembly>
+    <members>
+        <member name="T:Ivi.Swtch.Errors">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.AttemptToConnectSources">
+            <summary>
+              Looks up a localized string similar to A connection between two different sources is not allowed..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.CannotConnectDirectly">
+            <summary>
+              Looks up a localized string similar to The path contains a leg with two channels that cannot be directly connected..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.CannotConnectToItself">
+            <summary>
+              Looks up a localized string similar to A channel cannot be connected to itself..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.Channel1Name">
+            <summary>
+              Looks up a localized string similar to Channel 1 name: .
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.Channel2Name">
+            <summary>
+              Looks up a localized string similar to Channel 2 name: .
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.ChannelDuplicatedInLeg">
+            <summary>
+              Looks up a localized string similar to The two channels in the leg are the same..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.ChannelDuplicatedInPath">
+            <summary>
+              Looks up a localized string similar to A channel name is duplicated in the path..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.ChannelName">
+            <summary>
+              Looks up a localized string similar to Channel name: .
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.ChannelsAlreadyConnected">
+            <summary>
+              Looks up a localized string similar to A leg in the path contains two channels that are already directly connected..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.EmptyScanList">
+            <summary>
+              Looks up a localized string similar to No scan list is specified..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.EmptySwitchPath">
+            <summary>
+              Looks up a localized string similar to The switch path is empty..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.ExplicitConnectionExists">
+            <summary>
+              Looks up a localized string similar to An explicit connection between the channels already exists..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.InvalidScanList">
+            <summary>
+              Looks up a localized string similar to The given scan list string does not have the correct syntax, or the scan list syntax cannot be implemented by the switch..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.IsConfigurationChannel">
+            <summary>
+              Looks up a localized string similar to An explicit connection to a configuration channel is not allowed..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.NoScanInProgress">
+            <summary>
+              Looks up a localized string similar to The switch is not currently scanning through the scan list..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.NoSuchPath">
+            <summary>
+              Looks up a localized string similar to No explicit path exists between the channels..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.NotAConfigurationChannel">
+            <summary>
+              Looks up a localized string similar to One of the non-terminal channels in the path is not a configuration channel..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.PathNotFound">
+            <summary>
+              Looks up a localized string similar to No path was found between the channels..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.ResourceInUse">
+            <summary>
+              Looks up a localized string similar to One of the channels in the path is a configuration channel that is in use..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.ScanInProgress">
+            <summary>
+              Looks up a localized string similar to The switch is currently scanning through the scan list..
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.Errors.ScanList">
+            <summary>
+              Looks up a localized string similar to Scan list: .
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.AttemptToConnectSourcesException">
+            <summary>
+            A connection between two different sources is not allowed.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.AttemptToConnectSourcesException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with two specified channels. 
+            </summary>
+            <param name="channel1Name">The name of the first channel.</param>
+            <param name="channel2Name">The name of the second channel.</param>
+        </member>
+        <member name="M:Ivi.Swtch.AttemptToConnectSourcesException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.AttemptToConnectSourcesException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.AttemptToConnectSourcesException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.AttemptToConnectSourcesException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.AttemptToConnectSourcesException.Channel1Name">
+            <summary>
+            The name of the first channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.AttemptToConnectSourcesException.Channel2Name">
+            <summary>
+            The name of the second channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.AttemptToConnectSourcesException.Message">
+            <summary>
+            Create the exception message string based on the message and the stored exception parameters.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.CannotConnectDirectlyException">
+            <summary>
+            A connection between two different sources is not allowed.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.CannotConnectDirectlyException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with two specified channels. 
+            </summary>
+            <param name="channel1Name">The name of the first channel.</param>
+            <param name="channel2Name">The name of the second channel.</param>
+        </member>
+        <member name="M:Ivi.Swtch.CannotConnectDirectlyException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.CannotConnectDirectlyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.CannotConnectDirectlyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.CannotConnectDirectlyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.CannotConnectDirectlyException.Channel1Name">
+            <summary>
+            The name of the first channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.CannotConnectDirectlyException.Channel2Name">
+            <summary>
+            The name of the second channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.CannotConnectDirectlyException.Message">
+            <summary>
+            Create the exception message string based on the message and the stored exception parameters.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.CannotConnectToItselfException">
+            <summary>
+            Upconverter list is unknown.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.CannotConnectToItselfException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and channel name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="channelName">The channel name.</param>
+        </member>
+        <member name="M:Ivi.Swtch.CannotConnectToItselfException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.CannotConnectToItselfException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.CannotConnectToItselfException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.CannotConnectToItselfException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.CannotConnectToItselfException.ChannelName">
+            <summary>
+            The channel name.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.CannotConnectToItselfException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.ChannelDuplicatedInLegException">
+            <summary>
+            Upconverter list is unknown.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelDuplicatedInLegException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="channelName">The channel name.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelDuplicatedInLegException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelDuplicatedInLegException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelDuplicatedInLegException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelDuplicatedInLegException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.ChannelDuplicatedInLegException.ChannelName">
+            <summary>
+            The channel name.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.ChannelDuplicatedInLegException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.ChannelDuplicatedInPathException">
+            <summary>
+            Upconverter list is unknown.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelDuplicatedInPathException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and channel name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="channelName">The channel name.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelDuplicatedInPathException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelDuplicatedInPathException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelDuplicatedInPathException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelDuplicatedInPathException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.ChannelDuplicatedInPathException.ChannelName">
+            <summary>
+            The channel name.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.ChannelDuplicatedInPathException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.ChannelsAlreadyConnectedException">
+            <summary>
+            A connection between two different sources is not allowed.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelsAlreadyConnectedException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with two specified channels. 
+            </summary>
+            <param name="channel1Name">The name of the first channel.</param>
+            <param name="channel2Name">The name of the second channel.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelsAlreadyConnectedException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelsAlreadyConnectedException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelsAlreadyConnectedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ChannelsAlreadyConnectedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.ChannelsAlreadyConnectedException.Channel1Name">
+            <summary>
+            The name of the first channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.ChannelsAlreadyConnectedException.Channel2Name">
+            <summary>
+            The name of the second channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.ChannelsAlreadyConnectedException.Message">
+            <summary>
+            Create the exception message string based on the message and the stored exception parameters.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.EmptyScanListException">
+            <summary>
+            The switch module is currently scanning through the scan list.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.EmptyScanListException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.EmptyScanListException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.EmptyScanListException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.EmptyScanListException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.EmptyScanListException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.EmptySwitchPathException">
+            <summary>
+            The switch module is currently scanning through the scan list.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.EmptySwitchPathException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.EmptySwitchPathException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.EmptySwitchPathException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.EmptySwitchPathException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.EmptySwitchPathException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.ExplicitConnectionExistsException">
+            <summary>
+            A connection between two different sources is not allowed.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ExplicitConnectionExistsException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with two specified channels. 
+            </summary>
+            <param name="channel1Name">The name of the first channel.</param>
+            <param name="channel2Name">The name of the second channel.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ExplicitConnectionExistsException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ExplicitConnectionExistsException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ExplicitConnectionExistsException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ExplicitConnectionExistsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.ExplicitConnectionExistsException.Channel1Name">
+            <summary>
+            The name of the first channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.ExplicitConnectionExistsException.Channel2Name">
+            <summary>
+            The name of the second channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.ExplicitConnectionExistsException.Message">
+            <summary>
+            Create the exception message string based on the message and the stored exception parameters.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.IIviSwtchScan">
+            <summary>IVI Swtch class-compliant scan interface</summary>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchScan.ConfigureList(System.String,Ivi.Swtch.ScanMode)">
+            <summary>Sets a scan list that specifies actions to take while scanning, the scan mode for the list, and the order  
+            in which the actions are executed. The format of this array is described in the IviSwtch specification.
+            </summary>
+            <param name="list">A complete array list of actions to be performed while scanning.  The array must be a complete  
+            list because the driver does not expose a reference to the array for additional modifications.</param>
+            <param name="mode">Scanning mode.</param>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchScan.ConfigureTrigger(Ivi.Driver.PrecisionTimeSpan,System.String,System.String)">
+            <summary>Configures the scan Delay, Input trigger, and ScannerAdvancedOutput trigger properties, in order to 
+            set the trigger behavior for the scan list established with the ConfigureList method.</summary>
+            <param name="scanDelay">The minimum length of time you want the instrument to wait from the time the 
+            instrument creates a path until it asserts a trigger on the Scan Advanced output line.  The driver uses 
+            this value to set the Scan Delay property.  See the property description for more details.</param>
+            <param name="triggerInput">Each driver determines what values are valid based on the capabilities of supported instruments. 
+            The IVI Foundation defines a set of standard trigger values in IVI-3.3, Standard Cross Class Capabilities.  If the driver
+            supports one of the sources documented in IVI-3.3, it must support the standard string value for that source.</param>
+            <param name="scannerAdvancedOutput">Scan advanced output.  The driver uses this value to set the Scan Advanced 
+            Output property.  See the property description for more details.</param>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchScan.Initiate">
+            <summary>Initiates the scan based on the current List property, and returns once the scan has begun.  To 
+            stop scanning, call Abort.  When the switch is scanning, operations other than reading properties, 
+            SendSoftwareTrigger and Abort are invalid.</summary>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchScan.Abort">
+            <summary>Stops the scan that begun with Initiate method and returns the switch to the Idle state.  This operation 
+            does not reset or initialize the state of the switch.  To determine the status of the scan, call the 
+            IsScanning method.</summary>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchScan.SendSoftwareTrigger">
+            <summary>Sends a software trigger, which causes the switch to advance to the next entry in the scan List.</summary>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchScan.WaitForScanComplete(Ivi.Driver.PrecisionTimeSpan)">
+            <summary>Waits up to maxTime for the instrument to stop scanning through the scan List.</summary>
+            <param name="maximumTime">Maximum time to wait for the scan to complete.</param>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchScan.List">
+            <summary>A scan list that specifies actions to take while scanning, and the order in which the actions are 
+            executed. The format of this string is described in the IviSwtch specification.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchScan.IsScanning">
+            <summary>If True, the switch module is currently scanning through the scan list.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchScan.Continuous">
+            <summary>If True, the switch module should scan continuously through the scan list, otherwise it should 
+            only scan once through the scan list.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchScan.NumberOfColumns">
+            <summary>The maximum number of channels on the column of a matrix or scanner.  If the switch module is a 
+            scanner, this value is the number of input channels.  The number returned is dependent on the WireMode 
+            property.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchScan.NumberOfRows">
+            <summary>The maximum number of channels on the row of a matrix or scanner.  If the switch module is a scanner, 
+            this value is the number of output channels (commons).  The number returned is dependent on the WireMode property.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchScan.ScannerAdvancedOutput">
+            <summary>
+            The destination of the scan's advanced output trigger.  This trigger is asserted each time a path is 
+            created.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchScan.Delay">
+            <summary>The minimum length of time from creating the path to asserting the scan's advanced output trigger. 
+            The actual time may be longer.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchScan.Input">
+            <summary>
+            The source of the trigger input.  Input triggers tell the switch module to advance to the next entry 
+            in the scan list and close the specified channel.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchScan.Mode">
+            <summary>The connection breaking behavior of the switch during a scan.  Previous paths may be broken before 
+            making new ones, after making new ones, or not broken at all.</summary>
+        </member>
+        <member name="T:Ivi.Swtch.IIviSwtch">
+            <summary>IVI Swtch class-compliant root level interface</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtch.Channels">
+            <summary>A reference to the class-compliant IIviSwtchChannels interface</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtch.Path">
+            <summary>A reference to the class-compliant IIviSwtchPath interface</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtch.Scan">
+            <summary>A reference to the class-compliant IIviSwtchScan interface</summary>
+        </member>
+        <member name="T:Ivi.Swtch.IIviSwtchChannel">
+            <summary>IVI Swtch class-compliant channel interface</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchChannel.IsConfigurationChannel">
+            <summary>If True, the channel is no longer accessible to the user and can be used by the specific
+            driver for path creation.  If false, the channel is considered a standard channel and can be
+            explicitly connected to another channel. </summary>
+            <remarks>Once a channel has been configured as a configuration channel, then no operation can be performed
+            on that channel, except for reading and writing the Is Configuration Channel property.</remarks>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchChannel.IsSourceChannel">
+            <summary>If True, the channel is a source channel.  Two channels that are either sources or have their own 
+            connections to sources, may not be connected.  This prevents connections that might cause damage to channels, 
+            devices, or system.</summary>
+            <remarks>The intention of this property is to prevent channels from being connected that may cause damage to
+            the channels, devices, or system. Notice that GROUND can be considered a source in some circumstances.</remarks>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchChannel.Characteristics">
+            <summary>A reference to the class-compliant IIviSwtchCharacteristics interface</summary>
+        </member>
+        <member name="T:Ivi.Swtch.IIviSwtchChannelCollection">
+            <summary>IVI Swtch class-compliant channel collection interface</summary>
+        </member>
+        <member name="T:Ivi.Swtch.IIviSwtchCharacteristics">
+            <summary>IVI Swtch class-compliant channel characteristics interface</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.ACCurrentCarryMax">
+            <summary>The maximum AC current the channel can carry, in amperes RMS.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.ACCurrentSwitchingMax">
+            <summary>The maximum AC current the channel can switch, in amperes RMS.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.ACPowerCarryMax">
+            <summary>The maximum AC power the channel can carry, in volt-amperes.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.ACPowerSwitchingMax">
+            <summary>The maximum AC power the channel can switch, in volt-amperes.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.ACVoltageMax">
+            <summary>The maximum AC voltage the channel can handle, in volts RMS.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.Bandwidth">
+            <summary>The maximum frequency signal, in Hertz, that you can pass through the channel without attenuating it
+            by more than 3dB.</summary>
+            <remarks>Values for this property are on per-channel basis and may not take into account the other switches
+            that make up a path to or from this channel.</remarks>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.DCCurrentCarryMax">
+            <summary>The maximum DC current the channel can carry, in amperes.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.DCCurrentSwitchingMax">
+            <summary>The maximum DC current the channel can switch, in amperes.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.DCPowerCarryMax">
+            <summary>The maximum DC power the channel can handle, in watts.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.DCPowerSwitchingMax">
+            <summary>The maximum DC power the channel can switch, in watts.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.DCVoltageMax">
+            <summary>The maximum DC voltage the channel can handle, in volts.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.Impedance">
+            <summary>The characteristic impedance of the channel, in ohms.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.SettlingTime">
+            <summary>The maximum total settling time for the channel before the signal going through it is considered 
+            stable.  This includes both the activation time for the channel as well as any debounce time.</summary>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchCharacteristics.WireMode">
+            <summary>The number of conductors in the current channel.  Values for this property are on per-channel
+            basis and may not take into account the other switches that make up a path to or from this channel.</summary>
+        </member>
+        <member name="T:Ivi.Swtch.IIviSwtchPath">
+            <summary>IVI Swtch class-compliant path interface</summary>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchPath.CanConnect(System.String,System.String)">
+            <summary>Without actually creating the path, this reports whether the switch module can create a given path.  
+            This method takes existing paths into account.</summary>
+            <param name="channel1">A string indicating one of the channels of the path.</param>
+            <param name="channel2">A string indicating one of the channels of the path.</param>
+            <returns>Indicates whether a path is valid and/or possible. See the spec for definitions</returns>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchPath.Connect(System.String,System.String)">
+            <summary>Creates a path between the two channels.  If the path already exists, the operation does not count 
+            the number of calls.  All paths are assumed to be bi-directional.</summary>
+            <param name="channel1">A string indicating one of the channels of the path.</param>
+            <param name="channel2">A string indicating one of the channels of the path.</param>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchPath.Disconnect(System.String,System.String)">
+            <summary>Destroys the path between the two channels.  The order of the two channels need not be the same as 
+            the connect operation. If no explict path exists between the two channels, this function
+            returns the error No Such Path without performing any disconnection operation</summary>
+            <param name="channel1">A string indicating one of the channels of the path.</param>
+            <param name="channel2">A string indicating one of the channels of the path.</param>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchPath.DisconnectAll">
+            <summary>Disconnect all paths created since Initialize or Reset have been called.  If any paths remain, 
+            this method returns a Path Remains warning. </summary>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchPath.GetPath(System.String,System.String)">
+            <summary>Returns an array of channels that have been connected in order to create the path between the
+            specified channels.  The only valid paths that can be returned are ones that have been explicitly set via
+            Connect and SetPath methods.</summary>
+            <param name="channel1">A string indicating one of the channels of the path.</param>
+            <param name="channel2">A string indicating one of the channels of the path.</param>
+            <returns>An driver-allocated array of channels used to create a path between channel1 and channel 2.</returns>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchPath.SetPath(System.String[])">
+            <summary>Creates a path given a pathList of path legs defined by a start and end channel pair.  The end 
+            channels are the first and last channels in the array.  All other channels are intermediate channels.
+            Channels are connected in the order in which they occur in the array.</summary>
+            <param name="pathList">Array of channels indicating the path.</param>
+        </member>
+        <member name="M:Ivi.Swtch.IIviSwtchPath.WaitForDebounce(Ivi.Driver.PrecisionTimeSpan)">
+            <summary>Wait time until all the signals flowing through the switch have settled.  If the signals do not settle 
+            within MaxTime, the method returns a Max Time Exceeded error.</summary>
+            <param name="maximumTime">Maximum time to wait for the debounce operation to complete.</param>
+        </member>
+        <member name="P:Ivi.Swtch.IIviSwtchPath.IsDebounced">
+            <summary>If True, the switch module has settled from previous switching commands and completed debounce.  
+            This indicates that the signal going through the switch module is valid, assuming that the switches in the 
+            path have the correct characteristics.</summary>
+        </member>
+        <member name="T:Ivi.Swtch.InvalidScanListException">
+            <summary>
+            Upconverter list is unknown.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.InvalidScanListException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and scan list. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="scanList">The scan list.</param>
+        </member>
+        <member name="M:Ivi.Swtch.InvalidScanListException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.InvalidScanListException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.InvalidScanListException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.InvalidScanListException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.InvalidScanListException.ScanList">
+            <summary>
+            The channel name.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.InvalidScanListException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.IsConfigurationChannelException">
+            <summary>
+            Upconverter list is unknown.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.IsConfigurationChannelException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and channel name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="channelName">The channel name.</param>
+        </member>
+        <member name="M:Ivi.Swtch.IsConfigurationChannelException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.IsConfigurationChannelException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.IsConfigurationChannelException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.IsConfigurationChannelException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.IsConfigurationChannelException.ChannelName">
+            <summary>
+            The channel name.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.IsConfigurationChannelException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.IviSwtch">
+            <summary>
+            The IviSwtch class allows clients to create instances of drivers that implement the class-compliant
+            IviSwtch interfaces, based on information in the IVI configuration store.  This allows clients to
+            interchange IVI.NET class-compliant IviSwtch drivers without modifying or rebuilding the client program
+            source code.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.IviSwtch.Create(System.String)">
+            <summary>
+            Create an instance of an IviSwtch class-compliant driver and return an IIviSwtch reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviSwtch driver to be created.</param>
+            <returns>
+            An IIviSwtch interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.Swtch.IviSwtch.Create(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Create an instance of an IviSwtch class-compliant driver and return an IIviSwtch reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviSwtch driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <returns>
+            An IIviSwtch interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.Swtch.IviSwtch.Create(System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Create an instance of an IviSwtch class-compliant driver and return an IIviSwtch reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviSwtch driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviSwtch interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="M:Ivi.Swtch.IviSwtch.Create(System.String,System.Boolean,System.Boolean,Ivi.Driver.LockType,System.String,System.String)">
+            <summary>
+            Create an instance of an IviSwtch class-compliant driver and return an IIviSwtch reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviSwtch driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="lockType">Specifies whether to use .NET AppDomain-wide locking or machine-wide locking.</param>
+            <param name="accessKey">Specifies a user-selectable access key to identify the lock.  Driver instances 
+            that are created with the same accessKey will be protected from simultaneous access by multiple threads 
+            within a process or across processes, depending upon the value of the lockType parameter. </param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviSwtch interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="T:Ivi.Swtch.IviSwtchWarnings">
+            <summary>
+            Ivi.Swtch warning codes.
+            </summary>
+        </member>
+        <member name="F:Ivi.Swtch.IviSwtchWarnings.ImplicitConnectionExists">
+            <summary>
+            The implicit connection exists between the channels.
+            </summary>
+        </member>
+        <member name="F:Ivi.Swtch.IviSwtchWarnings.PathRemains">
+            <summary>
+            Some connections remain after disconnecting.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.NoScanInProgressException">
+            <summary>
+            The switch module is currently scanning through the scan list.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.NoScanInProgressException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.NoScanInProgressException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.NoScanInProgressException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.NoScanInProgressException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.NoScanInProgressException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.NoSuchPathException">
+            <summary>
+            A connection between two different sources is not allowed.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.NoSuchPathException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with two specified channels. 
+            </summary>
+            <param name="channel1Name">The name of the first channel.</param>
+            <param name="channel2Name">The name of the second channel.</param>
+        </member>
+        <member name="M:Ivi.Swtch.NoSuchPathException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.NoSuchPathException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.NoSuchPathException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.NoSuchPathException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.NoSuchPathException.Channel1Name">
+            <summary>
+            The name of the first channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.NoSuchPathException.Channel2Name">
+            <summary>
+            The name of the second channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.NoSuchPathException.Message">
+            <summary>
+            Create the exception message string based on the message and the stored exception parameters.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.NotAConfigurationChannelException">
+            <summary>
+            Upconverter list is unknown.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.NotAConfigurationChannelException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and channel name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="channelName">The channel name.</param>
+        </member>
+        <member name="M:Ivi.Swtch.NotAConfigurationChannelException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.NotAConfigurationChannelException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.NotAConfigurationChannelException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.NotAConfigurationChannelException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.NotAConfigurationChannelException.ChannelName">
+            <summary>
+            The channel name.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.NotAConfigurationChannelException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.PathCapability">
+            <summary>IVI Swtch class-compliant values for PathCapability</summary>
+        </member>
+        <member name="F:Ivi.Swtch.PathCapability.Available">
+            <summary>The driver can create a path at this time.</summary>
+        </member>
+        <member name="F:Ivi.Swtch.PathCapability.Exists">
+            <summary>The explicit path between the channels already exists.</summary>
+        </member>
+        <member name="F:Ivi.Swtch.PathCapability.Unsupported">
+            <summary>Although path is valid, the instrument is not capable of creating a path between the two channels, 
+            because the switch module is currently using one or more of the required channels to create another path.  
+            You must destroy the other path before creating this one.</summary>
+        </member>
+        <member name="F:Ivi.Swtch.PathCapability.ResourceInUse">
+            <summary>Although the path is valid, the driver cannot create the path at this moment because the switch module 
+            is currently using one or more of the required channels to create another path.  You must destroy the other path 
+            before creating this one.</summary>
+        </member>
+        <member name="F:Ivi.Swtch.PathCapability.SourceConflict">
+            <summary>The instrument cannot create a path between the two channels because both are connected to a different 
+            source channel.</summary>
+        </member>
+        <member name="F:Ivi.Swtch.PathCapability.ChannelNotAvailable">
+            <summary>The driver cannot create a path between the two channels because one of the channels is a configuration 
+            channel and thus unavailable for external connections.</summary>
+        </member>
+        <member name="T:Ivi.Swtch.PathNotFoundException">
+            <summary>
+            A connection between two different sources is not allowed.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.PathNotFoundException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with two specified channels. 
+            </summary>
+            <param name="channel1Name">The name of the first channel.</param>
+            <param name="channel2Name">The name of the second channel.</param>
+        </member>
+        <member name="M:Ivi.Swtch.PathNotFoundException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.PathNotFoundException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.PathNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.PathNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.PathNotFoundException.Channel1Name">
+            <summary>
+            The name of the first channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.PathNotFoundException.Channel2Name">
+            <summary>
+            The name of the second channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.PathNotFoundException.Message">
+            <summary>
+            Create the exception message string based on the message and the stored exception parameters.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.ResourceInUseException">
+            <summary>
+            Upconverter list is unknown.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ResourceInUseException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and channel name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="channelName">The channel name.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ResourceInUseException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ResourceInUseException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ResourceInUseException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ResourceInUseException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.ResourceInUseException.ChannelName">
+            <summary>
+            The channel name.
+            </summary>
+        </member>
+        <member name="P:Ivi.Swtch.ResourceInUseException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.ScanInProgressException">
+            <summary>
+            The switch module is currently scanning through the scan list.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ScanInProgressException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.ScanInProgressException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ScanInProgressException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Swtch.ScanInProgressException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Swtch.ScanInProgressException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Swtch.ScanMode">
+            <summary>IVI Swtch class-compliant values for Scan Mode</summary>
+        </member>
+        <member name="F:Ivi.Swtch.ScanMode.None">
+            <summary>Indicates that no action should be taken on the previous paths.</summary>
+        </member>
+        <member name="F:Ivi.Swtch.ScanMode.BreakBeforeMake">
+            <summary>Tells the card to break the previous paths before making the new paths.</summary>
+        </member>
+        <member name="F:Ivi.Swtch.ScanMode.BreakAfterMake">
+            <summary>Tells the driver to make new paths before breaking the previous paths.</summary>
+        </member>
+        <member name="T:Ivi.Swtch.UnsupportedScanOperationException">
+            <summary>
+            No explicit path exists between the channels.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.UnsupportedScanOperationException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Swtch.UnsupportedScanOperationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Swtch.UnsupportedScanOperationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error 
+            message and a reference to the inner exception that is the cause 
+            of this exception. 
+            </summary>
+            <param name="message">
+            The error message that explains the reason for the exception.
+            </param>
+            <param name="innerException">
+            The exception that is the cause of the current exception, 
+            or a null reference if no inner exception is specified.
+            </param>
+        </member>
+        <member name="M:Ivi.Swtch.UnsupportedScanOperationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">
+            The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized
+            object data about the exception being thrown.
+            </param>
+            <param name="context">
+            The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual
+            information about the source or destination.
+            </param>
+        </member>
+    </members>
+</doc>

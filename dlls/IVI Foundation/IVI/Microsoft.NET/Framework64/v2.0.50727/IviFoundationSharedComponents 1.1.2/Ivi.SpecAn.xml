@@ -1,0 +1,1369 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivi.SpecAn</name>
+    </assembly>
+    <members>
+        <member name="T:Ivi.SpecAn.AcquisitionStatus">
+            <summary>
+            Acquisition status.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.AcquisitionStatus.Complete">
+            <summary>
+            The spectrum analyzer has completed the acquisition.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.AcquisitionStatus.InProgress">
+            <summary>
+            The spectrum analyzer is still acquiring data.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.AcquisitionStatus.Unknown">
+            <summary>
+            The spectrum analyzer cannot determine the status of the acquisition.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.AmplitudeUnits">
+            <summary>
+            Amplitude units.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.AmplitudeUnits.dBm">
+            <summary>
+            Sets the spectrum analyzer to measure in decibels relative to 1 milliwatt.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.AmplitudeUnits.dBmV">
+            <summary>
+            Sets the spectrum analyzer to measure in decibels relative to 1 millivolt.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.AmplitudeUnits.dBuV">
+            <summary>
+            Sets the spectrum analyzer to measure in decibels relative to 1 microvolt.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.AmplitudeUnits.Volt">
+            <summary>
+            Sets the spectrum analyzer to measure in volts.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.AmplitudeUnits.Watt">
+            <summary>
+            Sets the spectrum analyzer to measure in watts.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.Errors">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.Errors.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.Errors.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.Errors.MarkerNotEnabled">
+            <summary>
+              Looks up a localized string similar to The active marker is not enabled..
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.Errors.NotDeltaMarker">
+            <summary>
+              Looks up a localized string similar to The active marker is not a delta marker..
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IviSpecAn">
+            <summary>
+            The IviSpecAn class allows clients to create instances of drivers that implement the class-compliant
+            IviSpecAn interfaces, based on information in the IVI configuration store.  This allows clients to
+            interchange IVI.NET class-compliant IviSpecAn drivers without modifying or rebuilding the client program
+            source code.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IviSpecAn.Create(System.String)">
+            <summary>
+            Create an instance of an IviSpecAn class-compliant driver and return an IIviSpecAn reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviSpecAn driver to be created.</param>
+            <returns>
+            An IIviSpecAn interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.SpecAn.IviSpecAn.Create(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Create an instance of an IviSpecAn class-compliant driver and return an IIviSpecAn reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviSpecAn driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <returns>
+            An IIviSpecAn interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.SpecAn.IviSpecAn.Create(System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Create an instance of an IviSpecAn class-compliant driver and return an IIviSpecAn reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviSpecAn driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviSpecAn interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="M:Ivi.SpecAn.IviSpecAn.Create(System.String,System.Boolean,System.Boolean,Ivi.Driver.LockType,System.String,System.String)">
+            <summary>
+            Create an instance of an IviSpecAn class-compliant driver and return an IIviSpecAn reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviSpecAn driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="lockType">Specifies whether to use .NET AppDomain-wide locking or machine-wide locking.</param>
+            <param name="accessKey">Specifies a user-selectable access key to identify the lock.  Driver instances 
+            that are created with the same accessKey will be protected from simultaneous access by multiple threads 
+            within a process or across processes, depending upon the value of the lockType parameter. </param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviSpecAn interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="T:Ivi.SpecAn.MarkerInfo">
+            <summary>
+            Marker horizontal position and amplitude.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.MarkerInfo.#ctor(System.Double,System.Double)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="position">The horizontal position.</param>
+            <param name="amplitude">The amplitude value.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.MarkerInfo.Equals(System.Object)">
+            <summary>
+            Compares two <see cref="T:MarkerInfo"></see> instances for equality.
+            </summary>
+            <param name="obj">The <see cref="T:MarkerInfo"></see> instance to compare with the current instance.</param>
+            <returns>true if the two instances represent the same result; otherwise, false.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.MarkerInfo.GetHashCode">
+            <summary>
+            Returns the hash code for the result.
+            </summary>
+            <returns>An <see cref="T:System.Int32"></see> containing the hash value generated for this result.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.MarkerInfo.op_Equality(Ivi.SpecAn.MarkerInfo,Ivi.SpecAn.MarkerInfo)">
+            <summary>
+            Determines whether two <see cref="T:MarkerInfo"></see> instances have the same value.
+            </summary>
+            <param name="info1">A <see cref="T:MarkerInfo"></see> instance to compare with info2.</param>
+            <param name="info2">A <see cref="T:MarkerInfo"></see> instance to compare with info1.</param>
+            <returns>true if the <see cref="T:MarkerInfo"></see> instances are equivalent; otherwise, false.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.MarkerInfo.op_Inequality(Ivi.SpecAn.MarkerInfo,Ivi.SpecAn.MarkerInfo)">
+            <summary>
+            Determines whether two <see cref="T:MarkerInfo"></see> instances do not have the same value.
+            </summary>
+            <param name="info1">A <see cref="T:MarkerInfo"></see> instance to compare with info2.</param>
+            <param name="info2">A <see cref="T:MarkerInfo"></see> instance to compare with info1.</param>
+            <returns>true if the two <see cref="T:MarkerInfo"></see> instances are not equal; otherwise, false. If either parameter is null, this method returns true.</returns>
+        </member>
+        <member name="P:Ivi.SpecAn.MarkerInfo.Position">
+            <summary>
+            The horizontal position.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.MarkerInfo.Amplitude">
+            <summary>
+            The amplitude value (Amplitude Units or 
+            relative amplitude units for delta markers).
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.NotDeltaMarkerException">
+            <summary>
+            The Active Marker is not a delta marker.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.NotDeltaMarkerException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.NotDeltaMarkerException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.NotDeltaMarkerException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.NotDeltaMarkerException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.NotDeltaMarkerException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.MarkerNotEnabledException">
+            <summary>
+            The Active Marker is not enabled.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.MarkerNotEnabledException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.MarkerNotEnabledException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.MarkerNotEnabledException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.MarkerNotEnabledException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.MarkerNotEnabledException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.DetectorType">
+            <summary>
+            Detector type.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.DetectorType.AutoPeak">
+            <summary>
+            Allows the detector to capture better readings by using both 
+            positive and negative peak values when noise is present.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.DetectorType.Average">
+            <summary>
+            Average value of samples taken within the bin for a dedicated 
+            point on the display.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.DetectorType.MaxPeak">
+            <summary>
+            Obtains the maximum video signal between the last display point 
+            and the present display point.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.DetectorType.MinPeak">
+            <summary>
+            Obtains the minimum video signal between the last display point 
+            and the present display point.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.DetectorType.Sample">
+            <summary>
+            Pick one point within a bin.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.DetectorType.Rms">
+            <summary>
+            RMS value of samples taken within the bin for a dedicated point 
+            on the display.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.VerticalScale">
+            <summary>
+            Vertical scale.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.VerticalScale.Linear">
+            <summary>
+            Sets the vertical scale in linear units.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.VerticalScale.Logarithmic">
+            <summary>
+            Sets the vertical scale in logarithmic units.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.TraceType">
+            <summary>
+            Trace type.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.TraceType.ClearWrite">
+            <summary>
+            Sets the spectrum analyzer to clear previous sweep data off the 
+            display before performing a sweep. Subsequent sweeps may or may 
+            not clear the display first, but the data array at the end of the 
+            sweep is entirely new.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.TraceType.MaxHold">
+            <summary>
+            Sets the spectrum analyzer to keep the data from either the 
+            previous data or the new sweep data, which ever is higher.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.TraceType.MinHold">
+            <summary>
+            Sets the spectrum analyzer to keep the data from either the 
+            previous data or the new sweep data, which ever is lower.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.TraceType.VideoAverage">
+            <summary>
+            Sets the spectrum analyzer to maintain a running average of the 
+            swept data.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.TraceType.View">
+            <summary>
+            Disables acquisition into this trace but displays the existing 
+            trace data.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.TraceType.Store">
+            <summary>
+            Disables acquisition and disables the display of the existing 
+            trace data.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.MarkerType">
+            <summary>
+            Marker type.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.MarkerType.Normal">
+            <summary>
+            Regular marker used to make absolute measurements.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.MarkerType.Delta">
+            <summary>
+            Marker used in conjunction with the reference marker to make relative measurements.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.MarkerSearch">
+            <summary>
+            Marker search options.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.MarkerSearch.Highest">
+            <summary>
+            Sets marker search for the highest amplitude.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.MarkerSearch.Minimum">
+            <summary>
+            Sets marker search for the minimum amplitude.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.MarkerSearch.NextPeak">
+            <summary>
+            Sets marker search for the next highest peak.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.MarkerSearch.NextPeakLeft">
+            <summary>
+            Sets marker search for the next peak left of the current marker position.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.MarkerSearch.NextPeakRight">
+            <summary>
+            Sets marker search for the next peak right of the current marker position.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.InstrumentSetting">
+            <summary>
+            Instrument setting.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.InstrumentSetting.FrequencyCenter">
+            <summary>
+            Sets the center frequency with the Active Marker frequency.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.InstrumentSetting.FrequencySpan">
+            <summary>
+            If the Active Marker is a Delta Marker, this sets the frequency 
+            span with the Active Marker frequency and the center frequency at 
+            the midpoint between the Active Marker and its reference.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.InstrumentSetting.FrequencyStart">
+            <summary>
+            Sets the Frequency Start with the Active Marker frequency.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.InstrumentSetting.FrequencyStop">
+            <summary>
+            Sets the Frequency Stop with the Active Marker frequency.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.InstrumentSetting.ReferenceLevel">
+            <summary>
+            Sets the Reference Level with the Active Marker amplitude.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnTriggerVideo">
+            <summary>
+            IVI SpecAn class-compliant trigger video interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTriggerVideo.Configure(System.Double,Ivi.SpecAn.Slope)">
+            <summary>
+            This method specifies at which level and slope of the video signal, acquisition is triggered. 
+            This is applicable when the Trigger Source property is set to Video.
+            </summary>
+            <param name="videoTriggerLevel">The video level for triggering. Refer to the Level property for more details.</param>
+            <param name="videoTriggerSlope">The video level slope for triggering. Refer to the Slope property for more details.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnTriggerVideo.Level">
+            <summary>
+            Specifies the level that the video signal shall reach to trigger the acquisition.  
+            The units are specified by the Amplitude Units attribute.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnTriggerVideo.Slope">
+            <summary>
+            Specifies which slope of the video signal triggers the acquisition.
+            Defined values: Positive, Negative.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnTriggerExternal">
+            <summary>
+            IVI SpecAn class-compliant trigger external interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTriggerExternal.Configure(System.Double,Ivi.SpecAn.Slope)">
+            <summary>
+            This method specifies at which level and slope of the external trigger signal, acquisition is triggered. 
+            This is applicable when the Trigger Source property is set to External.
+            </summary>
+            <param name="externalTriggerLevel">The external level for triggering. Refer to the Level property for more details.</param>
+            <param name="externalTriggerSlope">The external slope for triggering. Refer to the Slope property for more details.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnTriggerExternal.Level">
+            <summary>
+            Specifies the level, in Volts, that the external trigger signal shall reach to trigger the acquisition.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnTriggerExternal.Slope">
+            <summary>
+            Specifies which slope of the external trigger signal triggers the acquisition.
+            Defined values: Positive, Negative.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnTrigger">
+            <summary>
+            IVI SpecAn class-compliant trigger interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnTrigger.Source">
+            <summary>
+            Specifies the source for the trigger signal that causes the analyzer to leave the Wait-For-Trigger state.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnTrigger.External">
+            <summary>
+            Reference to the class-compliant IIviSpecAnTriggerExternal interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnTrigger.Video">
+            <summary>
+            Reference to the class-compliant IIviSpecAnTriggerVideo interface.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnTracesMath">
+            <summary>
+            IVI SpecAn class-compliant traces math interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTracesMath.Add(System.String,System.String,System.String)">
+            <summary>
+            This method modifies a trace to be the point by point sum of two other traces.  Any data in the destination trace is deleted.
+            <para>DestinationTrace = Trace1 + Trace2</para>
+            </summary>
+            <param name="destinationTrace">Name of the trace into which the added traces are stored.</param>
+            <param name="trace1">Name of one of the two traces to be added.</param>
+            <param name="trace2">Name of the second trace to be added.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTracesMath.Copy(System.String,System.String)">
+            <summary>
+            This method copies the data array from one trace into another trace. Any data in the Destination Trace is deleted.
+            </summary>
+            <param name="destinationTrace">Name of the trace into which the array is stored.</param>
+            <param name="sourceTrace">Name of the trace to be copied.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTracesMath.Exchange(System.String,System.String)">
+            <summary>
+            This method exchanges the data arrays of two traces.
+            </summary>
+            <param name="trace1">Name of one of the two traces to be exchanged.</param>
+            <param name="trace2">Name of the second trace to be exchanged.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTracesMath.Subtract(System.String,System.String,System.String)">
+            <summary>
+            This method modifies a trace to be the point by point difference of two other traces.  Any data in the destination trace is deleted.
+            <para>DestinationTrace = Trace1 - Trace2</para>
+            </summary>
+            <param name="destinationTrace">Name of the trace into which the subtracted traces are stored.</param>
+            <param name="trace1">Name of the first trace to be subtracted.</param>
+            <param name="trace2">Name of the second trace to be subtracted.</param>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnTraceCollection">
+            <summary>
+            IVI SpecAn class-compliant trace collection interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTraceCollection.Abort">
+            <summary>
+            This method aborts a previously initiated measurement and returns the spectrum analyzer to the idle state.
+            </summary>
+            <remarks>This method does not check instrument status.</remarks>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTraceCollection.CreateSpectrum(System.Int32)">
+            <summary>
+            This method creates a spectrum object that can be passed to Read and Fetch routines.  This is used for performance optimization 
+            to control when memory is allocated.
+            <para>If size is zero, the driver shall allocate the spectrum memory with a size based on the current driver configuration.</para>
+            </summary>
+            <param name="size">The number of points (of type double) in the spectrum.</param>
+            <returns>Trace spectrum that is allocated.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTraceCollection.Initiate">
+            <summary>
+            This method initiates an acquisition. After calling this method, the spectrum analyzer leaves the idle state.
+            </summary>
+            <remarks>This function does not check the instrument status. The user calls the Acquisition Status function to determine when 
+            the acquisition is complete.</remarks>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTraceCollection.AcquisitionStatus">
+            <summary>
+            This method determines and returns the status of an acquisition.
+            </summary>
+            <returns>Acquisition status.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTraceCollection.SendSoftwareTrigger">
+            <summary>
+            Generates a software trigger.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnTraceCollection.Math">
+            <summary>
+            Reference to the class-compliant IIviSpecAnTracesMath interface.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnTrace">
+            <summary>
+            IVI SpecAn class-compliant trace interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTrace.ReadY(Ivi.Driver.PrecisionTimeSpan,Ivi.Driver.ISpectrum{System.Double})">
+            <summary>
+            This method initiates a signal acquisition based on the present instrument configuration. 
+            It then waits for the acquisition to complete, and returns the trace as an array of amplitude values. 
+            The amplitude array returns data that represent the amplitude of the signals obtained by sweeping from the start frequency 
+            to the stop frequency (in frequency domain, in time domain the amplitude array is ordered from beginning of sweep to end). 
+            The Amplitude Units property determines the units of the points in the amplitude array. This function resets the sweep count.
+            </summary>
+            <param name="maximumTime">Specifies the maximum time the end-user allows for this method to complete.</param>
+            <param name="spectrum">Previously allocated spectrum, or null.</param>
+            <returns>Trace spectrum.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTrace.ReadY(Ivi.Driver.PrecisionTimeSpan,Ivi.Driver.IWaveform{System.Double})">
+            <summary>
+            This method initiates a signal acquisition based on the present instrument configuration. 
+            It then waits for the acquisition to complete, and returns the trace as an array of amplitude values. 
+            The amplitude array returns data that represent the amplitude of the signals obtained by sweeping from the start frequency 
+            to the stop frequency (in frequency domain, in time domain the amplitude array is ordered from beginning of sweep to end). 
+            The Amplitude Units property determines the units of the points in the amplitude array. This function resets the sweep count.
+            </summary>
+            <param name="maximumTime">Specifies the maximum time the end-user allows for this method to complete.</param>
+            <param name="waveform">Previously allocated waveform, or null.</param>
+            <returns>Trace waveform.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTrace.FetchY(Ivi.Driver.ISpectrum{System.Double})">
+            <summary>
+            This method returns the trace the spectrum analyzer acquires. The trace is from a previously initiated acquisition. 
+            The user calls the Initiate function to start an acquisition. The user calls the Acquisition Status function to determine 
+            when the acquisition is complete.
+            </summary>
+            <param name="spectrum">Previously allocated spectrum, or null.</param>
+            <returns>Trace spectrum.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnTrace.FetchY(Ivi.Driver.IWaveform{System.Double})">
+            <summary>
+            This method returns the trace the spectrum analyzer acquires. The trace is from a previously initiated acquisition. 
+            The user calls the Initiate function to start an acquisition. The user calls the Acquisition Status function to determine 
+            when the acquisition is complete.
+            </summary>
+            <param name="waveform">Previously allocated spectrum, or null.</param>
+            <returns>Trace waveform.</returns>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnTrace.Type">
+            <summary>
+            Specifies the representation of the acquired data.
+            Defined values: ClearWrite, MaxHold, MinHold, VideoAverage, View, Store.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnSweepCoupling">
+            <summary>
+            IVI SpecAn class-compliant sweep coupling interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnSweepCoupling.Configure(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This method configures the coupling and sweeping attributes.
+            </summary>
+            <param name="resolutionBandwidthAuto">Turns resolution bandwidth auto coupling on/off. 
+            Refer to the ResolutionBandwidthAuto property for more details.</param>
+            <param name="videoBandwidthAuto">Turns video bandwidth auto coupling on/off.
+            Refer to the VideoBandwidthAuto property for more details.</param>
+            <param name="sweepTimeAuto">Turns sweep time coupling on/off.
+            Refer to the SweepTimeAuto property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnSweepCoupling.Configure(System.Boolean,System.Boolean,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            This method configures the coupling and sweeping attributes.
+            </summary>
+            <param name="resolutionBandwidthAuto">Turns resolution bandwidth auto coupling on/off. 
+            Refer to the ResolutionBandwidthAuto property for more details.</param>
+            <param name="videoBandwidthAuto">Turns video bandwidth auto coupling on/off.
+            Refer to the VideoBandwidthAuto property for more details.</param>
+            <param name="sweepTime">Specifies the length of time to sweep from the beginning to the end of the current domain.
+            This value is ignored when SweepTimeAuto is True. Refer to the SweepTime property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnSweepCoupling.Configure(System.Boolean,System.Double,System.Boolean)">
+            <summary>
+            This method configures the coupling and sweeping attributes.
+            </summary>
+            <param name="resolutionBandwidthAuto">Turns resolution bandwidth auto coupling on/off. 
+            Refer to the ResolutionBandwidthAuto property for more details.</param>
+            <param name="videoBandwidth">Specifies the video bandwidth of the post-detection filter in Hertz. 
+            This value is ignored when VideoBandwidthAuto is True. Refer to the VideoBandwidth property for more details.</param>
+            <param name="sweepTimeAuto">Turns sweep time coupling on/off.
+            Refer to the SweepTimeAuto property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnSweepCoupling.Configure(System.Boolean,System.Double,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            This method configures the coupling and sweeping attributes.
+            </summary>
+            <param name="resolutionBandwidthAuto">Turns resolution bandwidth auto coupling on/off. 
+            Refer to the ResolutionBandwidthAuto property for more details.</param>
+            <param name="videoBandwidth">Specifies the video bandwidth of the post-detection filter in Hertz. 
+            This value is ignored when VideoBandwidthAuto is True. Refer to the VideoBandwidth property for more details.</param>
+            <param name="sweepTime">Specifies the length of time to sweep from the beginning to the end of the current domain.
+            This value is ignored when SweepTimeAuto is True. Refer to the SweepTime property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnSweepCoupling.Configure(System.Double,System.Boolean,System.Boolean)">
+            <summary>
+            This method configures the coupling and sweeping attributes.
+            </summary>
+            <param name="resolutionBandwidth">Specifies the measurement resolution bandwidth in Hertz. 
+            This value is ignored when ResolutionBandwidthAuto is True. Refer to the ResolutionBandwidth property for more details.</param>
+            <param name="videoBandwidthAuto">Turns video bandwidth auto coupling on/off.
+            Refer to the VideoBandwidthAuto property for more details.</param>
+            <param name="sweepTimeAuto">Turns sweep time coupling on/off.
+            Refer to the SweepTimeAuto property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnSweepCoupling.Configure(System.Double,System.Boolean,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            This method configures the coupling and sweeping attributes.
+            </summary>
+            <param name="resolutionBandwidth">Specifies the measurement resolution bandwidth in Hertz. 
+            This value is ignored when ResolutionBandwidthAuto is True. Refer to the ResolutionBandwidth property for more details.</param>
+            <param name="videoBandwidthAuto">Turns video bandwidth auto coupling on/off.
+            Refer to the VideoBandwidthAuto property for more details.</param>
+            <param name="sweepTime">Specifies the length of time to sweep from the beginning to the end of the current domain.
+            This value is ignored when SweepTimeAuto is True. Refer to the SweepTime property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnSweepCoupling.Configure(System.Double,System.Double,System.Boolean)">
+            <summary>
+            This method configures the coupling and sweeping attributes.
+            </summary>
+            <param name="resolutionBandwidth">Specifies the measurement resolution bandwidth in Hertz. 
+            This value is ignored when ResolutionBandwidthAuto is True. Refer to the ResolutionBandwidth property for more details.</param>
+            <param name="videoBandwidth">Specifies the video bandwidth of the post-detection filter in Hertz. 
+            This value is ignored when VideoBandwidthAuto is True. Refer to the VideoBandwidth property for more details.</param>
+            <param name="sweepTimeAuto">Turns sweep time coupling on/off.
+            Refer to the SweepTimeAuto property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnSweepCoupling.Configure(System.Double,System.Double,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            This method configures the coupling and sweeping attributes.
+            </summary>
+            <param name="resolutionBandwidth">Specifies the measurement resolution bandwidth in Hertz. 
+            This value is ignored when ResolutionBandwidthAuto is True. Refer to the ResolutionBandwidth property for more details.</param>
+            <param name="videoBandwidth">Specifies the video bandwidth of the post-detection filter in Hertz. 
+            This value is ignored when VideoBandwidthAuto is True. Refer to the VideoBandwidth property for more details.</param>
+            <param name="sweepTime">Specifies the length of time to sweep from the beginning to the end of the current domain.
+            This value is ignored when SweepTimeAuto is True. Refer to the SweepTime property for more details.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnSweepCoupling.ResolutionBandwidthAuto">
+            <summary>
+            If set to True, the resolution bandwidth is automatically selected.  
+            If set to False, the resolution bandwidth is manually selected.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnSweepCoupling.ResolutionBandwidth">
+            <summary>
+            Specifies the width of the IF filter in Hertz.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnSweepCoupling.VideoBandwidthAuto">
+            <summary>
+            If set to True, the video bandwidth is automatically selected.  If set to False, the video bandwidth is manually selected.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnSweepCoupling.VideoBandwidth">
+            <summary>
+            Specifies the video bandwidth of the post-detection filter in Hertz.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnSweepCoupling.SweepTimeAuto">
+            <summary>
+            If set to True, the sweep time is automatically selected  If set to False, the sweep time is manually selected.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnSweepCoupling.SweepTime">
+            <summary>
+            Specifies the length of time to sweep from the left edge to the right edge of the current domain.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnPreselector">
+            <summary>
+            IVI SpecAn class-compliant preselector interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnPreselector.Peak">
+            <summary>
+            This method adjusts the preselector to obtain the maximum readings for the current start and stop frequency.  
+            This method may affect the marker configuration.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnMarkerFrequencyCounter">
+            <summary>
+            IVI SpecAn class-compliant marker frequency counter interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnMarkerFrequencyCounter.Configure(System.Boolean,System.Double)">
+            <summary>
+            This method sets the marker frequency counter resolution and enables or disables the marker frequency counter.
+            </summary>
+            <param name="enabled">Turns marker frequency counter on/off. Refer to the Enabled property for more details.</param>
+            <param name="resolution">Specifies the frequency counter resolution in hertz. This value is ignored when markerFrequencyCounter is False. 
+            This value is restricted to a power of ten. An attempt to set this to other than a power of ten results in an error without the value 
+            being changed. Refer to the Resolution property for more details.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarkerFrequencyCounter.Enabled">
+            <summary>
+            Enables/disables the marker frequency counter for greater marker measurement accuracy.  
+            If set to True, the marker frequency counter is enabled.  If set to False, the marker frequency counter is disabled.  
+            This property returns the Marker Not Enabled error if the Marker Enabled property is set to False.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarkerFrequencyCounter.Resolution">
+            <summary>
+            Specifies the resolution of the frequency counter in Hertz. 
+            The measurement gate time is the reciprocal of the specified resolution.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnMarker">
+            <summary>
+            IVI SpecAn class-compliant marker interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnMarker.ConfigureEnabled(System.Boolean,System.String)">
+            <summary>
+            This method enables the active marker on the specified Trace.
+            </summary>
+            <param name="enabled">Turns the active marker on/off. Refer to the Enabled property for more details.</param>
+            <param name="markerTraceName">The trace name. Refer to the Trace property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnMarker.ConfigureSearch(System.Double,System.Double)">
+            <summary>
+            This method configures the Peak Excursion and Marker Threshold property values.
+            </summary>
+            <param name="peakExcursion">Minimum amplitude below which a peak will not be found. 
+            Refer to the PeakExcursion property for more details.</param>
+            <param name="markerThreshold">Minimum amplitude variation of the signal that the marker can recognize as a peak in dB. 
+            Refer to the Threshold property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnMarker.DisableAll">
+            <summary>
+            This method disables all markers.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnMarker.MakeDelta(System.Boolean)">
+            <summary>
+            Specifies whether the active marker is a delta marker.
+            </summary>
+            <param name="deltaMarker">True to make the marker a delta marker.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnMarker.Search(Ivi.SpecAn.MarkerSearch)">
+            <summary>
+            This method specifies the type of marker search and performs the search. 
+            This method returns the Marker Not Enabled error if the Marker Enabled property is set to False.
+            </summary>
+            <param name="searchType">Specifies the type of marker search.
+            <para>Defined Values for SearchType Parameter: Highest, Minimum, NextPeak, NextPeakLeft, NextPeakRight.</para>
+            </param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnMarker.GetName(System.Int32)">
+            <summary>
+            This method returns the specific driver defined marker name that corresponds to the zero-based index that the user specifies.  
+            If the driver defines a qualified marker name, this method returns the qualified name.  
+            If the value that the user passes for the Index parameter is less then zero or greater than the value of the Marker Count attribute, 
+            the method returns an empty string in the Name parameter and returns the Invalid Value error.
+            </summary>
+            <param name="index">Index (x-based) into the collection of markers.</param>
+            <returns>The string associated by the driver to the value of Index without ever referring to the configuration store.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnMarker.Query">
+            <summary>
+            Queries the horizontal position and the marker 
+            amplitude level of the Active Marker.
+            </summary>
+            <returns>Marker horizontal position and the marker amplitude level.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnMarker.QueryReference">
+            <summary>
+            This method returns the horizontal position and the amplitude level of the active marker.
+            </summary>
+            <returns>Marker horizontal position and the marker amplitude level.</returns>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnMarker.SetInstrumentFromMarker(Ivi.SpecAn.InstrumentSetting)">
+            <summary>
+            This method uses the Marker Position or Marker Amplitude attributes to configure the spectrum analyzer setting 
+            specified by the InstrumentSetting parameter.
+            </summary>
+            <param name="instrumentSetting">Specifies the instrument setting to be set from the marker position.</param>
+            <remarks>This method may set the Frequency Start, Frequency Stop, or Reference Level properties.
+            <para>If the Marker Enabled property is set to False, this method returns the Marker Not Enabled error.  
+            If the Marker Type property is not Delta and the InstrumentSetting parameter is Frequency Span, the method returns 
+            the Delta Marker Not Enabled error.</para></remarks>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.FrequencyCounter">
+            <summary>
+            Reference to the class-compliant IIviSpecAnMarkerFrequencyCounter interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.ActiveMarker">
+            <summary>
+            Specifies the marker which is currently active. The values for this property correspond to the Marker repeated capability.  
+            If the driver defines a qualified Marker name, this property returns the qualified name.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.Amplitude">
+            <summary>
+            Returns the amplitude of the active marker. The units are specified by the Amplitude Units property, 
+            except when the Marker Type property is set to Delta. Then the units are dB. If the Marker Enabled property is set to False, 
+            any attempt to read this property returns the Marker Not Enabled error.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.Enabled">
+            <summary>
+            If set to True , the active marker is enabled.  
+            When False, the active marker is disabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.Type">
+            <summary>
+            Specifies the marker type of the active marker.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.Count">
+            <summary>
+            Specifies the number of markers available for a particular instrument.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.PeakExcursion">
+            <summary>
+            Specifies the minimum amplitude variation of the signal in dB that the Marker Search method can identify as a peak.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.Position">
+            <summary>
+            Specifies the frequency in Hertz or time position in seconds of the active marker (depending on the mode in which the analyzer 
+            is operating, frequency or time-domain). This attribute returns the Marker Not Enabled error if the active marker is not enabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.ReferencePosition">
+            <summary>
+            Returns the reference marker position when the active marker is a delta marker.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.ReferenceAmplitude">
+            <summary>
+            Returns the reference marker amplitude when the active marker is a delta marker.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.SignalTrackEnabled">
+            <summary>
+            If set to True, the spectrum analyzer centers the signal after each sweep.  This process invalidates the Frequency Start and 
+            Frequency Stop attributes.  If set to False, the spectrum analyzer does not center the signal after each sweep.
+            </summary>
+            <remarks>Operations on this attribute return the Marker Not Enabled error if the active marker is not enabled.</remarks>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.Threshold">
+            <summary>
+            Specifies the lower limit of the search domain vertical range for the Marker Search method.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnMarker.Trace">
+            <summary>
+            Specifies the trace for the active marker.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnLevel">
+            <summary>
+            IVI SpecAn class-compliant level interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnLevel.Configure(Ivi.SpecAn.AmplitudeUnits,System.Double,System.Double,System.Double,System.Boolean)">
+            <summary>
+            Configures the vertical properties of the IviSpecAn.
+            </summary>
+            <param name="amplitudeUnits">The amplitude units for input, output and display. Refer to the AmplitudeUnits property for more details.</param>
+            <param name="inputImpedance">The input impedance. Refer to the InputImpedance property for more details.</param>
+            <param name="referenceLevel">The amplitude value of the reference level. Refer to the Reference property for more details.</param>
+            <param name="referenceLevelOffset">The offset value to the reference level. Refer to the ReferenceOffset property for more details.</param>
+            <param name="attenuationAuto">Turns auto attenuation on/off. Refer to the AttenuationAuto property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnLevel.Configure(Ivi.SpecAn.AmplitudeUnits,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Configures the vertical properties of the IviSpecAn.
+            </summary>
+            <param name="amplitudeUnits">The amplitude units for input, output and display. Refer to the AmplitudeUnits property for more details.</param>
+            <param name="inputImpedance">The input impedance.  Refer to the InputImpedance property for more details.</param>
+            <param name="referenceLevel">The amplitude value of the reference level. Refer to the Reference property for more details.</param>
+            <param name="referenceLevelOffset">The offset value to the reference level. Refer to the ReferenceOffset property for more details.</param>
+            <param name="attenuation">The attenuation level. If AttenuationAuto is True then this parameter is ignored. 
+            Refer to the Attenuation property for more details.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnLevel.AmplitudeUnits">
+            <summary>
+            Specifies the amplitude units for input, output and display amplitude.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnLevel.InputImpedance">
+            <summary>
+            Specifies the value of input impedance, in ohms, expected at the active input port. This is typically 50 ohms or 75 ohms.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnLevel.Reference">
+            <summary>
+            The calibrated vertical position of the captured data used as a reference for amplitude measurements. 
+            This is typically set to a value slightly higher than the highest expected signal level. 
+            The units are determined by the AmplitudeUnits property.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnLevel.ReferenceOffset">
+            <summary>
+            Specifies an offset for the Reference Level property.  
+            This value is used to adjust the reference level for external signal gain or loss.  
+            A positive value corresponds to a gain while a negative number corresponds to a loss. The unit is dB.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnLevel.AttenuationAuto">
+            <summary>
+            If set to True, attenuation is automatically selected.  
+            If set to False, attenuation is manually selected.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnLevel.Attenuation">
+            <summary>
+            Specifies the input attenuation (in positive dB).
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnFrequency">
+            <summary>
+            IVI SpecAn class-compliant frequency interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnFrequency.ConfigureCenterSpan(System.Double,System.Double)">
+            <summary>
+            This method configures the frequency range defining the center frequency and the frequency span. 
+            If the span corresponds to zero Hertz, then the spectrum analyzer operates in time-domain mode.  
+            Otherwise, the spectrum analyzer operates in frequency-domain mode.
+            </summary>
+            <param name="centerFrequency">The center frequency of the frequency sweep (in Hertz).</param>
+            <param name="span">The frequency span of the frequency sweep (in Hertz).</param>
+            <remarks>
+            If span corresponds to zero hertz, then the spectrum analyzer is in time-domain.
+            The method modifies the Frequency Start and Frequency Stop properties as follows:
+            <para>Frequency Start = CenterFrequency - Span / 2</para>
+            <para>Frequency Stop = CenterFrequency + Span / 2</para>
+            <para>In auto-coupled mode, RBW, VBW and sweep time may be affected by this method.</para>
+            </remarks>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnFrequency.ConfigureStartStop(System.Double,System.Double)">
+            <summary>
+            Configures the frequency range of the IviSpecAn using 
+            start frequency and stop frequency.
+            </summary>
+            <param name="startFrequency">The start frequency of the sweep. The unit is Hertz. Refer to the Start property for more details.</param>
+            <param name="stopFrequency">The stop frequency of the sweep. The unit is Hertz. Refer to the Stop property for more details.</param>
+            <remarks>
+            If start frequency is equal to the stop frequency, then the spectrum 
+            analyzer is in time-domain mode. In auto-coupled mode, resolution 
+            bandwidth (RBW), video bandwidth (VBW), and sweep time may be 
+            affected by this method.
+            </remarks>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnFrequency.Start">
+            <summary>
+            Specifies the left edge of the frequency domain in Hertz. This is used in conjunction with the Frequency Stop property 
+            to define the frequency domain. If the Frequency Start property value is equal to the Frequency Stop property value 
+            then the spectrum analyzer's horizontal properties are in time-domain.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnFrequency.Stop">
+            <summary>
+            Specifies the right edge of the frequency domain in Hertz. This is used in conjunction with the Frequency Start property 
+            to define the frequency domain. If the Frequency Start property value is equal to the Frequency Stop property value 
+            then the spectrum analyzer's horizontal properties are in time-domain.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnFrequency.Offset">
+            <summary>
+            Specifies an offset value, in Hertz,  that is added to the frequency readout.  The offset is used to compensate for external 
+            frequency conversion. This changes the driver's Frequency Start and Frequency Stop properties.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnExternalMixerConversionLossTable">
+            <summary>
+            IVI SpecAn class-compliant external mixer conversion loss table interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnExternalMixerConversionLossTable.Configure(System.Double[],System.Double[])">
+            <summary>
+            This method configures the conversion loss table by specifying a series of frequency and a power loss pairs.
+            </summary>
+            <param name="frequency">Specifies the frequency values for the pairs.</param>
+            <param name="conversionLoss">Specifies the conversion loss values for the pairs.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnExternalMixerConversionLossTable.Enabled">
+            <summary>
+            If set to True, the conversion loss table is enabled.
+            If set to False, the conversion loss table is disabled.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnExternalMixerBias">
+            <summary>
+            IVI SpecAn class-compliant external mixer bias interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnExternalMixerBias.Configure(System.Double,System.Double)">
+            <summary>
+            Configures the external mixer bias and the external mixer bias limit.
+            </summary>
+            <param name="bias">The bias current. Refer to the Level property for more details.</param>
+            <param name="biasLimit">The bias current limit. Refer to the Limit property for more details.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnExternalMixerBias.Level">
+            <summary>
+            Specifies the bias current. The unit is Ampere.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnExternalMixerBias.Limit">
+            <summary>
+            Specifies the bias current limit. The unit is Ampere.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnExternalMixerBias.Enabled">
+            <summary>
+            If set to True, the external mixer bias is enabled. 
+            If set to False, the external mixer bias is disabled.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnExternalMixer">
+            <summary>
+            IVI SpecAn class-compliant external mixer interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnExternalMixer.Configure(System.Int32,System.Double)">
+            <summary>
+            Specifies the mixer harmonic number and average conversion loss.
+            </summary>
+            <param name="harmonic">Specifies harmonic number. Refer to the Harmonic property for more details.</param>
+            <param name="averageConversionLoss">Specifies the average conversion loss. 
+            Refer to the AverageConversionLoss property for more details.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnExternalMixer.Bias">
+            <summary>
+            Reference to the class-compliant IIviSpecAnExternalMixerBias interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnExternalMixer.ConversionLossTable">
+            <summary>
+            Reference to the class-compliant IIviSpecAnExternalMixerConversionLossTable interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnExternalMixer.Harmonic">
+            <summary>
+            Specifies the order n of the harmonic used for conversion.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnExternalMixer.AverageConversionLoss">
+            <summary>
+            Specifies the average conversion loss.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnExternalMixer.Enabled">
+            <summary>
+            If set to True, the external  mixer is enabled. 
+            If set to False, the external mixer is disabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnExternalMixer.NumberOfPorts">
+            <summary>
+            Specifies the number of mixer ports.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnDisplay">
+            <summary>
+            IVI SpecAn class-compliant display interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnDisplay.UnitsPerDivision">
+            <summary>
+            Specifies the number of vertical units in one screen division. 
+            This property is typically used in conjunction with the Reference Level property to set the vertical range of the spectrum analyzer.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnDisplay.NumberOfDivisions">
+            <summary>
+            Returns the number of vertical screen divisions.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAnAcquisition">
+            <summary>
+            IVI SpecAn class-compliant acquisition interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnAcquisition.Configure(System.Boolean,System.Int32,System.Boolean,Ivi.SpecAn.VerticalScale)">
+            <summary>
+            Configures the acquisition properties of the IviSpecAn.
+            </summary>
+            <param name="sweepModeContinuous">Enables or disables continuous sweeping. 
+            Refer to the SweepModeContinuous property for more details.</param>
+            <param name="numberOfSweeps">The number of sweeps to take. Refer to the NumberOfSweeps property for more details.</param>
+            <param name="detectorTypeAuto">Enables or Disables the auto detector. Refer to the DetectorTypeAuto property for more details.</param>
+            <param name="verticalScale">Specifies the vertical scale. Refer to the VerticalScale property for more details.</param>
+        </member>
+        <member name="M:Ivi.SpecAn.IIviSpecAnAcquisition.Configure(System.Boolean,System.Int32,Ivi.SpecAn.DetectorType,Ivi.SpecAn.VerticalScale)">
+            <summary>
+            Configures the acquisition properties of the IviSpecAn.
+            </summary>
+            <param name="sweepModeContinuous">Enables or disables continuous sweeping. 
+            Refer to the SweepModeContinuous property for more details.</param>
+            <param name="numberOfSweeps">The number of sweeps to take. Refer to the NumberOfSweeps property for more details.</param>
+            <param name="detectorType">Specifies the method of capturing and processing signal data. 
+            Refer to the DetectorType property for more details.</param>
+            <param name="verticalScale">Specifies the vertical scale. Refer to the VerticalScale property for more details.</param>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnAcquisition.SweepModeContinuous">
+            <summary>
+            If set to True, the sweep mode is continuous. If set to False, the sweep mode is not continuous.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnAcquisition.NumberOfSweeps">
+            <summary>
+            This property defines the number of sweeps. 
+            This property value has no effect if the Trace Type property is set to the value Clear Write.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnAcquisition.DetectorTypeAuto">
+            <summary>
+            If set to True, the detector type is automatically selected.The relationship between Trace Type and Detector Type is not defined by 
+            the specification when the Detector Type Auto is set to True.  If set to False, the detector type is manually selected.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnAcquisition.DetectorType">
+            <summary>
+            Specifies the detection method used to capture and process the signal. This governs the data acquisition for a particular sweep, 
+            but does not have any control over how multiple sweeps are processed.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAnAcquisition.VerticalScale">
+            <summary>
+            Specifies the vertical scale of the measurement hardware 
+            (use of log amplifiers vs. linear amplifiers).
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IIviSpecAn">
+            <summary>
+            IVI SpecAn class-compliant root interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAn.Frequency">
+            <summary>
+            Reference to the class-compliant IIviSpecAnFrequency interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAn.SweepCoupling">
+            <summary>
+            Reference to the class-compliant IIviSpecAnSweepCoupling interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAn.Level">
+            <summary>
+            Reference to the class-compliant IIviSpecAnLevel interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAn.Acquisition">
+            <summary>
+            Reference to the class-compliant IIviSpecAnAcquisition interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAn.Display">
+            <summary>
+            Reference to the class-compliant IIviSpecAnDisplay interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAn.ExternalMixer">
+            <summary>
+            Reference to the class-compliant IIviSpecAnExternalMixer interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAn.Trigger">
+            <summary>
+            Reference to the class-compliant IIviSpecAnTrigger interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAn.Traces">
+            <summary>
+            Reference to the class-compliant IIviSpecAnTraces interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAn.Marker">
+            <summary>
+            Reference to the class-compliant IIviSpecAnMarker interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.SpecAn.IIviSpecAn.Preselector">
+            <summary>
+            Reference to the class-compliant IIviSpecAnPreselector interface.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.IviSpecAnWarnings">
+            <summary>
+            Warning codes.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.IviSpecAnWarnings.MeasureUncalibrated">
+            <summary>
+            The instrument was in an uncalibrated state when the measurement 
+            was taken.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.IviSpecAnWarnings.OverRange">
+            <summary>
+            The measurement taken was over the instrument's range.
+            </summary>
+        </member>
+        <member name="T:Ivi.SpecAn.Slope">
+            <summary>IVI SpecAn values for Slope.</summary>
+        </member>
+        <member name="F:Ivi.SpecAn.Slope.Positive">
+            <summary>
+            Sets positive slope.
+            </summary>
+        </member>
+        <member name="F:Ivi.SpecAn.Slope.Negative">
+            <summary>
+            Sets negative slope.
+            </summary>
+        </member>
+    </members>
+</doc>

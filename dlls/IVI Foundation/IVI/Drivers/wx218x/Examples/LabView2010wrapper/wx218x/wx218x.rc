@@ -1,0 +1,2522 @@
+explicitActiveChannels: TRUE
+library: wx218x_*.*
+
+class: "wx218x"
+flags: 0
+sorted: no
+implements: ivi, IviFgen, iviResourceMgr
+
+attribute: "Active Channel" "Active Channel" string writeonly 3 -2
+"Specifics the channel name used to access all subsequent channel-based properties in this property node.  Set the channel before setting channel-based properties.  Pass a name that the instrument driver defines or a virtual channel name configured in MAX."
+
+attribute: "Driver Setup"
+	"Inherent IVI Properties:Advanced Session Information:Driver Setup"
+	string readonly 1 100597
+	//const: WX218X_ATTR_DRIVER_SETUP
+"The driver setup string.  It is either specified in the Configuration Store or passed in the OptionString parameter of the Initialize VI.  Driver setup is empty if the driver is not initialized.
+
+"
+attribute: "I/O Resource Descriptor"
+	"Inherent IVI Properties:Advanced Session Information:I/O Resource Descriptor"
+	string readonly 1 1006C0
+	//const: WX218X_ATTR_IO_RESOURCE_DESCRIPTOR
+"The resource descriptor specifies the connection to a physical device.  It is either specified in the Configuration Store or passed in the ResourceName parameter of the Initialize VI.  It is empty if the driver is not initialized.
+
+"
+attribute: "Logical Name"
+	"Inherent IVI Properties:Advanced Session Information:Logical Name"
+	string readonly 1 1006C1
+	//const: WX218X_ATTR_LOGICAL_NAME
+"Logical Name identifies a driver session in the Configuration Store.  If Logical Name is not empty, the driver was initialized from information in the driver session.  If it is empty, the driver was initialized without using the Configuration Store.
+
+"
+attribute: "Class Group Capabilities"
+	"Inherent IVI Properties:Driver Capabilities:Class Group Capabilities"
+	string readonly 1 100721
+	//const: WX218X_ATTR_GROUP_CAPABILITIES
+"A comma-separated list of the class capability groups implemented by the driver.  Capability group names are documented in the IVI class specifications.  If the driver is not class compliant, the driver returns an empty string.
+
+"
+attribute: "Supported Instrument Models"
+	"Inherent IVI Properties:Driver Capabilities:Supported Instrument Models"
+	string readonly 1 1006D7
+	//const: WX218X_ATTR_SUPPORTED_INSTRUMENT_MODELS
+"A comma-separated list of instrument models that the IVI specific driver can control.  The string does not include an abbreviation for the manufacturer if it is the same for all models.
+
+"
+attribute: "Specific Driver Class Spec Major Version"
+	"Inherent IVI Properties:Driver Identification:Specific Driver Class Spec Major Version"
+	iL readonly 1 100793
+	//const: WX218X_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION
+"Returns the major version number of the class specification in accordance with which the IVI specific driver was developed. Zero is returned if the driver is not compliant with a class specification.
+
+"
+attribute: "Specific Driver Class Spec Minor Version"
+	"Inherent IVI Properties:Driver Identification:Specific Driver Class Spec Minor Version"
+	iL readonly 1 100794
+	//const: WX218X_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION
+"Returns the minor version number of the class specification in accordance with which the IVI specific driver was developed. Zero is returned if the driver is not compliant with a class specification.
+
+"
+attribute: "Specific Driver Description"
+	"Inherent IVI Properties:Driver Identification:Specific Driver Description"
+	string readonly 1 100792
+	//const: WX218X_ATTR_SPECIFIC_DRIVER_DESCRIPTION
+"Returns a brief description of the IVI specific driver. The string that this property returns contains a maximum of 256 bytes including the NUL byte.
+
+"
+attribute: "Specific Driver Prefix"
+	"Inherent IVI Properties:Driver Identification:Specific Driver Prefix"
+	string readonly 1 1006BE
+	//const: WX218X_ATTR_SPECIFIC_DRIVER_PREFIX
+"Returns the case-sensitive prefix of the user-callable VIs that the IVI-C specific driver exports. The string that this property returns contains a maximum of 32 bytes including the NUL byte.
+
+"
+attribute: "Specific Driver Revision"
+	"Inherent IVI Properties:Driver Identification:Specific Driver Revision"
+	string readonly 1 1007B7
+	//const: WX218X_ATTR_SPECIFIC_DRIVER_REVISION
+"Returns version information about the IVI specific driver. The string that this property returns contains a maximum of 256 bytes including the NUL byte.
+
+"
+attribute: "Specific Driver Vendor"
+	"Inherent IVI Properties:Driver Identification:Specific Driver Vendor"
+	string readonly 1 100791
+	//const: WX218X_ATTR_SPECIFIC_DRIVER_VENDOR
+"Returns the name of the vendor that supplies the IVI specific driver. The string that this property returns contains a maximum of 256 bytes including the NUL byte.
+
+"
+attribute: "Instrument Firmware Revision"
+	"Inherent IVI Properties:Instrument Identification:Instrument Firmware Revision"
+	string readonly 1 10078E
+	//const: WX218X_ATTR_INSTRUMENT_FIRMWARE_REVISION
+"The firmware revision reported by the physical instrument.  If Simulation is enabled or the instrument is not capable of reporting the firmware revision, a string is returned that explains the condition.
+
+"
+attribute: "Instrument Manufacturer"
+	"Inherent IVI Properties:Instrument Identification:Instrument Manufacturer"
+	string readonly 1 10078F
+	//const: WX218X_ATTR_INSTRUMENT_MANUFACTURER
+"The name of the manufacturer reported by the physical instrument.  If Simulation is enabled or the instrument is not capable of reporting the name of the manufacturer, a string is returned that explains the condition. Manufacturer is limited to 256 bytes
+
+"
+attribute: "Instrument Model"
+	"Inherent IVI Properties:Instrument Identification:Instrument Model"
+	string readonly 1 100790
+	//const: WX218X_ATTR_INSTRUMENT_MODEL
+"The model number or name reported by the physical instrument.  If Simulation is enabled or the instrument is not capable of reporting the model number or name, a string is returned that explains the condition.  Model is limited to 256 bytes
+
+"
+attribute: "Cache"
+	"Inherent IVI Properties:User Options:Cache"
+	bool readwrite 1 100594
+	//const: WX218X_ATTR_CACHE
+"Drivers may choose to always cache some instrument settings, never cache others, and optionally cache others, to avoid unecessary I/O to the instrument.  If True, the driver caches optionally cached instrument settings.
+
+"
+attribute: "Interchange Check"
+	"Inherent IVI Properties:User Options:Interchange Check"
+	bool readwrite 1 1005A5
+	//const: WX218X_ATTR_INTERCHANGE_CHECK
+"If True, the driver maintains a record of interchangeability warnings.  If the driver does not support interchangeability checking, attempts to set InterchangeCheck to True return an error.
+
+"
+attribute: "Query Instrument Status"
+	"Inherent IVI Properties:User Options:Query Instrument Status"
+	bool readwrite 1 100593
+	//const: WX218X_ATTR_QUERY_INSTRUMENT_STATUS
+"If True, the driver queries the instrument status at the end of each method or property that performs I/O to the instrument.  If an error is reported, use ErrorQuery to retrieve error messages one at a time from the instrument.
+
+"
+attribute: "Range Check"
+	"Inherent IVI Properties:User Options:Range Check"
+	bool readwrite 1 100592
+	//const: WX218X_ATTR_RANGE_CHECK
+"Drivers may choose to always validate some property/parameter values, never validate others, and optionally validate others, to avoid sending invalid commands to the instrument.  If True, the driver performs optional validations.
+
+"
+attribute: "Record Value Coercions"
+	"Inherent IVI Properties:User Options:Record Value Coercions"
+	bool readwrite 1 100596
+	//const: WX218X_ATTR_RECORD_COERCIONS
+"If True, the driver keeps a list of the value coercions it makes for integer and ViReal64 properties.  If the driver does not support coercion recording, attempts to set RecordCoercions to True will return an error.
+
+"
+attribute: "Simulate"
+	"Inherent IVI Properties:User Options:Simulate"
+	bool readwrite 1 100595
+	//const: WX218X_ATTR_SIMULATE
+"If True, the driver does not perform I/O to the instrument, and returns simulated values for output parameters.
+
+"
+attribute: "AM Enabled"
+	"AM:AM Enabled"
+	bool readwrite 1 131461
+	//const: WX218X_ATTR_AM_ENABLED
+"If true, the VI generator applies amplitude modulation to the signal that the VI generator produces.
+
+"
+attribute: "AM Internal Depth"
+	"AM:AM Internal Depth"
+	fD readwrite 1 131463
+	//const: WX218X_ATTR_AM_INTERNAL_DEPTH
+"The extent of modulation the VI generator applies to the carrier waveform when the AM Source property is set to AM Internal. The unit is percentage. Applies only when the AM Source property is set to AM Internal.
+
+"
+attribute: "AM Internal Frequency"
+	"AM:AM Internal Frequency"
+	fD readwrite 1 131465
+	//const: WX218X_ATTR_AM_INTERNAL_FREQUENCY
+"The frequency of the internal modulating waveform source. The units are Hertz. Applies only when the AM Source property is set to AM Internal.
+
+"
+attribute: "AM Internal Waveform"
+	"AM:AM Internal Waveform"
+	iL enum { WX218X_VAL_AM_INTERNAL_SINE=1, WX218X_VAL_AM_INTERNAL_SQUARE=2, WX218X_VAL_AM_INTERNAL_TRIANGLE=3, WX218X_VAL_AM_INTERNAL_RAMP_UP=4, WX218X_VAL_AM_INTERNAL_RAMP_DOWN=5 } readwrite 1 131464
+	//const: WX218X_ATTR_AM_INTERNAL_WAVEFORM
+"The waveform of the internal modulating waveform source.  Applies only when the AM Source property is set to AM Internal.
+
+WX218X_VAL_AM_INTERNAL_SINE (1)
+The VI generator uses a sinusoid waveform as the modulating waveform.
+
+WX218X_VAL_AM_INTERNAL_SQUARE (2)
+The VI generator uses a square waveform as the modulating waveform.
+
+WX218X_VAL_AM_INTERNAL_TRIANGLE (3)
+The VI generator uses a triangle waveform as the modulating waveform.
+
+WX218X_VAL_AM_INTERNAL_RAMP_UP (4)
+The VI generator uses a positive ramp waveform as the modulating waveform.
+
+WX218X_VAL_AM_INTERNAL_RAMP_DOWN (5)
+The VI generator uses a negative ramp waveform as the modulating waveform.
+
+"
+attribute: "AM Source"
+	"AM:AM Source"
+	iL enum { WX218X_VAL_AM_INTERNAL=0, WX218X_VAL_AM_EXTERNAL=1 } readwrite 1 131462
+	//const: WX218X_ATTR_AM_SOURCE
+"The source of the signal that the VI generator uses as the modulating waveform. Applies only when the AM Enabled property is set to True.
+
+WX218X_VAL_AM_INTERNAL (0)
+The VI generator uses an internally generated waveform as the modulating waveform.  You use the AM Internal Depth, AM Internal Waveform, and AM Internal Frequency properties to configure the internally generated modulating waveform.
+
+WX218X_VAL_AM_EXTERNAL (1)
+The VI generator uses a waveform from an external source as the modulating waveform.
+
+"
+attribute: "Arbitrary Gain"
+	"Arbitrary:Arbitrary Gain"
+	fD readwrite 1 13139A
+	//const: WX218X_ATTR_ARB_GAIN
+"The gain of the arbitrary waveform the VI generator produces.  This value is unitless.
+
+"
+attribute: "Arbitrary Offset"
+	"Arbitrary:Arbitrary Offset"
+	fD readwrite 1 13139B
+	//const: WX218X_ATTR_ARB_OFFSET
+"The offset of the arbitrary waveform the VI generator produces.  The units are volts.
+
+"
+attribute: "Arbitrary Sample Rate"
+	"Arbitrary:Arbitrary Sample Rate"
+	fD readwrite 1 13139C
+	//const: WX218X_ATTR_ARB_SAMPLE_RATE
+"The sample rate of the arbitrary waveforms the VI generator produces.  The units are samples per second.
+
+"
+attribute: "Arbitrary Sequence Handle"
+	"Arbitrary:Sequence:Arbitrary Sequence Handle"
+	iL readwrite 1 1313A3
+	//const: WX218X_ATTR_ARB_SEQUENCE_HANDLE
+"Identifies which arbitrary sequence the VI generator produces. You create arbitrary sequences with the Create Arbitrary Sequence VI. This VI returns a handle that identifies the particular sequence. To configure the VI generator to produce a specific sequence, set this property to the sequence's handle.
+
+"
+attribute: "Loop Count Max"
+	"Arbitrary:Sequence:Loop Count Max"
+	iL readonly 1 1313A7
+	//const: WX218X_ATTR_MAX_LOOP_COUNT
+"The maximum number of times that the VI generator can repeat a waveform in a sequence.
+
+"
+attribute: "Number Sequences Max"
+	"Arbitrary:Sequence:Number Sequences Max"
+	iL readonly 1 1313A4
+	//const: WX218X_ATTR_MAX_NUM_SEQUENCES
+"The maximum number of arbitrary sequences that the VI generator allows.
+
+"
+attribute: "Sequence Length Max"
+	"Arbitrary:Sequence:Sequence Length Max"
+	iL readonly 1 1313A6
+	//const: WX218X_ATTR_MAX_SEQUENCE_LENGTH
+"The maximum number of arbitrary waveforms that the VI generator allows in an arbitrary sequence.
+
+"
+attribute: "Sequence Length Min"
+	"Arbitrary:Sequence:Sequence Length Min"
+	iL readonly 1 1313A5
+	//const: WX218X_ATTR_MIN_SEQUENCE_LENGTH
+"The minimum number of arbitrary waveforms that the VI generator allows in an arbitrary sequence.
+
+"
+attribute: "Arbitrary Frequency"
+	"Arbitrary:Waveform:Arbitrary Frequency"
+	fD readwrite 1 1313A1
+	//const: WX218X_ATTR_ARB_FREQUENCY
+"The rate at which an entire arbitrary waveform is generated.  The units are in Hertz.
+
+"
+attribute: "Arbitrary Waveform Handle"
+	"Arbitrary:Waveform:Arbitrary Waveform Handle"
+	iL readwrite 1 131399
+	//const: WX218X_ATTR_ARB_WAVEFORM_HANDLE
+"Identifies which arbitrary waveform the VI generator produces. You create arbitrary waveforms with the Create Arbitrary Waveform VI. This VI returns a handle that identifies the particular waveform. To configure the VI generator to produce a specific waveform, set this property to the waveform's handle.
+
+"
+attribute: "Number Waveforms Max"
+	"Arbitrary:Waveform:Number Waveforms Max"
+	iL readonly 1 13139D
+	//const: WX218X_ATTR_MAX_NUM_WAVEFORMS
+"The maximum number of arbitrary waveforms that the VI generator allows.
+
+"
+attribute: "Waveform Quantum"
+	"Arbitrary:Waveform:Waveform Quantum"
+	iL readonly 1 13139E
+	//const: WX218X_ATTR_WAVEFORM_QUANTUM
+"The size of each arbitrary waveform must be a multiple of a quantum value. This property returns the quantum value the VI generator allows. For example, if this property returns a value of 8, all waveform sizes must be a multiple of 8.
+
+"
+attribute: "Waveform Size Max"
+	"Arbitrary:Waveform:Waveform Size Max"
+	iL readonly 1 1313A0
+	//const: WX218X_ATTR_MAX_WAVEFORM_SIZE
+"The maximum number of points the VI generator allows in an arbitrary waveform.
+
+"
+attribute: "Waveform Size Min"
+	"Arbitrary:Waveform:Waveform Size Min"
+	iL readonly 1 13139F
+	//const: WX218X_ATTR_MIN_WAVEFORM_SIZE
+"The minimum number of points the VI generator allows in an arbitrary waveform.
+
+"
+attribute: "FM Enabled"
+	"FM:FM Enabled"
+	bool readwrite 1 1314C5
+	//const: WX218X_ATTR_FM_ENABLED
+"If true, the VI generator applies amplitude modulation to the carrier waveform.
+
+"
+attribute: "FM Internal Depth"
+	"FM:FM Internal Depth"
+	fD readwrite 1 1314C7
+	//const: WX218X_ATTR_FM_INTERNAL_DEVIATION
+"The maximum frequency deviation the VI generator applies to the carrier waveform when the FM Source property is set to FM Internal. Applies only when the FM Source property is set to FM Internal.
+
+"
+attribute: "FM Internal Frequency"
+	"FM:FM Internal Frequency"
+	fD readwrite 1 1314C9
+	//const: WX218X_ATTR_FM_INTERNAL_FREQUENCY
+"The frequency of the internal modulating waveform source.  The units are hertz. Applies only when the FM Source property is set to FM Internal.
+
+"
+attribute: "FM Internal Waveform"
+	"FM:FM Internal Waveform"
+	iL enum { WX218X_VAL_FM_INTERNAL_SINE=1, WX218X_VAL_FM_INTERNAL_SQUARE=2, WX218X_VAL_FM_INTERNAL_TRIANGLE=3, WX218X_VAL_FM_INTERNAL_RAMP_UP=4, WX218X_VAL_FM_INTERNAL_RAMP_DOWN=5 } readwrite 1 1314C8
+	//const: WX218X_ATTR_FM_INTERNAL_WAVEFORM
+"The waveform of the internal modulating waveform source. Applies only when the FM Source property is set to FM Internal.
+
+WX218X_VAL_FM_INTERNAL_SINE (1)
+The VI generator uses a sinusoid waveform as the modulating waveform.
+
+WX218X_VAL_FM_INTERNAL_SQUARE (2)
+The VI generator uses a square waveform as the modulating waveform.
+
+WX218X_VAL_FM_INTERNAL_TRIANGLE (3)
+The VI generator uses a triangle waveform as the modulating waveform.
+
+WX218X_VAL_FM_INTERNAL_RAMP_UP (4)
+The VI generator uses a positive ramp waveform as the modulating waveform.
+
+WX218X_VAL_FM_INTERNAL_RAMP_DOWN (5)
+The VI generator uses a negative ramp waveform as the modulating waveform.
+
+"
+attribute: "FM Source"
+	"FM:FM Source"
+	iL enum { WX218X_VAL_FM_INTERNAL=0, WX218X_VAL_FM_EXTERNAL=1 } readwrite 1 1314C6
+	//const: WX218X_ATTR_FM_SOURCE
+"The source of the signal that the VI generator uses as the modulating waveform. Applies only when the FM Enabled property is set to True.
+
+WX218X_VAL_FM_INTERNAL (0)
+The VI generator uses an internally generated waveform as the modulating waveform.  You use the FM Internal Deviation, FM Internal Waveform, and FM Internal Frequency properties to configure the internally generated modulating waveform.
+
+WX218X_VAL_FM_EXTERNAL (1)
+The VI generator uses a waveform from an external source as the modulating waveform.
+
+"
+attribute: "Active Channel"
+	"Instrument Specific:Active Channel"
+	string readwrite 1 118C35
+	//const: WX218X_ATTR_ACTIVE_CHANNEL
+"Sets the active channel for programming.
+
+"
+attribute: "Skew"
+	"Instrument Specific:Skew"
+	fD readwrite 1 118CF2
+	//const: WX218X_ATTR_SKEW
+"Fine skew adjustment.
+
+"
+attribute: "Dwell Mode"
+	"Instrument Specific:AHOP:Dwell Mode"
+	iL enum { WX218X_VAL_AHOP_DWELL_MODE_FIXED=0, WX218X_VAL_AHOP_DWELL_MODE_VARIABLE=1 } readwrite 1 118CE5
+	//const: WX218X_ATTR_DWELL_MODE
+"This parameter selects one of the Dwell mode variables for AHOP modulation.
+
+WX218X_VAL_AHOP_DWELL_MODE_FIXED (0)
+Sets Dwell Mode as Fixed for AHOP modulation.
+
+WX218X_VAL_AHOP_DWELL_MODE_VARIABLE (1)
+Sets Dwell Mode as Variable for AHOP modulation.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:AHOP:Enabled"
+	bool readwrite 1 118CE9
+	//const: WX218X_ATTR_ENABLED_AHOP
+"This property configures whether the VI generator applies AHOP modulation to a channel.
+
+"
+attribute: "Marker"
+	"Instrument Specific:AHOP:Marker"
+	iL readwrite 1 118CCD
+	//const: WX218X_ATTR_MARKER
+"Sets marker for AHOP modulation.
+
+"
+attribute: "Time"
+	"Instrument Specific:AHOP:Time"
+	fD readwrite 1 118CCC
+	//const: WX218X_ATTR_TIME
+"Sets Time for AHOP modulation.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:AM:Enabled"
+	bool readwrite 1 118C31
+	//const: WX218X_ATTR_ENABLED_AM
+"This property configures whether the VI generator applies amplitude modulation to a channel.
+
+"
+attribute: "Internal Depth"
+	"Instrument Specific:AM:Internal Depth"
+	fD readwrite 1 118C32
+	//const: WX218X_ATTR_INTERNAL_DEPTH_AM
+"Programs the depth of the modulating waveform in units of percent.
+
+"
+attribute: "Internal Frequency"
+	"Instrument Specific:AM:Internal Frequency"
+	fD readwrite 1 118C34
+	//const: WX218X_ATTR_INTERNAL_FREQUENCY_AM
+"Programs the frequency of the modulating waveform in units of Hz.
+
+"
+attribute: "Internal Waveform"
+	"Instrument Specific:AM:Internal Waveform"
+	iL enum { WX218X_VAL_AM_INTERNAL_WAVEFORM_SINE=1, WX218X_VAL_AM_INTERNAL_WAVEFORM_TRIANGLE=3, WX218X_VAL_AM_INTERNAL_WAVEFORM_SQUARE=2, WX218X_VAL_AM_INTERNAL_WAVEFORM_RAMP=4 } readwrite 1 118C33
+	//const: WX218X_ATTR_INTERNAL_WAVEFORM_AM
+"Select one of the waveform shapes as the active modulating waveform.
+
+WX218X_VAL_AM_INTERNAL_WAVEFORM_SINE (1)
+Selects the sine shape as the modulating waveform.
+
+WX218X_VAL_AM_INTERNAL_WAVEFORM_TRIANGLE (3)
+Selects the triangle shape as the modulating waveform.
+
+WX218X_VAL_AM_INTERNAL_WAVEFORM_SQUARE (2)
+Selects the square shape as the modulating waveform.
+
+WX218X_VAL_AM_INTERNAL_WAVEFORM_RAMP (4)
+Selects the ramp shape as the modulating waveform.
+
+"
+attribute: "Clock Divider"
+	"Instrument Specific:Arbitrary:Clock Divider"
+	iL readwrite 1 118C50
+	//const: WX218X_ATTR_CLOCK_DIVIDER
+"Will set the external sample clock frequency divider.
+
+"
+attribute: "Freq Rast Divider"
+	"Instrument Specific:Arbitrary:Freq Rast Divider"
+	iL enum { WX218X_VAL_FREQ_DIVIDER_DIV1=0, WX218X_VAL_FREQ_DIVIDER_DIV2=1, WX218X_VAL_FREQ_DIVIDER_DIV4=2, WX218X_VAL_FREQ_DIVIDER_DIV8=3, WX218X_VAL_FREQ_DIVIDER_DIV16=4 } readwrite 1 118CFA
+	//const: WX218X_ATTR_FREQ_RAST_DIVIDER
+"
+
+WX218X_VAL_FREQ_DIVIDER_DIV1 (0)
+
+
+WX218X_VAL_FREQ_DIVIDER_DIV2 (1)
+
+
+WX218X_VAL_FREQ_DIVIDER_DIV4 (2)
+
+
+WX218X_VAL_FREQ_DIVIDER_DIV8 (3)
+
+
+WX218X_VAL_FREQ_DIVIDER_DIV16 (4)
+
+
+"
+attribute: "Gain"
+	"Instrument Specific:Arbitrary:Gain"
+	fD readwrite 1 118C51
+	//const: WX218X_ATTR_GAIN
+"Specifies the factor by which the VI generator scales the arbitrary waveforms.
+
+"
+attribute: "Offset"
+	"Instrument Specific:Arbitrary:Offset"
+	fD readwrite 1 118C52
+	//const: WX218X_ATTR_OFFSET
+"Specifies the value the VI generator adds to the arbitrary waveforms.
+
+"
+attribute: "Sample Rate"
+	"Instrument Specific:Arbitrary:Sample Rate"
+	fD readwrite 1 118C53
+	//const: WX218X_ATTR_SAMPLE_RATE
+"Will set the sample clock frequency of the arbitrary and sequenced waveform in units of Sa/s.
+
+"
+attribute: "Sample Rate Source"
+	"Instrument Specific:Arbitrary:Sample Rate Source"
+	iL enum { WX218X_VAL_SAMPLE_RATE_SOURCE_INTERNAL=0, WX218X_VAL_SAMPLE_RATE_SOURCE_EXTERNAL=1 } readwrite 1 118C54
+	//const: WX218X_ATTR_SAMPLE_RATE_SOURCE
+"Selects the internal or external sample clock input.
+
+WX218X_VAL_SAMPLE_RATE_SOURCE_INTERNAL (0)
+Selects the internal clock generator as the main clock source.
+
+WX218X_VAL_SAMPLE_RATE_SOURCE_EXTERNAL (1)
+Activates the external sample clock input.
+
+"
+attribute: "Source"
+	"Instrument Specific:Arbitrary:Source"
+	iL enum { WX218X_VAL_ARBITRARY_SOURCE_BUS=0, WX218X_VAL_ARBITRARY_SOURCE_EXTERNAL=1 } readwrite 1 118C55
+	//const: WX218X_ATTR_ARB_SOURCE
+"Use this property to set or query the source of the segment select command.
+
+WX218X_VAL_ARBITRARY_SOURCE_BUS (0)
+Defines that waveform segments will be switched only when a remote command has been received.
+
+WX218X_VAL_ARBITRARY_SOURCE_EXTERNAL (1)
+Defines that the segment control is transferred to a rear panel connector.
+
+"
+attribute: "Timing"
+	"Instrument Specific:Arbitrary:Timing"
+	iL enum { WX218X_VAL_ARBITRARY_TIMING_COHERENT=0, WX218X_VAL_ARBITRARY_TIMING_IMMEDIATE=1 } readwrite 1 118C56
+	//const: WX218X_ATTR_ARB_TIMING
+"Use this property to set or query the timing characteristics of the trace select command.
+
+WX218X_VAL_ARBITRARY_TIMING_COHERENT (0)
+Defines that when a new waveform segments is selected, the transition to the new waveform will occur only when the current waveform has reached its end point.
+
+WX218X_VAL_ARBITRARY_TIMING_IMMEDIATE (1)
+Defines that when a new waveform segments is selected, the current waveform will be aborted and the transition to the new waveform will occur immediately without waiting for the current waveform to reach its end point.
+
+"
+attribute: "Advance Mode"
+	"Instrument Specific:Arbitrary:Sequence:Advance Mode"
+	iL enum { WX218X_VAL_SEQUENCE_ADVANCE_MODE_AUTO=0, WX218X_VAL_SEQUENCE_ADVANCE_MODE_ONCE=1, WX218X_VAL_SEQUENCE_ADVANCE_MODE_STEP=2 } readwrite 1 118C5B
+	//const: WX218X_ATTR_ADVANCE_MODE
+"Selects the sequence advance mode.
+
+WX218X_VAL_SEQUENCE_ADVANCE_MODE_AUTO (0)
+Specifies continuous advance where the generator steps continuously to the end of the sequence table and repeats the sequence from the start.
+
+WX218X_VAL_SEQUENCE_ADVANCE_MODE_ONCE (1)
+Selects the once sequence advance mode, where the generator steps through the sequence table automatically once except if the seq:once:coun programmed a value greater than 1.
+
+WX218X_VAL_SEQUENCE_ADVANCE_MODE_STEP (2)
+Specifies the stepped sequence advance mode, where the generator steps to the next waveform only when a valid event signal has been received.
+
+"
+attribute: "Jump Event"
+	"Instrument Specific:Arbitrary:Sequence:Jump Event"
+	iL enum { WX218X_VAL_SEQUENCE_JUMP_EVENT_BUS=0, WX218X_VAL_SEQUENCE_JUMP_EVENT_EVENT=1 } readwrite 1 118C5C
+	//const: WX218X_ATTR_SEQ_JUMP_EVENT
+"Use this property to set or query the source of the jump signal.
+
+WX218X_VAL_SEQUENCE_JUMP_EVENT_BUS (0)
+Defines that sequence will advance to the next step only when a remote command has been received.
+
+WX218X_VAL_SEQUENCE_JUMP_EVENT_EVENT (1)
+Defines that sequence will advance to the next step only when a valid signal has been asserted to the Event input.
+
+"
+attribute: "Length Max"
+	"Instrument Specific:Arbitrary:Sequence:Length Max"
+	iL readonly 1 118C5D
+	//const: WX218X_ATTR_LENGTH_MAX
+"Returns the maximum number of arbitrary waveforms the VI generator allows in a sequence.
+
+"
+attribute: "Length Min"
+	"Instrument Specific:Arbitrary:Sequence:Length Min"
+	iL readonly 1 118C5E
+	//const: WX218X_ATTR_LENGTH_MIN
+"Returns the minimum number of arbitrary waveforms the VI generator allows in a sequence.
+
+"
+attribute: "Loop Count Max"
+	"Instrument Specific:Arbitrary:Sequence:Loop Count Max"
+	iL readonly 1 118C5F
+	//const: WX218X_ATTR_LOOP_COUNT_MAX
+"Returns the maximum number of times the VI generator can repeat an arbitrary waveform in a sequence.
+
+"
+attribute: "Number Sequence Max"
+	"Instrument Specific:Arbitrary:Sequence:Number Sequence Max"
+	iL readonly 1 118C60
+	//const: WX218X_ATTR_NUMBER_SEQUENCE_MAX
+"Returns the maximum number of loops that the advanced sequence can execute when its advance mode is programmed to ONCE.
+
+"
+attribute: "Prestep"
+	"Instrument Specific:Arbitrary:Sequence:Prestep"
+	iL enum { WX218X_VAL_SEQUENCE_PRESTEP_WAVE=0, WX218X_VAL_SEQUENCE_PRESTEPDC=1 } readwrite 1 118CAD
+	//const: WX218X_ATTR_PRESTEP
+"Sets Sequence Prestep as Wave or DC.
+
+WX218X_VAL_SEQUENCE_PRESTEP_WAVE (0)
+Sets Wave Prestep for Sequence.
+
+WX218X_VAL_SEQUENCE_PRESTEPDC (1)
+Sets DC Prestep for Sequence.
+
+"
+attribute: "Quick Sequence"
+	"Instrument Specific:Arbitrary:Sequence:Quick Sequence"
+	iL readwrite 1 118CA7
+	//const: WX218X_ATTR_QUICK_SEQUENCE
+"If user want to download sequence table in quick mode, he must set this proprty to 1, else to 0.
+
+"
+attribute: "Source"
+	"Instrument Specific:Arbitrary:Sequence:Source"
+	iL enum { WX218X_VAL_SEQUENCE_SOURCE_BUS=0, WX218X_VAL_SEQUENCE_SOURCE_EXTERNAL=1 } readwrite 1 118C61
+	//const: WX218X_ATTR_SEQ_SOURCE
+"Use this property to set or query the source of the sequence.
+
+WX218X_VAL_SEQUENCE_SOURCE_BUS (0)
+Defines that sequences will be switched only when a remote command has been received.
+
+WX218X_VAL_SEQUENCE_SOURCE_EXTERNAL (1)
+Defines that the sequence control is transferred to a rear panel connector.
+
+"
+attribute: "Sync Lock"
+	"Instrument Specific:Arbitrary:Sequence:Sync Lock"
+	iL readwrite 1 118C62
+	//const: WX218X_ATTR_SEQ_SYNC_LOCK
+"Set sync position to sequence step number.
+
+"
+attribute: "Timing"
+	"Instrument Specific:Arbitrary:Sequence:Timing"
+	iL enum { WX218X_VAL_SEQUENCE_TIMING_COHERENT=0, WX218X_VAL_SEQUENCE_TIMING_IMMEDIATE=1 } readwrite 1 118C63
+	//const: WX218X_ATTR_SEQ_TIMING
+"Use this property to set or query the timing characteristics of the sequence select command.
+
+WX218X_VAL_SEQUENCE_TIMING_COHERENT (0)
+Defines that when a new sequence is selected, the transition to the new sequence will occur only when the current sequence has reached its end point.
+
+WX218X_VAL_SEQUENCE_TIMING_IMMEDIATE (1)
+Defines that when a new sequence is selected, the current sequence will be aborted and the transition to the new sequence will occur immediately without waiting for the current sequence to reach its end point.
+
+"
+attribute: "Mode"
+	"Instrument Specific:Arbitrary:Sequence:AdvanceSequence:Mode"
+	iL enum { WX218X_VAL_ADVANCE_SEQUENCE_MODE_AUTO=0, WX218X_VAL_ADVANCE_SEQUENCE_MODE_ONCE=1, WX218X_VAL_ADVANCE_SEQUENCE_MODE_STEP=2 } readwrite 1 118C64
+	//const: WX218X_ATTR_ADV_SEQ_MODE
+"This property will select the sequence advance mode, which defines how the output advances through the sequencer steps. There are three advance modes: automatic, once and stepped.
+
+WX218X_VAL_ADVANCE_SEQUENCE_MODE_AUTO (0)
+Specifies continuous advance where the generator steps continuously to the end of the sequence table and repeats the sequence from the start.
+
+WX218X_VAL_ADVANCE_SEQUENCE_MODE_ONCE (1)
+Selects the once sequence advance mode, where the generator steps through the sequence table automatically once except if the aseq:once:coun programmed a value greater than 1.
+
+WX218X_VAL_ADVANCE_SEQUENCE_MODE_STEP (2)
+Specifies the stepped sequence advance mode, where the generator steps to the next sequence only when a valid event signal has been received.
+
+"
+attribute: "Sync Lock"
+	"Instrument Specific:Arbitrary:Sequence:AdvanceSequence:Sync Lock"
+	iL readwrite 1 118C65
+	//const: WX218X_ATTR_SYNC_LOCK
+"Set sync position to advance sequence step number
+
+"
+attribute: "Download Record"
+	"Instrument Specific:Arbitrary:Waveform:Download Record"
+	iL enum { WX218X_VAL_ARB_DOWNLOAD_RECORD_ENABLE=0, WX218X_VAL_ARB_DOWNLOAD_RECORD_DISABLE=1 } readwrite 1 118CFF
+	//const: WX218X_ATTR_DOWNLOAD_RECORD
+"Enable or Disable record all downloaded waves on internal flash.
+
+WX218X_VAL_ARB_DOWNLOAD_RECORD_ENABLE (0)
+Record all downloaded waves on internal flash (for Trace mode Single).
+
+WX218X_VAL_ARB_DOWNLOAD_RECORD_DISABLE (1)
+Doesn't record all downloaded waves on internal flash (not for Trace mode Single).
+
+"
+attribute: "Fast Download"
+	"Instrument Specific:Arbitrary:Waveform:Fast Download"
+	iL readwrite 1 118CFD
+	//const: WX218X_ATTR_FAST_DOWNLOAD
+"
+
+"
+attribute: "Number Waveforms Max"
+	"Instrument Specific:Arbitrary:Waveform:Number Waveforms Max"
+	iL readonly 1 118C57
+	//const: WX218X_ATTR_NUMBER_WAVEFORMS_MAX
+"Returns the maximum number of arbitrary waveforms that the VI generator allows.
+
+"
+attribute: "Quantum"
+	"Instrument Specific:Arbitrary:Waveform:Quantum"
+	iL readonly 1 118C58
+	//const: WX218X_ATTR_QUANTUM
+"The size (i.e. number of points) of each waveform must be a multiple of a constant quantum value.
+
+"
+attribute: "Size Max"
+	"Instrument Specific:Arbitrary:Waveform:Size Max"
+	iL readonly 1 118C59
+	//const: WX218X_ATTR_WAVEFORM_SIZE_MAX
+"Returns the maximum number of points the VI generator allows in a waveform.
+
+"
+attribute: "Size Min"
+	"Instrument Specific:Arbitrary:Waveform:Size Min"
+	iL readonly 1 118C5A
+	//const: WX218X_ATTR_WAVEFORM_SIZE_MIN
+"Returns the minimum number of points the VI generator allows in a waveform.
+
+"
+attribute: "Trace Mode"
+	"Instrument Specific:Arbitrary:Waveform:Trace Mode"
+	iL enum { WX218X_VAL_TRACE_MODE_SINGLE=0, WX218X_VAL_TRACE_MODE_DUPLICATE=1, WX218X_VAL_TRACE_MODE_ZERO=2, WX218X_VAL_TRACE_MODE_COMBINE=3 } readwrite 1 118CF8
+	//const: WX218X_ATTR_TRACE_MODE
+"Use this property to set or query the trace mode.
+
+WX218X_VAL_TRACE_MODE_SINGLE (0)
+Selects the Single trace mode for download waveforms.
+
+WX218X_VAL_TRACE_MODE_DUPLICATE (1)
+Selects the Duplicate trace mode for download waveforms.
+
+WX218X_VAL_TRACE_MODE_ZERO (2)
+Selects the Zero trace mode for download waveforms.
+
+WX218X_VAL_TRACE_MODE_COMBINE (3)
+Selects the Combine trace mode for download waveforms.
+
+"
+attribute: "Baud"
+	"Instrument Specific:ASK:Baud"
+	fD readwrite 1 118CC7
+	//const: WX218X_ATTR_ASK_BAUD
+"Sets baud for ASK modulation.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:ASK:Enabled"
+	bool readwrite 1 118CE7
+	//const: WX218X_ATTR_ENABLED_ASK
+"This property configures whether the VI generator applies ASK modulation to a channel.
+
+"
+attribute: "Marker"
+	"Instrument Specific:ASK:Marker"
+	iL readwrite 1 118CC8
+	//const: WX218X_ATTR_ASK_MARKER
+"Sets marker for ASK modulation.
+
+"
+attribute: "Shift Amplitude"
+	"Instrument Specific:ASK:Shift Amplitude"
+	fD readwrite 1 118CC6
+	//const: WX218X_ATTR_ASK_SHIFT_AMPLITUDE
+"Sets shift amplitude for ASK modulation.
+
+"
+attribute: "Start Amplitude"
+	"Instrument Specific:ASK:Start Amplitude"
+	fD readwrite 1 118CC5
+	//const: WX218X_ATTR_ASK_START_AMPLITUDE
+"Sets start amplitude for ASK modulation.
+
+"
+attribute: "Frequency"
+	"Instrument Specific:CarrierModulation:Frequency"
+	fD readwrite 1 118C66
+	//const: WX218X_ATTR_CARR_FREQUENCY
+"This property programs the CW frequency.
+
+"
+attribute: "Waveform"
+	"Instrument Specific:CarrierModulation:Waveform"
+	iL enum { WX218X_VAL_CARRIER_MODULATION_WAVEFORM_SINE=0, WX218X_VAL_CARRIER_MODULATION_WAVEFORM_TRIANGLE=1, WX218X_VAL_CARRIER_MODULATION_WAVEFORM_SQUARE=2 } readwrite 1 118C67
+	//const: WX218X_ATTR_CARR_WAVEFORM
+"Specifies the carrier VI. There are three VIs that could be modulated: Sine, Triangle and Square.
+
+WX218X_VAL_CARRIER_MODULATION_WAVEFORM_SINE (0)
+Selects sine as the modulated waveform.
+
+WX218X_VAL_CARRIER_MODULATION_WAVEFORM_TRIANGLE (1)
+Selects triangle as the modulated waveform.
+
+WX218X_VAL_CARRIER_MODULATION_WAVEFORM_SQUARE (2)
+Selects square as the modulated waveform.
+
+"
+attribute: "Ampl Depth"
+	"Instrument Specific:CHIRP:Ampl Depth"
+	fD readwrite 1 118CBC
+	//const: WX218X_ATTR_CHIRP_AMPL_DEPTH
+"Sets the amplitude depth for chirp modulation.
+
+"
+attribute: "Ampl Direction"
+	"Instrument Specific:CHIRP:Ampl Direction"
+	iL enum { WX218X_VAL_CHIRP_AMPLITUDE_DIRECTION_UP=0, WX218X_VAL_CHIRP_AMPLITUDE_DIRECTION_DOWN=1 } readwrite 1 118CBF
+	//const: WX218X_ATTR_CHIRP_AMPL_DIRECTION
+"Sets amplitude direction up or down for chirp modulation.
+
+WX218X_VAL_CHIRP_AMPLITUDE_DIRECTION_UP (0)
+Sets chirp amplitude direction up.
+
+WX218X_VAL_CHIRP_AMPLITUDE_DIRECTION_DOWN (1)
+Sets chirp amplitude direction down.
+
+"
+attribute: "Ampl Spacing"
+	"Instrument Specific:CHIRP:Ampl Spacing"
+	iL enum { WX218X_VAL_CHIRP_AMPL_SPACING_LIN=0, WX218X_VAL_CHIRP_AMPL_SPACING_LOG=1 } readwrite 1 118CC0
+	//const: WX218X_ATTR_CHIRP_AMPL_SPACING
+"Sets chirp amplitude spacing linear or logarithmic.
+
+WX218X_VAL_CHIRP_AMPL_SPACING_LIN (0)
+Sets chirp amplitude spacing linear.
+
+WX218X_VAL_CHIRP_AMPL_SPACING_LOG (1)
+Sets chirp amplitude spacing logarithmic.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:CHIRP:Enabled"
+	bool readwrite 1 118CC1
+	//const: WX218X_ATTR_CHIRP_ENABLED
+"This property configures whether the VI generator applies chirp modulation to a channel.
+
+"
+attribute: "Freq Direction"
+	"Instrument Specific:CHIRP:Freq Direction"
+	iL enum { WX218X_VAL_CHIRP_FREQ_DIRECTION_UP=0, WX218X_VAL_CHIRP_FREQ_DIRECTION_DOWN=1 } readwrite 1 118CBD
+	//const: WX218X_ATTR_CHIRP_FREQ_DIRECTION
+"Sets frequency direction up or down for chirp modulation.
+
+WX218X_VAL_CHIRP_FREQ_DIRECTION_UP (0)
+Sets Chirp Frequency Direction Up.
+
+WX218X_VAL_CHIRP_FREQ_DIRECTION_DOWN (1)
+Sets Chirp Frequency Direction Down.
+
+"
+attribute: "Freq Spacing"
+	"Instrument Specific:CHIRP:Freq Spacing"
+	iL enum { WX218X_VAL_CHIRP_FREQ_SPACING_LINEAR=0, WX218X_VAL_CHIRP_FREQ_SPACING_LOG=1 } readwrite 1 118CBE
+	//const: WX218X_ATTR_CHIRP_FREQ_SPACING
+"Sets frequency spacing linear or logarithmic for chirp modulation.
+
+WX218X_VAL_CHIRP_FREQ_SPACING_LINEAR (0)
+Sets chirp frequency space linear.
+
+WX218X_VAL_CHIRP_FREQ_SPACING_LOG (1)
+Sets chirp frequency space logarithmic.
+
+"
+attribute: "Marker Frequency"
+	"Instrument Specific:CHIRP:Marker Frequency"
+	fD readwrite 1 118CBB
+	//const: WX218X_ATTR_CHIRP_MARKER_FREQUENCY
+"Sets the marker frequency for chirp modulation.
+
+"
+attribute: "Repetition"
+	"Instrument Specific:CHIRP:Repetition"
+	fD readwrite 1 118CB8
+	//const: WX218X_ATTR_CHIRP_REPETITION
+"Sets the repetition for chirp modulation
+
+"
+attribute: "Start Frequency"
+	"Instrument Specific:CHIRP:Start Frequency"
+	fD readwrite 1 118CB9
+	//const: WX218X_ATTR_CHIRP_START_FREQUENCY
+"Sets the start frequency for chirp modulation.
+
+"
+attribute: "Stop Frequency"
+	"Instrument Specific:CHIRP:Stop Frequency"
+	fD readwrite 1 118CBA
+	//const: WX218X_ATTR_CHIRP_STOP_FREQUENCY
+"Sets the stop frequency for Chirp modulation.
+
+"
+attribute: "Width"
+	"Instrument Specific:CHIRP:Width"
+	fD readwrite 1 118CB7
+	//const: WX218X_ATTR_CHIRP_WIDTH
+"Sets the width for chirp modulation.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:Couple:Enabled"
+	bool readwrite 1 118C68
+	//const: WX218X_ATTR_COUPLE_ENABLED
+"Sets or queries the couple state of the synchronized channels. Use this property to cause all, or just listed channels to synchronize.
+
+"
+attribute: "Offset"
+	"Instrument Specific:Couple:Offset"
+	iL readwrite 1 118C69
+	//const: WX218X_ATTR_COURSE_OFFSET
+"When couple state is ON, this property sets or queries the offset between the start phase of the master channel and the start phase of the slave channel.
+
+"
+attribute: "Skew"
+	"Instrument Specific:Couple:Skew"
+	fD readwrite 1 118C6A
+	//const: WX218X_ATTR_FINE_SKEW
+"When couple state is ALL, this property sets or queries the skew between the start phase of the master channel and the start phase of the slave channel.
+
+"
+attribute: "Arb Resolution"
+	"Instrument Specific:DigitalPatternOutput:Arb Resolution"
+	iL enum { WX218X_VAL_ARBITRARY_RESOLUTION1P=0, WX218X_VAL_ARBITRARY_RESOLUTION2P=1 } readwrite 1 118CEF
+	//const: WX218X_ATTR_ARB_RESOLUTION
+"This property duplicates or not duplicates any arbitrary wave for sync between Arb and Dig frequency.
+
+WX218X_VAL_ARBITRARY_RESOLUTION1P (0)
+Not duplicate any arbitrary wave for sync between Arb and Dig frequency.
+
+WX218X_VAL_ARBITRARY_RESOLUTION2P (1)
+Will duplicate any arbitrary wave for sync between Arb and Dig frequency.
+
+"
+attribute: "Delay"
+	"Instrument Specific:DigitalPatternOutput:Delay"
+	fD readwrite 1 118CB3
+	//const: WX218X_ATTR_DIG_PATTERN_DELAY
+"This property programs the digital pattern delay.
+
+"
+attribute: "Delay Mode"
+	"Instrument Specific:DigitalPatternOutput:Delay Mode"
+	iL enum { WX218X_VAL_DIG_PATTERN_DELAY_MODE_COMMON=0, WX218X_VAL_DIG_PATTERN_DELAY_MODE_SEPARATE=1 } readwrite 1 118CB1
+	//const: WX218X_ATTR_DIG_DELAY_MODE
+"This property programs delay mode for digital pattern output.
+
+WX218X_VAL_DIG_PATTERN_DELAY_MODE_COMMON (0)
+Sets delay mode as Common for Digital Pattern Output.
+
+WX218X_VAL_DIG_PATTERN_DELAY_MODE_SEPARATE (1)
+Sets delay mode as Separate for Digital Pattern Output.
+
+"
+attribute: "Dig Clock"
+	"Instrument Specific:DigitalPatternOutput:Dig Clock"
+	iL enum { WX218X_VAL_DIGITAL_CLOCKSDR=0, WX218X_VAL_DIGITAL_CLOCKDDR=1 } readwrite 1 118CFC
+	//const: WX218X_ATTR_DIG_CLOCK
+"
+
+WX218X_VAL_DIGITAL_CLOCKSDR (0)
+
+
+WX218X_VAL_DIGITAL_CLOCKDDR (1)
+
+
+"
+attribute: "Dig Port"
+	"Instrument Specific:DigitalPatternOutput:Dig Port"
+	iL enum { WX218X_VAL_DIG_PORT_PORT1=0, WX218X_VAL_DIG_PORT_PORT2=1, WX218X_VAL_DIG_PORT_PORT_BOTH=2 } readwrite 1 118CFE
+	//const: WX218X_ATTR_DIG_PORT
+"
+
+WX218X_VAL_DIG_PORT_PORT1 (0)
+
+
+WX218X_VAL_DIG_PORT_PORT2 (1)
+
+
+WX218X_VAL_DIG_PORT_PORT_BOTH (2)
+
+
+"
+attribute: "DigPatternEnabled"
+	"Instrument Specific:DigitalPatternOutput:DigPatternEnabled"
+	bool readwrite 1 118CB4
+	//const: WX218X_ATTR_DIG_PATTERN_ENABLED
+"This property sets the digital pattern output on or off.
+
+"
+attribute: "Emphasis Enabled"
+	"Instrument Specific:DigitalPatternOutput:Emphasis Enabled"
+	bool readwrite 1 118CED
+	//const: WX218X_ATTR_DIG_EMPHASIS_ENABLED
+"This property toggles emphasis on/off.
+
+"
+attribute: "Format Data"
+	"Instrument Specific:DigitalPatternOutput:Format Data"
+	iL enum { WX218X_VAL_DIG_FORMAT_DATA_SEPARATE=0, WX218X_VAL_DIG_FORMAT_DATA_COMMON=1 } readwrite 1 118CEE
+	//const: WX218X_ATTR_FORMAT_DATA
+"This property programs how the waveform will be download into the memories.
+
+WX218X_VAL_DIG_FORMAT_DATA_SEPARATE (0)
+Will download the waveform only into one memory:Arbitrary or Digital.
+
+WX218X_VAL_DIG_FORMAT_DATA_COMMON (1)
+Will download the waveform into both of the memories:Arbitrary and Digital.
+
+"
+attribute: "High Level"
+	"Instrument Specific:DigitalPatternOutput:High Level"
+	fD readwrite 1 118CB5
+	//const: WX218X_ATTR_DIG_HIGH_LEVEL
+"This property programs the digital pattern high level.
+
+"
+attribute: "Level Mode"
+	"Instrument Specific:DigitalPatternOutput:Level Mode"
+	iL enum { WX218X_VAL_DIG_PATTERN_LEVEL_MODE_COMMON=0, WX218X_VAL_DIG_PATTERN_LEVEL_MODE_SEPARATE=1 } readwrite 1 118CB2
+	//const: WX218X_ATTR_DIG_LEVEL_MODE
+"This property programs level mode for digital pattern output.
+
+WX218X_VAL_DIG_PATTERN_LEVEL_MODE_COMMON (0)
+Sets level mode as Common for Digital Pattern Output.
+
+WX218X_VAL_DIG_PATTERN_LEVEL_MODE_SEPARATE (1)
+Sets level mode as Separate for Digital Pattern Output.
+
+"
+attribute: "Low Level"
+	"Instrument Specific:DigitalPatternOutput:Low Level"
+	fD readwrite 1 118CB6
+	//const: WX218X_ATTR_DIG_LOW_LEVEL
+"This property programs the digital pattern low level.
+
+"
+attribute: "Pod Present"
+	"Instrument Specific:DigitalPatternOutput:Pod Present"
+	iL readonly 1 118CEC
+	//const: WX218X_ATTR_DIG_POD_PRESENT
+"Checks whether a POD is present at the port.
+
+"
+attribute: "Amplitude"
+	"Instrument Specific:DigitalPulse:Amplitude"
+	fD readwrite 1 118C8B
+	//const: WX218X_ATTR_DIG_PULSE_AMPLITUDE
+"This property programs the peak to peak amplitude of the pulse waveform in units of volts.
+
+"
+attribute: "Configure"
+	"Instrument Specific:DigitalPulse:Configure"
+	iL enum { WX218X_VAL_PULSE_CONFIGURE_TIME=0, WX218X_VAL_PULSE_CONFIGURE_PERCENT=1 } readwrite 1 118C8C
+	//const: WX218X_ATTR_DIG_PULSE_CONFIGURE
+"Enables the programming of pulse parameters in units of time (seconds)or units of percent.
+
+WX218X_VAL_PULSE_CONFIGURE_TIME (0)
+Enables the programming of pulse parameters in units of time (seconds).
+
+WX218X_VAL_PULSE_CONFIGURE_PERCENT (1)
+Enables the programming of certain pulse parameters in units of percent.
+
+"
+attribute: "Delay"
+	"Instrument Specific:DigitalPulse:Delay"
+	fD readwrite 1 118C8D
+	//const: WX218X_ATTR_DIG_PULSE_DELAY
+"This property programs the delayed interval of which the output idles on the low level until the first transition to high level in units of seconds.
+
+"
+attribute: "Delay Percent"
+	"Instrument Specific:DigitalPulse:Delay Percent"
+	fD readwrite 1 118C8E
+	//const: WX218X_ATTR_DIG_PULSE_DELAY_PERCENT
+"This property programs the delayed interval of which the output idles on the low level until the first transition to high level in units of percent.
+
+"
+attribute: "Double Delay"
+	"Instrument Specific:DigitalPulse:Double Delay"
+	fD readwrite 1 118C8F
+	//const: WX218X_ATTR_DIG_PULSE_DOUBLE_DELAY
+"This property programs the delay between two adjacent pulses when the double mode is selected in unuts of seconds.
+
+"
+attribute: "Double Delay Percent"
+	"Instrument Specific:DigitalPulse:Double Delay Percent"
+	fD readwrite 1 118C90
+	//const: WX218X_ATTR_DIG_PULSE_DOUBLE_DELAY_PERCENT
+"This property programs the delay between two adjacent pulses when the double mode is selected in unuts of percent.
+
+"
+attribute: "Fall Time"
+	"Instrument Specific:DigitalPulse:Fall Time"
+	fD readwrite 1 118C91
+	//const: WX218X_ATTR_DIG_PULSE_FALL_TIME
+"This property programs the interval it will take the trailing edge of the pulse to transition from its high to low level settings in units of seconds.
+
+"
+attribute: "Fall Time Percent"
+	"Instrument Specific:DigitalPulse:Fall Time Percent"
+	fD readwrite 1 118C92
+	//const: WX218X_ATTR_DIG_PULSE_FALL_TIME_PERCENT
+"This property programs the interval it will take the trailing edge of the pulse to transition from its high to low level settings in units of percent.
+
+"
+attribute: "High Level"
+	"Instrument Specific:DigitalPulse:High Level"
+	fD readwrite 1 118C93
+	//const: WX218X_ATTR_DIG_PULSE_HIGH_LEVEL
+"This property programs the high level amplitude of the pulse waveform in units of volts.
+
+"
+attribute: "Level Control"
+	"Instrument Specific:DigitalPulse:Level Control"
+	iL enum { WX218X_VAL_PULSE_LEVEL_CONTROLHLOW=0, WX218X_VAL_PULSE_LEVEL_CONTROLA_OFFSET=1, WX218X_VAL_PULSE_LEVEL_CONTROL_POSITIVE=2, WX218X_VAL_PULSE_LEVEL_CONTROL_NEGATIVE=3 } readwrite 1 118C94
+	//const: WX218X_ATTR_DIG_PULSE_LEVEL_CONTROL
+"This property will determine how the pulse levels are programed. Pulse level mode options are: High/Low, Amplitude/Offset, Positive and Negative.
+
+WX218X_VAL_PULSE_LEVEL_CONTROLHLOW (0)
+Programs pulse level using high level and low level parameters.
+
+WX218X_VAL_PULSE_LEVEL_CONTROLA_OFFSET (1)
+Programs pulse level using the amplitude and offset parameters.
+
+WX218X_VAL_PULSE_LEVEL_CONTROL_POSITIVE (2)
+Programs pulse level using the high level parameters. The low level remains at 0 V at all times.
+
+WX218X_VAL_PULSE_LEVEL_CONTROL_NEGATIVE (3)
+Programs pulse level using the low level parameters. The high level remains at 0 V at all times.
+
+"
+attribute: "Low Level"
+	"Instrument Specific:DigitalPulse:Low Level"
+	fD readwrite 1 118C95
+	//const: WX218X_ATTR_DIG_PULSE_LOW_LEVEL
+"This property programs the low level amplitude of the pulse waveform.
+
+"
+attribute: "Mode"
+	"Instrument Specific:DigitalPulse:Mode"
+	iL enum { WX218X_VAL_PULSE_MODE_SINGLE=0, WX218X_VAL_PULSE_MODE_DELAYED=1, WX218X_VAL_PULSE_MODE_DOUBLE=2 } readwrite 1 118C96
+	//const: WX218X_ATTR_DIG_PULSE_MODE
+"This property programs the mode of the pulse. Pulse mode options are: Single pulse, Delayed pulse and  Double pulse.
+
+WX218X_VAL_PULSE_MODE_SINGLE (0)
+Programs single pulse output, which generates normal pulses.
+
+WX218X_VAL_PULSE_MODE_DELAYED (1)
+Programs a delayed pulse mode, which generates normal pulses that are delayed from the SYNC output.
+
+WX218X_VAL_PULSE_MODE_DOUBLE (2)
+Programs a double pulse mode, which generates a pair of single pulses that are displaced by a double delay period.
+
+"
+attribute: "Offset"
+	"Instrument Specific:DigitalPulse:Offset"
+	fD readwrite 1 118C97
+	//const: WX218X_ATTR_DIG_PULSE_OFFSET
+"This property programs the offset amplitude of the pulse waveform in units of volts.
+
+"
+attribute: "Period"
+	"Instrument Specific:DigitalPulse:Period"
+	fD readwrite 1 118C98
+	//const: WX218X_ATTR_DIG_PULSE_PERIOD
+"This property programs the pulse repetition rate (period) in units of seconds.
+
+"
+attribute: "Polarity"
+	"Instrument Specific:DigitalPulse:Polarity"
+	iL enum { WX218X_VAL_PULSE_POLARITY_NORMAL=0, WX218X_VAL_PULSE_POLARITY_COMPLEMENT=1, WX218X_VAL_PULSE_POLARITY_INVERTED=2 } readwrite 1 118C99
+	//const: WX218X_ATTR_DIG_PULSE_POLARITY
+"This property programs the polarity of the pulse in reference to the base line level. The polarity options are: Normal, Inverted and Complemented.
+
+WX218X_VAL_PULSE_POLARITY_NORMAL (0)
+Programs normal pulse output.
+
+WX218X_VAL_PULSE_POLARITY_COMPLEMENT (1)
+Programs complemented pulse output.
+
+WX218X_VAL_PULSE_POLARITY_INVERTED (2)
+Programs an inverted pulse output.
+
+"
+attribute: "Rise Time"
+	"Instrument Specific:DigitalPulse:Rise Time"
+	fD readwrite 1 118C9A
+	//const: WX218X_ATTR_DIG_PULSE_RISE_TIME
+"This property programs the interval it will take the leading edge of the pulse to transition from its low to high level settings in units of seconds.
+
+"
+attribute: "Rise Time Percent"
+	"Instrument Specific:DigitalPulse:Rise Time Percent"
+	fD readwrite 1 118C9B
+	//const: WX218X_ATTR_DIG_PULSE_RISE_TIME_PERCENT
+"This property programs the interval it will take the leading edge of the pulse to transition from its low to high level settings in units of percent.
+
+"
+attribute: "Transition"
+	"Instrument Specific:DigitalPulse:Transition"
+	iL enum { WX218X_VAL_PULSE_TRANSITION_FAST=0, WX218X_VAL_PULSE_TRANSITION_LINEAR=1, WX218X_VAL_PULSE_TRANSITION_SYMMETRICAL=2 } readwrite 1 118C9C
+	//const: WX218X_ATTR_DIG_PULSE_TRANSITION
+"This method will place the pulse output in one of three transition options: Fast, Linear or Symmetrical.
+
+WX218X_VAL_PULSE_TRANSITION_FAST (0)
+Programs the fast transitions mode. In this mode the leading and trailing edges will transition as fast as the instrument allows.
+
+WX218X_VAL_PULSE_TRANSITION_LINEAR (1)
+Selects linear transitions.
+
+WX218X_VAL_PULSE_TRANSITION_SYMMETRICAL (2)
+Programs a special mode where the transitions are symmetrical for both the leading and trailing edges (lead time = trail time).
+
+"
+attribute: "Width"
+	"Instrument Specific:DigitalPulse:Width"
+	fD readwrite 1 118C9D
+	//const: WX218X_ATTR_DIG_PULSE_WIDTH
+"This property programs the pulse width value in units of seconds.
+
+"
+attribute: "Width Percent"
+	"Instrument Specific:DigitalPulse:Width Percent"
+	fD readwrite 1 118C9E
+	//const: WX218X_ATTR_DIG_PULSE_WIDTH_PERCENT
+"This property programs the pulse width value in units of percent.
+
+"
+attribute: "Dwell Mode"
+	"Instrument Specific:FHOP:Dwell Mode"
+	iL enum { WX218X_VAL_FHOP_DWELL_MODE_FIXED=0, WX218X_VAL_FHOP_DWELL_MODE_VARIABLE=1 } readwrite 1 118CCB
+	//const: WX218X_ATTR_FHOP_DWELL_MODE
+"This parameter selects one of the Dwell mode variables for FHOP modulation.
+
+WX218X_VAL_FHOP_DWELL_MODE_FIXED (0)
+Selects Fixed Dwell mode for FHOP modulation.
+
+WX218X_VAL_FHOP_DWELL_MODE_VARIABLE (1)
+Selects Variable Dwell mode for FHOP modulation.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:FHOP:Enabled"
+	bool readwrite 1 118CE8
+	//const: WX218X_ATTR_ENABLED_FHOP
+"This property configures whether the VI generator applies FHOP modulation to a channel.
+
+"
+attribute: "Marker"
+	"Instrument Specific:FHOP:Marker"
+	iL readwrite 1 118CCA
+	//const: WX218X_ATTR_FHOP_MARKER
+"Sets marker for FHOP modulation
+
+"
+attribute: "Time"
+	"Instrument Specific:FHOP:Time"
+	fD readwrite 1 118CC9
+	//const: WX218X_ATTR_FHOP_TIME
+"Sets dwell time for FHOP modulation.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:FM:Enabled"
+	bool readwrite 1 118C6B
+	//const: WX218X_ATTR_ENABLED_FM
+"This property enables or disables the frequency modulation.
+
+"
+attribute: "Internal Deviation"
+	"Instrument Specific:FM:Internal Deviation"
+	fD readwrite 1 118C6C
+	//const: WX218X_ATTR_INTERNAL_DEVIATION_FM
+"Programs the deviation range around the carrier frequency in units of HZ.
+
+"
+attribute: "Internal Frequency"
+	"Instrument Specific:FM:Internal Frequency"
+	fD readwrite 1 118C6D
+	//const: WX218X_ATTR_INTERNAL_FREQUENCY_FM
+"Programs the frequency of the modulating waveform in units of Hz.
+
+"
+attribute: "Internal Waveform"
+	"Instrument Specific:FM:Internal Waveform"
+	iL enum { WX218X_VAL_FM_INTERNAL_WAVEFORM_SINE=1, WX218X_VAL_FM_INTERNAL_WAVEFORM_TRIANGLE=3, WX218X_VAL_FM_INTERNAL_WAVEFORM_SQUARE=2, WX218X_VAL_FM_INTERNAL_WAVEFORM_RAMP=4 } readwrite 1 118C6E
+	//const: WX218X_ATTR_INTERNAL_WAVEFORM_FM
+"This parameter selects one of the waveform shapes as the active modulating waveform.
+
+WX218X_VAL_FM_INTERNAL_WAVEFORM_SINE (1)
+Selects the sine shape as the modulating waveform.
+
+WX218X_VAL_FM_INTERNAL_WAVEFORM_TRIANGLE (3)
+Selects the triangle shape as the modulating waveform.
+
+WX218X_VAL_FM_INTERNAL_WAVEFORM_SQUARE (2)
+Selects the square shape as the modulating waveform.
+
+WX218X_VAL_FM_INTERNAL_WAVEFORM_RAMP (4)
+Selects the ramp shape as the modulating waveform.
+
+"
+attribute: "Marker"
+	"Instrument Specific:FM:Marker"
+	fD readwrite 1 118C6F
+	//const: WX218X_ATTR_FM_MARKER
+"This property programs marker frequency position in units of Hz.
+
+"
+attribute: "Baud"
+	"Instrument Specific:FSK:Baud"
+	fD readwrite 1 118CC3
+	//const: WX218X_ATTR_FSK_BAUD
+"Sets Baud for FSK modulation.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:FSK:Enabled"
+	bool readwrite 1 118CE6
+	//const: WX218X_ATTR_ENABLED_FSK
+"This property configures whether the VI generator applies FSK modulation to a channel.
+
+"
+attribute: "Marker"
+	"Instrument Specific:FSK:Marker"
+	iL readwrite 1 118CC4
+	//const: WX218X_ATTR_FSK_MARKER
+"Sets marker for FSK modulation.
+
+"
+attribute: "Shift Freq"
+	"Instrument Specific:FSK:Shift Freq"
+	fD readwrite 1 118CC2
+	//const: WX218X_ATTR_FSK_SHIFT_FREQ
+"Sets Shift Frequency for FSK modulation.
+
+"
+attribute: "Marker Index"
+	"Instrument Specific:Markers:Marker Index"
+	iL readwrite 1 118CF3
+	//const: WX218X_ATTR_MARKER_INDEX
+"Selects Marker Index.
+
+"
+attribute: "Marker Source"
+	"Instrument Specific:Markers:Marker Source"
+	iL enum { WX218X_VAL_MARKER_SOURCE_WAVE=0, WX218X_VAL_MARKER_SOURCE_USER=1 } readwrite 1 118CF4
+	//const: WX218X_ATTR_MARKER_SOURCE
+"Use this property to set or query marker source.
+
+WX218X_VAL_MARKER_SOURCE_WAVE (0)
+Wave marker source.
+
+WX218X_VAL_MARKER_SOURCE_USER (1)
+User marker source.
+
+"
+attribute: "Couple"
+	"Instrument Specific:Output:Couple"
+	iL enum { WX218X_VAL_OUTPUT_COUPLEDC=0, WX218X_VAL_OUTPUT_COUPLEAC=1, WX218X_VAL_OUTPUT_COUPLEHV=2 } readwrite 1 118C36
+	//const: WX218X_ATTR_COUPLE
+"Use this property to set or query the type of the output amplifier that will be placed between the DAC and the output connectors. The instrument has three separate amplifiers for the output path: DC, AC and HV.
+
+WX218X_VAL_OUTPUT_COUPLEDC (0)
+Selects a DC-coupled amplifier path for the output amplifier.
+
+WX218X_VAL_OUTPUT_COUPLEAC (1)
+Selects the AC-coupled path for the output amplifier.
+
+WX218X_VAL_OUTPUT_COUPLEHV (2)
+Selects the HV-coupled path for the output amplifier.For WX2181B, WX2182B
+
+"
+attribute: "Enabled"
+	"Instrument Specific:Output:Enabled"
+	bool readwrite 1 118C37
+	//const: WX218X_ATTR_ENABLED_OUTPUT
+"Sets the output on and off.
+
+"
+attribute: "Ext Frequency"
+	"Instrument Specific:Output:Ext Frequency"
+	iL enum { WX218X_VAL_EXT_FREQUENCY10M=0, WX218X_VAL_EXT_FREQUENCY20M=1, WX218X_VAL_EXT_FREQUENCY50M=2, WX218X_VAL_EXT_FREQUENCY100M=3 } readwrite 1 118CFB
+	//const: WX218X_ATTR_EXT_FREQUENCY
+"Use this property to set or query the external frequency.
+
+WX218X_VAL_EXT_FREQUENCY10M (0)
+10M External Frequency (for WX2184).
+
+WX218X_VAL_EXT_FREQUENCY20M (1)
+20M External Frequency (for WX2184).
+
+WX218X_VAL_EXT_FREQUENCY50M (2)
+50M External Frequency (for WX2184).
+
+WX218X_VAL_EXT_FREQUENCY100M (3)
+100M External Frequency (for WX2184).
+
+"
+attribute: "Operation Mode"
+	"Instrument Specific:Output:Operation Mode"
+	iL enum { WX218X_VAL_OPERATION_MODE_CONTINUOUS=0, WX218X_VAL_OPERATION_MODE_BURST=1, WX218X_VAL_OPERATION_MODE_TRIGGER=2, WX218X_VAL_OPERATION_MODE_GATE=3 } readwrite 1 118C38
+	//const: WX218X_ATTR_OPERATION_MODE2
+"This property configures the operation mode of the VI generator.
+
+WX218X_VAL_OPERATION_MODE_CONTINUOUS (0)
+Generate output continuously.
+
+WX218X_VAL_OPERATION_MODE_BURST (1)
+Generate a burst of waveforms when a trigger occurs.
+
+WX218X_VAL_OPERATION_MODE_TRIGGER (2)
+Trigger operation mode.
+
+WX218X_VAL_OPERATION_MODE_GATE (3)
+Gate operation mode.
+
+"
+attribute: "Output Mode"
+	"Instrument Specific:Output:Output Mode"
+	iL enum { WX218X_VAL_OUTPUT_MODE_FUNCTION=0, WX218X_VAL_OUTPUT_MODE_ARBITRARY=1, WX218X_VAL_OUTPUT_MODE_SEQUENCE=2, WX218X_VAL_OUTPUT_MODEA_SEQUENCE=3, WX218X_VAL_OUTPUT_MODE_MODULATION=4, WX218X_VAL_OUTPUT_MODED_PULSE=5, WX218X_VAL_OUTPUT_MODE_PATTERN=6 } readwrite 1 118C39
+	//const: WX218X_ATTR_OUTPUT_MODE2
+"Use this property to set or query the type of waveform that will be available at the output connector.
+
+WX218X_VAL_OUTPUT_MODE_FUNCTION (0)
+Selects the standard waveform shapes.
+
+WX218X_VAL_OUTPUT_MODE_ARBITRARY (1)
+Selects the arbitrary waveform shapes.
+
+WX218X_VAL_OUTPUT_MODE_SEQUENCE (2)
+Selects the sequenced waveform output.(Not for WS8351,WS8352)
+
+WX218X_VAL_OUTPUT_MODEA_SEQUENCE (3)
+Selects the advanced sequencing waveform output.(Not for WS8351,WS8352)
+
+WX218X_VAL_OUTPUT_MODE_MODULATION (4)
+Selects the modulated waveforms.
+
+WX218X_VAL_OUTPUT_MODED_PULSE (5)
+Selects the digital pulse VI.
+
+WX218X_VAL_OUTPUT_MODE_PATTERN (6)
+Sets pattern output mode. (Not for WX2181,WX2182)
+
+"
+attribute: "Ref Ext Frequency"
+	"Instrument Specific:Output:Ref Ext Frequency"
+	fD readwrite 1 118C3B
+	//const: WX218X_ATTR_REF_EXT_FREQUENCY
+"Use this property to set or query the frequency range that will be applied to the reference oscillator input.
+
+"
+attribute: "Reference Clock Source"
+	"Instrument Specific:Output:Reference Clock Source"
+	iL enum { WX218X_VAL_REFERENCE_CLOCK_SOURCE_INTERNAL=0, WX218X_VAL_REFERENCE_CLOCK_SOURCE_EXTERNAL=1 } readwrite 1 118C3A
+	//const: WX218X_ATTR_REFERENCE_CLOCK_SOURCE
+"Use this property to set or query the source of the 10 MHz reference.
+
+WX218X_VAL_REFERENCE_CLOCK_SOURCE_INTERNAL (0)
+Selects an internal source.
+
+WX218X_VAL_REFERENCE_CLOCK_SOURCE_EXTERNAL (1)
+Re-routes the 10 MHz source to the external reference input.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:Output:Sync:Enabled"
+	bool readwrite 1 118C3C
+	//const: WX218X_ATTR_SYNC_ENABLED
+"This property will set or query the state of the sync output.
+
+"
+attribute: "Function"
+	"Instrument Specific:Output:Sync:Function"
+	iL enum { WX218X_VAL_OUTPUT_SYNC_FUNCTION_PULSE=0, WX218X_VAL_OUTPUT_SYNC_FUNCTIONWCOM=1 } readwrite 1 118C3D
+	//const: WX218X_ATTR_SYNC_FUNCTION
+"Use this property to set or query the shape of the sync pulse.
+
+WX218X_VAL_OUTPUT_SYNC_FUNCTION_PULSE (0)
+Selects the pulse shape as the output waveform for the sync output.
+
+WX218X_VAL_OUTPUT_SYNC_FUNCTIONWCOM (1)
+Selects the waveform complete pulse option. The sync output will transition high at the beginning of the waveform and will return to low after the waveform has cycle been completed.
+
+"
+attribute: "Position"
+	"Instrument Specific:Output:Sync:Position"
+	iL readwrite 1 118C3E
+	//const: WX218X_ATTR_SYNC_POSITION
+"Sets the SYNC position in waveform points.
+
+"
+attribute: "Source"
+	"Instrument Specific:Output:Sync:Source"
+	iL enum { WX218X_VAL_OUTPUT_SYNC_SOURCECH1=0, WX218X_VAL_OUTPUT_SYNC_SOURCECH2=1, WX218X_VAL_OUTPUT_SYNC_SOURCECH3=2, WX218X_VAL_OUTPUT_SYNC_SOURCECH4=3 } readwrite 1 118C3F
+	//const: WX218X_ATTR_SYNC_SOURCE
+"Use this property to set or query the source of the sync pulse.
+
+WX218X_VAL_OUTPUT_SYNC_SOURCECH1 (0)
+Selects channel 1 as the source for generating the sync pulse.
+
+WX218X_VAL_OUTPUT_SYNC_SOURCECH2 (1)
+Defines channel 2 as the source for generating the sync pulse.
+
+WX218X_VAL_OUTPUT_SYNC_SOURCECH3 (2)
+Defines channel 3 as the source for generating the sync pulse (for WX2184).
+
+WX218X_VAL_OUTPUT_SYNC_SOURCECH4 (3)
+Defines channel 4 as the source for generating the sync pulse (for WX2184).
+
+"
+attribute: "Width"
+	"Instrument Specific:Output:Sync:Width"
+	iL readwrite 1 118C40
+	//const: WX218X_ATTR_SYNC_WIDTH
+"Sets the SYNC width in waveform points.
+
+"
+attribute: "Baud"
+	"Instrument Specific:Pattern:Baud"
+	fD readwrite 1 118CCE
+	//const: WX218X_ATTR_PATTERN_BAUD
+"Sets baud for predefined pattern mode.
+
+"
+attribute: "High Level"
+	"Instrument Specific:Pattern:High Level"
+	fD readwrite 1 118CD2
+	//const: WX218X_ATTR_PATTERN_HIGH_LEVEL
+"Sets High Level for predefined pattern mode.
+
+"
+attribute: "Length"
+	"Instrument Specific:Pattern:Length"
+	iL readwrite 1 118CD6
+	//const: WX218X_ATTR_PATTERN_LENGTH
+"Sets length for predefined pattern mode.
+
+"
+attribute: "Level"
+	"Instrument Specific:Pattern:Level"
+	iL readwrite 1 118CCF
+	//const: WX218X_ATTR_PATTERN_LEVEL
+"Sets level for predefined pattern mode.
+
+"
+attribute: "Loop"
+	"Instrument Specific:Pattern:Loop"
+	iL readwrite 1 118CD4
+	//const: WX218X_ATTR_PATTERN_LOOP
+"Sets number of loop for predefined pattern mode.
+
+"
+attribute: "Low Level"
+	"Instrument Specific:Pattern:Low Level"
+	fD readwrite 1 118CD3
+	//const: WX218X_ATTR_PATTERN_LOW_LEVEL
+"Sets Low Level for predefined pattern mode.
+
+"
+attribute: "Mode"
+	"Instrument Specific:Pattern:Mode"
+	iL enum { WX218X_VAL_PATTERN_MODE_COMPOSER=0, WX218X_VAL_PATTERN_MODE_PREDEFINED=1 } readwrite 1 118CD0
+	//const: WX218X_ATTR_PATTERN_MODE
+"Selects one of the two pattern modes:Composer or Predefined.
+
+WX218X_VAL_PATTERN_MODE_COMPOSER (0)
+Sets pattern mode as composer.
+
+WX218X_VAL_PATTERN_MODE_PREDEFINED (1)
+Sets pattern mode as predefined.
+
+"
+attribute: "Preamble"
+	"Instrument Specific:Pattern:Preamble"
+	iL readwrite 1 118CD5
+	//const: WX218X_ATTR_PREAMBLE
+"Sets preamble for predefined pattern mode.
+
+"
+attribute: "Predefined Type"
+	"Instrument Specific:Pattern:Predefined Type"
+	iL enum { WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS7=0, WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS9=1, WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS11=2, WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS15=3, WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS23=4, WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS31=5, WX218X_VAL_PATTERN_PREDEFINED_TYPEUSER=6 } readwrite 1 118CD1
+	//const: WX218X_ATTR_PATTERN_PREDEFINED_TYPE
+"Selects type for predefined pattern mode.
+
+WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS7 (0)
+Sets type PRBS7 as predefined type for pattern mode.
+
+WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS9 (1)
+Sets type PRBS9 as predefined type for pattern mode.
+
+WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS11 (2)
+Sets type PRBS11 as predefined type for pattern mode.
+
+WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS15 (3)
+Sets type PRBS15 as predefined type for pattern mode.
+
+WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS23 (4)
+Sets type PRBS23 as predefined type for pattern mode.
+
+WX218X_VAL_PATTERN_PREDEFINED_TYPEPRBS31 (5)
+Sets type PRBS31 as predefined type for pattern mode.
+
+WX218X_VAL_PATTERN_PREDEFINED_TYPEUSER (6)
+Sets type USER as predefined type for pattern mode.
+
+"
+attribute: "Fast Start"
+	"Instrument Specific:Pattern:Composer:Fast Start"
+	fD readwrite 1 118CF5
+	//const: WX218X_ATTR_FAST_START
+"Sets fast start for pattern composer.
+
+"
+attribute: "Linear Start"
+	"Instrument Specific:Pattern:Composer:Linear Start"
+	fD readwrite 1 118CD8
+	//const: WX218X_ATTR_PATT_COMP_LINEAR_START
+"Sets linear start for pattern composer.
+
+"
+attribute: "PattCompResolution"
+	"Instrument Specific:Pattern:Composer:PattCompResolution"
+	fD readwrite 1 118CF0
+	//const: WX218X_ATTR_PATT_COMP_RESOLUTION
+"Sets resolution for pattern composer.
+
+"
+attribute: "Resolution Type"
+	"Instrument Specific:Pattern:Composer:Resolution Type"
+	iL enum { WX218X_VAL_PATTERN_RES_TYPE_AUTO=0, WX218X_VAL_PATTERN_RES_TYPE_USER=1 } readwrite 1 118CF1
+	//const: WX218X_ATTR_PATTERN_COMPOSER_RESOLUTION_TYPE
+"Sets resolution type for pattern composer.
+
+WX218X_VAL_PATTERN_RES_TYPE_AUTO (0)
+Sets Auto pattern resolution type.
+
+WX218X_VAL_PATTERN_RES_TYPE_USER (1)
+Sets User pattern resolution type.
+
+"
+attribute: "Transition Type"
+	"Instrument Specific:Pattern:Composer:Transition Type"
+	iL enum { WX218X_VAL_PATTERN_COMPOSER_TRANSITION_TYPE_FAST=0, WX218X_VAL_PATTERN_COMPOSER_TRANSITION_TYPE_LINEAR=1 } readwrite 1 118CD7
+	//const: WX218X_ATTR_PATTERN_COMPOSER_TRANSITION_TYPE
+"Sets transition type for pattern composer.
+
+WX218X_VAL_PATTERN_COMPOSER_TRANSITION_TYPE_FAST (0)
+Sets fast transition type for pattern composer.
+
+WX218X_VAL_PATTERN_COMPOSER_TRANSITION_TYPE_LINEAR (1)
+Sets linear transition type for pattern composer.
+
+"
+attribute: "Baud"
+	"Instrument Specific:PSK:Baud"
+	fD readwrite 1 118CDF
+	//const: WX218X_ATTR_PSK_BAUD
+"Programs the baud of which the symbols stream in the (n)PSK data table.
+
+"
+attribute: "Carrier Enabled"
+	"Instrument Specific:PSK:Carrier Enabled"
+	bool readwrite 1 118CE0
+	//const: WX218X_ATTR_PSK_CARRIER_ENABLED
+"Sets the carrier output on and off.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:PSK:Enabled"
+	bool readwrite 1 118CEA
+	//const: WX218X_ATTR_ENABLED_PSK
+"This property configures whether the VI generator applies PSK modulation to a channel.
+
+"
+attribute: "Marker"
+	"Instrument Specific:PSK:Marker"
+	iL readwrite 1 118CDE
+	//const: WX218X_ATTR_PSK_MARKER
+"Programs where on the data stream the instrument will generate a pulse, designated as PSK marker, or index point.
+
+"
+attribute: "Rate"
+	"Instrument Specific:PSK:Rate"
+	fD readwrite 1 118CDC
+	//const: WX218X_ATTR_PSK_RATE
+"Sets Rate for PSK modulation.
+
+"
+attribute: "Shift Phase"
+	"Instrument Specific:PSK:Shift Phase"
+	fD readwrite 1 118CDB
+	//const: WX218X_ATTR_PSK_SHIFT_PHASE
+"Sets Shift Phase for PSK modulation.
+
+"
+attribute: "Start Phase"
+	"Instrument Specific:PSK:Start Phase"
+	fD readwrite 1 118CDA
+	//const: WX218X_ATTR_PSK_START_PHASE
+"Sets Start Phase for PSK modulation.
+
+"
+attribute: "Type"
+	"Instrument Specific:PSK:Type"
+	iL enum { WX218X_VAL_PSK_TYPEPSK=0, WX218X_VAL_PSK_TYPEBPSK=1, WX218X_VAL_PSK_TYPEQPSK=2, WX218X_VAL_PSK_TYPEOQPSK=3, WX218X_VAL_PSK_TYPEDQPSK=4, WX218X_VAL_PSK_TYPE8PSK=5, WX218X_VAL_PSK_TYPE16PSK=6, WX218X_VAL_PSK_TYPEUSER=7 } readwrite 1 118CDD
+	//const: WX218X_ATTR_TYPE
+"Selects type for PSK modulation.
+
+WX218X_VAL_PSK_TYPEPSK (0)
+Selects the PSK modulation VI.
+
+WX218X_VAL_PSK_TYPEBPSK (1)
+Selects the Binary Phase Shift Keying modulation type.
+
+WX218X_VAL_PSK_TYPEQPSK (2)
+Selects the Quadrature Phase Shift Keying modulation type.
+
+WX218X_VAL_PSK_TYPEOQPSK (3)
+Selects the Offset Phase Shift Keying modulation type.
+
+WX218X_VAL_PSK_TYPEDQPSK (4)
+Selects the P/4-shifted Differentially encoded QPSK modulation type.
+
+WX218X_VAL_PSK_TYPE8PSK (5)
+Selects the 8-phase Shift Keying modulation type.
+
+WX218X_VAL_PSK_TYPE16PSK (6)
+Selects the 16-phase Shift Keying modulation type.
+
+WX218X_VAL_PSK_TYPEUSER (7)
+Selects the User PSK modulation type.
+
+"
+attribute: "Baud"
+	"Instrument Specific:QAM:Baud"
+	fD readwrite 1 118CE1
+	//const: WX218X_ATTR_QAM_BAUD
+"Programs the baud of which the symbols stream in the (n)QAM data table.
+
+"
+attribute: "Carrier Enabled"
+	"Instrument Specific:QAM:Carrier Enabled"
+	bool readwrite 1 118CE4
+	//const: WX218X_ATTR_CARRIER_ENABLED
+"Sets the carrier output on and off.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:QAM:Enabled"
+	bool readwrite 1 118CEB
+	//const: WX218X_ATTR_ENABLED_QAM
+"This property configures whether the VI generator applies QAM modulation to a channel.
+
+"
+attribute: "Marker"
+	"Instrument Specific:QAM:Marker"
+	iL readwrite 1 118CE3
+	//const: WX218X_ATTR_MARKER2
+"Programs where on the data stream the instrument will generate a pulse, designated as QAM marker, or index point.
+
+"
+attribute: "Type"
+	"Instrument Specific:QAM:Type"
+	iL enum { WX218X_VAL_QAM_TYPE16QAM=0, WX218X_VAL_QAM_TYPE64QAM=1, WX218X_VAL_QAM_TYPE256QAM=2, WX218X_VAL_QAM_TYPEUSER=3 } readwrite 1 118CE2
+	//const: WX218X_ATTR_QAM_TYPE
+"Selects between the various (n)QAM modulation schemes.
+
+WX218X_VAL_QAM_TYPE16QAM (0)
+Selects the 16 Quadrature Amplitude Modulation modulation type.
+
+WX218X_VAL_QAM_TYPE64QAM (1)
+Selects the 64 Quadrature Amplitude Modulation modulation type.
+
+WX218X_VAL_QAM_TYPE256QAM (2)
+Selects the 256 Quadrature Amplitude Modulation modulation type.
+
+WX218X_VAL_QAM_TYPEUSER (3)
+Selects the User QAM modulation type.
+
+"
+attribute: "Amplitude"
+	"Instrument Specific:StandardWaveform:Amplitude"
+	fD readwrite 1 118C41
+	//const: WX218X_ATTR_AMPLITUDE
+"Sets the amplitude of the standard waveform.
+
+"
+attribute: "Dc Level"
+	"Instrument Specific:StandardWaveform:Dc Level"
+	fD readwrite 1 118C43
+	//const: WX218X_ATTR_DC_LEVEL
+"Programs the DC offset parameter in units of volts.
+
+"
+attribute: "DC Offset"
+	"Instrument Specific:StandardWaveform:DC Offset"
+	fD readwrite 1 118C44
+	//const: WX218X_ATTR_DC_OFFSET
+"Use this property to set or query the dc offset of the output waveform.
+
+"
+attribute: "Duty Cycle High"
+	"Instrument Specific:StandardWaveform:Duty Cycle High"
+	fD readwrite 1 118C45
+	//const: WX218X_ATTR_DUTY_CYCLE_HIGH
+"Programs the duty cycle of the standard square waveform in units of percent.
+
+"
+attribute: "Exp Exponent"
+	"Instrument Specific:StandardWaveform:Exp Exponent"
+	iL readwrite 1 118C46
+	//const: WX218X_ATTR_EXP_EXPONENT
+"Programs the exponent parameter.
+
+"
+attribute: "Frequency"
+	"Instrument Specific:StandardWaveform:Frequency"
+	fD readwrite 1 118C47
+	//const: WX218X_ATTR_FREQUENCY
+"Use this property to set or query the frequency of the standard waveforms in units of hertz (Hz).
+
+"
+attribute: "Gauss Exponent"
+	"Instrument Specific:StandardWaveform:Gauss Exponent"
+	iL readwrite 1 118C48
+	//const: WX218X_ATTR_GAUSS_EXPONENT
+"Use this property to set or query the exponent for the standard Gaussian pulse waveform.
+
+"
+attribute: "Hv Amplitude"
+	"Instrument Specific:StandardWaveform:Hv Amplitude"
+	fD readwrite 1 118CA8
+	//const: WX218X_ATTR_HV_AMPLITUDE
+"Sets the HV amplitude of the standard waveform.
+
+"
+attribute: "Power"
+	"Instrument Specific:StandardWaveform:Power"
+	fD readwrite 1 118C49
+	//const: WX218X_ATTR_POWER
+"Use this property to set or query the output power.
+
+"
+attribute: "Ramp Delay"
+	"Instrument Specific:StandardWaveform:Ramp Delay"
+	fD readwrite 1 118C4A
+	//const: WX218X_ATTR_RAMP_DELAY
+"Programs the ramp delay parameter in units of percent.
+
+"
+attribute: "Ramp Fall Time"
+	"Instrument Specific:StandardWaveform:Ramp Fall Time"
+	fD readwrite 1 118C4B
+	//const: WX218X_ATTR_RAMP_FALL_TIME
+"Programs the ramp fall time parameter in units of percent.
+
+"
+attribute: "Ramp Rise Time"
+	"Instrument Specific:StandardWaveform:Ramp Rise Time"
+	fD readwrite 1 118C4C
+	//const: WX218X_ATTR_RAMP_RISE_TIME
+"Programs the ramp rise time parameter in units of percent.
+
+"
+attribute: "SincN Cycle"
+	"Instrument Specific:StandardWaveform:SincN Cycle"
+	iL readwrite 1 118C4D
+	//const: WX218X_ATTR_SINCN_CYCLE
+"Use this property to set or query the number of cycles of the standard SINC pulse waveform.
+
+"
+attribute: "Start Phase"
+	"Instrument Specific:StandardWaveform:Start Phase"
+	fD readwrite 1 118C4E
+	//const: WX218X_ATTR_START_PHASE
+"Sets the horizontal offset of the standard waveform.
+
+"
+attribute: "Waveform"
+	"Instrument Specific:StandardWaveform:Waveform"
+	iL enum { WX218X_VAL_WAVEFORM_SINE=1, WX218X_VAL_WAVEFORM_SQUARE=2, WX218X_VAL_WAVEFORM_TRIANGLE=3, WX218X_VAL_WAVEFORM_RAMP_UP=4, WX218X_VAL_WAVEFORM_RAMP_DOWN=5, WX218X_VAL_WAVEFORMDC=6, WX218X_VAL_WAVEFORM_SINC=7, WX218X_VAL_WAVEFORM_GAUSSIAN=8, WX218X_VAL_WAVEFORM_EXPONENTIAL=9, WX218X_VAL_WAVEFORM_NOISE=10 } readwrite 1 118CA9
+	//const: WX218X_ATTR_WAVEFORM
+"Selects the standard waveform that you want the VI generator to produce.
+
+WX218X_VAL_WAVEFORM_SINE (1)
+Configures the VI generator to produce a sinusoid waveform.
+
+WX218X_VAL_WAVEFORM_SQUARE (2)
+Configures the VI generator to produce a square waveform.
+
+WX218X_VAL_WAVEFORM_TRIANGLE (3)
+Configures the VI generator to produce a triangle waveform.
+
+WX218X_VAL_WAVEFORM_RAMP_UP (4)
+Configures the VI generator to produce a ramp waveform.
+
+WX218X_VAL_WAVEFORM_RAMP_DOWN (5)
+Configures the VI generator to produce a ramp waveform.
+
+WX218X_VAL_WAVEFORMDC (6)
+Configures the VI generator to produce a dc waveform.
+
+WX218X_VAL_WAVEFORM_SINC (7)
+Configures the VI generator to produce a sinc waveform.
+
+WX218X_VAL_WAVEFORM_GAUSSIAN (8)
+Configures the VI generator to produce a gaussian waveform.
+
+WX218X_VAL_WAVEFORM_EXPONENTIAL (9)
+Configures the VI generator to produce a exponential waveform.
+
+WX218X_VAL_WAVEFORM_NOISE (10)
+Configures the VI generator to produce a noise waveform.
+
+"
+attribute: "Cell Recall"
+	"Instrument Specific:StateStorage:Cell Recall"
+	iL readwrite 1 118C83
+	//const: WX218X_ATTR_CELL_RECALL
+"Selects an active memory cell number. Consequent recall commands will affect this cell only.
+
+"
+attribute: "Cell Store"
+	"Instrument Specific:StateStorage:Cell Store"
+	iL readwrite 1 118C84
+	//const: WX218X_ATTR_CELL_STORE
+"Selects an active memory cell number. Consequent store commands will affect this cell only.
+
+"
+attribute: "Configuration Recall"
+	"Instrument Specific:StateStorage:Configuration Recall"
+	iL enum { WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_SETUP=0, WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_WAVE=1, WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_ALL=2, WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_EMPTY=3 } readonly 1 118CA6
+	//const: WX218X_ATTR_CONFIGURATION_RECALL
+"Use this property to query what you have store in the active memory cell.
+
+WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_SETUP (0)
+Front panel configuration was stored in the active memory cell.
+
+WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_WAVE (1)
+Arbitrary waveform was stored in the active memory cell.
+
+WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_ALL (2)
+Was store both front panel configuration and waveform in the active memory cell.
+
+WX218X_VAL_STATE_STORAGE_RECAL_CONFIGURATION_EMPTY (3)
+Was nothing store in the active memory cell.
+
+"
+attribute: "Configuration Store"
+	"Instrument Specific:StateStorage:Configuration Store"
+	iL enum { WX218X_VAL_STATE_STORAGE_CONFIGURATION_SETUP=0, WX218X_VAL_STATE_STORAGE_CONFIGURATION_WAVE=1, WX218X_VAL_STATE_STORAGE_CONFIGURATION_ALL=2 } readwrite 1 118C85
+	//const: WX218X_ATTR_CONFIGURATION_STORE
+"Use this property to select what you intend to store in the active memory cell.
+
+WX218X_VAL_STATE_STORAGE_CONFIGURATION_SETUP (0)
+Selects front panel configuration to be stored in the active memory cell.
+
+WX218X_VAL_STATE_STORAGE_CONFIGURATION_WAVE (1)
+Selects the current arbitrary waveform to be stored in the active memory cell.
+
+WX218X_VAL_STATE_STORAGE_CONFIGURATION_ALL (2)
+Will store both front panel configuration and waveform in the active memory cell.
+
+"
+attribute: "Recall Enabled"
+	"Instrument Specific:StateStorage:Recall Enabled"
+	bool readwrite 1 118CF7
+	//const: WX218X_ATTR_RECALL_ENABLED
+"Enables or Disables system recall.
+
+"
+attribute: "Store Enabled"
+	"Instrument Specific:StateStorage:Store Enabled"
+	bool readwrite 1 118CF6
+	//const: WX218X_ATTR_STORE_ENABLED
+"Enables or Disables system store.
+
+"
+attribute: "Target Recall"
+	"Instrument Specific:StateStorage:Target Recall"
+	iL enum { WX218X_VAL_STATE_STORAGE_TARGETINT=0, WX218X_VAL_STATE_STORAGE_TARGETUSB=1 } readwrite 1 118C86
+	//const: WX218X_ATTR_TARGET_RECALL
+"Use this property to select the source of your recall operation.
+
+WX218X_VAL_STATE_STORAGE_TARGETINT (0)
+Selects the internal flash memory as the target for the store/recall operation. Waveform size for this option is limited to 100 k points.
+
+WX218X_VAL_STATE_STORAGE_TARGETUSB (1)
+Selects the front panel USB input as the target for the store/recall operation. Waveform size for this option is limited only by the size of the disk-on-key flash.
+
+"
+attribute: "Target Store"
+	"Instrument Specific:StateStorage:Target Store"
+	iL enum { WX218X_VAL_STATE_STORAGE_TARGETINT=0, WX218X_VAL_STATE_STORAGE_TARGETUSB=1 } readwrite 1 118C87
+	//const: WX218X_ATTR_TARGET_STORE
+"Use this property to select the source of your store operation.
+
+WX218X_VAL_STATE_STORAGE_TARGETINT (0)
+Selects the internal flash memory as the target for the store/recall operation. Waveform size for this option is limited to 100 k points.
+
+WX218X_VAL_STATE_STORAGE_TARGETUSB (1)
+Selects the front panel USB input as the target for the store/recall operation. Waveform size for this option is limited only by the size of the disk-on-key flash.
+
+"
+attribute: "Direction"
+	"Instrument Specific:Sweep:Direction"
+	iL enum { WX218X_VAL_SWEEP_DIRECTION_UP=0, WX218X_VAL_SWEEP_DIRECTION_DOWN=1 } readwrite 1 118C9F
+	//const: WX218X_ATTR_SWEEP_DIRECTION
+"This property specifies if the instrument output will sweep from start-to-stop (UP) or from stop-to-start (DOWN) frequencies.
+
+WX218X_VAL_SWEEP_DIRECTION_UP (0)
+Selects the sweep up direction.
+
+WX218X_VAL_SWEEP_DIRECTION_DOWN (1)
+Selects the sweep down direction.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:Sweep:Enabled"
+	bool readwrite 1 118CA0
+	//const: WX218X_ATTR_SWEEP_ENABLED
+"This property configures the VI generator to apply frequency sweep to the output signal.
+
+"
+attribute: "Frequency Start"
+	"Instrument Specific:Sweep:Frequency Start"
+	fD readwrite 1 118CA1
+	//const: WX218X_ATTR_SWEEP_FREQUENCY_START
+"Programs the sweep start frequency in units of Hz.
+
+"
+attribute: "Frequency Stop"
+	"Instrument Specific:Sweep:Frequency Stop"
+	fD readwrite 1 118CA2
+	//const: WX218X_ATTR_SWEEP_FREQUENCY_STOP
+"Programs the sweep stop frequency in units of Hz.
+
+"
+attribute: "Marker"
+	"Instrument Specific:Sweep:Marker"
+	fD readwrite 1 118CA3
+	//const: WX218X_ATTR_SWEEP_MARKER
+"Programs the marker frequency position in units of Hz.
+
+"
+attribute: "Spacing"
+	"Instrument Specific:Sweep:Spacing"
+	iL enum { WX218X_VAL_SWEEP_SPACING_LIN=0, WX218X_VAL_SWEEP_SPACING_LOG=1 } readwrite 1 118CA4
+	//const: WX218X_ATTR_SWEEP_SPACING
+"This property specifies the sweep step type. Two options are available: logarithmic or linear.
+
+WX218X_VAL_SWEEP_SPACING_LIN (0)
+Selects the linear sweep spacing.
+
+WX218X_VAL_SWEEP_SPACING_LOG (1)
+Select the logarithmic sweep spacing.
+
+"
+attribute: "Time"
+	"Instrument Specific:Sweep:Time"
+	fD readwrite 1 118CA5
+	//const: WX218X_ATTR_SWEEP_TIME
+"Programs the sweep time in units of seconds.
+
+"
+attribute: "Burst Count"
+	"Instrument Specific:Trigger:Burst Count"
+	iL readwrite 1 118C70
+	//const: WX218X_ATTR_BURST_COUNT2
+"Use this property to set or query the burst counter setting.
+
+"
+attribute: "Continuous Mode"
+	"Instrument Specific:Trigger:Continuous Mode"
+	iL enum { WX218X_VAL_CONTINUOUS_MODE_SELF=0, WX218X_VAL_CONTINUOUS_MODE_ARMED=1 } readwrite 1 118C71
+	//const: WX218X_ATTR_CONTINUOUS_MODE
+"Use this property to set or query the state of the enable mode.
+
+WX218X_VAL_CONTINUOUS_MODE_SELF (0)
+In continuous run mode, waveforms are generated at the output connector as soon as they are selected.
+
+WX218X_VAL_CONTINUOUS_MODE_ARMED (1)
+The instrument generates waveforms at the output connector only after an enab command is executed. For an immediate and unconditional termination of the output waveform use the abor command.
+
+"
+attribute: "Continuous Source"
+	"Instrument Specific:Trigger:Continuous Source"
+	iL enum { WX218X_VAL_CONTINUOUS_SOURCE_BUS=0, WX218X_VAL_CONTINUOUS_SOURCE_EVENT=1, WX218X_VAL_CONTINUOUS_SOURCE_TRIGGER=2 } readwrite 1 118C72
+	//const: WX218X_ATTR_CONTINUOUS_SOURCE
+"Use this property to set or query the source of the enable signal.
+
+WX218X_VAL_CONTINUOUS_SOURCE_BUS (0)
+Defines the source of the enable signal as a remote command. Signals at the event input will be ignored. In continuous run mode, waveforms are generated at the output connector as soon as a remote enable command is executed.
+
+WX218X_VAL_CONTINUOUS_SOURCE_EVENT (1)
+Defines the source of the enable signal as the event input connector. Remote enable commands will be ignored. In continuous run mode, waveforms are generated at the output connector as soon as a valid event signal is sensed at the event input connector.
+
+WX218X_VAL_CONTINUOUS_SOURCE_TRIGGER (2)
+Defines the source of the enable signal as the front panel trigger input connector. Remote enable commands will be ignored. In continuous run mode, waveforms are generated at the output connector as soon as a valid event signal is sensed at the event input connector.
+
+"
+attribute: "Delay"
+	"Instrument Specific:Trigger:Delay"
+	iL readwrite 1 118C73
+	//const: WX218X_ATTR_TRIG_DELAY
+"Use this property to set or query the trigger delay setting.
+
+"
+attribute: "Level"
+	"Instrument Specific:Trigger:Level"
+	fD readwrite 1 118C74
+	//const: WX218X_ATTR_TRIG_LEVEL
+"Use this property to program or query the threshold level for the trigger input signals.
+
+"
+attribute: "Slope"
+	"Instrument Specific:Trigger:Slope"
+	iL enum { WX218X_VAL_TRIGGER_SLOPE_POSITIVE=0, WX218X_VAL_TRIGGER_SLOPE_NEGATIVE=1, WX218X_VAL_TRIGGER_SLOPE_EITHER=2 } readwrite 1 118C75
+	//const: WX218X_ATTR_TRIG_SLOPE
+"Use this property to define or query the edge that will affect the trigger input.
+
+WX218X_VAL_TRIGGER_SLOPE_POSITIVE (0)
+Selects the positive going edge.
+
+WX218X_VAL_TRIGGER_SLOPE_NEGATIVE (1)
+Selects the negative going edge.
+
+WX218X_VAL_TRIGGER_SLOPE_EITHER (2)
+Selects both positive and negative going edges.Not supported for WX2184.
+
+"
+attribute: "Source"
+	"Instrument Specific:Trigger:Source"
+	iL enum { WX218X_VAL_TRIGGER_SOURCE_EXTERNAL=1, WX218X_VAL_TRIGGER_SOURCE_SOFTWARE=2, WX218X_VAL_TRIGGER_SOURCE_TIMER=4, WX218X_VAL_TRIGGER_SOURCE_EVENT=5 } readwrite 1 118C76
+	//const: WX218X_ATTR_TRIG_SOURCE
+"Use this property to set or query the source of the trigger event that will stimulate the instrument to generate waveforms.
+
+WX218X_VAL_TRIGGER_SOURCE_EXTERNAL (1)
+Selects the TRIG IN connector as the input source. The manual trigger can be used in case external triggers are not available. All other inputs are ignored.
+
+WX218X_VAL_TRIGGER_SOURCE_SOFTWARE (2)
+Selects the remote controller as the trigger source. Only software commands are accepted; TRIG IN, Event IN and manual triggers are ignored.
+
+WX218X_VAL_TRIGGER_SOURCE_TIMER (4)
+Activates the built in internal trigger generator. BUS and external trigger are ignored. The period of the internal trigger is programmable and can be used to replace an external trigger source.
+
+WX218X_VAL_TRIGGER_SOURCE_EVENT (5)
+Selects the Event IN connector as the input source. All other inputs are ignored.
+
+"
+attribute: "Timer Delay"
+	"Instrument Specific:Trigger:Timer Delay"
+	iL readwrite 1 118C77
+	//const: WX218X_ATTR_TRIG_TIMER_DELAY
+"Programs the internal delayed trigger generator period in units of waveform points. Program the value using integers divisible by 8.
+
+"
+attribute: "Timer Mode"
+	"Instrument Specific:Trigger:Timer Mode"
+	iL enum { WX218X_VAL_TRIGGER_TIMER_MODE_TIME=0, WX218X_VAL_TRIGGER_TIMER_MODE_DELAY=1 } readwrite 1 118C78
+	//const: WX218X_ATTR_TRIG_TIMER_MODE
+"Use this property to set or query the mode that the internal trigger generator will operate.
+
+WX218X_VAL_TRIGGER_TIMER_MODE_TIME (0)
+Selects the timed internal trigger generator. The generator will automatically issue periodical triggers that stimulate the output to generate single cycle waveforms. The periods are programmed in units of seconds from waveform start to waveform start.
+
+WX218X_VAL_TRIGGER_TIMER_MODE_DELAY (1)
+Selects the delayed internal trigger generator. The generator will automatically issue periodical triggers that stimulate the output to generate single cycle waveforms. The periods are programmed in units of waveform points from waveform end to waveform start.
+
+"
+attribute: "Timer Time"
+	"Instrument Specific:Trigger:Timer Time"
+	fD readwrite 1 118C79
+	//const: WX218X_ATTR_TRIG_TIMER_TIME
+"Programs the internal timed trigger generator period in units of seconds.
+
+"
+attribute: "Trigger Impedance"
+	"Instrument Specific:Trigger:Trigger Impedance"
+	iL enum { WX218X_VAL_TRIGGER_IMPEDANCE50=0, WX218X_VAL_TRIGGER_IMPEDANCE10K=1 } readwrite 1 118D00
+	//const: WX218X_ATTR_TRIGGER_IMPEDANCE
+"Use this property to define or query the trigger impedance.
+
+WX218X_VAL_TRIGGER_IMPEDANCE50 (0)
+
+
+WX218X_VAL_TRIGGER_IMPEDANCE10K (1)
+
+
+"
+attribute: "Trigger Mode"
+	"Instrument Specific:Trigger:Trigger Mode"
+	iL enum { WX218X_VAL_TRIGGER_MODE_NORMAL=0, WX218X_VAL_TRIGGER_MODE_OVERRIDE=1 } readwrite 1 118C7A
+	//const: WX218X_ATTR_TRIG_TRIGGER_MODE
+"Use this property to define or query the trigger mode.
+
+WX218X_VAL_TRIGGER_MODE_NORMAL (0)
+Selects the normal trigger mode.
+
+WX218X_VAL_TRIGGER_MODE_OVERRIDE (1)
+Selects the override trigger mode.
+
+"
+attribute: "Level"
+	"Instrument Specific:Trigger:ARM:Level"
+	fD readwrite 1 118C7B
+	//const: WX218X_ATTR_ARM_LEVEL
+"This property programs the threshold level for the event input signals.
+
+"
+attribute: "Slope"
+	"Instrument Specific:Trigger:ARM:Slope"
+	iL enum { WX218X_VAL_ARM_SLOPE_POSITIVE=0, WX218X_VAL_ARM_SLOPE_NEGATIVE=1, WX218X_VAL_ARM_SLOPE_EITHER=2 } readwrite 1 118C7C
+	//const: WX218X_ATTR_ARM_SLOPE
+"Use this property to define the edge that will affect the event input.
+
+WX218X_VAL_ARM_SLOPE_POSITIVE (0)
+Selects the positive going edge.
+
+WX218X_VAL_ARM_SLOPE_NEGATIVE (1)
+Selects the negative going edge.
+
+WX218X_VAL_ARM_SLOPE_EITHER (2)
+Selects both positive and negative going edges.
+
+"
+attribute: "Hi Pass Enabled"
+	"Instrument Specific:Trigger:SmartTrigger:Hi Pass Enabled"
+	bool readwrite 1 118C7D
+	//const: WX218X_ATTR_HI_PASS_ENABLED
+"Use this property to set or query the status of the high pass filter.
+
+"
+attribute: "Hi Pass Width"
+	"Instrument Specific:Trigger:SmartTrigger:Hi Pass Width"
+	fD readwrite 1 118C7E
+	//const: WX218X_ATTR_HI_PASS_WIDTH
+"Programs the high pass pulse width value in units of second.
+
+"
+attribute: "Holdoff"
+	"Instrument Specific:Trigger:SmartTrigger:Holdoff"
+	fD readwrite 1 118C7F
+	//const: WX218X_ATTR_HOLDOFF
+"Programs the trigger holdoff period in units of second.
+
+"
+attribute: "Holdoff Enabled"
+	"Instrument Specific:Trigger:SmartTrigger:Holdoff Enabled"
+	bool readwrite 1 118C80
+	//const: WX218X_ATTR_HOLDOFF_ENABLED
+"Use this property to set or query the status of the holdoff filter.
+
+"
+attribute: "Low Pass Enabled"
+	"Instrument Specific:Trigger:SmartTrigger:Low Pass Enabled"
+	bool readwrite 1 118C81
+	//const: WX218X_ATTR_LOW_PASS_ENABLED
+"Use this property to set or query the status of the low pass filter.
+
+"
+attribute: "Low Pass Width"
+	"Instrument Specific:Trigger:SmartTrigger:Low Pass Width"
+	fD readwrite 1 118C82
+	//const: WX218X_ATTR_LOW_PASS_WIDTH
+"Programs the low pass pulse width value in units of second.
+
+"
+attribute: "Enabled"
+	"Instrument Specific:XInstrument:Enabled"
+	bool readwrite 1 118C88
+	//const: WX218X_ATTR_XINSTR_ENABLED
+"Sets or queries the state of the synchronized instruments.
+
+"
+attribute: "Mode"
+	"Instrument Specific:XInstrument:Mode"
+	iL enum { WX218X_VAL_X_INSTRUMENT_MODE_MASTER=0, WX218X_VAL_X_INSTRUMENT_MODE_SLAVE=1 } readwrite 1 118C89
+	//const: WX218X_ATTR_XINSTR_MODE
+"Use this property to define master and slave instruments. This command affects the system only when two instruments are hooked to a LAN network, synchronization cable is attached to the rear panel of both instruments and are intended to operate in synchronized mode.
+
+WX218X_VAL_X_INSTRUMENT_MODE_MASTER (0)
+Defines the active instrument as the controlling master in a two-instrument system.
+
+WX218X_VAL_X_INSTRUMENT_MODE_SLAVE (1)
+Defines the active instrument as the controlling slave in a two-instrument system.
+
+"
+attribute: "Mode Adv"
+	"Instrument Specific:XInstrument:Mode Adv"
+	iL enum { WX218X_VAL_X_INSTRUMENT_MODE_ADV_MASTER=0, WX218X_VAL_X_INSTRUMENT_MODE_ADV_SLAVE=1, WX218X_VAL_X_INSTRUMENT_MODE_ADVM_SLAVE=2 } readwrite 1 118CF9
+	//const: WX218X_ATTR_MODE_ADV
+"Use this property to define master,slave and MSlave instruments. This command affects the system only when two instruments are hooked to a LAN network, synchronization cable is attached to the rear panel of both instruments and are intended to operate in synchronized mode.
+
+WX218X_VAL_X_INSTRUMENT_MODE_ADV_MASTER (0)
+Defines the active instrument as the controlling master in a two-instrument system.
+
+WX218X_VAL_X_INSTRUMENT_MODE_ADV_SLAVE (1)
+Defines the active instrument as the controlling slave in a two-instrument system.
+
+WX218X_VAL_X_INSTRUMENT_MODE_ADVM_SLAVE (2)
+Defines the active instrument as the controlling MSlave.
+
+"
+attribute: "Offset"
+	"Instrument Specific:XInstrument:Offset"
+	iL readwrite 1 118C8A
+	//const: WX218X_ATTR_XINSTR_OFFSET
+"When X-Instrument state is ON, this property sets or queries the offset between the start phase of the master instrument and the start phase of the slave instrument.
+
+"
+attribute: "Operation Mode"
+	"Output:Operation Mode"
+	iL enum { WX218X_VAL_OPERATE_CONTINUOUS=0, WX218X_VAL_OPERATE_BURST=1 } readwrite 1 1312D5
+	//const: WX218X_ATTR_OPERATION_MODE
+"The mode that determines how the VI generator produces waveforms. This property determines which extension group's VIs and properties are used to configure the waveform the VI generator produces.
+
+WX218X_VAL_OPERATE_CONTINUOUS (0)
+When in the Output Generation State, the VI generator produces output continuously.
+
+WX218X_VAL_OPERATE_BURST (1)
+When in the Output Generation State, the VI generator produces a burst of waveform cycles based on a trigger condition. A burst consists of a discrete number of waveform cycles.  The user uses the property of the IviFgenTrigger Extension Group to configure the trigger, and the properties of the IviFgenBurst extension group to configure how the VI generator produces bursts.
+
+"
+attribute: "Output Count"
+	"Output:Output Count"
+	iL readonly 1 10065B
+	//const: WX218X_ATTR_CHANNEL_COUNT
+"The number of output channels supported by the instrument.
+
+"
+attribute: "Output Enabled"
+	"Output:Output Enabled"
+	bool readwrite 1 1312D3
+	//const: WX218X_ATTR_OUTPUT_ENABLED
+"If true, the signal the VI generator produces appears at the output connector.
+
+"
+attribute: "Output Impedance"
+	"Output:Output Impedance"
+	fD readwrite 1 1312D4
+	//const: WX218X_ATTR_OUTPUT_IMPEDANCE
+"The impedance of the output channel.  The units are Ohms.
+
+"
+attribute: "Output Mode"
+	"Output:Output Mode"
+	iL enum { WX218X_VAL_OUTPUT_FUNC=0, WX218X_VAL_OUTPUT_ARB=1, WX218X_VAL_OUTPUT_SEQ=2 } readwrite 1 1312D1
+	//const: WX218X_ATTR_OUTPUT_MODE
+"The mode that determines how the VI generator produces waveforms. This property determines which extension group's VIs and properties are used to configure the waveform the VI generator produces.
+
+WX218X_VAL_OUTPUT_FUNC (0)
+The driver uses the properties and VIs of the IviFgenStdFunc extension group to configure the VI generator's output signal.
+
+WX218X_VAL_OUTPUT_ARB (1)
+The driver uses the properties and VIs of the IviFgenArbWfm extension group to configure the VI generator's output signal.
+
+WX218X_VAL_OUTPUT_SEQ (2)
+The driver uses the properties and VIs of the IviFgenArbSeq extension group to configure the VI generator's output signal.
+
+"
+attribute: "Reference Clock Source"
+	"Output:Reference Clock Source"
+	iL enum { WX218X_VAL_REF_CLOCK_INTERNAL=0, WX218X_VAL_REF_CLOCK_EXTERNAL=1, WX218X_VAL_REF_CLOCK_RTSI_CLOCK=101 } readwrite 1 1312D2
+	//const: WX218X_ATTR_REF_CLOCK_SOURCE
+"The source of the reference clock. The VI generator derives frequencies and sample rates that it uses to generate waveforms from the reference clock.
+
+WX218X_VAL_REF_CLOCK_INTERNAL (0)
+The VI generator produces the reference clock signal internally.
+
+WX218X_VAL_REF_CLOCK_EXTERNAL (1)
+The VI generator receives the reference clock signal from an external source.
+
+WX218X_VAL_REF_CLOCK_RTSI_CLOCK (101)
+The VI generator receives the reference clock signal from the RTSI clock source.
+
+"
+attribute: "Amplitude"
+	"StandardWaveform:Amplitude"
+	fD readwrite 1 131336
+	//const: WX218X_ATTR_FUNC_AMPLITUDE
+"The amplitude of the standard waveform output by the VI generator. When the Waveform property is set to Waveform DC, this property does not affect signal output.  The units are volts.
+
+"
+attribute: "DC Offset"
+	"StandardWaveform:DC Offset"
+	fD readwrite 1 131337
+	//const: WX218X_ATTR_FUNC_DC_OFFSET
+"The DC offset of the standard waveform output by the VI generator. If the Waveform property is set to Waveform DC, this property specifies the DC level the VI generator produces.  The units are volts.
+
+"
+attribute: "Duty Cycle High"
+	"StandardWaveform:Duty Cycle High"
+	fD readwrite 1 13133A
+	//const: WX218X_ATTR_FUNC_DUTY_CYCLE_HIGH
+"The duty cycle for a square waveform. This property affects VI generator behavior only when the Waveform property is set to Waveform Square.  The value is expressed as a percentage.
+
+"
+attribute: "Frequency"
+	"StandardWaveform:Frequency"
+	fD readwrite 1 131338
+	//const: WX218X_ATTR_FUNC_FREQUENCY
+"The frequency of the standard waveform output by the VI generator. When the Waveform property is set to Waveform DC, this property does not affect signal output.  The units are Hertz.
+
+"
+attribute: "Start Phase"
+	"StandardWaveform:Start Phase"
+	fD readwrite 1 131339
+	//const: WX218X_ATTR_FUNC_START_PHASE
+"The start phase of the standard waveform output by the VI generator. When the Waveform property is set to Waveform DC, this property does not affect signal output.  The units are degrees.
+
+"
+attribute: "Waveform"
+	"StandardWaveform:Waveform"
+	iL enum { WX218X_VAL_WFM_SINE=1, WX218X_VAL_WFM_SQUARE=2, WX218X_VAL_WFM_TRIANGLE=3, WX218X_VAL_WFM_RAMP_UP=4, WX218X_VAL_WFM_RAMP_DOWN=5, WX218X_VAL_WFM_DC=6 } readwrite 1 131335
+	//const: WX218X_ATTR_FUNC_WAVEFORM
+"The standard waveform output by the VI generator.
+
+WX218X_VAL_WFM_SINE (1)
+Configures the VI generator to produce a sinusoid waveform.
+
+WX218X_VAL_WFM_SQUARE (2)
+Configures the VI generator to produce a square waveform.
+
+WX218X_VAL_WFM_TRIANGLE (3)
+Configures the VI generator to produce a triangular waveform.
+
+WX218X_VAL_WFM_RAMP_UP (4)
+Configures the VI generator to produce a positive ramp waveform.
+
+WX218X_VAL_WFM_RAMP_DOWN (5)
+Configures the VI generator to produce a negative ramp waveform.
+
+WX218X_VAL_WFM_DC (6)
+Configures the VI generator to produce a constant voltage.
+
+"
+attribute: "Burst Count"
+	"Trigger:Burst Count"
+	iL readwrite 1 13142E
+	//const: WX218X_ATTR_BURST_COUNT
+"The number of waveform cycles that the VI generator produces after it receives a trigger.
+
+"
+attribute: "Internal Trigger Rate"
+	"Trigger:Internal Trigger Rate"
+	fD readwrite 1 131406
+	//const: WX218X_ATTR_INTERNAL_TRIGGER_RATE
+"The rate at which the VI generator's internal trigger source produces a trigger, in triggers per second.
+
+"
+attribute: "Trigger Source"
+	"Trigger:Trigger Source"
+	iL enum { WX218X_VAL_EXTERNAL=1, WX218X_VAL_SOFTWARE_TRIG=2, WX218X_VAL_INTERNAL_TRIGGER=3, WX218X_VAL_TTL0=111, WX218X_VAL_TTL1=112, WX218X_VAL_TTL2=113, WX218X_VAL_TTL3=114, WX218X_VAL_TTL4=115, WX218X_VAL_TTL5=116, WX218X_VAL_TTL6=117, WX218X_VAL_TTL7=118, WX218X_VAL_ECL0=119, WX218X_VAL_ECL1=120, WX218X_VAL_PXI_STAR=131, WX218X_VAL_RTSI_0=141, WX218X_VAL_RTSI_1=142, WX218X_VAL_RTSI_2=143, WX218X_VAL_RTSI_3=144, WX218X_VAL_RTSI_4=145, WX218X_VAL_RTSI_5=146, WX218X_VAL_RTSI_6=147 } readwrite 1 1313FE
+	//const: WX218X_ATTR_TRIGGER_SOURCE
+"The trigger source. After the VI generator receives a trigger from this source, it produces a signal.
+
+WX218X_VAL_EXTERNAL (1)
+The VI generator does not produce an output signal until it receives a trigger on its external trigger input terminal.
+
+WX218X_VAL_SOFTWARE_TRIG (2)
+The VI generator does not produce an output signal until the Send Software Trigger VI executes.  Refer to the Standardized Cross Class Capabilities specification for a complete description of this value and the Send Software Trigger VI.
+
+WX218X_VAL_INTERNAL_TRIGGER (3)
+The VI generator does not produce an output signal until it receives a trigger from its internal trigger source.
+
+WX218X_VAL_TTL0 (111)
+The VI generator does not produce an output signal until it receives a trigger from the TTL0 line.
+
+WX218X_VAL_TTL1 (112)
+The VI generator does not produce an output signal until it receives a trigger from the TTL1 line.
+
+WX218X_VAL_TTL2 (113)
+The VI generator does not produce an output signal until it receives a trigger from the TTL2 line.
+
+WX218X_VAL_TTL3 (114)
+The VI generator does not produce an output signal until it receives a trigger from the TTL3 line.
+
+WX218X_VAL_TTL4 (115)
+The VI generator does not produce an output signal until it receives a trigger from the TTL4 line.
+
+WX218X_VAL_TTL5 (116)
+The VI generator does not produce an output signal until it receives a trigger from the TTL5 line.
+
+WX218X_VAL_TTL6 (117)
+The VI generator does not produce an output signal until it receives a trigger from the TTL6 line.
+
+WX218X_VAL_TTL7 (118)
+The VI generator does not produce an output signal until it receives a trigger from the TTL7 line.
+
+WX218X_VAL_ECL0 (119)
+The VI generator does not produce an output signal until it receives a trigger from the ECL0 line.
+
+WX218X_VAL_ECL1 (120)
+The VI generator does not produce an output signal until it receives a trigger from the ECL1 line.
+
+WX218X_VAL_PXI_STAR (131)
+The VI generator does not produce an output signal until it receives a trigger from the PXI Star bus.
+
+WX218X_VAL_RTSI_0 (141)
+The VI generator does not produce an output signal until it receives a trigger from the RTSI 0 line.
+
+WX218X_VAL_RTSI_1 (142)
+The VI generator does not produce an output signal until it receives a trigger from the RTSI 1 line.
+
+WX218X_VAL_RTSI_2 (143)
+The VI generator does not produce an output signal until it receives a trigger from the RTSI 2 line.
+
+WX218X_VAL_RTSI_3 (144)
+The VI generator does not produce an output signal until it receives a trigger from the RTSI 3 line.
+
+WX218X_VAL_RTSI_4 (145)
+The VI generator does not produce an output signal until it receives a trigger from the RTSI 4 line.
+
+WX218X_VAL_RTSI_5 (146)
+The VI generator does not produce an output signal until it receives a trigger from the RTSI 5 line.
+
+WX218X_VAL_RTSI_6 (147)
+The VI generator does not produce an output signal until it receives a trigger from the RTSI 6 line.
+
+"

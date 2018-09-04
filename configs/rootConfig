@@ -1,0 +1,5 @@
+sequence filename = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy/configs/sequence/photon production/seq170801
+daq config filename = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy/configs/daq/configCalibs3cardWithDig
+absorbtion images config filename = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\absorbtion imaging\defaultAbsImgConfig
+photon production config filename = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\photon production\134mPhotonProductionConfig
+development mode = False

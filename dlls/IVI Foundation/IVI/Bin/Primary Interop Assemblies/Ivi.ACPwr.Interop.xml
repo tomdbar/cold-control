@@ -1,0 +1,462 @@
+<doc>
+	<assembly>
+		<name>Ivi.ACPwr.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.ACPwr.Interop.IIviACPwr">
+			<summary>IviACPwr class-compliant root interface.</summary>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwr.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameteris "Name=Value", where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,or DriverSetup. Value is either true or false except for DriverSetup. If the Options String parameter contains an assignment for the Driver Setup attribute, the Initialize method assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwr.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument are not accessible after Close is called.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwr.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwr.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwr.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwr.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the Close method, and False at all other times.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwr.OutputPhases">
+			<summary>Pointer to the IIviACPwrOutputs interface.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwr.ArbWaveform">
+			<summary>Pointer to the IIviACPwrArbWaveform interface.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IIviACPwrOutputPhase">
+			<summary>IviACPwr output phase interface.</summary>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.QueryVoltageRangeCapabilities(System.Int32,System.String,System.Double@,System.Double@)">
+			<summary>Returns the minimum and maximum RMS voltage supported by the specified range and waveform.</summary>
+			<param name="Range">The range to query. The Range parameter must be from 1 to the value of the Number of Voltage Ranges property.</param>
+			<param name="WaveformName">The name of the waveform to query the range.</param>
+			<param name="MinVoltage">Returns the minimum RMS voltage supported by the requested range and waveform.</param>
+			<param name="MaxVoltage">Returns the maximum RMS voltage supported by the requested range and waveform.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.RampCurrent(System.Double,System.Double,System.Double)">
+			<summary>Starts a linear ramp of the output current from a starting to ending current value for a specified duration.</summary>
+			<param name="StartCurrent">The current ramp starting value in Amps.</param>
+			<param name="EndCurrent">The current ramp ending value in Amps.</param>
+			<param name="Duration">The ramp duration in seconds.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.FetchMeasurementArray(Ivi.ACPwr.Interop.IviACPwrMeasurementTypeArrayEnum,System.Double[]@)">
+			<summary>Returns an array of measured values of a previous call to the Initiate Measurement method.</summary>
+			<param name="MeasurementType">The type of measurement to fetch.</param>
+			<param name="Measurement">Returns the measured values.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.RampVoltage(System.Double,System.Double,System.Double)">
+			<summary>Starts a linear ramp of the output voltage from a starting to ending voltage value for a specified duration.</summary>
+			<param name="StartVoltage">The voltage ramp starting value in Volts RMS.</param>
+			<param name="EndVoltage">The voltage ramp ending value in Volts RMS.</param>
+			<param name="Duration">The ramp duration in seconds.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.AbortVoltageRamp">
+			<summary>Aborts a voltage ramp.</summary>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.FetchMeasurement(Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum,System.Double@)">
+			<summary>Returns the value measured by a previous call to the Initiate Measurement method.</summary>
+			<param name="MeasurementType">The type of measurement to fetch.</param>
+			<param name="Measurement">Returns the measured value.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.AbortCurrentRamp">
+			<summary>Aborts a current ramp.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.CurrentLimit">
+			<summary>Specifies the output current limit value.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.Enabled">
+			<summary>Enables/disables the output contactor/relay on the power source output.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.NumVoltageRanges">
+			<summary>The number of output AC voltage ranges supported by the power source. </summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.VoltageLevel">
+			<summary>Specifies the output Line to Neutral AC voltage level of the power source when operating in constant voltage mode.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.Waveform">
+			<summary>Specifies the waveform name used to generate output voltage.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.PhaseAngle">
+			<summary>Specifies the Phase Angle of the output phase in relation to Phase A. </summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.VoltageRange">
+			<summary>Configures the AC voltage range of the power source to support the specified maximum RMS voltage.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.Impedance">
+			<summary>Extension group that configures output impedance capabilities.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.CurrentProtection">
+			<summary>Extension group that configures current protection capabilities.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.VoltageProtection">
+			<summary>Extension group that configures voltage protection capabilities.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.DCGeneration">
+			<summary>Extension group that configures DC generation capabilities.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.VoltageRampBusy">
+			<summary>Indicates if a voltage ramp is in progress.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhase.CurrentRampBusy">
+			<summary>Indicates if a current ramp is in progress.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IIviACPwrOutputPhases">
+			<summary>IviACPwr output phase collection interface.</summary>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.QueryFrequencyRangeCapabilities(System.Int32,System.Double@,System.Double@)">
+			<summary>Returns the minimum and maximum frequency supported by the specified range.</summary>
+			<param name="Range">The range to query. The Range parameter must be from 1 to the value of the Number of Frequency Ranges property.</param>
+			<param name="MinFrequency">Returns the minimum frequency supported by the requested range.</param>
+			<param name="MaxFrequency">Returns the maximum frequency supported by the requested range.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.InitiateMeasurement(Ivi.ACPwr.Interop.IviACPwrMeasurementGroupEnum)">
+			<summary>This method initiates a measurement of all measurement types for all phases of the specified group(s).</summary>
+			<param name="Group">The group(s) you want to measure. You can specify any combination of values defined by IviACPwrMeasurementGroupEnum by ORing the values together. This method effectively initiates simultaneous measurements of all requested groups on the same output cycle.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.RampFrequency(System.Double,System.Double,System.Double)">
+			<summary>Starts a linear ramp of the output frequency from a starting to ending frequency value for a specified duration.</summary>
+			<param name="StartFrequency">The frequency ramp starting value in Hz.</param>
+			<param name="EndFrequency">The frequency ramp ending value in Hz.</param>
+			<param name="Duration">The ramp duration in seconds.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.AbortFrequencyRamp">
+			<summary>Aborts a frequency ramp.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.Item(System.String)">
+			<summary>An interface reference pointer to the IIviACPwrOutput interface which is selected by the output name.</summary>
+			<param name="Name">The name of an output phase. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.get_Item(System.String)">
+			<summary>An interface reference pointer to the IIviACPwrOutput interface which is selected by the output name.</summary>
+			<param name="Name">The name of an output phase. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+			<returns>An interface reference pointer to the IIviACPwrOutput interface which is selected by the output name.</returns>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.Name(System.Int32)">
+			<summary>The output name for a given index.</summary>
+			<param name="Index">One based index into the collection of output phases.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.get_Name(System.Int32)">
+			<summary>The output name for a given index.</summary>
+			<param name="Index">One based index into the collection of output phases.</param>
+			<returns>The output name for a given index.</returns>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.NumPhases">
+			<summary>The number of phases the power source is presently configured to output.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.NumFrequencyRanges">
+			<summary>The number of frequency ranges supported by the power source. </summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.FrequencyRange">
+			<summary>Configures the frequency range of the power source to support the specified maximum frequency.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.ExternalSync">
+			<summary>Extension group that configures external synchronization capabilities.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.Frequency">
+			<summary>The frequency of all output phases.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.Count">
+			<summary>The number of phases the power source is presently configured to output.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrOutputPhases.FrequencyRampBusy">
+			<summary>Indicates if a frequency ramp is in progress.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IIviACPwrArbWaveform">
+			<summary>IviACPwr class-compliant IIviACPwrArbWaveform interface.</summary>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrArbWaveform.Clear(System.String)">
+			<summary>Deletes individual user defined waveforms from the power source memory. If the Waveform Name parameter is VI_NULL, all user defined waveforms are deleted.</summary>
+			<param name="WaveformName">The name of the waveform to be deleted.  If this parameter is VI_NULL, all user defined waveforms are deleted</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrArbWaveform.QueryCatalog(Ivi.ACPwr.Interop.IviACPwrWaveformCatalogEnum,System.String@)">
+			<summary>Returns a comma delimited string of waveform names currently stored in the power source. </summary>
+			<param name="CatalogType">Specifies if the catalog string should returned fixed vendor defined and/or user defined waveform names.</param>
+			<param name="Catalog">A comma delimited string of waveform names.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrArbWaveform.Write(System.String,System.Double[]@)">
+			<summary>Writes an individual user-defined waveform to the power source memory. </summary>
+			<param name="WaveformName">The name of the new waveform to be written.</param>
+			<param name="WaveformData">An array of waveform data points used to generate a full cycle (360 degrees) of the output voltage. The driver automatically resamples the user supplied waveform data array to the optimal data points of the power source. To minimize the effects of resampling and to maximize waveform resolution, the user should allocate waveform data using the value of the Num Optimal Data Points property. The driver also rescales the amplitude of the user supplied data array to the optimal amplitude needed by power source. The actual voltage amplitude of the waveform at the power source output is determined by the Voltage Level property.</param>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrArbWaveform.NumWaveformsMax">
+			<summary>The maximum number of arbitrary waveforms the power source can store including user defined waveforms and fixed vendor defined waveforms.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrArbWaveform.NumOptimalDataPoints">
+			<summary>The optimal (native) number of data points the power source uses for arbitrary waveforms. </summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrArbWaveform.FixedWaveformCount">
+			<summary>The number of fixed vendor defined waveforms stored in the power source.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrArbWaveform.UserWaveformCount">
+			<summary>The number of user defined waveforms presently stored in the power source.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrArbWaveform.AvailableWaveformCount">
+			<summary>The number of additional user defined waveforms the power source can store.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IIviACPwrImpedance">
+			<summary>IviACPwr class-compliant IIviACPwrImpedance interface.</summary>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrImpedance.Configure(System.Boolean,System.Double,System.Double)">
+			<summary>Configures the output impedance Enabled, Resistive and Inductive properties.</summary>
+			<param name="Enabled">Sets the output impedance Enabled property.</param>
+			<param name="ResistiveValue">Sets the output impedance Resistive property.</param>
+			<param name="InductiveValue">Sets the output impedance Inductive property.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrImpedance.QueryCapabilities(System.Double@,System.Double@,System.Double@,System.Double@)">
+			<summary>Returns the minimum and maximum resistive and inductive impedance values supported by the power source for the present output configuration.</summary>
+			<param name="ResistiveMin">Returns the minimum resistance in Ohms.</param>
+			<param name="ResistiveMax">Returns the maximum resistance in Ohms.</param>
+			<param name="InductiveMin">Returns the minimum inductance in Henries.</param>
+			<param name="InductiveMax">Returns the maximum inductance in Henries.</param>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrImpedance.Inductive">
+			<summary>The inductive output impedance. This value affects the power source output when the output impedance Enabled property is set to True.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrImpedance.Enabled">
+			<summary>When set to True, this property allows the output impedance resistive and output impedance inductive property values to affect the power source output.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrImpedance.Resistive">
+			<summary>The resistive output impedance. This value affects the power source output when the output impedance Enabled property is set to True.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IIviACPwrCurrentProtection">
+			<summary>IviACPwr class-compliant IIviACPwrCurrentProtection interface.</summary>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrCurrentProtection.Configure(System.Boolean,System.Double,System.Double)">
+			<summary>Configures the Current Protection Enabled, Current Protection Delay and Current Protection Threshold properties.</summary>
+			<param name="Enabled">Sets the Current Protection Enabled property.</param>
+			<param name="Threshold">Sets the Current Protection Threshold property.</param>
+			<param name="Delay">Sets the Current Protection Delay property.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrCurrentProtection.Reset">
+			<summary>Resets the current protection state of the power source after current protection has tripped.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrCurrentProtection.Delay">
+			<summary>Specifies the time the output current must exceed the current protection threshold until current protection trips.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrCurrentProtection.Enabled">
+			<summary>When set to True, current protection trips when the output current exceeds the current protection threshold for the time specified by the current protection delay. When set to False, current protection is disabled.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrCurrentProtection.Threshold">
+			<summary>Specifies the output current threshold that trips current protection.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrCurrentProtection.Tripped">
+			<summary>Indicates if current protection has tripped.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IIviACPwrVoltageProtection">
+			<summary>IviACPwr class-compliant IIviACPwrVoltageProtection interface.</summary>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrVoltageProtection.Configure(System.Boolean,System.Boolean,System.Double,System.Double)">
+			<summary>Configures the Under Voltage Enabled, Over Voltage Enabled, Under Voltage Limit and Over Voltage Limit properties.</summary>
+			<param name="UnderEnabled">Sets the Under Voltage Enabled property.</param>
+			<param name="OverEnabled">Sets the Over Voltage Enabled property.</param>
+			<param name="UnderLimit">Sets the Under Voltage Limit property.</param>
+			<param name="OverLimit">Sets the Over Voltage Limit property.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrVoltageProtection.Reset">
+			<summary>Resets the voltage protection state of the power source after voltage protection has tripped.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrVoltageProtection.OverEnabled">
+			<summary>When set to True, voltage protection trips when the output voltage is above the Over Voltage limit.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrVoltageProtection.OverLimit">
+			<summary>Specifies the output over voltage protection limit value.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrVoltageProtection.UnderEnabled">
+			<summary>When set to True, voltage protection trips when the output voltage is below the Under Voltage Limit.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrVoltageProtection.UnderLimit">
+			<summary>Specifies the output under voltage protection limit value.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrVoltageProtection.Tripped">
+			<summary>Indicates if voltage protection has tripped.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IIviACPwrDCGeneration">
+			<summary>IviACPwr class-compliant IIviACPwrDCGeneration interface.</summary>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrDCGeneration.Configure(Ivi.ACPwr.Interop.IviACPwrDCGenerationEnum,System.Double)">
+			<summary>Configures the DC Generation Mode and DCVoltageLevel properties.</summary>
+			<param name="Mode">Sets the DC Generation Mode property.</param>
+			<param name="DCVoltageLevel">Sets the DC Generation DC Voltage Level property.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrDCGeneration.QueryCapabilities(System.Int32,System.Double@,System.Double@)">
+			<summary>Returns the minimum and maximum DC voltage supported by the specified range.</summary>
+			<param name="Range">The range to query. The Range parameter must be from 1 to the value of the Number of Ranges property.</param>
+			<param name="Minimum">Returns the minimum DC voltage supported by the requested range.</param>
+			<param name="Maximum">Returns the maximum DC voltage supported by the requested range.</param>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrDCGeneration.ConfigureRange(System.Double,System.Double)">
+			<summary>Configures the DC voltage range of the power source. The driver sets the power source to the lowest range that supports the minimum and maximum voltages specified by the Minimum and Maximum parameters. It then updates the DC Range Min and DC Range Max properties.</summary>
+			<param name="Minimum">Requests a range that supports this minimum DC voltage.</param>
+			<param name="Maximum">Requests a range that supports this maximum DC voltage.</param>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrDCGeneration.Mode">
+			<summary>Output voltage generation mode. This can be AC Only, DC Only or AC Plus DC. </summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrDCGeneration.DCVoltageLevel">
+			<summary>The DC output voltage when the DC Generation Mode property is set to DC Only or the DC offset level when the DC Generation Mode property is set to AC Plus DC.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrDCGeneration.RangeMin">
+			<summary>Returns the minimum DC voltage supported by the power source for the present range.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrDCGeneration.NumRanges">
+			<summary>The number of DC voltage ranges supported by the power source.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrDCGeneration.RangeMax">
+			<summary>Returns the maximum DC voltage supported by the power source for the present range.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IIviACPwrExternalSync">
+			<summary>IviACPwr class-compliant IIviACPwrExternalSync interface.</summary>
+		</member>
+		<member name="M:Ivi.ACPwr.Interop.IIviACPwrExternalSync.Configure(System.Boolean,System.Double)">
+			<summary>Configures the external synchronization Enabled and Phase Offset properties.</summary>
+			<param name="Enabled">Sets the external synchronization Enabled property.</param>
+			<param name="PhaseOffset">Sets the external synchronization PhaseOffset property.</param>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrExternalSync.Enabled">
+			<summary>Specifies whether to enable or disable synchronization to an external synchronization signal.</summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrExternalSync.PhaseOffset">
+			<summary>Specifies the phase angle offset of the power sources output relative to the external synchronization signal. </summary>
+		</member>
+		<member name="P:Ivi.ACPwr.Interop.IIviACPwrExternalSync.Locked">
+			<summary>Indicates if the power source is locked to the external synchronization signal.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum">
+			<summary>IviACPwr class defined values for the MeasurementType parameter of the FetchMeasurement method in the Output interface.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeVoltageRmsLN">
+			<summary>Voltage line to neutral in volts RMS.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeCurrentRms">
+			<summary>Current in amps RMS.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeFrequency">
+			<summary>Frequency in hertz.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeVoltageDC">
+			<summary>Voltage DC in volts.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeCurrentDC">
+			<summary>Current DC in amps.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypePowerFactor">
+			<summary>Power Factor.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeCrestFactor">
+			<summary>Crest Factor.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeCurrentPeak">
+			<summary>Current Peak in amps.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypePowerVA">
+			<summary>Power VA in watts.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypePowerReal">
+			<summary>Power Real in watts.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypePowerDC">
+			<summary>Power DC in watts.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypePhaseAngle">
+			<summary>Phase Angle in degrees.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeVoltageRmsLL">
+			<summary>Voltage line to line in volts RMS.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeCurrentOHD">
+			<summary>Current Odd Harmonic Distortion in percent.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeCurrentEHD">
+			<summary>Current Even Harmonic Distortion in percent.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeCurrentTHD">
+			<summary>Current Total Harmonic Distortion in percent.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeVoltageOHD">
+			<summary>Voltage Odd Harmonic Distortion in percent.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeVoltageEHD">
+			<summary>Voltage Even Harmonic Distortion in percent.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeEnum.IviACPwrMeasurementTypeVoltageTHD">
+			<summary>Voltage Total Harmonic Distortion in percent.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IviACPwrMeasurementGroupEnum">
+			<summary>IviACPwr class defined values for the Group parameter of the InitiateMeasurement method in the Outputs interface.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementGroupEnum.IviACPwrMeasurementGroupBase">
+			<summary>Requests all items in the Base group be measured.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementGroupEnum.IviACPwrMeasurementGroupHarmonic">
+			<summary>Requests all items in the Harmonic group be measured.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementGroupEnum.IviACPwrMeasurementGroupDistortion">
+			<summary>Requests all items in the Distortion group be measured.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementGroupEnum.IviACPwrMeasurementGroupWaveform">
+			<summary>Requests all items in the Waveform group be measured.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IviACPwrDCGenerationEnum">
+			<summary>IviACPwr class defined values for the Mode parameter of the Configure method and the Mode property in the DCGeneration interface.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrDCGenerationEnum.IviACPwrDCGenerationModeACOnly">
+			<summary>Configures AC Only operation.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrDCGenerationEnum.IviACPwrDCGenerationModeDCOnly">
+			<summary>Configures DC Only operation.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrDCGenerationEnum.IviACPwrDCGenerationModeACPlusDC">
+			<summary>Configures AC Plus DC operation.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IviACPwrWaveformCatalogEnum">
+			<summary>IviACPwr class defined values for the Type parameter of the QueryCatalog method in the ArbWaveform interface.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrWaveformCatalogEnum.IviACPwrWaveformCatalogFixed">
+			<summary>Return catalog of fixed vendor defined waveform names.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrWaveformCatalogEnum.IviACPwrWaveformCatalogUser">
+			<summary>Return catalog of user defined waveform names.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrWaveformCatalogEnum.IviACPwrWaveformCatalogAll">
+			<summary>Return catalog of fixed vendor defined and user defined waveform names.</summary>
+		</member>
+		<member name="T:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeArrayEnum">
+			<summary>IviACPwr class defined values for the MeasurementType parameter of the FetchMeasurement method in the Output interface.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeArrayEnum.IviACPwrMeasurementTypeArrayCurrentHarmonicPhase">
+			<summary>Array of Current Harmonic Phase angles in degrees.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeArrayEnum.IviACPwrMeasurementTypeArrayCurrentHarmonicAbs">
+			<summary>Array of Current Harmonic Magnitude in absolute amps.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeArrayEnum.IviACPwrMeasurementTypeArrayCurrentHarmonicPct">
+			<summary>Array of Current Harmonic Magnitude in percent of the fundamental.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeArrayEnum.IviACPwrMeasurementTypeArrayVoltageHarmonicPhase">
+			<summary>Array of Voltage Harmonic Phase angles in degrees.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeArrayEnum.IviACPwrMeasurementTypeArrayVoltageHarmonicAbs">
+			<summary>Array of Voltage Harmonic Magnitude in absolute volts.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeArrayEnum.IviACPwrMeasurementTypeArrayVoltageHarmonicPct">
+			<summary>Array of Voltage Harmonic Magnitude in percent of the fundamental.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeArrayEnum.IviACPwrMeasurementTypeArrayCurrentCycle">
+			<summary>Array of current values in amps for an entire cycle.</summary>
+		</member>
+		<member name="F:Ivi.ACPwr.Interop.IviACPwrMeasurementTypeArrayEnum.IviACPwrMeasurementTypeArrayVoltageCycle">
+			<summary>Array of voltage values in volts for an entire cycle.</summary>
+		</member>
+	</members>
+</doc>

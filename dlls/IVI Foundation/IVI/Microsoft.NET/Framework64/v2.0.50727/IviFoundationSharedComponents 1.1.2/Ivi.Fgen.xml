@@ -1,0 +1,1797 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivi.Fgen</name>
+    </assembly>
+    <members>
+        <member name="T:Ivi.Fgen.AMSource">
+            <summary>IVI Fgen class-compliant values for AM source</summary>
+        </member>
+        <member name="F:Ivi.Fgen.AMSource.Internal">
+            <summary>The AM source is internal</summary>
+        </member>
+        <member name="F:Ivi.Fgen.AMSource.External">
+            <summary>The AM source is external</summary>
+        </member>
+        <member name="T:Ivi.Fgen.BinaryAlignment">
+            <summary>IVI Fgen class-compliant values for binary alignment.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.BinaryAlignment.Left">
+            <summary>The left-most bit is treated as the most significant bit of the data.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.BinaryAlignment.Right">
+            <summary>The right-most bit is treated as the most significant bit of the data.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.FMSource">
+            <summary>IVI Fgen class-compliant values for FM source</summary>
+        </member>
+        <member name="F:Ivi.Fgen.FMSource.Internal">
+            <summary>The FM source is internal</summary>
+        </member>
+        <member name="F:Ivi.Fgen.FMSource.External">
+            <summary>The FM source is external</summary>
+        </member>
+        <member name="T:Ivi.Fgen.MarkerPolarity">
+            <summary>IVI Fgen class-compliant values for data marker polarity.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.MarkerPolarity.ActiveHigh">
+            <summary>When the data bit is 1 (high), the marker output level is high.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.MarkerPolarity.ActiveLow">
+            <summary>When the data bit is 1 (high), the marker output level is low.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.SampleClockSource">
+            <summary>IVI Fgen class-compliant values for sample clock source</summary>
+        </member>
+        <member name="F:Ivi.Fgen.SampleClockSource.Internal">
+            <summary>The internal sample clock is used.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.SampleClockSource.External">
+            <summary>An external sample clock is used.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.TerminalConfiguration">
+            <summary>IVI Fgen class-compliant values for terminal configuration.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.TerminalConfiguration.SingleEnded">
+            <summary>Output terminal is single-ended.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.TerminalConfiguration.Differential">
+            <summary>Output terminal is differential.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.TriggerSlope">
+            <summary>IVI Fgen class-compliant values for trigger slope</summary>
+        </member>
+        <member name="F:Ivi.Fgen.TriggerSlope.Positive">
+            <summary>The generator triggers on a positive slope.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.TriggerSlope.Negative">
+            <summary>The generator triggers on a negative slope.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.TriggerSlope.Either">
+            <summary>The generator triggers on either a positive or a negative slope.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.Errors">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.ConfiguredOnChannel">
+            <summary>
+              Looks up a localized string similar to Configured on channel: .
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.CreatedOnChannel">
+            <summary>
+              Looks up a localized string similar to Created on channel: .
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.InvalidWaveformChannel">
+            <summary>
+              Looks up a localized string similar to The waveform was created on one channel and is being configured on another..
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.NoSequenceAvailable">
+            <summary>
+              Looks up a localized string similar to No sequences are available..
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.NoWaveformAvailable">
+            <summary>
+              Looks up a localized string similar to No waveforms are available..
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.SequenceInUse">
+            <summary>
+              Looks up a localized string similar to The specified sequence is in use..
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.SequenceName">
+            <summary>
+              Looks up a localized string similar to Sequence name: .
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.WaveformInUse">
+            <summary>
+              Looks up a localized string similar to The specified waveform is in use..
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.Errors.WaveformName">
+            <summary>
+              Looks up a localized string similar to Waveform name: .
+            </summary>
+        </member>
+        <member name="T:Ivi.Fgen.InvalidWaveformChannelException">
+            <summary>
+            The waveform was created on a different channel than the one for which it is being configured.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.InvalidWaveformChannelException.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="createdOnChannel">The name of the channel on which the waveform was created.</param>
+            <param name="configuredOnChannel">The name of the channel on which the waveform is being configured.</param>
+        </member>
+        <member name="M:Ivi.Fgen.InvalidWaveformChannelException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.InvalidWaveformChannelException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Fgen.InvalidWaveformChannelException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Fgen.InvalidWaveformChannelException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Fgen.InvalidWaveformChannelException.CreatedOnChannel">
+            <summary>
+            The name of the channel on which the waveform was created.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.InvalidWaveformChannelException.ConfiguredOnChannel">
+            <summary>
+            The name of the channel on which the waveform is being configured.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.InvalidWaveformChannelException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgen">
+            <summary>IVI Fgen class-compliant root interface</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgen.InitiateGeneration">
+            <summary>If the function generator is in the Configuration State, this method moves the function generator to the 
+            Output Generation State.  If the function generator is already in the Output Generation State, this method does 
+            nothing and returns Success.</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgen.AbortGeneration">
+            <summary>If the function generator is in the Output Generation State, this method moves the function generator to 
+            the Configuration State.  If the function generator is already in the Configuration State, the method does nothing 
+            and returns Success.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgen.Output">
+            <summary>A reference to the IIviFgenOutput interface</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgen.Trigger">
+            <summary>A reference to the IIviFgenTrigger interface</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgen.StandardWaveform">
+            <summary>A reference to the IIviFgenStandardWaveform interface</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgen.Arbitrary">
+            <summary>A reference to the IIviFgenArbitrary interface</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgen.AM">
+            <summary>A reference to the IIviFgenAM interface</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgen.FM">
+            <summary>A reference to the IIviFgenFM interface</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgen.DataMarkers">
+            <summary>A reference to the IIviFgenDataMarkerCollection interface</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgen.SparseMarkers">
+            <summary>A reference to the IIviFgenSparseMarkerCollection interface</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgen.SampleClock">
+            <summary>A reference to the IIviFgenSampleClock interface</summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenAM">
+            <summary>IVI Fgen class-compliant AM interface</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenAM.ConfigureInternal(System.Double,Ivi.Fgen.StandardWaveform,System.Double)">
+            <summary>Configures the depth, waveform function, and frequency for the function generator's internal amplitude modulating
+            waveform source.</summary>
+            <param name="depth">Specifies the internal modulation depth. Refer to the InternalDepth property for
+            details.</param>
+            <param name="waveformFunction">Specifies the standard waveform the function generator uses for the internal
+            modulating waveform source.  Refer to the InternalWaveformFunction property for details.</param>
+            <param name="frequency">Specifies the frequency of the internal modulating waveform source. Refer to the 
+            InternalFrequency property for details.</param>
+            <remarks>Attempting to set waveform to StandardWaveform.DC will result in a System.ArgumentException.</remarks>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenAM.GetEnabled(System.String)">
+            <summary>Gets the enabled/disabled state of the function generator amplitude modulation.  If enabled, the function 
+            generator applies amplitude modulation to the signal that the function generator produces.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>If true, the function generator applies amplitude modulation to the signal that the function 
+            generator produces.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenAM.SetEnabled(System.String,System.Boolean)">
+            <summary>Sets the enabled/disabled state of the function generator amplitude modulation.  If enabled, the function 
+            generator applies amplitude modulation to the signal that the function generator produces.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="enabled">If true, the function generator applies amplitude modulation to the signal that the function 
+            generator produces.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenAM.GetSource(System.String)">
+            <summary>Gets the source of the signal that the function generator uses as the modulating waveform. Applies only when 
+            the GetEnabled method returns True.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>The source of the signal that the function generator uses as the modulating waveform.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenAM.SetSource(System.String,Ivi.Fgen.AMSource)">
+            <summary>Sets the source of the signal that the function generator uses as the modulating waveform. Applies only when 
+            the GetEnabled method returns True.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="source">The source of the signal that the function generator uses as the modulating waveform.</param>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenAM.InternalDepth">
+            <summary>The extent of modulation the function generator applies to the carrier waveform when the GetSource method
+            returns AMSource.Internal. The unit is percentage. Applies only when the GetSource method returns AMSource.Internal.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenAM.InternalFrequency">
+            <summary>The frequency of the internal modulating waveform source. The units are Hertz. Applies only when the GetSource 
+            method returns AMSource.Internal.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenAM.InternalWaveformFunction">
+            <summary>The standard waveform of the internal modulating waveform source.  Applies only when the GetSource method 
+            returns AMSource.Internal.</summary>
+            <remarks>Attempting to set this property to StandardWaveform.DC will result in a System.ArgumentException.</remarks>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenArbitrary">
+            <summary>IVI Fgen class-compliant arbitrary sequence and waveform common interface</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitrary.ClearMemory">
+            <summary>Removes all previously created arbitrary waveforms and sequences from the function generator's
+            memory and invalidates all waveform and sequence handles.</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitrary.GetGain(System.String)">
+            <summary>Gets the gain of the arbitrary waveform the function generator produces.  This value is unitless.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>The gain of the arbitrary waveform the function generator produces.  This value is unitless.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitrary.SetGain(System.String,System.Double)">
+            <summary>Sets the gain of the arbitrary waveform the function generator produces.  This value is unitless.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="gain">The gain of the arbitrary waveform the function generator produces.  This value is unitless.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitrary.GetOffset(System.String)">
+            <summary>Gets the offset of the arbitrary waveform the function generator produces.  The units are volts.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>The offset of the arbitrary waveform the function generator produces.  The units are volts.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitrary.SetOffset(System.String,System.Double)">
+            <summary>Sets the offset of the arbitrary waveform the function generator produces.  The units are volts.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="offset">The offset of the arbitrary waveform the function generator produces.  The units are volts.</param>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrary.SampleRate">
+            <summary>The sample rate of the arbitrary waveforms the function generator produces.  The units are samples per second.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrary.BinaryAlignment">
+            <summary>Identifies whether the arbitrary waveform generator treats binary data provided to the
+            IIviFgenArbitraryWaveform methods as left-justified or right-justified.  This is only relevant if the
+            generator supports bit-depths less than 16, or less than 32 if the generator supports bit-depths greater
+            than 16. For a 16-bit or a 32-bit generator, this method can return either value.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrary.SampleBitResolution">
+            <summary>The number of significant bits that the generator supports in an arbitrary waveform. Together with
+            the binary alignment, this allows the user to know the range and resolution of the integers in the waveform.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrary.DataMask">
+            <summary>A mask that determines what bits of the output data are masked out.  This is especially useful
+            when combined with Data Markers so that the bits embedded with the data to be used for markers are not
+            actually output by the generator.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrary.Sequence">
+            <summary>Reference  to the class-compliant IIviFgenArbitrarySequence interface</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrary.Waveform">
+            <summary>Reference  to the class-compliant IIviFgenArbitraryWaveform interface</summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenArbitrarySequence">
+            <summary>IVI Fgen class-compliant arbitrary sequence interface</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitrarySequence.Configure(System.String,System.Int32,System.Double,System.Double)">
+            <summary>Configures channel, waveform handle, gain, and offset for arbitrary sequence generation.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="handle">Specifies the handle that identifies the arbitrary sequence to produce.</param>
+            <param name="gain">Specifies the arbitrary waveform gain. Refer to the IIviFgenArbitrary.GetGain and
+            IIviFgenArbitrary.SetGain methods for details.</param>
+            <param name="offset">Specifies the arbitrary waveform offset.  Refer to the IIviFgenArbitrary.GetOffset
+            and IIviFgenArbitrary.SetOffset methods for details.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitrarySequence.Clear(System.Int32)">
+            <summary>Removes a previously created arbitrary sequence from the function generator's memory and invalidates the 
+            sequence's handle.</summary>
+            <param name="handle">Specifies the handle that identifies the arbitrary sequence to clear.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitrarySequence.Create(System.Int32[],System.Int32[])">
+            <summary>Creates an arbitrary waveform sequence from an array of waveform handles and a corresponding array of loop counts, 
+            and returns a handle that identifies the sequence.  The handle is used by the Configure, and Clear methods.</summary>
+            <param name="waveformHandle">Specifies the array of waveform handles for the new arbitrary sequence. Each WfmHandle array 
+            element has a corresponding LoopCount array element that specifies how many times that waveform is repeated.</param>
+            <param name="loopCount">Specifies the array of loop counts for the new arbitrary sequence. Each LoopCount array element 
+            corresponds to a WfmHandle array element and indicates how many times to repeat that waveform. Each element of the 
+            LoopCount array must be less than or equal to the maximum number of loop counts the function generator allows. To 
+            determine the function generator's maximum loop count, use the LoopCountMax property.</param>
+            <returns>Returns the handle that identifies the new arbitrary sequence.</returns>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrarySequence.DepthMax">
+            <summary>
+            The maximum sequence depth - that is, the number of times a sequence can include other sequences
+            recursively. A depth of zero indicates the generator supports waveforms only. A depth of 1 indicates
+            a generator supports sequences of waveforms, but not sequences of sequences.  A depth of 2 or greater
+            indicates that the generator supports sequences of sequences.
+            </summary>
+            <remarks>
+            Note that if the MaxSequenceDepth is 2 or greater, the driver must return unique handles for
+            waveforms and sequences so that a sequence may contain both waveform and sequence handles.
+            </remarks>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrarySequence.LengthMax">
+            <summary>The maximum number of arbitrary waveforms that the function generator allows in an arbitrary sequence.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrarySequence.LengthMin">
+            <summary>The minimum number of arbitrary waveforms that the function generator allows in an arbitrary sequence.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrarySequence.LoopCountMax">
+            <summary>The maximum number of times that the function generator can repeat a waveform in a sequence.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitrarySequence.NumberSequencesMax">
+            <summary>The maximum number of arbitrary sequences that the function generator allows.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenArbitraryWaveform">
+            <summary>IVI Fgen class-compliant arbitrary waveform interface</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitraryWaveform.Configure(System.String,System.Int32,System.Double,System.Double)">
+            <summary>Configures channel name, waveform handle, gain, and offset for arbitrary waveform generation.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="handle">Specifies the handle that identifies the arbitrary waveform to produce.</param>
+            <param name="gain">Specifies the arbitrary waveform gain. Refer to the IIviFgenArbitrary.GetGain and
+            IIviFgenArbitrary.SetGain methods for details.</param>
+            <param name="offset">Specifies the arbitrary waveform offset.  Refer to the IIviFgenArbitrary.GetOffset
+            and IIviFgenArbitrary.SetOffset methods for details.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitraryWaveform.Clear(System.Int32)">
+            <summary>Removes a previously created arbitrary waveform from the function generator's memory and invalidates the 
+            waveform's handle.</summary>
+            <param name="handle">Specifies the handle that identifies the arbitrary waveform to clear.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitraryWaveform.CreateChannelWaveform(System.String,Ivi.Driver.IWaveform{System.Int16})">
+            <summary>Creates a channel-specific waveform and returns a handle to it. The handle is used by the
+            Configure, Clear, and IIviFgenArbitrarySequence.Create methods.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may
+            define the empty string as a valid channel name.</param>
+            <param name="waveform">A waveform object that implements IWaveform to use for the new arbitrary waveform. The waveform 
+            array must have at least as many elements as the value in the Size parameter. The array's elements, after being scaled,
+            must be normalized between -1.00 and +1.00.</param>
+            <returns>Returns the handle that identifies the new arbitrary waveform.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitraryWaveform.CreateChannelWaveform(System.String,Ivi.Driver.IWaveform{System.Int32})">
+            <summary>Creates a channel-specific waveform and returns a handle to it. The handle is used by the
+            Configure, Clear, and IIviFgenArbitrarySequence.Create methods.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may
+            define the empty string as a valid channel name.</param>
+            <param name="waveform">A waveform object that implements IWaveform to use for the new arbitrary waveform. The waveform 
+            array must have at least as many elements as the value in the Size parameter. The array's elements, after being scaled,
+            must be normalized between -1.00 and +1.00.</param>
+            <returns>Returns the handle that identifies the new arbitrary waveform.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitraryWaveform.CreateChannelWaveform(System.String,Ivi.Driver.IWaveform{System.Double})">
+            <summary>Creates a channel-specific waveform and returns a handle to it. The handle is used by the
+            Configure, Clear, and IIviFgenArbitrarySequence.Create methods.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may
+            define the empty string as a valid channel name.</param>
+            <param name="waveform">A waveform object that implements IWaveform to use for the new arbitrary waveform.
+            The waveform array must have at least as many elements as the value in the Size parameter. The array's
+            elements, must be normalized between -1.00 and +1.00.</param>
+            <returns>Returns the handle that identifies the new arbitrary waveform.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitraryWaveform.GetFrequency(System.String)">
+            <summary>Gets the rate at which an entire arbitrary waveform is generated.  The units are in Hertz.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>The rate at which an entire arbitrary waveform is generated.  The units are in Hertz..</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenArbitraryWaveform.SetFrequency(System.String,System.Double)">
+            <summary>Sets the rate at which an entire arbitrary waveform is generated.  The units are in Hertz.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="frequency">The rate at which an entire arbitrary waveform is generated.  The units are in Hertz.</param>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitraryWaveform.NumberWaveformsMax">
+            <summary>The maximum number of arbitrary waveforms that the function generator allows.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitraryWaveform.Quantum">
+            <summary>The quantum value the function generator allows. For example, if this property returns a value
+            of 8, all waveform  sizes must be a multiple of 8. The size of each arbitrary waveform must be a multiple
+            of a quantum value.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitraryWaveform.SizeMax">
+            <summary>The maximum number of points the function generator allows in an arbitrary waveform.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenArbitraryWaveform.SizeMin">
+            <summary>The minimum number of points the function generator allows in an arbitrary waveform.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenDataMarker">
+            <summary>IVI Fgen class-compliant data marker interface</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenDataMarker.Configure(System.String,System.Int32,System.String)">
+            <summary>
+            Configure the data marker.
+            </summary>
+            <param name="sourceChannel">The channel whose data bit will be output as a marker.</param>
+            <param name="bitPosition">The bit position of the waveform data bit that will be output as a data marker.
+            A value of 0 indicates the least significant bit.</param>
+            <param name="destination">The destination terminal for the data marker.</param>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenDataMarker.Amplitude">
+            <summary>
+            The amplitude of the data marker output. The units are volts.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenDataMarker.BitPosition">
+            <summary>
+            The bit position of the binary representation of the waveform data that will be output as a data
+            marker. A value of 0 indicates the least significant bit.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenDataMarker.Delay">
+            <summary>
+            The amount of delay applied to the data marker output with respect to the analog data output.  A value
+            of zero indicates the marker is aligned with the analog data output.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenDataMarker.Destination">
+            <summary>
+            The destination terminal for the data marker output.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenDataMarker.Polarity">
+            <summary>
+            The polarity of the data marker output.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenDataMarker.SourceChannel">
+            <summary>
+            The channel whose data bit will be output as a marker.
+            </summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenDataMarkerCollection">
+            <summary>
+            IviFgen class-compliant IIviFgenDataMarkerCollection interface
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenDataMarkerCollection.Clear">
+            <summary>
+            Disable all of the data markers by setting their Data Marker Destination attribute to None.
+            </summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenFM">
+            <summary>IVI Fgen class-compliant FM interface</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenFM.ConfigureInternal(System.Double,Ivi.Fgen.StandardWaveform,System.Double)">
+            <summary>Configures the deviation, waveform function, and frequency for the internal frequency modulating waveform
+            source.</summary>
+            <param name="deviation">Specifies the internal modulation deviation. Refer to the InternalDeviation
+            property for details.</param>
+            <param name="waveformFunction">Specifies the standard waveform the function generator uses for the internal 
+            modulating waveform source.  Refer to the InternalWaveform property for details.</param>
+            <param name="frequency">Specifies the frequency of the internal modulating waveform source. Refer to the 
+            InternalFrequency property for details.</param>
+            <remarks>Attempting to set waveform to StandardWaveform.DC will result in a System.ArgumentException.</remarks>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenFM.GetEnabled(System.String)">
+            <summary>Gets the enabled/disabled state of the function generator frequency modulation.  If enabled, the function 
+            generator applies frequency modulation to the signal that the function generator produces.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>If true, the function generator applies frequency modulation to the signal that the function 
+            generator produces.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenFM.SetEnabled(System.String,System.Boolean)">
+            <summary>Sets the enabled/disabled state of the function generator frequency modulation.  If enabled, the function 
+            generator applies frequency modulation to the signal that the function generator produces.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="enabled">If true, the function generator applies frequency modulation to the signal that the function 
+            generator produces.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenFM.GetSource(System.String)">
+            <summary>Gets the source of the signal that the function generator uses as the modulating waveform.
+            Applies only when the GetEnabled method returns True.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>The source of the signal that the function generator uses as the modulating waveform. Applies only 
+            when the GetEnabled method returns True.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenFM.SetSource(System.String,Ivi.Fgen.FMSource)">
+            <summary>Sets the source of the signal that the function generator uses as the modulating waveform.
+            Applies only when the GetEnabled method returns True.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="source">The source of the signal that the function generator uses as the modulating waveform. Applies only 
+            when the GetEnabled method returns True.</param>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenFM.InternalDeviation">
+            <summary>The maximum frequency deviation the function generator applies to the carrier waveform when the GetSource 
+            method returns FMSource.Internal. Applies only when the GetSource method returns FMSource.Internal.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenFM.InternalFrequency">
+            <summary>The frequency of the internal modulating waveform source.  The units are hertz. Applies only when the 
+            GetSource method returns FMSource.Internal.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenFM.InternalWaveformFunction">
+            <summary>The standard waveform of the internal modulating waveform source. Applies only when the GetSource method
+            returns FMSource.Internal.</summary>
+            <remarks>Attempting to set this property to StandardWaveform.DC will result in a System.ArgumentException.</remarks>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenOutput">
+            <summary>IVI Fgen class-compliant output interface</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenOutput.GetEnabled(System.String)">
+            <summary>Gets the enabled/disabled state of the function generator output.  If enabled, the signal the function
+            generator produces appears at the output connector.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>If true, the signal the function generator produces appears at the output connector.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenOutput.SetEnabled(System.String,System.Boolean)">
+            <summary>Sets the enabled/disabled state of the function generator output.  If enabled, the signal the function
+            generator produces appears at the output connector.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="enabled">If true, the signal the function generator produces appears at the output connector.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenOutput.GetImpedance(System.String)">
+            <summary>Gets the impedance of the output channel.  The units are Ohms.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>The impedance of the output channel.  The units are Ohms.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenOutput.SetImpedance(System.String,System.Double)">
+            <summary>Sets the impedance of the output channel.  The units are Ohms.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="impedance">The impedance of the output channel.  The units are Ohms.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenOutput.GetOperationMode(System.String)">
+            <summary>Gets the mode that determines how the function generator produces waveforms. Operation mode determines 
+            which extension group's methods and properties are used to configure the waveform the function generator produces.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>The mode that determines how the function generator produces waveforms. Operation mode determines 
+            which extension group's methods and properties are used to configure the waveform the function generator produces.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenOutput.SetOperationMode(System.String,Ivi.Fgen.OperationMode)">
+            <summary>Sets the mode that determines how the function generator produces waveforms. Operation mode determines 
+            which extension group's methods and properties are used to configure the waveform the function generator produces.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="mode">The mode that determines how the function generator produces waveforms. Operation mode determines 
+            which extension group's methods and properties are used to configure the waveform the function generator produces.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenOutput.GetTerminalConfiguration(System.String)">
+            <summary>Gets the terminal configuration, which determines whether the generator will run in single-ended
+            or differential mode, and whether the output gain and offset values will be analyzed based on single-ended
+            or differential operation.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>The mode in which the generator will run.  Choices are single-ended and differential operation.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenOutput.SetTerminalConfiguration(System.String,Ivi.Fgen.TerminalConfiguration)">
+            <summary>Sets the terminal configuration, which determines whether the generator will run in single-ended
+            or differential mode, and whether the output gain and offset values will be analyzed based on single-ended
+            or differential operation.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="configuration">The mode in which the generator will run.  Choices are single-ended and
+            differential operation.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenOutput.GetChannelName(System.Int32)">
+            <summary>Gets the name of the channel that corresponds to the index into the collection of channels.</summary>
+            <param name="index">An index in the collection of channels, between 0 and Count-1.</param>
+            <returns>The name of the channel that corresponds to the index in the collection of channels.</returns>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenOutput.OutputMode">
+            <summary>The mode that determines how the function generator produces waveforms. This property determines 
+            which extension group's methods and properties are used to configure the waveform the function generator produces.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenOutput.ReferenceClockSource">
+            <summary>The source of the reference clock. The function generator derives frequencies and sample rates that it 
+            uses to generate waveforms from the reference clock.</summary>
+            <remarks>Each driver determines what values are valid based on the capabilities of supported instruments.  The IVI
+            Foundation defines a set of standard trigger source values in IVI-3.3, Standard Cross Class Capabilities.  If the driver
+            supports one of the sources documented in IVI-3.3, it must support the standard string value for that source.</remarks>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenOutput.Count">
+            <summary>The number of output channels supported by the instrument.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenSampleClock">
+            <summary>
+            IVI Fgen class-compliant sample clock interface
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenSampleClock.Source">
+            <summary>
+            Specifies the clock used for the waveform generation. Note that when using an external sample clock,
+            the IIviFgenArbitrary.SampleRate property must be set to the corresponding frequency of the external
+            sample clock.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenSampleClock.OutputEnabled">
+            <summary>
+            If true, the sample clock appears at the sample clock output of the generator, otherwise false.
+            </summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenSparseMarker">
+            <summary>IVI Fgen class-compliant sparse marker interface</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenSparseMarker.Configure(System.Int32,System.Int64[],System.String)">
+            <summary>
+            Configure the sparse marker.
+            </summary>
+            <param name="waveformHandle">The waveform to whose indices the sparse marker refers.</param>
+            <param name="indexes">The sample numbers of the specified waveform on which markers will be output.
+            These indexes may be coerced by the driver.</param>
+            <param name="destination">The destination terminal for the sparse marker.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenSparseMarker.GetIndexes">
+            <summary>
+            Gets the coerced indexes associated with the sparse marker.  These indexes are specied by either the
+            Add method or the SetIndexes method.
+            </summary>
+            <returns>The sample numbers on which markers will be output.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenSparseMarker.SetIndexes(System.Int64[])">
+            <summary>
+            Set the indexes associated with the sparse marker.  These indexes may be coerced by the driver.  Use the
+            GetIndexes method to find the coerced values.
+            </summary>
+            <param name="indexes">The sample numbers on which markers will be output.</param>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenSparseMarker.Amplitude">
+            <summary>
+            The amplitude of the sparse marker output. The units are volts.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenSparseMarker.Delay">
+            <summary>
+            The amount of delay applied to the sparse marker output with respect to the analog data output.  A value
+            of zero indicates the marker is aligned with the analog data output.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenSparseMarker.Destination">
+            <summary>
+            The destination terminal for the sparse marker output.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenSparseMarker.Polarity">
+            <summary>
+            The polarity of the sparse marker output.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenSparseMarker.WaveformHandle">
+            <summary>
+            Specifies the waveform to whose indexes the sparse marker refers.
+            </summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenSparseMarkerCollection">
+            <summary>
+            IviFgen class-compliant IIviFgenSparseMarkerCollection interface
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenSparseMarkerCollection.Clear">
+            <summary>
+            Disable all of the sparse markers by setting their Sparse Marker Destination attribute to None.
+            </summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenStandardWaveform">
+            <summary>IVI Fgen class-compliant standard waveform interface</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.Configure(System.String,Ivi.Fgen.StandardWaveform,System.Double,System.Double,System.Double,System.Double)">
+            <summary>Configures the channel, waveform function, amplitude, DC offset, frequency, and start phase for
+            standard waveform generation.  When the waveformFunction parameter is set to Waveform DC, this method
+            ignores the amplitude, frequency, and start phase parameters.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="waveformFunction">Specifies the standard waveform function. Refer to the GetWaveformFunction 
+            and SetWaveformFunction methods for details.</param>
+            <param name="amplitude">Specifies the waveform amplitude. Refer to the GetAmplitude and Set Amplitude
+            methods for details.</param>
+            <param name="dcOffset">Specifies the waveform's DC offset. Refer to the GetDCOffset and SetDCOffset
+            methods for details.</param>
+            <param name="frequency">Specifies the waveform frequency. Refer to the GetFrequency and SetFrequency
+            methods for details.</param>
+            <param name="startPhase">Specifies the waveform start phase. Refer to the GetStartPhase and GetStartPhase
+            methods for details.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.GetDutyCycleHigh(System.String)">
+            <summary>Gets the duty cycle for a square waveform. This property affects function generator behavior only 
+            when the GetWaveformFunction method returns StandardWaveform.Square.  The value is expressed as a
+            percentage.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <returns>The duty cycle for a square waveform. This property affects function generator behavior only when
+            the GetWaveformFunction method returns StandardWaveform.Square.  The value is expressed as a percentage.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.SetDutyCycleHigh(System.String,System.Double)">
+            <summary>Sets the duty cycle for a square waveform. This property affects function generator behavior only 
+            when the GetWaveformFunction method returns StandardWaveform.Square.  The value is expressed as a
+            percentage.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="dutyCycleHigh">The duty cycle for a square waveform. This property affects function generator
+            behavior only when the GetWaveformFunction method returns StandardWaveform.Square.  The value is expressed
+            as a percentage.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.GetAmplitude(System.String)">
+            <summary>Gets the amplitude of the standard waveform output by the function generator. When the 
+            GetWaveformFunction method returns StandardWaveform.DC, the amplitude does not affect signal output.
+            The units are volts.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <returns>The amplitude of the standard waveform output by the function generator. When the 
+            GetWaveformFunction method returns StandardWaveform.DC, the amplitude does not affect signal output.
+            The units are volts.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.SetAmplitude(System.String,System.Double)">
+            <summary>Sets the amplitude of the standard waveform output by the function generator. When the
+            GetWaveformFunction method  returns StandardWaveform.DC, the amplitude does not affect signal output.
+            The units are volts.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="amplitude">The amplitude of the standard waveform output by the function generator.
+            GetWaveformFunction method returns StandardWaveform.DC, the amplitude does not affect signal output.
+            The units are volts.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.GetDCOffset(System.String)">
+            <summary>Gets the DC offset of the standard waveform output by the function generator. If the
+            GetWaveformFunction method returns StandardWaveform.DC, the DC offset specifies the DC level the function
+            generator produces.  The units are volts.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <returns>The DC offset of the standard waveform output by the function generator. If the
+            GetWaveformFunction method returns StandardWaveform.DC, the DC offset specifies the DC level the function
+            generator produces.  The units are volts.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.SetDCOffset(System.String,System.Double)">
+            <summary>Sets the DC offset of the standard waveform output by the function generator. If the
+            GetWaveformFunction method returns StandardWaveform.DC, the DC offset specifies the DC level the function
+            generator produces.  The units are volts.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="dcOffset">The DC offset of the standard waveform output by the function generator. If the
+            GetWaveformFunction method returns StandardWaveform.DC, the DC offset specifies the DC level the function
+            generator produces.  The units are volts.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.GetFrequency(System.String)">
+            <summary>Gets the frequency of the standard waveform output by the function generator. When the
+            GetWaveformFunction method returns StandardWaveform.DC, the frequency does not affect signal output.
+            The units are Hertz.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <returns>The frequency of the standard waveform output by the function generator. When the
+            GetWaveformFunction method returns StandardWaveform.DC, the frequency does not affect signal output.
+            The units are Hertz.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.SetFrequency(System.String,System.Double)">
+            <summary>Sets the frequency of the standard waveform output by the function generator. When the
+            GetWaveformFunction method returns StandardWaveform.DC, the frequency does not affect signal output.
+            The units are Hertz.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="frequency">The frequency of the standard waveform output by the function generator. When the
+            GetWaveformFunction method returns StandardWaveform.DC, the frequency does not affect signal output.
+            The units are Hertz.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.GetStartPhase(System.String)">
+            <summary>Gets the start phase of the standard waveform output by the function generator. When the
+            GetWaveformFunction method returns StandardWaveform.DC, the start phase does not affect signal output.
+            The units are degrees.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <returns>The start phase of the standard waveform output by the function generator. When the 
+            GetWaveformFunction method returns StandardWaveform.DC, the start phase does not affect signal output.
+            The units are degrees.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.SetStartPhase(System.String,System.Double)">
+            <summary>Sets the start phase of the standard waveform output by the function generator. When the 
+            GetWaveformFunction method returns StandardWaveform.DC, the start phase does not affect signal output.
+            The units are degrees.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="startPhase">The start phase of the standard waveform output by the function generator. When 
+            the GetWaveformFunction method returns StandardWaveform.DC, the start phase does not affect signal output.
+            The units are degrees.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.GetWaveformFunction(System.String)">
+            <summary>Gets the standard waveform function being output by the function generator.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <returns>The standard waveform function being output by the function generator.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenStandardWaveform.SetWaveformFunction(System.String,Ivi.Fgen.StandardWaveform)">
+            <summary>Sets the standard waveform function being output by the function generator.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver 
+            or supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="waveformFunction">The standard waveform function being output by the function generator.</param>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenTrigger">
+            <summary>IVI Fgen class-compliant trigger interface.</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTrigger.SendSoftwareTrigger">
+            <summary>Sends a software trigger, which will cause the function generator to generate output.</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTrigger.GetBurstCount(System.String)">
+            <summary>Gets the number of waveform cycles that the function generator produces after it receives a trigger.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>The number of waveform cycles that the function generator produces after it receives a trigger.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTrigger.SetBurstCount(System.String,System.Int32)">
+            <summary>Sets the number of waveform cycles that the function generator produces after it receives a trigger.</summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="burstCount">The number of waveform cycles that the function generator produces after it receives a trigger.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTrigger.GetSource(System.String)">
+            <summary>
+            Gets the trigger source. After the function generator receives a trigger from this source, it produces a signal.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <returns>The trigger source. After the function generator receives a trigger from this source, it produces a signal.</returns>
+            <remarks>Each driver determines what values are valid based on the capabilities of supported instruments.  The IVI
+            Foundation defines a set of standard trigger source values in IVI-3.3, Standard Cross Class Capabilities.  If the driver
+            supports one of the sources documented in IVI-3.3, it must support the standard string value for that source.</remarks>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTrigger.SetSource(System.String,System.String)">
+            <summary>
+            Sets the trigger source. After the function generator receives a trigger from this source, it produces a signal.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or supplied 
+            as a virtual name in the configuration store.  For single output instruments, the driver may define the empty string 
+            as a valid channel name.</param>
+            <param name="source">The trigger source. After the function generator receives a trigger from this source, it produces 
+            a signal.</param>
+            <remarks>Each driver determines what values are valid based on the capabilities of supported instruments.  The IVI
+            Foundation defines a set of standard trigger source values in IVI-3.3, Standard Cross Class Capabilities.  If the driver
+            supports one of the sources documented in IVI-3.3, it must support the standard string value for that source.</remarks>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenTrigger.Start">
+            <summary>A reference to the IIviFgenTriggerStart interface.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenTrigger.Stop">
+            <summary>A reference to the IIviFgenTriggerStop interface.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenTrigger.Hold">
+            <summary>A reference to the IIviFgenTriggerHold interface.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenTrigger.Resume">
+            <summary>A reference to the IIviFgenTriggerResume interface.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenTrigger.Advance">
+            <summary>A reference to the IIviFgenTriggerAdvance interface.</summary>
+        </member>
+        <member name="P:Ivi.Fgen.IIviFgenTrigger.InternalRate">
+            <summary>The rate at which the function generator's internal trigger source produces a trigger, in triggers per second.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenTriggerAdvance">
+            <summary>IVI Fgen class-compliant advance trigger interface.</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerAdvance.Configure(System.String,System.String,Ivi.Fgen.TriggerSlope)">
+            <summary>
+            Configure the advance trigger properties.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="source">The source of the advance trigger. Refer to the Get and Set Source methods for details.</param>
+            <param name="slope">The source of the advance trigger. Refer to the Get and Set Slope methods for details.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerAdvance.SendSoftwareTrigger">
+            <summary>
+            Send a software-generated advance trigger to the instrument.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerAdvance.GetDelay(System.String)">
+            <summary>
+            Get an additional length of time to delay from the advance trigger to the first point in the waveform
+            generation.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>An additional length of time to delay from the advance trigger to the first point in the waveform
+            generation.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerAdvance.SetDelay(System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Set an additional length of time to delay from the advance trigger to the first point in the waveform
+            generation.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="delay">An additional length of time to delay from the advance trigger to the first point in the waveform
+            generation.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerAdvance.GetSlope(System.String)">
+            <summary>
+            Get the slope of the advance trigger.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The slope of the advance trigger.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerAdvance.SetSlope(System.String,Ivi.Fgen.TriggerSlope)">
+            <summary>
+            Set the slope of the advance trigger.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="slope">The slope of the advance trigger.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerAdvance.GetSource(System.String)">
+            <summary>
+            Get the source of the advance trigger.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The source of the advance trigger.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerAdvance.SetSource(System.String,System.String)">
+            <summary>
+            Set the source of the advance trigger.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="source">The source of the advance trigger.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerAdvance.GetThreshold(System.String)">
+            <summary>
+            Get the voltage threshold for the advance trigger. The units are volts.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The voltage threshold for the advance trigger. The units are volts.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerAdvance.SetThreshold(System.String,System.Double)">
+            <summary>
+            Set the voltage threshold for the advance trigger. The units are volts.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="threshold">The voltage threshold for the advance trigger. The units are volts.</param>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenTriggerHold">
+            <summary>IVI Fgen class-compliant hold trigger interface.</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerHold.Configure(System.String,System.String,Ivi.Fgen.TriggerSlope)">
+            <summary>
+            Configure the hold trigger properties.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="source">The source of the hold trigger. Refer to the Get and Set Source methods for details.</param>
+            <param name="slope">The source of the hold trigger. Refer to the Get and Set Slope methods for details.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerHold.SendSoftwareTrigger">
+            <summary>
+            Send a software-generated hold trigger to the instrument.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerHold.GetDelay(System.String)">
+            <summary>
+            Get an additional length of time to delay from the hold trigger to the first point in the waveform
+            generation.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>An additional length of time to delay from the hold trigger to the first point in the waveform
+            generation.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerHold.SetDelay(System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Set an additional length of time to delay from the hold trigger to the first point in the waveform
+            generation.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="delay">An additional length of time to delay from the hold trigger to the first point in the waveform
+            generation.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerHold.GetSlope(System.String)">
+            <summary>
+            Get the slope of the hold trigger.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The slope of the hold trigger.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerHold.SetSlope(System.String,Ivi.Fgen.TriggerSlope)">
+            <summary>
+            Set the slope of the hold trigger.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="slope">The slope of the hold trigger.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerHold.GetSource(System.String)">
+            <summary>
+            Get the source of the hold trigger.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The source of the hold trigger.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerHold.SetSource(System.String,System.String)">
+            <summary>
+            Set the source of the hold trigger.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="source">The source of the hold trigger.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerHold.GetThreshold(System.String)">
+            <summary>
+            Get the voltage threshold for the hold trigger. The units are volts.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The voltage threshold for the hold trigger. The units are volts.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerHold.SetThreshold(System.String,System.Double)">
+            <summary>
+            Set the voltage threshold for the hold trigger. The units are volts.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="threshold">The voltage threshold for the hold trigger. The units are volts.</param>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenTriggerResume">
+            <summary>IVI Fgen class-compliant resume trigger interface.</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerResume.Configure(System.String,System.String,Ivi.Fgen.TriggerSlope)">
+            <summary>
+            Configure the resume trigger properties.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="source">The source of the resume trigger. Refer to the Get and Set Source methods for details.</param>
+            <param name="slope">The source of the resume trigger. Refer to the Get and Set Slope methods for details.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerResume.SendSoftwareTrigger">
+            <summary>
+            Send a software-generated resume trigger to the instrument.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerResume.GetDelay(System.String)">
+            <summary>
+            Get an additional length of time to delay from the resume trigger to the first point in the waveform
+            generation.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>An additional length of time to delay from the resume trigger to the first point in the waveform
+            generation.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerResume.SetDelay(System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Set an additional length of time to delay from the resume trigger to the first point in the waveform
+            generation.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="delay">An additional length of time to delay from the resume trigger to the first point in the waveform
+            generation.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerResume.GetSlope(System.String)">
+            <summary>
+            Get the slope of the resume trigger.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The slope of the resume trigger.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerResume.SetSlope(System.String,Ivi.Fgen.TriggerSlope)">
+            <summary>
+            Set the slope of the resume trigger.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="slope">The slope of the resume trigger.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerResume.GetSource(System.String)">
+            <summary>
+            Get the source of the resume trigger.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The source of the resume trigger.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerResume.SetSource(System.String,System.String)">
+            <summary>
+            Set the source of the resume trigger.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="source">The source of the resume trigger.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerResume.GetThreshold(System.String)">
+            <summary>
+            Get the voltage threshold for the resume trigger. The units are volts.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The voltage threshold for the resume trigger. The units are volts.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerResume.SetThreshold(System.String,System.Double)">
+            <summary>
+            Set the voltage threshold for the resume trigger. The units are volts.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="threshold">The voltage threshold for the resume trigger. The units are volts.</param>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenTriggerStart">
+            <summary>IVI Fgen class-compliant start trigger interface.</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStart.Configure(System.String,System.String,Ivi.Fgen.TriggerSlope)">
+            <summary>
+            Configure the start trigger properties.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="source">The source of the start trigger. Refer to the Get and Set Source methods for details.</param>
+            <param name="slope">The source of the start trigger. Refer to the Get and Set Slope methods for details.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStart.GetDelay(System.String)">
+            <summary>
+            Get an additional length of time to delay from the start trigger to the first point in the waveform
+            generation.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>An additional length of time to delay from the start trigger to the first point in the waveform
+            generation.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStart.SetDelay(System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Set an additional length of time to delay from the start trigger to the first point in the waveform
+            generation.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="delay">An additional length of time to delay from the start trigger to the first point in the waveform
+            generation.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStart.GetSlope(System.String)">
+            <summary>
+            Get the slope of the trigger that starts the generator.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The slope of the trigger that starts the generator.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStart.SetSlope(System.String,Ivi.Fgen.TriggerSlope)">
+            <summary>
+            Set the slope of the trigger that starts the generator.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="slope">The slope of the trigger that starts the generator.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStart.GetSource(System.String)">
+            <summary>
+            Get the source of the start trigger.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The source of the start trigger.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStart.SetSource(System.String,System.String)">
+            <summary>
+            Set the source of the start trigger.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="source">The source of the start trigger.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStart.GetThreshold(System.String)">
+            <summary>
+            Get the voltage threshold for the start trigger. The units are volts.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The voltage threshold for the start trigger. The units are volts.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStart.SetThreshold(System.String,System.Double)">
+            <summary>
+            Set the voltage threshold for the start trigger. The units are volts.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="threshold">The voltage threshold for the start trigger. The units are volts.</param>
+        </member>
+        <member name="T:Ivi.Fgen.IIviFgenTriggerStop">
+            <summary>IVI Fgen class-compliant stop trigger interface.</summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStop.Configure(System.String,System.String,Ivi.Fgen.TriggerSlope)">
+            <summary>
+            Configure the stop trigger properties.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver may 
+            define the empty string as a valid channel name.</param>
+            <param name="source">The source of the stop trigger. Refer to the Get and Set Source methods for details.</param>
+            <param name="slope">The source of the stop trigger. Refer to the Get and Set Slope methods for details.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStop.SendSoftwareTrigger">
+            <summary>
+            Send a software-generated stop trigger to the instrument.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStop.GetDelay(System.String)">
+            <summary>
+            Get an additional length of time to delay from the stop trigger to the first point in the waveform
+            generation.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>An additional length of time to delay from the stop trigger to the first point in the waveform
+            generation.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStop.SetDelay(System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Set an additional length of time to delay from the stop trigger to the first point in the waveform
+            generation.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="delay">An additional length of time to delay from the stop trigger to the first point in the waveform
+            generation.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStop.GetSlope(System.String)">
+            <summary>
+            Get the slope of the trigger that stops the generator.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The slope of the trigger that stops the generator.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStop.SetSlope(System.String,Ivi.Fgen.TriggerSlope)">
+            <summary>
+            Set the slope of the trigger that stops the generator.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="slope">The slope of the trigger that stops the generator.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStop.GetSource(System.String)">
+            <summary>
+            Get the source of the stop trigger.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The source of the stop trigger.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStop.SetSource(System.String,System.String)">
+            <summary>
+            Set the source of the stop trigger.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="source">The source of the stop trigger.</param>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStop.GetThreshold(System.String)">
+            <summary>
+            Get the voltage threshold for the stop trigger. The units are volts.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <returns>The voltage threshold for the stop trigger. The units are volts.</returns>
+        </member>
+        <member name="M:Ivi.Fgen.IIviFgenTriggerStop.SetThreshold(System.String,System.Double)">
+            <summary>
+            Set the voltage threshold for the stop trigger. The units are volts.
+            </summary>
+            <param name="channelName">A string that uniquely identifies a channel.  It may be defined by the driver or 
+            supplied as a virtual name in the configuration store.  For single output instruments, the driver mayg 
+            define the empty strin as a valid channel name.</param>
+            <param name="threshold">The voltage threshold for the stop trigger. The units are volts.</param>
+        </member>
+        <member name="T:Ivi.Fgen.IviFgen">
+            <summary>
+            The IviFgen class allows clients to create instances of drivers that implement the class-compliant
+            IviFgen interfaces, based on information in the IVI configuration store.  This allows clients to
+            interchange IVI.NET class-compliant IviFgen drivers without modifying or rebuilding the client program
+            source code.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.IviFgen.Create(System.String)">
+            <summary>
+            Create an instance of an IviFgen class-compliant driver and return an IIviFgen reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviFgen driver to be created.</param>
+            <returns>
+            An IIviFgen interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.Fgen.IviFgen.Create(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Create an instance of an IviFgen class-compliant driver and return an IIviFgen reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviFgen driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <returns>
+            An IIviFgen interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.Fgen.IviFgen.Create(System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Create an instance of an IviFgen class-compliant driver and return an IIviFgen reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviFgen driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviFgen interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="M:Ivi.Fgen.IviFgen.Create(System.String,System.Boolean,System.Boolean,Ivi.Driver.LockType,System.String,System.String)">
+            <summary>
+            Create an instance of an IviFgen class-compliant driver and return an IIviFgen reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviFgen driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="lockType">Specifies whether to use .NET AppDomain-wide locking or machine-wide locking.</param>
+            <param name="accessKey">Specifies a user-selectable access key to identify the lock.  Driver instances 
+            that are created with the same accessKey will be protected from simultaneous access by multiple threads 
+            within a process or across processes, depending upon the value of the lockType parameter. </param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviFgen interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="T:Ivi.Fgen.NoSequencesAvailableException">
+            <summary>
+            There are no sequences available.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.NoSequencesAvailableException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.NoSequencesAvailableException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Fgen.NoSequencesAvailableException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Fgen.NoSequencesAvailableException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Fgen.NoSequencesAvailableException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Fgen.NoWaveformsAvailableException">
+            <summary>
+            There are no waveforms available.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.NoWaveformsAvailableException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.NoWaveformsAvailableException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Fgen.NoWaveformsAvailableException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Fgen.NoWaveformsAvailableException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Fgen.NoWaveformsAvailableException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Fgen.OperationMode">
+            <summary>IVI Fgen class-compliant values for output operation mode.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.OperationMode.Continuous">
+            <summary>The Fgen outputs waveforms or sequences continuously.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.OperationMode.Burst">
+            <summary>The Fgen outputs waveforms or sequences in a burst.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.OutputMode">
+            <summary>IVI Fgen class-compliant values for output mode</summary>
+        </member>
+        <member name="F:Ivi.Fgen.OutputMode.Function">
+            <summary>The Fgen outputs a function waveform.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.OutputMode.Arbitrary">
+            <summary>The Fgen outputs arbitrary waveforms and sequences.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.OutputMode.Sequence">
+            <summary>The Fgen outputs sequences.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.SequenceInUseException">
+            <summary>
+            The sequence is is use.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.SequenceInUseException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message ans sequence name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="sequenceName">The name of the sequence in use.</param>
+        </member>
+        <member name="M:Ivi.Fgen.SequenceInUseException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.SequenceInUseException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Fgen.SequenceInUseException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Fgen.SequenceInUseException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Fgen.SequenceInUseException.SequenceName">
+            <summary>
+            The name of the sequence in use.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.SequenceInUseException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.Fgen.StandardWaveform">
+            <summary>IVI Fgen class-compliant values for standard waveform function</summary>
+        </member>
+        <member name="F:Ivi.Fgen.StandardWaveform.Sine">
+            <summary>A sinusoid waveform. </summary>
+        </member>
+        <member name="F:Ivi.Fgen.StandardWaveform.Square">
+            <summary>A square waveform.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.StandardWaveform.Triangle">
+            <summary>A triangular waveform.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.StandardWaveform.RampUp">
+            <summary>A positive ramp waveform.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.StandardWaveform.RampDown">
+            <summary>A negative ramp waveform.</summary>
+        </member>
+        <member name="F:Ivi.Fgen.StandardWaveform.DC">
+            <summary>A constant voltage waveform.</summary>
+        </member>
+        <member name="T:Ivi.Fgen.WaveformInUseException">
+            <summary>
+            The waveform is in use.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.WaveformInUseException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="waveformName">The name of the waveform in use.</param>
+        </member>
+        <member name="M:Ivi.Fgen.WaveformInUseException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.Fgen.WaveformInUseException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified error message. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.Fgen.WaveformInUseException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified error message and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.Fgen.WaveformInUseException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.Fgen.WaveformInUseException.WaveformName">
+            <summary>
+            The name of the waveform in use.
+            </summary>
+        </member>
+        <member name="P:Ivi.Fgen.WaveformInUseException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+    </members>
+</doc>

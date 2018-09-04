@@ -1,0 +1,626 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivi.PwrMeter</name>
+    </assembly>
+    <members>
+        <member name="T:Ivi.PwrMeter.Errors">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.Errors.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.Errors.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.Errors.ChannelName">
+            <summary>
+              Looks up a localized string similar to Channel name: .
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.Errors.ChannelNotEnabled">
+            <summary>
+              Looks up a localized string similar to The channel is not enabled for measurement..
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IIviPwrMeter">
+            <summary>
+            IVI PwrMeter class-compliant root interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeter.Channels">
+            <summary>
+            A reference to the IIviPwrMeterChannels interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeter.Measurement">
+            <summary>
+            A reference to the IIviPwrMeterMeasurement interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeter.ReferenceOscillator">
+            <summary>
+            A reference to the IIviPwrReferenceOscillator interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeter.Trigger">
+            <summary>
+            A reference to the IIviPwrMeterTrigger interface.
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IIviPwrMeterAveraging">
+            <summary>
+            IVI PwrMeter class-compliant averaging interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterAveraging.CountAuto">
+            <summary>
+            If true, auto-averaging is enabled for a particular input channel, otherwise it is disabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterAveraging.Count">
+            <summary>
+            The averaging count. When the CountAuto property is set to false, the driver filters the input signal
+            by averaging it the number of times specified by this property.
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IIviPwrMeterChannel">
+            <summary>
+            IVI PwrMeter class-compliant channel interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterChannel.Calibrate">
+            <summary>
+            Performs a calibration on a particular channel and sensor. This method returns only after calibration is
+            complete.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterChannel.Zero">
+            <summary>
+            Performs a zero operation on a particular channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterChannel.Averaging">
+            <summary>
+            A reference to the IIviPwrMeterAveraging interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterChannel.CorrectionFrequency">
+            <summary>
+            The frequency of the input signal in Hertz. The instrument uses this value to determine the appropriate
+            correction factor for the sensor.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterChannel.DutyCycle">
+            <summary>
+            A reference to the IIviPwrMeterDutyCycleCorrection interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterChannel.Enabled">
+            <summary>
+            If true, the power meter should take a measurement on a particular input channel. The power meter will
+            take a measurement on a channel only if that channel is enabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterChannel.MeasurementState">
+            <summary>
+            The status of the measurement initiated by the Initiate function. The driver returns OperationState.Complete
+            only when measurements are complete on all enabled channels.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterChannel.Offset">
+            <summary>
+            The offset to be added to the measured value in units of dB.  This property can be used to compensate
+            for system losses or gains between the unit under test and the power sensor.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterChannel.Range">
+            <summary>
+            A reference to the IIviPwrMeterRange interface.
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IIviPwrMeterChannelCollection">
+            <summary>
+            IVI PwrMeter class-compliant channels interface. A particular channel can be referenced using the indexer.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterChannelCollection.Zero">
+            <summary>
+            Performs a zero operation on all enabled channels
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterChannelCollection.CalibrationState">
+            <summary>
+            Returns the status of all calibration operations initiated by the Calibrate function. The driver returns
+            OperationState.Complete only when calibration is complete on all enabled channels.  If some calibration
+            operations are still in progress on one or more channels, the driver returns OperationState.InProgress.
+            If the driver cannot query the instrument to determine its state, the driver returns OperationState.Unknown.
+            </summary>
+            <remarks>The driver does not check the instrument status to determine the measurement state. Typically, the
+            end-user accesses this property only in a sequence of other driver calls. The sequence performs one
+            operation. The end-user uses the low-level functions to optimize one or more aspects of interaction with the
+            instrument. To check the instrument status, call the Error Query function at the conclusion of the sequence.</remarks>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterChannelCollection.ZeroState">
+            <summary>
+            The status of all zero correction operations initiated by the Zero or Zero All Channel functions. The
+            driver returns OperationState.Complete only when zero corrections are complete on all enabled channels.
+            If some zero correction operations are still in progress on one or more channels, the driver returns
+            OperationState.InProgress.  If the driver cannot query the instrument to determine its state, the driver
+            returns OperationState.Unknown.
+            </summary>
+            <remarks>The driver does not check the instrument status to determine the measurement state. Typically, the
+            end-user accesses this property only in a sequence of other driver calls. The sequence performs one
+            operation. The end-user uses the low-level functions to optimize one or more aspects of interaction with the
+            instrument. To check the instrument status, call the Error Query function at the conclusion of the sequence.</remarks>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterChannelCollection.Units">
+            <summary>
+            Specifies the unit to which the RF power is converted after measurement
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IIviPwrMeterDutyCycleCorrection">
+            <summary>
+            IVI PwrMeter class-compliant duty cycle correction interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterDutyCycleCorrection.Configure(System.Boolean,System.Double)">
+            <summary>
+            Enables or disables duty cycle correction and sets the duty cycle for pulse power measurements
+            </summary>
+            <param name="enabled">If true, duty cycle correction is enabled. Refer to the Enabled property for
+            details.</param>
+            <param name="correction">The duty cycle correction value. Refer to the Value property for details.</param>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterDutyCycleCorrection.Enabled">
+            <summary>
+            If true, duty cycle correction is enabled for the particular channel.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterDutyCycleCorrection.Value">
+            <summary>
+            The duty cycle correction the power meter uses to calculate the pulse power of a pulse-modulated signal.
+            The value of this property is specified as a percentage.  The power meter measures the average power of
+            the pulsed input signal and then divides the result by the value specified for this attribute to obtain
+            a pulse power reading.
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IIviPwrMeterInternalTrigger">
+            <summary>
+            IVI PwrMeter class-compliant internal trigger interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterInternalTrigger.Configure(System.String,Ivi.PwrMeter.Slope)">
+            <summary>
+            Configures the internal trigger event source and slope.
+            </summary>
+            <param name="eventSource">The name of the channel to use as the internal trigger event source. Refer to
+            the EventSource property for details.</param>
+            <param name="slope">The internal trigger slope. Refer to the Slope property for details.</param>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterInternalTrigger.EventSource">
+            <summary>
+            The channel that the power meter uses to monitor the internal trigger event
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterInternalTrigger.Level">
+            <summary>
+            The trigger level for the measurement signal. The value of this property is specified in the same unit
+            as the value of the IIviPwrMeterChannel.Units property
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterInternalTrigger.Slope">
+            <summary>
+            The trigger slope.  The power meter may trigger on the rising or falling edge of the measurement signal.
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IIviPwrMeterMeasurement">
+            <summary>
+            IVI PwrMeter class-compliant measurement interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterMeasurement.Abort">
+            <summary>
+            Aborts all previously initiated measurements and returns the power meter to the Idle state.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterMeasurement.Configure(Ivi.PwrMeter.MeasurementOperator,System.String,System.String)">
+            <summary>
+            Configures the instrument to take single or dual channel measurements
+            </summary>
+            <param name="measurementOperator">The math function applied to the operands.</param>
+            <param name="operand1">The name of the channel from which the value for the first operand of the math
+            function is measured.</param>
+            <param name="operand2">The name of the channel from which the value for the second operand of the math
+            function is measured.</param>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterMeasurement.Fetch">
+            <summary>
+            Returns the result of a previously configured and initiated 1 or 2 channel measurement. The Configure
+            method can be used to set up the measurement. The Initiate method initiates that measurement.  The
+            meaurement result will be returned in the units specified by the IIviPwrMeterChannelCollection.Units
+            property.
+            </summary>
+            <returns>Measured value</returns>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterMeasurement.FetchChannel(System.String)">
+            <summary>
+            Returns the result from a previously initiated measurement on a specified channel. The Initiate method
+            initiates that measurement.  The meaurement result will be returned in the units specified by the
+            IIviPwrMeterChannelCollection.Units property.
+            </summary>
+            <param name="channelName">The name of the channel from which to fetch the measurement.</param>
+            <returns>Measured value</returns>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterMeasurement.Initiate">
+            <summary>
+            Initiates a measurement on all enabled channels. When this method executes, the power meter leaves the
+            Idle state
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterMeasurement.GetMeasurementComplete">
+            <summary>
+            Returns the status of the measurement initiated by the Initiate function. The driver returns
+            OperationState.Complete only when measurements are complete on all enabled channels.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterMeasurement.Read(Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Initiates a previously configured measurement, waits until the power meter has returned to the Idle state,
+            then returns the result of that measurement.  The Configure method can be used to set up the measurement.
+            The meaurement result will be returned in the units specified by the IIviPwrMeterChannelCollection.Units
+            property.
+            </summary>
+            <param name="maximumTime">The maximum time to wait for a return value.</param>
+            <returns>Measured value.</returns>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterMeasurement.ReadChannel(System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>
+            Initiates a previously configured measurement, waits until the power meter has returned to the Idle state,
+            then returns the result of the measurement on the specified channel.  The meaurement result will be
+            returned in the units specified by the IIviPwrMeterChannelCollection.Units property.
+            </summary>
+            <param name="channelName">The name of the channel from which to take the measurement.</param>
+            <param name="maxTime">The maximum time to wait for a return value.</param>
+            <returns>Measured value.</returns>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterMeasurement.SendSoftwareTrigger">
+            <summary>
+            Sends a software trigger to the instrument
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IIviPwrMeterRange">
+            <summary>
+            IVI PwrMeter class-compliant meter and sensor range selection interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterRange.Configure(System.Double,System.Double)">
+            <summary>
+            Configures the lower and upper range values for a particular channel
+            </summary>
+            <param name="lower">The lower limit of the expected value of the measurement.  Refer to the Lower 
+            property for details.</param>
+            <param name="upper">The upper limit of the expected value of the measurement.  Refer to the Upper
+            property for details.</param>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterRange.Configure(System.Boolean)">
+            <summary>
+            Configures the lower and upper range values for a particular channel
+            </summary>
+            <param name="rangeAuto">If True, the instrument automatically sets the best range for the measurement.  If
+            False, the range is set using the Upper and Lower properties.</param>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterRange.Auto">
+            <summary>
+            If True, the instrument automatically sets the best range for the measurement.  If False, the range is
+            set using the Upper and Lower properties.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterRange.Lower">
+            <summary>
+            The lower limit (minimum) of the expected value of the measurement. The value of this property is 
+            specified in the same units as the value of the IIviPwrMeterChannelCollection.Units property
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterRange.Upper">
+            <summary>
+            The upper limit (maximum) of the expected value of the measurement. The value of this property is 
+            specified in the same units as the value of the IIviPwrMeterChannelCollection.Units property
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IIviPwrMeterReferenceOscillator">
+            <summary>
+            IVI PwrMeter class-compliant reference oscillator interface.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IIviPwrMeterReferenceOscillator.Configure(System.Double,System.Double)">
+            <summary>
+            Configures the frequency and power level of the signal generated by the reference oscillator.
+            </summary>
+            <param name="frequency">The frequency of the reference oscillator. Refer to the Frequency property for
+            details.</param>
+            <param name="level">The power level of the reference oscillator. Refer to the Level property for details.</param>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterReferenceOscillator.Enabled">
+            <summary>
+            If true, the internal reference oscillator is enabled, otherwise it is not enabled.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterReferenceOscillator.Frequency">
+            <summary>
+            The frequency of the signal generated by the reference oscillator in Hertz.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterReferenceOscillator.Level">
+            <summary>
+            The power level of the signal generated by the reference oscillator in dBm.
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IIviPwrMeterTrigger">
+            <summary>
+            IVI PwrMeter class-compliant trigger interface.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterTrigger.Source">
+            <summary>
+            The trigger source that the power meter monitors for a trigger event.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.IIviPwrMeterTrigger.Internal">
+            <summary>
+            A reference to the IIviPwrMeterInternalTrigger interface.
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.ChannelNotEnabledException">
+            <summary>
+            The channel is not enabled.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.ChannelNotEnabledException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified channel name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="channelName">The channel name.</param>
+        </member>
+        <member name="M:Ivi.PwrMeter.ChannelNotEnabledException.#ctor">
+            <summary>
+            Initializes a new instance of the class.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.ChannelNotEnabledException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the class with a specified channel name. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Ivi.PwrMeter.ChannelNotEnabledException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the class with a specified channel name and a reference to the inner exception
+            that is the cause of this exception. 
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference
+            if no inner exception is specified.</param>
+        </member>
+        <member name="M:Ivi.PwrMeter.ChannelNotEnabledException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the class with serialized data.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized  object data about the
+            exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual  information about the
+            source or destination.</param>
+        </member>
+        <member name="P:Ivi.PwrMeter.ChannelNotEnabledException.ChannelName">
+            <summary>
+            The channel name.
+            </summary>
+        </member>
+        <member name="P:Ivi.PwrMeter.ChannelNotEnabledException.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.IviPwrMeter">
+            <summary>
+            The IviPwrMeter class allows clients to create instances of drivers that implement the class-compliant
+            IviPwrMeter interfaces, based on information in the IVI configuration store.  This allows clients to
+            interchange IVI.NET class-compliant IviPwrMeter drivers without modifying or rebuilding the client program
+            source code.
+            </summary>
+        </member>
+        <member name="M:Ivi.PwrMeter.IviPwrMeter.Create(System.String)">
+            <summary>
+            Create an instance of an IviPwrMeter class-compliant driver and return an IIviPwrMeter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviPwrMeter driver to be created.</param>
+            <returns>
+            An IIviPwrMeter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.PwrMeter.IviPwrMeter.Create(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Create an instance of an IviPwrMeter class-compliant driver and return an IIviPwrMeter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviPwrMeter driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <returns>
+            An IIviPwrMeter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.PwrMeter.IviPwrMeter.Create(System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Create an instance of an IviPwrMeter class-compliant driver and return an IIviPwrMeter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviPwrMeter driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviPwrMeter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="M:Ivi.PwrMeter.IviPwrMeter.Create(System.String,System.Boolean,System.Boolean,Ivi.Driver.LockType,System.String,System.String)">
+            <summary>
+            Create an instance of an IviPwrMeter class-compliant driver and return an IIviPwrMeter reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviPwrMeter driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="lockType">Specifies whether to use .NET AppDomain-wide locking or machine-wide locking.</param>
+            <param name="accessKey">Specifies a user-selectable access key to identify the lock.  Driver instances 
+            that are created with the same accessKey will be protected from simultaneous access by multiple threads 
+            within a process or across processes, depending upon the value of the lockType parameter. </param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviPwrMeter interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="T:Ivi.PwrMeter.MeasurementOperator">
+            <summary>
+            IVI PwrMeter class-compliant values for measurement operator
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.MeasurementOperator.None">
+            <summary>
+            No operation - the measurement returns the first operand.
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.MeasurementOperator.Difference">
+            <summary>
+            Subtraction - the measurement returns the difference between the first operand and the second operand. 
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.MeasurementOperator.Sum">
+            <summary>
+            Addition - the measurement returns the sum of the first operand and the second operand.
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.MeasurementOperator.Quotient">
+            <summary>
+            Division - the measurement returns first operand divided by the second operand
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.OperationState">
+            <summary>
+            IVI PwrMeter class-compliant values for operation state
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.OperationState.InProgress">
+            <summary>
+            The power meter is still performing the operation.
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.OperationState.Complete">
+            <summary>
+            The power meter has completed the operation.
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.OperationState.Unknown">
+            <summary>
+            The power meter cannot determine the status of the operation.
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.Units">
+            <summary>
+            IVI PwrMeter class-compliant values for units
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.Units.dBm">
+            <summary>
+            dBm.
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.Units.dBmV">
+            <summary>
+            dB millivolts.
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.Units.dBuV">
+            <summary>
+            dB microvolts.
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.Units.Watts">
+            <summary>
+            Watts.
+            </summary>
+        </member>
+        <member name="T:Ivi.PwrMeter.Slope">
+            <summary>IviPwrMeter class defined values for slope.</summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.Slope.Positive">
+            <summary>
+            A positive (rising edge) slope.
+            </summary>
+        </member>
+        <member name="F:Ivi.PwrMeter.Slope.Negative">
+            <summary>
+            A negative (falling edge) slope.
+            </summary>
+        </member>
+    </members>
+</doc>

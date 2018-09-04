@@ -1,0 +1,47 @@
+save_location = Z:/Results017_New/data
+summary_fname = automated_experiments_summary
+daq_channel_update_steps = 5
+daq_channel_update_delay = 1
+[experiments]
+[[0]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = 72250000.0, 72250000.0
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\seq170704
+[[1]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = 73250000.0, 73250000.0
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\seq170704
+[[2]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = 74250000.0, 74250000.0
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\seq170704
+[[3]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = 75250000.0, 75250000.0
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\seq170704
+[[4]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = 76250000.0, 76250000.0
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\seq170704
+[[5]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = 77250000.0, 77250000.0
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\seq170704
+[[6]]
+daq_channel_static_values = ,
+mot_reload = 500000
+modulation_frequencies = 78250000.0, 78250000.0
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\seq170704

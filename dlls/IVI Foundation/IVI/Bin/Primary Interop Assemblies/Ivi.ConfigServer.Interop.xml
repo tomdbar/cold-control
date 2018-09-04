@@ -1,0 +1,2272 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<doc>
+	<assembly>
+		<name>Ivi.ConfigServer.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.ConfigServer.Interop.IIviLogicalNameCollection">
+			<summary>IIviLogicalNameCollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviLogicalNameCollection">
+			<summary>Same as IIviLogicalNameCollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviLogicalNameCollection.Add(Ivi.ConfigServer.Interop.IviLogicalName)">
+			<summary>Adds an IviLogicalName object to the global Logical Name collection.</summary>
+			<param name="pVal">The IviLogicalName object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviLogicalNameCollection.Remove(System.Object)">
+			<summary>Removes an IviLogicalName object from the global Logical Name collection.</summary>
+			<param name="varIndex">The name or one-based index of the Logical Name to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviLogicalNameCollection.Count">
+			<summary>The number of IviLogicalName objects in the global Logical Name collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviLogicalNameCollection.Item">
+			<summary>A read-only property that gets an IviLogicalName object from the global Logical Name collection.</summary>
+			<param name="varIndex">The name or one-based index of the Logical Name to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviLogicalNameCollection.this(System.Object)">
+			<summary>The indexer for the class gets an IviLogicalName object from the global Logical Name collection.
+			The parameter is the name or one-based index of the Logical Name to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Logical Name to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviLogicalNameCollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.
+</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviLogicalNameCollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviLogicalName type.</summary>
+			<returns>An IEnumerator for the LogicalNameCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviLogicalNameCollectionClass">
+			<summary>IviLogicalNameCollectionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviLogicalNameCollectionClass.#ctor">
+			<summary>IviLogicalNameCollectionClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviLogicalNameCollectionClass.Add(Ivi.ConfigServer.Interop.IviLogicalName)">
+			<summary>Adds an IviLogicalName object to the global Logical Name collection.</summary>
+			<param name="pVal">The IviLogicalName object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviLogicalNameCollectionClass.Remove(System.Object)">
+			<summary>Removes an IviLogicalName object from the global Logical Name collection.</summary>
+			<param name="varIndex">The name or one-based index of the Logical Name to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviLogicalNameCollectionClass.Count">
+			<summary>The number of IviLogicalName objects in the global Logical Name collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviLogicalNameCollectionClass.Item">
+			<summary>A read-only property that gets an IviLogicalName object from the global Logical Name collection.</summary>
+			<param name="varIndex">The name or one-based index of the Logical Name to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviLogicalNameCollectionClass.this(System.Object)">
+			<summary>The indexer for the class gets an IviLogicalName object from the global Logical Name collection.
+			The parameter is the name or one-based index of the Logical Name to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Logical Name to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviLogicalNameCollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.
+</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviLogicalNameCollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviLogicalName type.</summary>
+			<returns>An IEnumerator for the LogicalNameCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviLogicalName">
+			<summary>IIviLogicalName Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviLogicalName">
+			<summary>Same as IIviLogicalName Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviLogicalName.Name">
+			<summary>The name for the IviLogicalName object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviLogicalName.Description">
+			<summary>The description of the IviLogicalName object.The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviLogicalName.Session">
+			<summary>The IVI Session to which the logical name refers. The IVI Session may be an IVI Driver Session.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviLogicalNameClass">
+			<summary>IviLogicalNameClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviLogicalNameClass.#ctor">
+			<summary>IviLogicalNameClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviLogicalNameClass.Name">
+			<summary>The name for the IviLogicalName object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviLogicalNameClass.Description">
+			<summary>The description of the IviLogicalName object.The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviLogicalNameClass.Session">
+			<summary>The IVI Session to which the logical name refers. The IVI Session may be an IVI Driver Session.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviSession">
+			<summary>IIviSession Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviSession">
+			<summary>Same as IIviSession Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSession.Name">
+			<summary>The session's name. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSession.Description">
+			<summary>The description of the IviSession object.The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSession.DataComponents">
+			<summary>References a collection of DataComponents that modifies the object of which the 
+			collection is a part.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSession.HardwareAsset">
+			<summary>References the Hardware Asset used by the Session.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSession.VirtualNames">
+			<summary>References a collection of all the IVI Virtual Name objects used
+by the Session. Within a collection, the Name property uniquely identifies an IVI Virtual 
+name object. IVI Virtual Name objects cannot be reused between sessions.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSession.SoftwareModule">
+			<summary>References the Software Module configured by the Session.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSession.SoftwareModuleName">
+			<summary>The name of the current or most recently referenced software module referenced by the 
+			Software Module property.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviSessionClass">
+			<summary>IviSessionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviSessionClass.#ctor">
+			<summary>IviSessionClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionClass.Name">
+			<summary>The session's name. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionClass.Description">
+			<summary>The description of the IviSession object.The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionClass.DataComponents">
+			<summary>References a collection of DataComponents that modifies the object of which the 
+			collection is a part.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionClass.HardwareAsset">
+			<summary>References the Hardware Asset used by the Session.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionClass.VirtualNames">
+			<summary>References a collection of all the IVI Virtual Name objects used
+by the Session. Within a collection, the Name property uniquely identifies an IVI Virtual 
+name object. IVI Virtual Name objects cannot be reused between sessions.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionClass.SoftwareModule">
+			<summary>References the Software Module configured by the Session.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionClass.SoftwareModuleName">
+			<summary>The name of the current or most recently referenced software module referenced by the 
+			Software Module property.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviDataComponentCollection">
+			<summary>IIviDataComponentCollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviDataComponentCollection">
+			<summary>Same as IIviDataComponentCollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviDataComponentCollection.Add(Ivi.ConfigServer.Interop.IIviDataComponent)">
+			<summary>Adds an IviDataComponent object to the Data Component collection.</summary>
+			<param name="pVal">The IviDataComponent object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviDataComponentCollection.Remove(System.Object)">
+			<summary>Removes an IviDataComponent object from the Data Component collection.</summary>
+			<param name="varIndex">The name or one-based index of the Data Component to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponentCollection.Count">
+			<summary>The number of IviDataComponents objects in the Data Components collection</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponentCollection.Item">
+			<summary>A read-only property that gets an IviDataComponent object from the Data Component collection.</summary>
+			<param name="varIndex">The name or one-based index of the Data Component to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponentCollection.this(System.Object)">
+			<summary>The indexer for the class gets an IviDataComponent object from the Data Component collection.
+			The parameter is the name or one-based index of the Data Component to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Data Component to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponentCollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviDataComponentCollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviDataComponent type.</summary>
+			<returns>An IEnumerator for the DataComponentCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviDataComponentCollectionClass">
+			<summary>IviDataComponentCollectionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviDataComponentCollectionClass.#ctor">
+			<summary>IviDataComponentCollectionClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviDataComponentCollectionClass.Add(Ivi.ConfigServer.Interop.IIviDataComponent)">
+			<summary>Adds an IviDataComponent object to the Data Component collection.</summary>
+			<param name="pVal">The IviDataComponent object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviDataComponentCollectionClass.Remove(System.Object)">
+			<summary>Removes an IviDataComponent object from the Data Component collection.</summary>
+			<param name="varIndex">The name or one-based index of the Data Component to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDataComponentCollectionClass.Count">
+			<summary>The number of IviDataComponents objects in the Data Components collection</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDataComponentCollectionClass.Item">
+			<summary>A read-only property that gets an IviDataComponent object from the Data Component collection.</summary>
+			<param name="varIndex">The name or one-based index of the Data Component to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDataComponentCollectionClass.this(System.Object)">
+			<summary>The indexer for the class gets an IviDataComponent object from the Data Component collection.
+			The parameter is the name or one-based index of the Data Component to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Data Component to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDataComponentCollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviDataComponentCollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviDataComponent type.</summary>
+			<returns>An IEnumerator for the DataComponentCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviDataComponent">
+			<summary>IIviDataComponent Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponent.Name">
+			<summary>The name for the IviDataComponent object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponent.Description">
+			<summary>The description of the IviDataComponent object.The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponent.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponent.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponent.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponent.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponent.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDataComponent.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviHardwareAsset">
+			<summary>IIviHardwareAsset Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviHardwareAsset">
+			<summary>Same as IIviHardwareAsset Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviHardwareAsset.Name">
+			<summary>The name for the IviHardwareAsset object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviHardwareAsset.Description">
+			<summary>The description of the IviHardwareAsset object.The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviHardwareAsset.IOResourceDescriptor">
+			<summary>I/O Resource Descriptor stores a string that specifies the address of the hardware
+asset that can be recognized by I/O used by a software module that will access
+the hardware. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviHardwareAsset.DataComponents">
+			<summary>A collection of Data components that documents the hardware asset.
+These data components shall have Software Module Key equal to the empty
+string and Used In Session equal to None since they are not used to configure a software module.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviHardwareAssetClass">
+			<summary>IviHardwareAssetClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviHardwareAssetClass.#ctor">
+			<summary>IviHardwareAssetClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviHardwareAssetClass.Name">
+			<summary>The name for the IviHardwareAsset object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviHardwareAssetClass.Description">
+			<summary>The description of the IviHardwareAsset object.The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviHardwareAssetClass.IOResourceDescriptor">
+			<summary>I/O Resource Descriptor stores a string that specifies the address of the hardware
+asset that can be recognized by I/O used by a software module that will access
+the hardware. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviHardwareAssetClass.DataComponents">
+			<summary>A collection of Data components that documents the hardware asset.
+These data components shall have Software Module Key equal to the empty
+string and Used In Session equal to None since they are not used to configure a software module.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviVirtualNameCollection">
+			<summary>IIviVirtualNameCollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviVirtualNameCollection">
+			<summary>Same as IIviVirtualNameCollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviVirtualNameCollection.Add(Ivi.ConfigServer.Interop.IviVirtualName)">
+			<summary>Adds an IviVirtualName object to Virutual Name collection.</summary>
+			<param name="pVal">The IviVirtualName object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviVirtualNameCollection.Remove(System.Object)">
+			<summary>Removes an IviVirtualName object from the Virtual Name collection.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Name to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualNameCollection.Count">
+			<summary>The number of IviVirtualName objects in the Virtual Name collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualNameCollection.Item">
+			<summary>A read-only property that gets an IviVirtualName object from the Virtual Name collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualNameCollection.Item(System.Object)">
+			<summary>The indexer for the class gets an IviVirtualName object from the Virtual Name collection.
+			The parameter is the name or one-based index of the Virtual Name to be retrieved.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualNameCollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviVirtualNameCollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviVirtualName type.</summary>
+			<returns>An IEnumerator for the DataComponentCollection.</returns>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualNameCollection.this(System.Object)">
+			<summary>The indexer for the class gets an IviVirtualName object from the Virtual Name collection.
+			The parameter is the name or one-based index of the Virtual Name to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Name to be retrieved.</param>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviVirtualNameCollectionClass">
+			<summary>IviVirtualNameCollectionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviVirtualNameCollectionClass.#ctor">
+			<summary>IviVirtualNameCollectionClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviVirtualNameCollectionClass.Add(Ivi.ConfigServer.Interop.IviVirtualName)">
+			<summary>Adds an IviVirtualName object to Virutual Name collection.</summary>
+			<param name="pVal">The IviVirtualName object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviVirtualNameCollectionClass.Remove(System.Object)">
+			<summary>Removes an IviVirtualName object from the Virtual Name collection.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Name to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualNameCollectionClass.Count">
+			<summary>The number of IviVirtualName objects in the Virtual Name collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualNameCollectionClass.Item">
+			<summary>A read-only property that gets an IviVirtualName object from the Virtual Name collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualNameCollectionClass.Item(System.Object)">
+			<summary>The indexer for the class gets an IviVirtualName object from the Virtual Name collection.
+			The parameter is the name or one-based index of the Virtual Name to be retrieved.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualNameCollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviVirtualNameCollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviVirtualName type.</summary>
+			<returns>An IEnumerator for the DataComponentCollection.</returns>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualNameCollectionClass.this(System.Object)">
+			<summary>The indexer for the class gets an IviVirtualName object from the Virtual Name collection.
+			The parameter is the name or one-based index of the Virtual Name to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Name to be retrieved.</param>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviVirtualName">
+			<summary>IIviVirtualName Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviVirtualName">
+			<summary>Same as IIviVirtualName Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualName.Name">
+			<summary>The name for the IviVirtualName object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualName.MapTo">
+			<summary>A string used to replace the virtual identifier when the virtual
+identifier is used to specify repeated capability instances in a software
+module. When the software module
+encounters the associated virtual identifier in a repeated capability selector,
+it substitutes the Map To string for the virtual identifier.
+The empty string is a legal value for this property only if the
+IVI Virtual Name object references a non-empty collection of IVI
+Virtual Range objects.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualName.VirtualRanges">
+			<summary>A collection of IVI Virtual Range objects used to qualify the referencing IVI
+Virtual Name object.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviVirtualNameClass">
+			<summary>IviVirtualNameClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviVirtualNameClass.#ctor">
+			<summary>IviVirtualNameClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualNameClass.Name">
+			<summary>The name for the IviVirtualName object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualNameClass.MapTo">
+			<summary>A string used to replace the virtual identifier when the virtual
+identifier is used to specify repeated capability instances in a software
+module. When the software module
+encounters the associated virtual identifier in a repeated capability selector,
+it substitutes the Map To string for the virtual identifier.
+The empty string is a legal value for this property only if the
+IVI Virtual Name object references a non-empty collection of IVI
+Virtual Range objects.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualNameClass.VirtualRanges">
+			<summary>A collection of IVI Virtual Range objects used to qualify the referencing IVI
+Virtual Name object.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviVirtualRangeCollection">
+			<summary>IIviVirtualRangeCollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviVirtualRangeCollection">
+			<summary>Same as IIviVirtualRangeCollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviVirtualRangeCollection.Add(Ivi.ConfigServer.Interop.IviVirtualRange)">
+			<summary>Adds an IviVirtualRange object to the Virtual Range collection.</summary>
+			<param name="pVal">The IviVirtualRange object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviVirtualRangeCollection.Remove(System.Object)">
+			<summary>Removes an IviVirtualRange object from the Virtual Range collection.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Range to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualRangeCollection.Count">
+			<summary>The number of IviVirtualRange objects in the Virtual Range collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualRangeCollection.Item">
+			<summary>A read-only property that gets an IviVirtualRange object from the Virtual Range collection.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Range to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualRangeCollection.this(System.Object">
+			<summary>The indexer for the class gets an IviVirtualRange object from the Virtual Range collection.
+			The parameter is the name or one-based index of the Virtual Range to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Range to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualRangeCollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviVirtualRangeCollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviVirtualRange type.</summary>
+			<returns>An IEnumerator for the VirtualRangeCollection.</returns>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualRangeCollection.this(System.Object)">
+			<summary>The indexer for the class gets an IviVirtualName object from the Virtual Range collection.
+			The parameter is the name or one-based index of the Virtual Range to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Range to be retrieved.</param>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviVirtualRangeCollectionClass">
+			<summary>IviVirtualRangeCollectionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviVirtualRangeCollectionClass.#ctor">
+			<summary>IviVirtualRangeCollectionClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviVirtualRangeCollectionClass.Add(Ivi.ConfigServer.Interop.IviVirtualRange)">
+			<summary>Adds an IviVirtualRange object to the Virtual Range collection.</summary>
+			<param name="pVal">The IviVirtualRange object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviVirtualRangeCollectionClass.Remove(System.Object)">
+			<summary>Removes an IviVirtualRange object from the Virtual Range collection.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Range to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualRangeCollectionClass.Count">
+			<summary>The number of IviVirtualRange objects in the Virtual Range collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualRangeCollectionClass.Item">
+			<summary>A read-only property that gets an IviVirtualRange object from the Virtual Range collection.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Range to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualRangeCollectionClass.this(System.Object">
+			<summary>The indexer for the class gets an IviVirtualRange object from the Virtual Range collection.
+			The parameter is the name or one-based index of the Virtual Range to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Range to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualRangeCollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviVirtualRangeCollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviVirtualRange type.</summary>
+			<returns>An IEnumerator for the VirtualRangeCollection.</returns>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualRangeCollectionClass.this(System.Object)">
+			<summary>The indexer for the class gets an IviVirtualName object from the Virtual Range collection.
+			The parameter is the name or one-based index of the Virtual Range to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Virtual Range to be retrieved.</param>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviVirtualRange">
+			<summary>IIviVirtualRange Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviVirtualRange">
+			<summary>Same as IIviVirtualRange Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualRange.Min">
+			<summary>The lower bound of a range of integers to be appended to the Name property of the
+referencing IVI Virtual Name object to create a set of virtual repeated
+capability identifiers.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualRange.Max">
+			<summary>The upper bound of a range of integers to be appended to the Name
+property of the referencing IVI Virtual Name object to create a set of virtual
+repeated capability identifiers.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualRange.Name">
+			<summary>The name for the IviVirtualName object. This
+name is used to uniquely identify the range in the collection, and is not used
+in creating the set of virtual identifiers. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviVirtualRange.StartingPhysicalIndex">
+			<summary>When a range of integers is appended to the Name property of the
+referencing IVI Virtual Name object to create a set of virtual repeated
+capability identifiers, Starting Physical Index is added to each integer in the
+range, and the result is appended to the Map To property to obtain the
+corresponding set of physical
+identifiers.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviVirtualRangeClass">
+			<summary>IviVirtualRangeClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviVirtualRangeClass.#ctor">
+			<summary>IviVirtualRangeClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualRangeClass.Min">
+			<summary>The lower bound of a range of integers to be appended to the Name property of the
+referencing IVI Virtual Name object to create a set of virtual repeated
+capability identifiers.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualRangeClass.Max">
+			<summary>The upper bound of a range of integers to be appended to the Name
+property of the referencing IVI Virtual Name object to create a set of virtual
+repeated capability identifiers.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualRangeClass.Name">
+			<summary>The name for the IviVirtualName object. This
+name is used to uniquely identify the range in the collection, and is not used
+in creating the set of virtual identifiers. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviVirtualRangeClass.StartingPhysicalIndex">
+			<summary>When a range of integers is appended to the Name property of the
+referencing IVI Virtual Name object to create a set of virtual repeated
+capability identifiers, Starting Physical Index is added to each integer in the
+range, and the result is appended to the Map To property to obtain the
+corresponding set of physical
+identifiers.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviSoftwareModule">
+			<summary>IIviSoftwareModule Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviSoftwareModule">
+			<summary>Same as IIviSoftwareModule Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModule.Name">
+			<summary>The name for the IviSoftwareModule object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModule.Description">
+			<summary>The description of the IviSoftwareModule object.The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModule.ProgID">
+			<summary>The version-independent COM ProgID of the software module. It may be an empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModule.ModulePath">
+			<summary>The full pathname of the software module. It may be an empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModule.Prefix">
+			<summary>Prefix is a string that specifies the prefix (for IVI-C
+components) or the component identifier (for IVI-COM components) of the
+software module. It shall exactly match the value returned by the Prefix attribute or the Component Identifier
+attributes. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModule.SupportedInstrumentModels">
+			<summary>A comma-separated string that specifies the instrument models
+supported by the software module. It shall exactly match the value returned by the Supported Instrument Models
+attribute.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModule.DataComponents">
+			<summary>References a collection of DataComponents that modifies the object of which the 
+			collection is a part.</summary>
+		</member>
+      <member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModule.PublishedAPIs">
+         <summary>
+            A collection of all the Published APIs that are implemented by the Software Module.
+Before a Published API can be added to a Software Module's Published API collection, it must already exist in the global Published API
+collection. To add a Published API to a Software Module's Published API collection first get the Published API from the global collection and the add
+the returned reference to the Software Module's collection.
+         </summary>
+      </member>
+      <member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModule.PhysicalNames">
+			<summary>A collection of all the PhysicalName objects defined by the Software Module.</summary>
+		</member>
+      <member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModule.AssemblyQualifiedClassName">
+         <summary>
+            The .NET assembly qualified class name of the software module.  It may be an empty string.</summary>
+      </member>
+		<member name="T:Ivi.ConfigServer.Interop.IviSoftwareModuleClass">
+			<summary>IviSoftwareModuleClass Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.#ctor">
+			<summary>IviSoftwareModuleClass Interface constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.Name">
+			<summary>The name for the IviSoftwareModule object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.Description">
+			<summary>The description of the IviSoftwareModule object.The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.ProgID">
+			<summary>The version-independent COM ProgID of the software module. It may be an empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.ModulePath">
+			<summary>Setting ModulePath always sets the value of ModulePath32.  
+When running in a native 32-bit context, it returns ModulePath32.  
+When running in a native 64-bit context, it returns ModulePath64.  
+It may be an empty string.
+         </summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.Prefix">
+			<summary>Prefix is a string that specifies the prefix (for IVI-C
+components) or the component identifier (for IVI-COM components) of the
+software module. It shall exactly match the value returned by the Prefix attribute or the Component Identifier
+attributes. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.SupportedInstrumentModels">
+			<summary>A comma-separated string that specifies the instrument models
+supported by the software module. It shall exactly match the value returned by the Supported Instrument Models
+attribute.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.DataComponents">
+			<summary>References a collection of DataComponents that modifies the object of which the 
+			collection is a part.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.PublishedAPIs">
+			<summary>A collection of all the Published APIs that are implemented by the Software Module. 
+Before a Published API can be added to a Software Module's
+Published API collection, it must already exist in the global Published API
+collection. To add a Published API to a Software Module's Published API
+collection first get the Published API from the global collection and the add
+the returned reference to the Software Module's collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.PhysicalNames">
+			<summary>A collection of all the PhysicalName objects defined by the Software Module.</summary>
+		</member>
+      <member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.AssemblyQualifiedClassName">
+         <summary>
+            The .NET assembly qualified class name of the software module.  It may be an empty string.
+         </summary>
+      </member>
+      <member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.ModulePath32">
+         <summary>
+            The full pathname of the native 32-bit software module. It may be an empty string.
+         </summary>
+      </member>
+      <member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleClass.ModulePath64">
+         <summary>
+            The full pathname of the native 64-bit software module. It may be an empty string.
+         </summary>
+      </member>
+      <member name="T:Ivi.ConfigServer.Interop.IIviPublishedAPICollection">
+			<summary>IIviPublishedAPICollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPublishedAPICollection">
+			<summary>Same as IIviPublishedAPICollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviPublishedAPICollection.Add(Ivi.ConfigServer.Interop.IviPublishedAPI)">
+			<summary>Adds an IviPublishedAPI object to the global Published API collection.</summary>
+			<param name="pVal">The IviPublishedAPI object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviPublishedAPICollection.Remove(System.Object,System.Int32,System.Int32,System.String)">
+			<summary>Removes an IviPublishedAPI object from the global Published API collection.
+			If the parameter, varIndex, is an integer, the remaining parameters are ignored
+as a numeric index completely identifies the item to be removed.</summary>
+			<param name="varIndex">The name or one-based index of the Published API to be removed.</param>
+			<param name="MajorVersion">The Major Version of the Published API to be removed.</param>
+			<param name="MinorVersion">The Minor Version of the Published API to be removed.</param>
+			<param name="Type">The Type of the Published API to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPublishedAPICollection.Count">
+			<summary>The number of IviPublishedAPI objects in the global Published API collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPublishedAPICollection.Item">
+			<summary>A read-only property that gets an IviPublishedAPI object from the global Published API collection.
+			If the parameter, varIndex, is an integer, the remaining parameters are ignored
+as a numeric index completely identifies the item to be retrieved or removed.</summary>
+			<param name="varIndex">The name or one-based index of the Published API to be retrieve.</param>
+			<param name="MajorVersion">The Major Version of the Published API to be retrieveed.</param>
+			<param name="MinorVersion">The Minor Version of the Published API to be retrieveed.</param>
+			<param name="Type">The Type of the Published API to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPublishedAPICollection.this(System.Object,System.Int32,System.Int32,System.String)">
+			<summary>The indexer for the class gets an IviPublishedAPI object from the global Published API collection.
+			The parameters to the indexer are the same those for Remove. If the parameter, varIndex, is an integer, 
+			the remaining parameters are ignored as a numeric index completely identifies the item to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Published API to be retrieve.</param>
+			<param name="MajorVersion">The Major Version of the Published API to be retrieveed.</param>
+			<param name="MinorVersion">The Minor Version of the Published API to be retrieveed.</param>
+			<param name="Type">The Type of the Published API to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPublishedAPICollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviPublishedAPICollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviPublishedAPI type.</summary>
+			<returns>An IEnumerator for the PublishedAPICollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPublishedAPICollectionClass">
+			<summary>IviPublishedAPICollectionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPublishedAPICollectionClass.#ctor">
+			<summary>IviPublishedAPICollectionClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPublishedAPICollectionClass.Add(Ivi.ConfigServer.Interop.IviPublishedAPI)">
+			<summary>Adds an IviPublishedAPI object to the global Published API collection.</summary>
+			<param name="pVal">The IviPublishedAPI object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPublishedAPICollectionClass.Remove(System.Object,System.Int32,System.Int32,System.String)">
+			<summary>Removes an IviPublishedAPI object from the global Published API collection.
+			If the parameter, varIndex, is an integer, the remaining parameters are ignored
+as a numeric index completely identifies the item to be removed.</summary>
+			<param name="varIndex">The name or one-based index of the Published API to be removed.</param>
+			<param name="MajorVersion">The Major Version of the Published API to be removed.</param>
+			<param name="MinorVersion">The Minor Version of the Published API to be removed.</param>
+			<param name="Type">The Type of the Published API to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPublishedAPICollectionClass.Count">
+			<summary>The number of IviPublishedAPI objects in the global Published API collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPublishedAPICollectionClass.Item">
+			<summary>A read-only property that gets an IviPublishedAPI object from the global Published API collection.
+			If the parameter, varIndex, is an integer, the remaining parameters are ignored
+as a numeric index completely identifies the item to be retrieved or removed.</summary>
+			<param name="varIndex">The name or one-based index of the Published API to be retrieve.</param>
+			<param name="MajorVersion">The Major Version of the Published API to be retrieveed.</param>
+			<param name="MinorVersion">The Minor Version of the Published API to be retrieveed.</param>
+			<param name="Type">The Type of the Published API to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPublishedAPICollectionClass.this(System.Object,System.Int32,System.Int32,System.String)">
+			<summary>The indexer for the class gets an IviPublishedAPI object from the global Published API collection.
+			The parameters to the indexer are the same those for Remove. If the parameter, varIndex, is an integer, 
+			the remaining parameters are ignored as a numeric index completely identifies the item to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Published API to be retrieve.</param>
+			<param name="MajorVersion">The Major Version of the Published API to be retrieveed.</param>
+			<param name="MinorVersion">The Minor Version of the Published API to be retrieveed.</param>
+			<param name="Type">The Type of the Published API to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPublishedAPICollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPublishedAPICollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviPublishedAPI type.</summary>
+			<returns>An IEnumerator for the PublishedAPICollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviPublishedAPI">
+			<summary>IIviPublishedAPI Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPublishedAPI">
+			<summary>Same as IIviPublishedAPI Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPublishedAPI.Name">
+			<summary>The name for the IviPublished object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPublishedAPI.MajorVersion">
+			<summary>The major version of this revision of the published API. This is determined by the person or group who
+publishes the API.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPublishedAPI.MinorVersion">
+			<summary>The minor version of this revision of the published API. This is determined by the person or group who
+publishes the API.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPublishedAPI.Type">
+			<summary>The type of a Published API. Two predefined values are supported for the IVI defined
+interfaces, IVI-C and IVI-COM. These values shall be used for all IVI defined inherent and class APIs.
+Other user-defined values may be used for other types of APIs. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPublishedAPIClass">
+			<summary>IviPublishedAPIClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPublishedAPIClass.#ctor">
+			<summary>IviPublishedAPIClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPublishedAPIClass.Name">
+			<summary>The name for the IviPublished object. An empty string is not a legal value.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPublishedAPIClass.MajorVersion">
+			<summary>The major version of this revision of the published API. This is determined by the person or group who
+publishes the API.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPublishedAPIClass.MinorVersion">
+			<summary>The minor version of this revision of the published API. This is determined by the person or group who
+publishes the API.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPublishedAPIClass.Type">
+			<summary>The type of a Published API. Two predefined values are supported for the IVI defined
+interfaces, IVI-C and IVI-COM. These values shall be used for all IVI defined inherent and class APIs.
+Other user-defined values may be used for other types of APIs. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviPhysicalNameCollection">
+			<summary>IIviPhysicalNameCollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPhysicalNameCollection">
+			<summary>Same as IIviPhysicalNameCollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviPhysicalNameCollection.Add(Ivi.ConfigServer.Interop.IviPhysicalName)">
+			<summary>Adds an IviPhysicalName object to the Physical Name collection.</summary>
+			<param name="pVal">The IviPhysicalName object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviPhysicalNameCollection.Remove(System.Object)">
+			<summary>Removes an IviPhysicalName object from the Physical Name collection.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Name to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalNameCollection.Count">
+			<summary>The number of IviPhysicalName objects in the Physical Name collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalNameCollection.Item">
+			<summary>A read-only property that gets an IviPhysicalName object from the Physical Name collection.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Name to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalNameCollection.this(System.Object)">
+			<summary>The indexer for the class gets an IviPhysicalName object from the Physical Name collection.
+			The parameter is the name or one-based index of the Physical Name to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Name to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalNameCollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviPhysicalNameCollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviPhysicalName type.</summary>
+			<returns>An IEnumerator for the PhysicalNameCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPhysicalNameCollectionClass">
+			<summary>IviPhysicalNameCollectionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPhysicalNameCollectionClass.#ctor">
+			<summary>IviPhysicalNameCollectionClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPhysicalNameCollectionClass.Add(Ivi.ConfigServer.Interop.IviPhysicalName)">
+			<summary>Adds an IviPhysicalName object to the Physical Name collection.</summary>
+			<param name="pVal">The IviPhysicalName object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPhysicalNameCollectionClass.Remove(System.Object)">
+			<summary>Removes an IviPhysicalName object from the Physical Name collection.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Name to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalNameCollectionClass.Count">
+			<summary>The number of IviPhysicalName objects in the Physical Name collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalNameCollectionClass.Item">
+			<summary>A read-only property that gets an IviPhysicalName object from the Physical Name collection.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Name to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalNameCollectionClass.this(System.Object)">
+			<summary>The indexer for the class gets an IviPhysicalName object from the Physical Name collection.
+			The parameter is the name or one-based index of the Physical Name to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Name to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalNameCollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPhysicalNameCollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviPhysicalName type.</summary>
+			<returns>An IEnumerator for the PhysicalNameCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviPhysicalName">
+			<summary>IIviPhysicalName Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPhysicalName">
+			<summary>Same as IIviPhysicalName Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalName.Name">
+			<summary>The name of a specific instance of a repeated capability as
+defined in the software module. It shall consist of one or more of the following characters:
+a-z, A-Z, 0-9, !, and _.
+The empty string is valid only if the IVI Physical Name object references a non-empty collection of Physical Range objects.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalName.PhysicalNames">
+			<summary>A collection of the IVI Physical Name objects that are
+hierarchically structured under this IVI Physical Name object. This collection will commonly be empty.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalName.RCName">
+			<summary>The repeated capability name as defined in the software module. 
+			Each IVI Physical Name object represents an instance of the repeated capability of type RC Name.
+			For software modules that reference Published APIs that define repeated capabilities, 
+			the RC Name shall be the repeated capability name defined by the Published API specification. 
+			The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalName.PhysicalRanges">
+			<summary>A collection of Physical Range objects used to qualify the referencing IVI Physical Name object.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPhysicalNameClass">
+			<summary>IviPhysicalNameClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPhysicalNameClass.#ctor">
+			<summary>IviPhysicalNameClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalNameClass.Name">
+			<summary>The name of a specific instance of a repeated capability as
+defined in the software module. It shall consist of one or more of the following characters:
+a-z, A-Z, 0-9, !, and _.
+The empty string is valid only if the IVI Physical Name object references a non-empty collection of Physical Range objects.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalNameClass.PhysicalNames">
+			<summary>A collection of the IVI Physical Name objects that are
+hierarchically structured under this IVI Physical Name object. This collection will commonly be empty.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalNameClass.RCName">
+			<summary>The repeated capability name as defined in the software module. 
+			Each IVI Physical Name object represents an instance of the repeated capability of type RC Name.
+			For software modules that reference Published APIs that define repeated capabilities, 
+			the RC Name shall be the repeated capability name defined by the Published API specification. 
+			The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalNameClass.PhysicalRanges">
+			<summary>A collection of Physical Range objects used to qualify the referencing IVI Physical Name object.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviPhysicalRangeCollection">
+			<summary>IIviPhysicalRangeCollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPhysicalRangeCollection">
+			<summary>Same as IIviPhysicalRangeCollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviPhysicalRangeCollection.Add(Ivi.ConfigServer.Interop.IviPhysicalRange)">
+			<summary>Adds an IviPhysicalRange object to the Phyical Range collection.</summary>
+			<param name="pVal">The IviPhysicalRange object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviPhysicalRangeCollection.Remove(System.Object)">
+			<summary>Removes an IviPhysicalRange object from the Physical Range collection.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Range to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalRangeCollection.Count">
+			<summary>The number of IviPhysicalRange objects in the Physical Range collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalRangeCollection.Item">
+			<summary>A read-only property that gets an IviPhysicalRange object from the Physical Range collection.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Range to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalRangeCollection.this(System.Object)">
+			<summary>The indexer for the class gets an IviPhysicalRange object from the Physical Range collection.
+			The parameter is the name or one-based index of the Physical Range to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Range to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalRangeCollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviPhysicalRangeCollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviPhysicalRange type.</summary>
+			<returns>An IEnumerator for the PhysicalRangeCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPhysicalRangeCollectionClass">
+			<summary>IviPhysicalRangeCollectionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPhysicalRangeCollectionClass.#ctor">
+			<summary>IviPhysicalRangeCollectionClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPhysicalRangeCollectionClass.Add(Ivi.ConfigServer.Interop.IviPhysicalRange)">
+			<summary>Adds an IviPhysicalRange object to the Phyical Range collection.</summary>
+			<param name="pVal">The IviPhysicalRange object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPhysicalRangeCollectionClass.Remove(System.Object)">
+			<summary>Removes an IviPhysicalRange object from the Physical Range collection.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Range to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalRangeCollectionClass.Count">
+			<summary>The number of IviPhysicalRange objects in the Physical Range collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalRangeCollectionClass.Item">
+			<summary>A read-only property that gets an IviPhysicalRange object from the Physical Range collection.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Range to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalRangeCollectionClass.this(System.Object)">
+			<summary>The indexer for the class gets an IviPhysicalRange object from the Physical Range collection.
+			The parameter is the name or one-based index of the Physical Range to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Physical Range to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalRangeCollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPhysicalRangeCollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviPhysicalRange type.</summary>
+			<returns>An IEnumerator for the PhysicalRangeCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviPhysicalRange">
+			<summary>IIviPhysicalRange Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPhysicalRange">
+			<summary>Same as IIviPhysicalRange Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalRange.Max">
+			<summary>The upper end of a range of integers to be appended to the Name property of the
+referencing IVI Physical Name object to create a set of physical repeated
+capability identifiers.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalRange.Min">
+			<summary>The lower end of a range of integers to be appended to the Name property of the
+referencing IVI Physical Name object to create a set of physical repeated
+capability identifiers.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviPhysicalRange.Name">
+			<summary>The name of the physical range. This name is used to uniquely identify the range in the collection, and
+is not used in creating the set of physical identifiers. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviPhysicalRangeClass">
+			<summary>IviPhysicalRangeClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviPhysicalRangeClass.#ctor">
+			<summary>IviPhysicalRangeClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalRangeClass.Max">
+			<summary>The upper end of a range of integers to be appended to the Name property of the
+referencing IVI Physical Name object to create a set of physical repeated
+capability identifiers.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalRangeClass.Min">
+			<summary>The lower end of a range of integers to be appended to the Name property of the
+referencing IVI Physical Name object to create a set of physical repeated
+capability identifiers.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviPhysicalRangeClass.Name">
+			<summary>The name of the physical range. This name is used to uniquely identify the range in the collection, and
+is not used in creating the set of physical identifiers. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviSessionCollection">
+			<summary>IIviSessionCollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviSessionCollection">
+			<summary>Same as IIviSessionCollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviSessionCollection.Add(Ivi.ConfigServer.Interop.IviSession)">
+			<summary>Adds an IviSession object to the global Session collection.</summary>
+			<param name="pVal">The IviSession object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviSessionCollection.Remove(System.Object)">
+			<summary>Removes an IviSession object from the global Session collection.</summary>
+			<param name="varIndex">The name or one-based index of the Session to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSessionCollection.Count">
+			<summary>The number of IviSession objects in the global Session collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSessionCollection.Item">
+			<summary>A read-only property that gets an IviSession object from the global Session collection.</summary>
+			<param name="varIndex">The name or one-based index of the Session to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSessionCollection.this(System.Object)">
+			<summary>The indexer for the class gets an IviSession object from the global Session collection.
+			The parameter is the name or one-based index of the Session to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Session to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSessionCollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviSessionCollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviSession type.</summary>
+			<returns>An IEnumerator for the SessionCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviSessionCollectionClass">
+			<summary>IviSessionCollectionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviSessionCollectionClass.#ctor">
+			<summary>IviSessionCollectionClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviSessionCollectionClass.Add(Ivi.ConfigServer.Interop.IviSession)">
+			<summary>Adds an IviSession object to the global Session collection.</summary>
+			<param name="pVal">The IviSession object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviSessionCollectionClass.Remove(System.Object)">
+			<summary>Removes an IviSession object from the global Session collection.</summary>
+			<param name="varIndex">The name or one-based index of the Session to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionCollectionClass.Count">
+			<summary>The number of IviSession objects in the global Session collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionCollectionClass.Item">
+			<summary>A read-only property that gets an IviSession object from the global Session collection.</summary>
+			<param name="varIndex">The name or one-based index of the Session to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionCollectionClass.this(System.Object)">
+			<summary>The indexer for the class gets an IviSession object from the global Session collection.
+			The parameter is the name or one-based index of the Session to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Session to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSessionCollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviSessionCollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviSession type.</summary>
+			<returns>An IEnumerator for the SessionCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviHardwareAssetCollection">
+			<summary>IIviHardwareAssetCollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviHardwareAssetCollection">
+			<summary>Same as IIviHardwareAssetCollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviHardwareAssetCollection.Add(Ivi.ConfigServer.Interop.IviHardwareAsset)">
+			<summary>Adds an IviHardwareAsset object to the global Hardware Asset collection.</summary>
+			<param name="pVal">The IviHardwareAsset object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviHardwareAssetCollection.Remove(System.Object)">
+			<summary>Removes an IviHardwareAsset object from the global Hardware Asset collection.</summary>
+			<param name="varIndex">The name or one-based index of the Hardware Asset to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviHardwareAssetCollection.Count">
+			<summary>The number of IviHardwareAsset objects in the global Hardware Asset collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviHardwareAssetCollection.Item">
+			<summary>A read-only property that gets an IviHardwareAsset object from the global Hardware Asset collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviHardwareAssetCollection.this(System.Object)">
+			<summary>The indexer for the class gets an IviHardwareAsset object from the global Hardware Asset collection.
+			The parameter is the name or one-based index of the Hardware Asset to be retrieved.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviHardwareAssetCollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviHardwareAssetCollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviHardwareAsset type.</summary>
+			<returns>An IEnumerator for the HardwareAssetCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviHardwareAssetCollectionClass">
+			<summary>IviHardwareAssetCollectionClass obect</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviHardwareAssetCollectionClass.#ctor">
+			<summary>IviHardwareAssetCollectionClass obect constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviHardwareAssetCollectionClass.Add(Ivi.ConfigServer.Interop.IviHardwareAsset)">
+			<summary>Adds an IviHardwareAsset object to the global Hardware Asset collection.</summary>
+			<param name="pVal">The IviHardwareAsset object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviHardwareAssetCollectionClass.Remove(System.Object)">
+			<summary>Removes an IviHardwareAsset object from the global Hardware Asset collection.</summary>
+			<param name="varIndex">The name or one-based index of the Hardware Asset to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviHardwareAssetCollectionClass.Count">
+			<summary>The number of IviHardwareAsset objects in the global Hardware Asset collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviHardwareAssetCollectionClass.Item">
+			<summary>A read-only property that gets an IviHardwareAsset object from the global Hardware Asset collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviHardwareAssetCollectionClass.this(System.Object)">
+			<summary>The indexer for the class gets an IviHardwareAsset object from the global Hardware Asset collection.
+			The parameter is the name or one-based index of the Hardware Asset to be retrieved.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviHardwareAssetCollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviHardwareAssetCollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviHardwareAsset type.</summary>
+			<returns>An IEnumerator for the HardwareAssetCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviSoftwareModuleCollection">
+			<summary>IIviSoftwareModuleCollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviSoftwareModuleCollection">
+			<summary>Same as IIviSoftwareModuleCollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviSoftwareModuleCollection.Add(Ivi.ConfigServer.Interop.IviSoftwareModule)">
+			<summary>Adds an IviSoftwareModule object to the global Software Module collection.</summary>
+			<param name="pVal">The IviSoftwareModule object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviSoftwareModuleCollection.Remove(System.Object)">
+			<summary>Removes an IviSoftwareModule object from the global Software Module collection.</summary>
+			<param name="varIndex">The name or one-based index of the Sofware Module to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModuleCollection.Count">
+			<summary>The number of IviSoftwareModule objects in the global Software Module collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModuleCollection.Item">
+			<summary>A read-only property that gets an IviSoftwareModule object from the global Software Module collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModuleCollection.this(System.Object)">
+			<summary>The indexer for the class gets an IviSoftwareModule object from the global Software Module collection.
+			The parameter is the name or one-based index of the Software Module to be retrieved.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviSoftwareModuleCollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviSoftwareModuleCollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviSoftwareModule type.</summary>
+			<returns>An IEnumerator for the SoftwareModuleCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviSoftwareModuleCollectionClass">
+			<summary>IviSoftwareModuleCollectionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviSoftwareModuleCollectionClass.#ctor">
+			<summary>IviSoftwareModuleCollectionClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviSoftwareModuleCollectionClass.Add(Ivi.ConfigServer.Interop.IviSoftwareModule)">
+			<summary>Adds an IviSoftwareModule object to the global Software Module collection.</summary>
+			<param name="pVal">The IviSoftwareModule object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviSoftwareModuleCollectionClass.Remove(System.Object)">
+			<summary>Removes an IviSoftwareModule object from the global Software Module collection.</summary>
+			<param name="varIndex">The name or one-based index of the Sofware Module to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleCollectionClass.Count">
+			<summary>The number of IviSoftwareModule objects in the global Software Module collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleCollectionClass.Item">
+			<summary>A read-only property that gets an IviSoftwareModule object from the global Software Module collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleCollectionClass.this(System.Object)">
+			<summary>The indexer for the class gets an IviSoftwareModule object from the global Software Module collection.
+			The parameter is the name or one-based index of the Software Module to be retrieved.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviSoftwareModuleCollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+The VARIANT returned by Next can be queried for an interface
+appropriate for the collection. For example the VARIANT returned within the
+Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviSoftwareModuleCollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviSoftwareModule type.</summary>
+			<returns>An IEnumerator for the SoftwareModuleCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviDriverSessionCollection">
+			<summary>IIviDriverSessionCollection Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviDriverSessionCollection">
+			<summary>Same as IIviDriverSessionCollection Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviDriverSessionCollection.Add(Ivi.ConfigServer.Interop.IviDriverSession)">
+			<summary>Adds an IviDriverSession object to the global Driver Session collection.</summary>
+			<param name="pVal">The IviDriverSession object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviDriverSessionCollection.Remove(System.Object)">
+			<summary>Removes an IviDriverSession object from the global Driver Session collection.</summary>
+			<param name="varIndex">The name or one-based index of the Driver Session to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSessionCollection.Count">
+			<summary>The number of IviDriverSession objects in the global Driver Session collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSessionCollection.Item">
+			<summary>A read-only property that gets an IviDriverSession object from the global Driver Session collection.</summary>
+			<param name="varIndex">The name or one-based index of the Driver Session to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSessionCollection.this(System.Object)">
+			<summary>The indexer for the class gets an IviDriverSession object from the global Driver Session collection.
+			The parameter is the name or one-based index of the Driver Session to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Logical Name to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSessionCollection._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+			can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+			The VARIANT returned by Next can be queried for an interface
+			appropriate for the collection. For example the VARIANT returned within the
+			Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviDriverSessionCollection.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviDriverSession type.</summary>
+			<returns>An IEnumerator for the DriverSessionCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviDriverSessionCollectionClass">
+			<summary>IviDriverSessionCollectionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviDriverSessionCollectionClass.#ctor">
+			<summary>IviDriverSessionCollectionClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviDriverSessionCollectionClass.Add(Ivi.ConfigServer.Interop.IviDriverSession)">
+			<summary>Adds an IviDriverSession object to the global Driver Session collection.</summary>
+			<param name="pVal">The IviDriverSession object to be added.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviDriverSessionCollectionClass.Remove(System.Object)">
+			<summary>Removes an IviDriverSession object from the global Driver Session collection.</summary>
+			<param name="varIndex">The name or one-based index of the Driver Session to be removed.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionCollectionClass.Count">
+			<summary>The number of IviDriverSession objects in the global Driver Session collection.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionCollectionClass.Item">
+			<summary>A read-only property that gets an IviDriverSession object from the global Driver Session collection.</summary>
+			<param name="varIndex">The name or one-based index of the Driver Session to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionCollectionClass.this(System.Object)">
+			<summary>The indexer for the class gets an IviDriverSession object from the global Driver Session collection.
+			The parameter is the name or one-based index of the Driver Session to be retrieved.</summary>
+			<param name="varIndex">The name or one-based index of the Logical Name to be retrieved.</param>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionCollectionClass._NewEnum">
+			<summary>The _NewEnum property returns an IUnknown pointer. This interface
+			can be queried for an IEnumVARIANT interface which contains the methods: Next, Skip, Reset, and Clone.
+			The VARIANT returned by Next can be queried for an interface
+			appropriate for the collection. For example the VARIANT returned within the
+			Hardware Asset Collection can be queried for the IviHardwareAsset interface.</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviDriverSessionCollectionClass.GetEnumerator">
+			<summary>The IEnumerator interface implements the Current property and the Reset and MoveNext methods. 
+			The Object returned by the Current property can be cast to the IviDriverSession type.</summary>
+			<returns>An IEnumerator for the DriverSessionCollection.</returns>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviDriverSession">
+			<summary>IIviDriverSession Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviDriverSession">
+			<summary>Same as IIviDriverSession Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.DataComponents">
+			<summary>References a collection of DataComponents that modifies the object of which the 
+			collection is a part.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.HardwareAsset">
+			<summary>References the Hardware Asset used by the Session.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.VirtualNames">
+			<summary>References a collection of all the IVI Virtual Name objects used by the Session.
+			Within a collection, the Name property uniquely identifies an IVI Virtual name object.
+			IVI Virtual Name objects cannot be reused between sessions.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.SoftwareModule">
+			<summary>References the Software Module configured by the Session.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.SoftwareModuleName">
+			<summary>The name of the current or most recently referenced software module referenced by the 
+			Software Module property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.DriverSetup">
+			<summary>Driver Setup stores the string that initializes the Driver Setup
+			attribute in an IVI instrument specific driver. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.Cache">
+			<summary>Cache stores the Boolean value that initializes the Cache attribute in an IVI
+			instrument specific driver.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.InterchangeCheck">
+			<summary>Interchange Check stores the Boolean value that initializes the Interchange Check attribute
+			in an IVI instrument specific driver.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.QueryInstrStatus">
+			<summary>Query Instrument Status stores the Boolean value that initializes the Query
+			Instrument Status attribute in an IVI instrument specific driver.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.RangeCheck">
+			<summary>Range Check stores the Boolean value
+			that initializes the Range Check attribute in
+			an IVI instrument specific driver.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.RecordCoercions">
+			<summary>Record Value Coercions stores the
+			Boolean value that initializes the Record
+			Value Coercions attribute in an IVI instrument specific driver.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviDriverSession.Simulate">
+			<summary>Simulate stores the Boolean value
+			that initializes the Simulate attribute in an
+			IVI instrument specific driver.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviDriverSessionClass">
+			<summary>IviDriverSessionClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviDriverSessionClass.#ctor">
+			<summary>IviDriverSessionClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.DataComponents">
+			<summary>References a collection of DataComponents that modifies the object of which the 
+			collection is a part.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.HardwareAsset">
+			<summary>References the Hardware Asset used by the Session.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.VirtualNames">
+			<summary>References a collection of all the IVI Virtual Name objects used by the Session.
+			Within a collection, the Name property uniquely identifies an IVI Virtual name object.
+			IVI Virtual Name objects cannot be reused between sessions.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.SoftwareModule">
+			<summary>References the Software Module configured by the Session.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.SoftwareModuleName">
+			<summary>The name of the current or most recently referenced software module referenced by the 
+			Software Module property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.DriverSetup">
+			<summary>Driver Setup stores the string that initializes the Driver Setup
+			attribute in an IVI instrument specific driver. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.Cache">
+			<summary>Cache stores the Boolean value that initializes the Cache attribute in an IVI
+			instrument specific driver.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.InterchangeCheck">
+			<summary>Interchange Check stores the Boolean value that initializes the Interchange Check attribute
+			in an IVI instrument specific driver.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.QueryInstrStatus">
+			<summary>Query Instrument Status stores the Boolean value that initializes the Query
+			Instrument Status attribute in an IVI instrument specific driver.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.RangeCheck">
+			<summary>Range Check stores the Boolean value
+			that initializes the Range Check attribute in
+			an IVI instrument specific driver.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.RecordCoercions">
+			<summary>Record Value Coercions stores the
+			Boolean value that initializes the Record
+			Value Coercions attribute in an IVI instrument specific driver.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviDriverSessionClass.Simulate">
+			<summary>Simulate stores the Boolean value
+			that initializes the Simulate attribute in an
+			IVI instrument specific driver.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviConfigStore">
+			<summary>IIviConfigStore Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviConfigStore">
+			<summary>Same as IIviConfigStore Interface</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviConfigStore.Deserialize(System.String)">
+			<summary>Reads a configuration store file from
+			a data source location, parses the data, and
+			creates the corresponding Configuration Server
+			classes in memory.</summary>
+			<param name="DataStoreFileSpec">The full pathname of the configuration store file to be opened. </param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviConfigStore.Serialize(System.String)">
+			<summary>Serializes a configuration store from
+			the Configuration Server to a data source
+			location. The Serialize method creates the
+			configuration file specified by the Location
+			parameter.</summary> 
+			<param name="DataStoreFileSpec">The full pathname of the configuration store file to be written.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviConfigStore.GetDriverSession(System.String)">
+			<summary>Returns a driver session, given a name that identifies the session.</summary>
+			<param name="LogicalName">Name may be either the Name
+			of the Driver Session object, or a logical
+			name that refers to the Driver Session object.</param>
+			<returns>Reference to an IviDriverSession object.</returns>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IIviConfigStore.GetSession(System.String)">
+			<summary>Returns a session, given a name that identifies the session.</summary>
+			<param name="LogicalName">Name may be either the Name
+			of the Session object, or a logical name that
+			refers to the Session object.</param>
+			<returns>Reference to an IviSession object.</returns>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.Name">
+			<summary>The name of the Configuration Server which is always IVI Configuration Server.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.Description">
+			<summary>The description of the Configuration
+			Server component. In a newly created object,
+			this string is "The IVI Configuration Server
+			allows access to and modification of an IVI
+			configuration store."</summary> 
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.Vendor">
+			<summary>The vendor of the Configuration Server component which is always "IVI Foundation, Inc.".</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.Revision">
+			<summary>The current revision of the Configuration Server.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.SpecificationMajorVersion">
+			<summary>The major version of the
+			Configuration Server specification supported
+			by the Configuration Server component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.SpecificationMinorVersion">
+			<summary>The minor version of the Configuration Server specification supported by the Configuration Server component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.HardwareAssets">
+			<summary>The global collection of all Hardware Asset objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.DriverSessions">
+			<summary>The global collection of all Driver Session objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.LogicalNames">
+			<summary>The global collection of all Logical Name objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.Sessions">
+			<summary>The global collection of all IVI Session objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.PublishedAPIs">
+			<summary>The global collection of all Published API objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.SoftwareModules">
+			<summary>The global collection of all Software Modules objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.MasterLocation">
+			<summary>The full pathname of the master
+			configuration store including the file name,
+			which is always
+			IviConfigurationStore.xml.</summary> 
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.ProcessDefaultLocation">
+			<summary>The full pathname of the default
+			configuration store for the process in which
+			this property is used. If a non-empty string
+			is assigned to this property by code executed
+			in the process, the property shall return that
+			string when accessed in the same process. The
+			empty string is a legal value for this
+			property.</summary> 
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviConfigStore.ActualLocation">
+			<summary>The full pathname of the
+			configuration store file that was successfully
+			deserialized by the current instance of the
+			configuration server. If no configuration
+			store file has been successfully deserialized
+			by the current instance of the configuration
+			server, the property returns the empty
+			string.</summary> 
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviConfigStoreClass">
+			<summary>IviConfigStoreClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviConfigStoreClass.#ctor">
+			<summary>IviConfigStoreClass object constructor</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviConfigStoreClass.Deserialize(System.String)">
+			<summary>Reads a configuration store file from
+			a data source location, parses the data, and
+			creates the corresponding Configuration Server
+			classes in memory.</summary>
+			<param name="DataStoreFileSpec">The full pathname of the configuration store file to be opened. </param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviConfigStoreClass.Serialize(System.String)">
+			<summary>Serializes a configuration store from
+			the Configuration Server to a data source
+			location. The Serialize method creates the
+			configuration file specified by the Location
+			parameter.</summary> 
+			<param name="DataStoreFileSpec">The full pathname of the configuration store file to be written.</param>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviConfigStoreClass.GetDriverSession(System.String)">
+			<summary>Returns a driver session, given a name that identifies the session.</summary>
+			<param name="LogicalName">Name may be either the Name
+			of the Driver Session object, or a logical
+			name that refers to the Driver Session object.</param>
+			<returns>Reference to an IviDriverSession object.</returns>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviConfigStoreClass.GetSession(System.String)">
+			<summary>Returns a session, given a name that identifies the session.</summary>
+			<param name="LogicalName">Name may be either the Name
+			of the Session object, or a logical name that
+			refers to the Session object.</param>
+			<returns>Reference to an IviSession object.</returns>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.Name">
+			<summary>The name of the Configuration Server which is always IVI Configuration Server.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.Description">
+			<summary>The description of the Configuration
+			Server component. In a newly created object,
+			this string is "The IVI Configuration Server
+			allows access to and modification of an IVI
+			configuration store."</summary> 
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.Vendor">
+			<summary>The vendor of the Configuration Server component which is always "IVI Foundation, Inc.".</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.Revision">
+			<summary>The current revision of the Configuration Server.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.SpecificationMajorVersion">
+			<summary>The major version of the
+			Configuration Server specification supported
+			by the Configuration Server component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.SpecificationMinorVersion">
+			<summary>The minor version of the Configuration Server specification supported by the Configuration Server component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.HardwareAssets">
+			<summary>The global collection of all Hardware Asset objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.DriverSessions">
+			<summary>The global collection of all Driver Session objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.LogicalNames">
+			<summary>The global collection of all Logical Name objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.Sessions">
+			<summary>The global collection of all IVI Session objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.PublishedAPIs">
+			<summary>The global collection of all Published API objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.SoftwareModules">
+			<summary>The global collection of all Software Modules objects in the configuration store.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.MasterLocation">
+			<summary>The full pathname of the master
+			configuration store including the file name,
+			which is always
+			IviConfigurationStore.xml.</summary> 
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.ProcessDefaultLocation">
+			<summary>The full pathname of the default
+			configuration store for the process in which
+			this property is used. If a non-empty string
+			is assigned to this property by code executed
+			in the process, the property shall return that
+			string when accessed in the same process. The
+			empty string is a legal value for this
+			property.</summary> 
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviConfigStoreClass.ActualLocation">
+			<summary>The full pathname of the
+			configuration store file that was successfully
+			deserialized by the current instance of the
+			configuration server. If no configuration
+			store file has been successfully deserialized
+			by the current instance of the configuration
+			server, the property returns the empty
+			string.</summary> 
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviStructure">
+			<summary>IIviStructure Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviStructure">
+			<summary>Same as IIviStructure Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviStructure.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviStructure.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviStructure.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviStructure.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviStructure.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviStructure.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviStructure.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviStructure.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviStructure.DataComponents">
+			<summary>A collection of IVI Data Component
+			objects. Circular references or a circular
+			series of references are not
+			allowed.</summary> 
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviStructureClass">
+			<summary>IviStructureClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviStructureClass.#ctor">
+			<summary>IviStructureClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStructureClass.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStructureClass.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStructureClass.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStructureClass.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStructureClass.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStructureClass.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStructureClass.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStructureClass.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStructureClass.DataComponents">
+			<summary>A collection of IVI Data Component
+			objects. Circular references or a circular
+			series of references are not
+			allowed.</summary> 
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviAPIReference">
+			<summary>IIviAPIReference Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviAPIReference">
+			<summary>Same as IIviAPIReference Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviAPIReference.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviAPIReference.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviAPIReference.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviAPIReference.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviAPIReference.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviAPIReference.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviAPIReference.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviAPIReference.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviAPIReference.Value">
+			<summary>A session name that implements the published API.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviAPIReference.PublishedAPI">
+			<summary>A published API to be associated with the client role identified by the Name property.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviAPIReferenceClass">
+			<summary>IviAPIReferenceClass Object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviAPIReferenceClass.#ctor">
+			<summary>IviAPIReferenceClass Object constructor.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviAPIReferenceClass.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviAPIReferenceClass.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviAPIReferenceClass.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviAPIReferenceClass.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviAPIReferenceClass.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviAPIReferenceClass.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviAPIReferenceClass.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviAPIReferenceClass.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviAPIReferenceClass.Value">
+			<summary>A session name that implements the published API.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviAPIReferenceClass.PublishedAPI">
+			<summary>A published API to be associated with the client role identified by the Name property.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviReal">
+			<summary>IIviReal Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviReal">
+			<summary>Same as IIviReal Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviReal.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviReal.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviReal.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviReal.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviReal.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviReal.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviReal.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviReal.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviReal.Units">
+			<summary>The units to be applied to Value. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviReal.Value">
+			<summary>The real value of the data component.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviRealClass">
+			<summary>IviRealClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviRealClass.#ctor">
+			<summary>IviRealClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviRealClass.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviRealClass.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviRealClass.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviRealClass.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviRealClass.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviRealClass.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviRealClass.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviRealClass.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviRealClass.Units">
+			<summary>The units to be applied to Value. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviRealClass.Value">
+			<summary>The real value of the data component.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviInteger">
+			<summary>IIviInteger Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviInteger">
+			<summary>Same as IIviInteger Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviInteger.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviInteger.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviInteger.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviInteger.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviInteger.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviInteger.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviInteger.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviInteger.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviInteger.Units">
+			<summary>The units to be applied to Value. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviInteger.Value">
+			<summary>The integer value of the data component.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviIntegerClass">
+			<summary>IviIntegerClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviIntegerClass.#ctor">
+			<summary>IviIntegerClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviIntegerClass.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviIntegerClass.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviIntegerClass.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviIntegerClass.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviIntegerClass.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviIntegerClass.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviIntegerClass.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviIntegerClass.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviIntegerClass.Units">
+			<summary>The units to be applied to Value. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviIntegerClass.Value">
+			<summary>The integer value of the data component.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviString">
+			<summary>IIviString Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviString">
+			<summary>Same as IIviString Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviString.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviString.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviString.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviString.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviString.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviString.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviString.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviString.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviString.Value">
+			<summary>The string value of the data component.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviStringClass">
+			<summary>IviStringClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviStringClass.#ctor">
+			<summary>IviStringClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStringClass.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStringClass.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStringClass.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStringClass.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStringClass.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStringClass.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStringClass.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStringClass.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviStringClass.Value">
+			<summary>The string value of the data component.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IIviBoolean">
+			<summary>IIviBoolean Interface</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviBoolean">
+			<summary>Same as IIviBoolean Interface</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviBoolean.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviBoolean.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviBoolean.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviBoolean.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviBoolean.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviBoolean.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviBoolean.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviBoolean.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IIviBoolean.Value">
+			<summary>The Boolean Value of the data component.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviBooleanClass">
+			<summary>IviBooleanClass object</summary>
+		</member>
+		<member name="M:Ivi.ConfigServer.Interop.IviBooleanClass.#ctor">
+			<summary>IviBooleanClass object constructor</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviBooleanClass.Name">
+			<summary>The name of the associated object. The empty string is not a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviBooleanClass.Description">
+			<summary>The description of the associated object. The empty string is a legal value for this property.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviBooleanClass.UsedInSession">
+			<summary>This property determines whether a data component associated with a software module
+is used in a session that references the software module. The possible
+values are Required, Optional, and None.The values are case insensitive.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviBooleanClass.Type">
+			<summary>A string denoting the data type of the associated data element. Valid values for this field are Structure,
+Integer, Real, Boolean, String, and APIReference.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviBooleanClass.ReadOnly">
+			<summary>Indicates whether the value of the data component may be changed in a configuration store GUI.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviBooleanClass.HelpContextID">
+			<summary>The help context ID for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviBooleanClass.HelpFilePath">
+			<summary>The fully qualified pathname of the help file that provides the help for the data component.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviBooleanClass.SoftwareModuleKey">
+			<summary>A string that the software module uses to identify the internal
+software element that the data component applies to. If Used In Session is None, the value of
+this property shall be the empty string. 
+If Used In Session is Required or Optional, the value of this
+property shall not be the empty string.</summary>
+		</member>
+		<member name="P:Ivi.ConfigServer.Interop.IviBooleanClass.Value">
+			<summary>The Boolean Value of the data component.</summary>
+		</member>
+		<member name="T:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum">
+			<summary>Ivi Configuration Server Error Enum</summary>
+		</member>
+		<member name="F:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum.E_IVICONFIG_DESERIALIZE_FAILED">
+			<summary>The specified configuration store file could not be deserialized.</summary>
+		</member>
+		<member name="F:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum.E_IVICONFIG_ALREADY_DESERIALIZED">
+			<summary>A deserialize was attempted after a previous deserialize had already succeeded.</summary>
+		</member>
+		<member name="F:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum.E_IVICONFIG_SERIALIZE_FAILED">
+			<summary>The specified configuration store file could not be serialized.</summary>
+		</member>
+		<member name="F:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum.E_IVICONFIG_SESSION_NOT_FOUND">
+			<summary>The session name or logical name could not be resolved to a session or driver session.</summary>
+		</member>
+		<member name="F:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum.E_IVICONFIG_NOT_IN_GLOBAL">
+			<summary>The item does not exist in the global collection.</summary>
+		</member>
+		<member name="F:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum.E_IVICONFIG_ALREADY_EXIST">
+			<summary>An entry with name already exists in the collection.</summary>
+		</member>
+		<member name="F:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum.E_IVICONFIG_MASTER_NOT_FOUND">
+			<summary>The registry entry for the master
+			configuration store does not exist or the file
+			could not be found.</summary>
+		</member>
+		<member name="F:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum.E_IVICONFIG_NOT_EXIST">
+			<summary>The item does not exist in the collection.</summary>
+		</member>
+		<member name="F:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum.E_IVICONFIG_INVALID_DATA_COMPONENT">
+			<summary>The data component is not a valid data component.</summary>
+		</member>
+		<member name="F:Ivi.ConfigServer.Interop.IviConfigServerErrorEnum.E_IVICONFIG_LOCAL_REFERENCE_EXIST">
+			<summary>The element cannot be removed from the global collection when it is referenced in the local collections.</summary>
+		</member>
+	</members>
+</doc>

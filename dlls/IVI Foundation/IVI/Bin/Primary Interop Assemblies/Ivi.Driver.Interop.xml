@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<doc>
+	<assembly>
+		<name>Ivi.Driver.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.Driver.Interop.IIviDriver">
+			<summary>IVI Driver root interface</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriver.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of 
+			certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameter
+			is "Name=Value", 
+			where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,
+			or DriverSetup. Value is either true or false except for DriverSetup. 
+			If the Options String parameter contains an assignment for the Driver Setup attribute, 
+			the Initialize function assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriver.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument are not accessible after Close is called.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriver.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriver.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriver.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriver.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the Close method, and False at all other times.</summary>
+		</member>
+		<member name="T:Ivi.Driver.Interop.IIviDriverOperation">
+			<summary>IVI Driver operation interface</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverOperation.InvalidateAllAttributes">
+			<summary>Invalidates all of the driver's cached values.</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverOperation.ClearInterchangeWarnings">
+			<summary>Clears the list of interchangeability warnings that the IVI specific driver maintains.</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverOperation.GetNextInterchangeWarning">
+			<summary>Returns the oldest warning from the interchange warning list.  Records are only added to the list if InterchangeCheck is True.</summary>
+			<returns>A string describing the oldest interchangeability warning or empty string if no warrnings remain.</returns>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverOperation.ResetInterchangeCheck">
+			<summary>Resets the interchangeability checking algorithms of the driver so that methods and properties that executed prior to calling this function have no affect on whether future calls to the driver generate interchangeability warnings.</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverOperation.GetNextCoercionRecord">
+			<summary>Returns the oldest record from the coercion record list.  Records are only added to the list if RecordCoercions is True.</summary>
+			<returns>The coercion record string shall contain the following information: 
+(1) The name of the attribute that was coerced.  This can be the generic name, the COM property name, or the C defined constant. 
+(2) If the attribute is channel-based, the name of the channel.   The channel name can be the specific driver channel string or the virtual channel name that the user specified.
+(3) If the attribute applies to a repeated capability, the name of the repeated capability. The name can be the specific driver repeated capability token or the virtual repeated capability name that the user specified.
+(4) The value that the user specified for the attribute.
+(5) The value to which the attribute was coerced.</returns>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverOperation.LogicalName">
+			<summary>Logical Name identifies a driver session in the Configuration Store.  If Logical Name is not empty, the driver was initialized from information in the driver session.  If it is empty, the driver was initialized without using the Configuration Store.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverOperation.IoResourceDescriptor">
+			<summary>The resource descriptor specifies the connection to a physical device.  It is either specified in the Configuration Store or passed in the ResourceName parameter of the Initialize function.  It is empty if the driver is not initialized.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverOperation.Cache">
+			<summary>Drivers may choose to always cache some instrument settings, never cache others, and optionally cache others, to avoid unecessary I/O to the instrument.  If True, the driver caches optionally cached instrument settings.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverOperation.InterchangeCheck">
+			<summary>If True, the driver maintains a record of interchangeability warnings.  If the driver does not support interchangeability checking, attempts to set InterchangeCheck to True return an error.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverOperation.QueryInstrumentStatus">
+			<summary>If True, the driver queries the instrument status at the end of each method or property that performs I/O to the instrument.  If an error is reported, use ErrorQuery to retrieve error messages one at a time from the instrument.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverOperation.RangeCheck">
+			<summary>Drivers may choose to always validate some property/parameter values, never validate others, and optionally validate others, to avoid sending invalid commands to the instrument.  If True, the driver performs optional validations.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverOperation.RecordCoercions">
+			<summary>If True, the driver keeps a list of the value coercions it makes for ViInt32 and ViReal64 attributes.  If the driver does not support coercion recording, attempts to set RecordCoercions to True will return an error.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverOperation.Simulate">
+			<summary>If True, the driver does not perform I/O to the instrument, and returns simulated values for output parameters.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverOperation.DriverSetup">
+			<summary>The driver setup string.  It is either specified in the Configuration Store or passed in the OptionString parameter of the Initialize function.  Driver setup is empty if the driver is not initialized.</summary>
+		</member>
+		<member name="T:Ivi.Driver.Interop.IIviDriverIdentity">
+			<summary>IVI Driver identity interface</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.Description">
+			<summary>A brief description of the implementing component.  Description is limted to 256 bytes.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.Revision">
+			<summary>The revision of the implementing component.  Refer to IVI 3.2, Section 3.1.2.2, for a description of revision syntax and semantics.  Revision is limited to 256 bytes.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.Vendor">
+			<summary>The name of the vendor that supplies the implementing component.  Vendor is limited to 256 bytes.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.InstrumentManufacturer">
+			<summary>The name of the manufacturer reported by the physical instrument.  If Simulation is enabled or the instrument is not capable of reporting the name of the manufacturer, a string is returned that explains the condition. Manufacturer is limited to 256 bytes</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.InstrumentModel">
+			<summary>The model number or name reported by the physical instrument.  If Simulation is enabled or the instrument is not capable of reporting the model number or name, a string is returned that explains the condition.  Model is limited to 256 bytes</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.InstrumentFirmwareRevision">
+			<summary>The firmware revision reported by the physical instrument.  If Simulation is enabled or the instrument is not capable of reporting the firmware revision, a string is returned that explains the condition.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.Identifier">
+			<summary>The case-sensitive unique identifier of the implementing IVI-COM instrument driver.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.SupportedInstrumentModels">
+			<summary>A comma-separated list of instrument models that the IVI specific driver can control.  The string does not include an abbreviation for the manufacturer if it is the same for all models.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.SpecificationMajorVersion">
+			<summary>For IVI class-compliant drivers, the major version number of the instrument class specification.  If the driver is not class compliant, the driver returns zero.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.SpecificationMinorVersion">
+			<summary>For IVI class-compliant drivers, the minor version number of the instrument class specification.  If the driver is not class compliant, the driver returns zero.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviDriverIdentity.GroupCapabilities">
+			<summary>A comma-separated list of the class capability groups implemented by the driver.  Capability group names are documented in the IVI class specifications.  If the driver is not class compliant, the driver returns an empty string.</summary>
+		</member>
+		<member name="T:Ivi.Driver.Interop.IIviComponentIdentity">
+			<summary>IVI Driver component identity interface</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviComponentIdentity.Description">
+			<summary>A brief description of the implementing component.  Description is limted to 256 bytes.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviComponentIdentity.Revision">
+			<summary>The revision of the implementing component.  Refer to IVI 3.2, Section 3.1.2.2, for a description of revision syntax and semantics.  Revision is limited to 256 bytes.</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviComponentIdentity.Vendor">
+			<summary>The name of the vendor that supplies the implementing component.  Vendor is limited to 256 bytes.</summary>
+		</member>
+		<member name="T:Ivi.Driver.Interop.IIviDriverUtility">
+			<summary>IVI Driver utility interface</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverUtility.Reset">
+			<summary>Places the instrument in a known state and configures instrument options on which the IVI specific driver depends (for example, enabling/disabling headers).  For an IEEE 488.2 instrument, Reset sends the command string *RST to the instrument.</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverUtility.ResetWithDefaults">
+			<summary>Does the equivalent of Reset and then, (1) disables class extension capability groups, (2) sets attributes to initial values defined by class specs, and (3) configures the driver to option string settings used when Initialize was last executed.</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverUtility.Disable">
+			<summary>Quickly places the instrument in a state where it has no, or minimal, effect on the external system to which it is connected.  This state is not necessarily a known state.</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverUtility.SelfTest(System.Int32@,System.String@)">
+			<summary>Performs an instrument self test, waits for the instrument to complete the test, and queries the instrument for the results.  If the instrument passes the test, TestResult is zero and TestMessage is 'Self test passed'.</summary>
+			<param name="TestResult">The numeric result from the self test operation. 0 = no error (test passed)</param>
+			<param name="TestMessage">The self test status message</param>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverUtility.ErrorQuery(System.Int32@,System.String@)">
+			<summary>Queries the instrument and returns instrument specific error information.  This function can be used when QueryInstrumentStatus is True to retrieve error details when the driver detects an instrument error.</summary>
+			<param name="ErrorCode">Instrument error code</param>
+			<param name="ErrorMessage">Instrument error message</param>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverUtility.LockObject">
+			<summary>Obtains a multithread lock on the driver after waiting until all other execution threads have released their locks on the instrument session.</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviDriverUtility.UnlockObject">
+			<summary>Releases a previously obtained mutlithread lock.</summary>
+		</member>
+		<member name="T:Ivi.Driver.Interop.IIviClassIdentity">
+			<summary>IVI Driver class identity interface</summary>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviClassIdentity.Locator">
+			<summary>The location of the IVI specific driver instantiated by the implementing class driver.  It can be a COM class ID or DLL pathname, depending on the specific driver.  If a specific driver has not been instantiated, the class driver returns an empty string.</summary>
+		</member>
+		<member name="T:Ivi.Driver.Interop.IIviClassWrapper">
+			<summary>IVI Driver class wrapper interface</summary>
+		</member>
+		<member name="M:Ivi.Driver.Interop.IIviClassWrapper.AttachToExistingCSession(System.Int32)">
+			<summary>Binds a COM wrapper object to an existing IVI-C specific driver session.</summary>
+			<param name="ViSession">Unique identifier for an IVI session.</param>
+		</member>
+		<member name="P:Ivi.Driver.Interop.IIviClassWrapper.NativeCHandle">
+			<summary>The C session handle that the COM wrapper is currently using to communicate with an IVI-C specific driver.</summary>
+		</member>
+		<member name="T:Ivi.Driver.Interop.IviDriver_ErrorCodes">
+			<summary>IVI Driver (inherent features) defined HRESULTS</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.S_IVI_SUCCESS">
+			<summary>Success</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_CANNOT_RECOVER">
+			<summary>Unrecoverable failure</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_INSTRUMENT_STATUS">
+			<summary>Instrument error detected</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_CANNOT_OPEN_FILE">
+			<summary>File could not be opened</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_READING_FILE">
+			<summary>File could not be read</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_WRITING_FILE">
+			<summary>File could not be written</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_INVALID_PATHNAME">
+			<summary>The path name is invalid</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_INVALID_VALUE">
+			<summary>Invalid value for parameter or property</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_METHOD_NOT_SUPPORTED">
+			<summary>Method not supported</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_PROPERTY_NOT_SUPPORTED">
+			<summary>Property not supported</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_VALUE_NOT_SUPPORTED">
+			<summary>The enumeration value for the parameter is not supported</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_NOT_INITIALIZED">
+			<summary>A connection to the instrument has not been initialized</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_UNKNOWN_CHANNEL_NAME">
+			<summary>Channel or repeated capability name specified is not valid for the instrument.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_TOO_MANY_OPEN_FILES">
+			<summary>Too many files opened</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_CHANNEL_NAME_REQUIRED">
+			<summary>Channel or repeated capability name required</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_MISSING_OPTION_NAME">
+			<summary>The option string contains an entry without a name.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_MISSING_OPTION_VALUE">
+			<summary>The option string contains an entry without a value.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_BAD_OPTION_NAME">
+			<summary>The option string contains an entry with an unknown option name.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_BAD_OPTION_VALUE">
+			<summary>The option string contains an entry with an unknown option value.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_OUT_OF_MEMORY">
+			<summary>The necessary memory could not be allocated</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_OPERATION_PENDING">
+			<summary>Operation in progress</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_NULL_POINTER">
+			<summary>Null pointer passed for parameter or property</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_UNEXPECTED_RESPONSE">
+			<summary>Unexpected response from the instrument</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_FILE_NOT_FOUND">
+			<summary>File not found</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_INVALID_FILE_FORMAT">
+			<summary>The file format is invalid</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_STATUS_NOT_AVAILABLE">
+			<summary>The instrument status is not available</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_ID_QUERY_FAILED">
+			<summary>Instrument ID query failed</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_RESET_FAILED">
+			<summary>Instrument reset failed</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_RESOURCE_UNKNOWN">
+			<summary>Insufficient location information or resource not present in the system.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_ALREADY_INITIALIZED">
+			<summary>The driver is already initialized</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_CANNOT_CHANGE_SIMULATION_STATE">
+			<summary>The simulation state cannot be changed.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_BADLY_FORMED_SELECTOR">
+			<summary>The repeated capability selector is badly-formed.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_INVALID_NUMBER_OF_LEVELS_IN_SELECTOR">
+			<summary>The number of levels in the selector is not valid for the repeated capability.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_INVALID_RANGE_IN_SELECTOR">
+			<summary>The range is not valid for the repeated capability.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_UNKNOWN_NAME_IN_SELECTOR">
+			<summary>Unknown name in selector.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.E_IVI_UNKNOWN_PHYSICAL_IDENTIFIER">
+			<summary>Unknown physical repeated capability selector.</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.S_IVI_NSUP_ID_QUERY">
+			<summary>Identification query not supported</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.S_IVI_NSUP_RESET">
+			<summary>Reset operation not supported</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.S_IVI_NSUP_SELF_TEST">
+			<summary>Self test operation not supported</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.S_IVI_NSUP_ERROR_QUERY">
+			<summary>Error query operation not supported</summary>
+		</member>
+		<member name="F:Ivi.Driver.Interop.IviDriver_ErrorCodes.S_IVI_NSUP_REV_QUERY">
+			<summary>Revision query not supported</summary>
+		</member>
+	</members>
+</doc>

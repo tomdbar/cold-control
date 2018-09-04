@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'WX218xLib'
+		'WX218x.dll'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

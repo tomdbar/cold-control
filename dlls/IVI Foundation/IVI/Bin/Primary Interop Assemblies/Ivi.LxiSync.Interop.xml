@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<doc>
+  <assembly>
+    <name>Ivi.LxiSync.Interop</name>
+  </assembly>
+  <members>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSync">
+      <summary>LxiSync root interface.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSync.Arm">
+      <summary>Pointer to the ILxiSyncArm interface.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSync.EventLog">
+      <summary>Pointer to the ILxiSyncEventLog interface.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSync.Events">
+      <summary>Pointer to the ILxiSyncEvents interface.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSync.Time">
+      <summary>Pointer to the ILxiSyncTime interface.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSync.Trigger">
+      <summary>Pointer to the ILxiSyncTrigger interface.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncArm">
+      <summary>LxiSync arm interface.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArm.Sources">
+      <summary>Pointer to the ILxiSyncArmSources interface.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArm.ArmCount">
+      <summary>Specifies the number of times the arm has to occur to complete the arm loop; that is, the number of arms that are accepted before the measurement must be initiated again.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArm.Delay">
+      <summary>Specifies the delay from when the arm logic satisfied until the waiting for trigger state is entered.  The units are seconds.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArm.Alarms">
+      <summary>Pointer to the ILxiSyncArmAlarms interface.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarm">
+      <summary>LxiSync arm alarm interface.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarm.Configure(System.Boolean,System.Double,System.Double,System.Double,System.Int32)">
+      <summary>This function configures the most commonly configured attributes of the arm alarm sub-system.</summary>
+      <param name="Enabled">Enables or disables the arm alarm.</param>
+      <param name="TimeSeconds">Specifies the seconds part of 1588 time. </param>
+      <param name="TimeFraction">Specifies the fractional part of 1588 time.</param>
+      <param name="Period">Specifies the period of the arm alarm.</param>
+      <param name="RepeatCount">Specifies the number of times to repeat the trigger at the period specified by the Arm Alarm Repeat Period attribute.</param>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarm.TimeSeconds">
+      <summary>Specifies the seconds portion of time at which the alarm will go off.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarm.TimeFraction">
+      <summary>Specifies the fractional portion of the time at which the alarm will go off.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarm.Period">
+      <summary>Specifies the period of the arm alarm in seconds; that is, the amount of time in seconds that transpire before the alarm repeats.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarm.RepeatCount">
+      <summary>Specifies the number of times to repeat the trigger at the period specified by the Arm Alarm Period attribute.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarm.Enabled">
+      <summary>Enables or disables the arm alarm.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms">
+      <summary>LxiSync repeated capability interface containing methods and properties that apply to all arm alarms defined for the device.  A particular arm alarm can be accessed using the Item property.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.DisableAll">
+      <summary>This function disables all arm alarms.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.Add(System.String)">
+      <summary>This function creates a new arm alarm</summary>
+      <param name="AlarmName">Specifies the name of the arm alarm to create.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.Remove(System.String)">
+      <summary>This function removes an arm alarm.</summary>
+      <param name="AlarmName">Specifies the name of the arm alarm to remove.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.RemoveAllCustomArmAlarms">
+      <summary>This function removes all of the custom arm alarms that were added using the Add Arm Alarm function.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.Count">
+      <summary>The number of available arm alarms.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.Item">
+      <summary>An interface reference pointer to the ILxiSyncArmAlarm interface which is selected by the alarm name.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.Item(System.String)">
+      <summary>An interface reference pointer to the ILxiSyncArmAlarm interface which is selected by the alarm name.</summary>
+      <param name="Name">The name of a alarm. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.get_Item(System.String)">
+      <summary>An interface reference pointer to the ILxiSyncArmAlarm interface which is selected by the alarm name.</summary>
+      <param name="Name">The name of a alarm. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+      <returns>An interface reference pointer to the ILxiSyncArmAlarm interface which is selected by the alarm name.</returns>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.Name">
+      <summary>The alarm name for a given index.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.Name(System.Int32)">
+      <summary>The alarm name for a given index.</summary>
+      <param name="Index">One based index into the collection of alarms.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmAlarms.get_Name(System.Int32)">
+      <summary>The alarm name for a given index.</summary>
+      <param name="Index">One based index into the collection of alarms.</param>
+      <returns>The alarm name for a given index.</returns>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncArmSource">
+      <summary>LxiSync arm source interface.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmSource.Configure(System.Boolean,Ivi.LxiSync.Interop.IviLxiSyncArmSourceDetectionEnum)">
+      <summary>This function configures the most commonly configured attributes of the arm source sub-system.</summary>
+      <param name="Enabled">Enables or disables the arm source.</param>
+      <param name="Detection">Specifies the style of the arm source.</param>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmSource.Enabled">
+      <summary>Enables or disables the arm source.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmSource.Detection">
+      <summary>Specifies the style of arm source detection.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmSource.Filter">
+      <summary>Specifies a filter for restricting arm sources.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmSource.EventId">
+      <summary>Specifies the LAN event identifier that is associated with this arm source.  LAN Events with this identifier are accepted from  the source described in the filter.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncArmSources">
+      <summary>LxiSync repeated capability interface containing methods and properties that apply to all arm sources defined for the device.  A particular arm source can be accessed using the Item property.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.Add(System.String)">
+      <summary>This function creates a new arm source.</summary>
+      <param name="SourceName">Specifies the name of the arm source to create.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.Remove(System.String)">
+      <summary>This function removes an arm source.</summary>
+      <param name="SourceName">Specifies the name of the arm source to remove.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.DisableAll">
+      <summary>This function disables all arm sources.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.RemoveAllCustomArmSources">
+      <summary>This function removes all of the custom arm sources that were added using the Add Arm Source function.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.Count">
+      <summary>The number of sources.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.Item">
+      <summary>An interface reference pointer to the ILxiSyncArmSource interface which is selected by the source name.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.Item(System.String)">
+      <summary>An interface reference pointer to the ILxiSyncArmSource interface which is selected by the source name.</summary>
+      <param name="Name">The name of a source. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.get_Item(System.String)">
+      <summary>An interface reference pointer to the ILxiSyncArmSource interface which is selected by the source name.</summary>
+      <param name="Name">The name of a source. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+      <returns>An interface reference pointer to the ILxiSyncArmSource interface which is selected by the source name.</returns>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.Name">
+      <summary>The source name for a given index.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.Name(System.Int32)">
+      <summary>The source name for a given index.</summary>
+      <param name="Index">One based index into the collection of sources.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.get_Name(System.Int32)">
+      <summary>The source name for a given index.</summary>
+      <param name="Index">One based index into the collection of sources.</param>
+      <returns>The source name for a given index.</returns>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncArmSources.OrEnabled">
+      <summary>Enables or disables the OR-summing of the arm sources.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncEvent">
+      <summary>LxiSync event interface.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncEvent.Configure(Ivi.LxiSync.Interop.IviLxiSyncEventDriveModeEnum,System.String,System.String,Ivi.LxiSync.Interop.IviLxiSyncSourceSlopeEnum)">
+      <summary>This function configures the most commonly configured attributes of the event sub-system.</summary>
+      <param name="DriveMode">Specifies the mode of the event.</param>
+      <param name="Source">Specifies the signal which causes an event to be transmitted. </param>
+      <param name="DestinationPath">Specifies a list of places to send the event.</param>
+      <param name="Slope">Specifies the slope of the event signal.</param>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEvent.Source">
+      <summary>Specifies the signal which causes an event to be transmitted.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEvent.DestinationPath">
+      <summary>Specifies a list of places to send the event.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEvent.Slope">
+      <summary>Specifies the slope of the inbound event that will cause the generation of an outbound event.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEvent.DriveMode">
+      <summary>Specifies how this event is transmitted.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncEventLog">
+      <summary>LxiSync event log interface.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncEventLog.Clear">
+      <summary>This function removes all existing entries from the event log.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncEventLog.GetNextEntry">
+      <summary>This function retrieves and clears the oldest event log entry for the IVI session. </summary>
+      <returns />
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEventLog.EntryCount">
+      <summary>Returns the number of event log entries available.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEventLog.Enabled">
+      <summary>Enables or disables the event logging feature.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncEvents">
+      <summary>LxiSync repeated capability interface containing methods and properties that apply to all events defined for the device.  A particular event can be accessed using the Item property.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncEvents.DisableAll">
+      <summary>This function disables all events.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncEvents.Add(System.String)">
+      <summary>This function creates a new event.</summary>
+      <param name="EventName">Specifies the name of the event to create.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncEvents.Remove(System.String)">
+      <summary>This function removes an event.</summary>
+      <param name="EventName">Specifies the name of the event to remove.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncEvents.RemoveAllCustomEvents">
+      <summary>This function removes all of the custom events that were added using the Add Event function.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEvents.Count">
+      <summary>The number of available events.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEvents.Item">
+      <summary>An interface reference pointer to the ILxiSyncEvent interface which is selected by the event name.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEvents.Item(System.String)">
+      <summary>An interface reference pointer to the ILxiSyncEvent interface which is selected by the event name.</summary>
+      <param name="Name">The name of an event. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncEvents.get_Item(System.String)">
+      <summary>An interface reference pointer to the ILxiSyncEvent interface which is selected by the event name.</summary>
+      <param name="Name">The name of an event. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+      <returns>An interface reference pointer to the ILxiSyncEvent interface which is selected by the event name.</returns>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEvents.Name">
+      <summary>The event name for a given index.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEvents.Name(System.Int32)">
+      <summary>The event name for a given index.</summary>
+      <param name="Index">One based index into the collection of events.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncEvents.get_Name(System.Int32)">
+      <summary>The event name for a given index.</summary>
+      <param name="Index">One based index into the collection of events.</param>
+      <returns>The event name for a given index.</returns>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncEvents.WiredOrBiasMode">
+      <summary>Specifies whether the LXI device will serve as the wired-OR bias for specific LXI trigger bus lines.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncTime">
+      <summary>LxiSync time interface.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTime.GetSystemTime(System.Double@,System.Double@)">
+      <summary>This function retrieves the current 1588 time.</summary>
+      <param name="TimeSeconds">Indicates the seconds portion of the current 1588 time.</param>
+      <param name="TimeFractional">Indicates the fractional portion of the current 1588 time.</param>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTime.IsMaster">
+      <summary>Indicates if this device is the 1588 master.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTime.IsSynchronized">
+      <summary>Indicates if the device is synchronized.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncTrigger">
+      <summary>LxiSync trigger interface.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTrigger.Sources">
+      <summary>Pointer to the ILxiSyncTriggerSources interface.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTrigger.TriggerCount">
+      <summary>Specifies the number of times a trigger has to occur to complete a measurement; that is, the number of triggers that are accepted before the measurement must be armed again.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTrigger.Alarms">
+      <summary>Pointer to the ILxiSyncTriggerAlarms interface.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTrigger.TriggerSource">
+      <summary>Specifies which of the available trigger sources to use as the signal for triggering the device-specific operation (for example, a measurement).</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarm">
+      <summary>LxiSync trigger alarm interface.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarm.Configure(System.Double,System.Double,System.Double,System.Int32)">
+      <summary>This function configures the most commonly configured attributes of the trigger alarm sub-system.</summary>
+      <param name="TimeSeconds">Specifies the seconds part of 1588 time.</param>
+      <param name="TimeFraction">Specifies the fractional part of 1588 time.</param>
+      <param name="Period">Specifies the period of the trigger alarm.</param>
+      <param name="RepeatCount">Specifies the number of times to repeat the trigger at the period specified by the Trigger Alarm Repeat Period attribute.</param>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarm.Period">
+      <summary>Specifies the period of the trigger alarm in seconds; that is, the amount of time in seconds that transpire before the alarm repeats.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarm.RepeatCount">
+      <summary>Specifies the number of times to repeat the trigger at the period specified by the Trigger Alarm Period attribute.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarm.TimeFraction">
+      <summary>Specifies the fractional seconds portion of the time at which the alarm will go off.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarm.TimeSeconds">
+      <summary>Specifies the seconds portion of the time at which the alarm will go off.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarm.Enabled">
+      <summary>Enables or disables the trigger alarm.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms">
+      <summary>LxiSync repeated capability interface containing methods and properties that apply to all trigger alarms defined for the device.  A particular trigger alarm can be accessed using the Item property.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.Add(System.String)">
+      <summary>This function creates a new trigger alarm</summary>
+      <param name="AlarmName">Specifies the name of the trigger alarm to create.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.DisableAll">
+      <summary>This function disables all trigger alarms.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.Remove(System.String)">
+      <summary>This function removes a trigger alarm.</summary>
+      <param name="AlarmName">Specifies the name of the trigger alarm to remove.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.RemoveAllTriggerAlarms">
+      <summary>This function removes all of the trigger alarms that were added using the Add Trigger Alarm function.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.Count">
+      <summary>Returns the number of currently available trigger alarms.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.Item">
+      <summary>An interface reference pointer to the ILxiSyncTriggerAlarm interface which is selected by the alarm name.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.Item(System.String)">
+      <summary>An interface reference pointer to the ILxiSyncTriggerAlarm interface which is selected by the alarm name.</summary>
+      <param name="Name">The name of a alarm. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.get_Item(System.String)">
+      <summary>An interface reference pointer to the ILxiSyncTriggerAlarm interface which is selected by the alarm name.</summary>
+      <param name="Name">The name of a alarm. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+      <returns>An interface reference pointer to the ILxiSyncTriggerAlarm interface which is selected by the alarm name.</returns>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.Name">
+      <summary>Returns the physical repeated capability identifier defined by the specific driver for the trigger alarm that corresponds to the one-based index that the user specifies</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.Name(System.Int32)">
+      <summary>Returns the physical repeated capability identifier defined by the specific driver for the trigger alarm that corresponds to the one-based index that the user specifies</summary>
+      <param name="Index">One based index into the collection of alarms.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerAlarms.get_Name(System.Int32)">
+      <summary>Returns the physical repeated capability identifier defined by the specific driver for the trigger alarm that corresponds to the one-based index that the user specifies</summary>
+      <param name="Index">One based index into the collection of alarms.</param>
+      <returns>Returns the physical repeated capability identifier defined by the specific driver for the trigger alarm that corresponds to the one-based index that the user specifies</returns>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSource">
+      <summary>LxiSync trigger source interface.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSource.Configure(System.Double,Ivi.LxiSync.Interop.IviLxiSyncTriggerSourceDetectionEnum)">
+      <summary>This function configures the most commonly configured attributes of the trigger source sub-system.</summary>
+      <param name="Delay">Specifies the trigger source delay.  The units are seconds.  A negative value implies pre-trigger acquisition.</param>
+      <param name="Detection">Specifies the slope of the trigger source.</param>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSource.Delay">
+      <summary>Specifies the trigger source delay from when the trigger logic is satisfied until the device specific action (for instance a measurement) is triggered.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSource.Detection">
+      <summary>Specifies the slope of the trigger source.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSource.EventId">
+      <summary>Specifies the LAN event identifier that is associated with this trigger source.  </summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSource.Filter">
+      <summary>Specifies a filter for restricting trigger sources.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources">
+      <summary>LxiSync repeated capability interface containing methods and properties that apply to all trigger sources defined for the device.  A particular trigger source can be accessed using the Item property.</summary>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources.Add(System.String)">
+      <summary>This function creates a new trigger source.</summary>
+      <param name="SourceName">Specifies the name of the trigger source to create.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources.Remove(System.String)">
+      <summary>This function removes a trigger source.</summary>
+      <param name="SourceName">Specifies the name of the trigger source to remove.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources.RemoveAllCustomTriggerSources">
+      <summary>This function removes all of the custom trigger sources that were added using the Add Trigger Source function.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources.Count">
+      <summary>The number of sources.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources.Item">
+      <summary>An interface reference pointer to the ILxiSyncTriggerSource interface which is selected by the source name.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources.Item(System.String)">
+      <summary>An interface reference pointer to the ILxiSyncTriggerSource interface which is selected by the source name.</summary>
+      <param name="Name">The name of a source. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources.get_Item(System.String)">
+      <summary>An interface reference pointer to the ILxiSyncTriggerSource interface which is selected by the source name.</summary>
+      <param name="Name">The name of a source. It may be either a name returned by the Name property or a name mapped to a particular repeated capability in the session in the configuration store.</param>
+      <returns>An interface reference pointer to the ILxiSyncTriggerSource interface which is selected by the source name.</returns>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources.Name">
+      <summary>The source name for a given index.</summary>
+    </member>
+    <member name="P:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources.Name(System.Int32)">
+      <summary>The source name for a given index.</summary>
+      <param name="Index">One based index into the collection of sources.</param>
+    </member>
+    <member name="M:Ivi.LxiSync.Interop.IIviLxiSyncTriggerSources.get_Name(System.Int32)">
+      <summary>The source name for a given index.</summary>
+      <param name="Index">One based index into the collection of sources.</param>
+      <returns>The source name for a given index.</returns>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IviLxiSync">
+      <summary />
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IviLxiSyncArmAlarm">
+      <summary />
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IviLxiSyncArmSource">
+      <summary />
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IviLxiSyncTriggerAlarm">
+      <summary />
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IviLxiSyncTriggerSource">
+      <summary />
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IviLxiSyncSourceSlopeEnum">
+      <summary>Defined values for the slope of the event that is inbound to the event subsystem that will cause the generation of an outbound event</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncSourceSlopeEnum.IviLxiSyncSourceSlopeRise">
+      <summary>The event will be transmitted with a rising edge.</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncSourceSlopeEnum.IviLxiSyncSourceSlopeFall">
+      <summary>The event will be transmitted with a falling edge.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IviLxiSyncArmSourceDetectionEnum">
+      <summary>Defined values for the style of arm source detection.</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncArmSourceDetectionEnum.IviLxiSyncArmSourceDetectionRise">
+      <summary>Configures the LXI device to arm on the rising edge of the arm source.</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncArmSourceDetectionEnum.IviLxiSyncArmSourceDetectionFall">
+      <summary>Configures the  LXI device  to arm on the falling edge of the arm source.</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncArmSourceDetectionEnum.IviLxiSyncArmSourceDetectionHigh">
+      <summary>Configures the LXI device to arm while the arm source is high, that is, while it remains true.</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncArmSourceDetectionEnum.IviLxiSyncArmSourceDetectionLow">
+      <summary>Configures the LXI device to arm while the arm source is low, that is, while it remains false.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IviLxiSyncEventDriveModeEnum">
+      <summary>Event driver mode.</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncEventDriveModeEnum.IviLxiSyncEventDriveModeDriven">
+      <summary>Enables the event in driven mode.</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncEventDriveModeEnum.IviLxiSyncEventDriveModeOff">
+      <summary>Disables the event.</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncEventDriveModeEnum.IviLxiSyncEventDriveModeWiredOr">
+      <summary>Enables the event in wired-OR mode.</summary>
+    </member>
+    <member name="T:Ivi.LxiSync.Interop.IviLxiSyncTriggerSourceDetectionEnum">
+      <summary>Defined values for the Trigger Source attribute.</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncTriggerSourceDetectionEnum.IviLxiSyncTriggerSourceDetectionRise">
+      <summary>Configures the LXI device to trigger on the rising edge of the trigger source.</summary>
+    </member>
+    <member name="F:Ivi.LxiSync.Interop.IviLxiSyncTriggerSourceDetectionEnum.IviLxiSyncTriggerSourceDetectionFall">
+      <summary>Configures the LXI device to trigger on the falling edge of the trigger source.</summary>
+    </member>
+  </members>
+</doc>

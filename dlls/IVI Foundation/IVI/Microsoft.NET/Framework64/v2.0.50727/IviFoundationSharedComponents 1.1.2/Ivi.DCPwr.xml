@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivi.DCPwr</name>
+    </assembly>
+    <members>
+        <member name="T:Ivi.DCPwr.Errors">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.Errors.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.Errors.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Ivi.DCPwr.IIviDCPwr">
+            <summary>
+            IviDCPwr class-compliant root interface
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwr.Outputs">
+            <summary>
+            A reference to the IIviDCPwrOutputs interface
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwr.Trigger">
+            <summary>
+            A reference to the IIviDCPwrTrigger interface
+            </summary>
+        </member>
+        <member name="T:Ivi.DCPwr.IIviDCPwrOutput">
+            <summary>
+            IviDCPwr class-compliant IIviDCPwrOutputs collection interface
+            </summary>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrOutput.ConfigureCurrentLimit(Ivi.DCPwr.CurrentLimitBehavior,System.Double)">
+            <summary>
+            Configures the output current limit value and the behavior of the power supply when the output current
+            is greater than or equal to that value.
+            </summary>
+            <param name="behavior">The behavior of the power supply when the  output current is greater than or
+            equal to the value of the Limit parameter.  Refer to the CurrentLimitBehavior property for details.</param>
+            <param name="limit">The power supply's output current limit.  Refer to the CurrentLimit property for
+            details.</param>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrOutput.ConfigureRange(Ivi.DCPwr.RangeType,System.Double)">
+            <summary>
+            Configures the power supply's output range on an output.  Setting a voltage range can invalidate a previously
+            configured current range.  Setting a current range can invalidate a previously configured voltage range.
+            </summary>
+            <param name="rangeType">The kind of range to be configured, either Current or Voltage.</param>
+            <param name="range">The range in which the power supply operates.  This value is coerced to the closest value
+            the instrument supports that is greater than or equal to the value specified.</param>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrOutput.ConfigureOvp(System.Boolean,System.Double)">
+            <summary>
+            Configures the over-voltage limit and the behavior of the power supply when the output voltage is greater
+            than or equal to the limit.
+            </summary>
+            <param name="enabled">The behavior of the power supply when the ouptut voltage is greater than or
+            equal to the value of the Limit parameter.   When the Enabled parameter is False, the Limit parameter does
+            not affect the instrument's behavior, and the driver does not set the OVPLimit property.  Refer to the
+            OVPEnabled property for details.</param>
+            <param name="limit">The power supply's over-voltage protection limit. Refer to the OVPLimit property.</param>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrOutput.Measure(Ivi.DCPwr.MeasurementType)">
+            <summary>
+            Takes a measurement on the output signal and returns the measured value.
+            </summary>
+            <param name="measurementType">The type of measurement to take, either Current or Volatge</param>
+            <returns>The measured value.</returns>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrOutput.QueryCurrentLimitMax(System.Double)">
+            <summary>
+            Returns the maximum programmable current limit that the power supply accepts for a particular voltage
+            level on an output.
+            </summary>
+            <param name="voltageLevel">The voltage level for which to determine the maximum programmable current limit.</param>
+            <returns>The maximum programmable current limit for the specified voltage level.</returns>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrOutput.QueryState(Ivi.DCPwr.OutputState)">
+            <summary>
+            Returns true if the power supply is in the state indicated by the outputState parameter.
+            </summary>
+            <param name="outputState">The output state for which to query.</param>
+            <returns>Returns true if the power supply is in the state indicated by the outputState parameter,
+            and False if it is not.</returns>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrOutput.QueryVoltageLevelMax(System.Double)">
+            <summary>
+            Returns the maximum programmable voltage level that the power supply accepts for a particular current limit
+            on an output.
+            </summary>
+            <param name="currentLimit">The current limit for which to determine the maximum programmable voltage level.</param>
+            <returns>Returns the maximum programmable voltage level for the specified current limit.</returns>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrOutput.ResetOutputProtection">
+            <summary>
+            Resets the power supply's output protection after an over-voltage or over-current condition occurs.
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwrOutput.CurrentLimit">
+            <summary>
+            The output current limit, in Amps.
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwrOutput.CurrentLimitBehavior">
+            <summary>
+            The behavior of the power supply when the output current is equal to or greater than the value of
+            the CurrentLimit property.
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwrOutput.Enabled">
+            <summary>
+            If true, the signal the power supply produces appears at the output connector.
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwrOutput.OvpLimit">
+            <summary>
+            The voltage the power supply allows, in Volts.
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwrOutput.OvpEnabled">
+            <summary>
+            If True, the power supply disables the output when the output voltage is greater than or equal to the OVP limit.
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwrOutput.TriggerSource">
+            <summary>
+            The trigger source.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwrOutput.TriggeredCurrentLimit">
+            <summary>
+            The value to which the power supply sets the current limit after a trigger event occurs, in Amps.
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwrOutput.TriggeredVoltageLevel">
+            <summary>
+            The value to  which the power supply sets the voltage level after a trigger event occurs, in Volts.
+            </summary>
+        </member>
+        <member name="P:Ivi.DCPwr.IIviDCPwrOutput.VoltageLevel">
+            <summary>
+            The voltage level the DC power supply attempts to generate, in Volts.
+            </summary>
+        </member>
+        <member name="T:Ivi.DCPwr.IIviDCPwrOutputCollection">
+            <summary>
+            IviDCPwr class-compliant IIviDCPwrOutputs collection interface
+            </summary>
+        </member>
+        <member name="T:Ivi.DCPwr.IIviDCPwrTrigger">
+            <summary>
+            IviDCPwr class-compliant IIviDCPwrTrigger interface
+            </summary>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrTrigger.Abort">
+            <summary>
+            Returns the power supply to the ignore triggers state if the power supply is currently waiting for a
+            trigger to change the output signal.  If the power supply is not waiting for a trigger, this method does
+            nothing.
+            </summary>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrTrigger.Initiate">
+            <summary>
+            Causes the power supply to wait for a trigger if the power supply is not currently waiting for a trigger.
+            If the power supply is already waiting for a trigger, this method does nothing
+            </summary>
+        </member>
+        <member name="M:Ivi.DCPwr.IIviDCPwrTrigger.SendSoftwareTrigger">
+            <summary>
+            Supplies a trigger signal when the IIviDCPwrOutput.TriggerSource property is set to a software trigger.
+            </summary>
+        </member>
+        <member name="T:Ivi.DCPwr.CurrentLimitBehavior">
+            <summary>
+            IviDCPwr class-compliant values for current limit behavior.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.CurrentLimitBehavior.Regulate">
+            <summary>
+            Output voltage is restricted such that the output current is not greater than the value of the Current Limit property.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.CurrentLimitBehavior.Trip">
+            <summary>
+            When the output current is equal to or greater than the value of the Current Limit property, the output is disabled.
+            </summary>
+        </member>
+        <member name="T:Ivi.DCPwr.IviDCPwr">
+            <summary>
+            The IviDCPwr class allows clients to create instances of drivers that implement the class-compliant
+            IviDCPwr interfaces, based on information in the IVI configuration store.  This allows clients to
+            interchange IVI.NET class-compliant IviDCPwr drivers without modifying or rebuilding the client program
+            source code.
+            </summary>
+        </member>
+        <member name="M:Ivi.DCPwr.IviDCPwr.Create(System.String)">
+            <summary>
+            Create an instance of an IviDCPwr class-compliant driver and return an IIviDCPwr reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviDCPwr driver to be created.</param>
+            <returns>
+            An IIviDCPwr interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.DCPwr.IviDCPwr.Create(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Create an instance of an IviDCPwr class-compliant driver and return an IIviDCPwr reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviDCPwr driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <returns>
+            An IIviDCPwr interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.DCPwr.IviDCPwr.Create(System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Create an instance of an IviDCPwr class-compliant driver and return an IIviDCPwr reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviDCPwr driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviDCPwr interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="M:Ivi.DCPwr.IviDCPwr.Create(System.String,System.Boolean,System.Boolean,Ivi.Driver.LockType,System.String,System.String)">
+            <summary>
+            Create an instance of an IviDCPwr class-compliant driver and return an IIviDCPwr reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviDCPwr driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="lockType">Specifies whether to use .NET AppDomain-wide locking or machine-wide locking.</param>
+            <param name="accessKey">Specifies a user-selectable access key to identify the lock.  Driver instances 
+            that are created with the same accessKey will be protected from simultaneous access by multiple threads 
+            within a process or across processes, depending upon the value of the lockType parameter. </param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviDCPwr interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="T:Ivi.DCPwr.MeasurementType">
+            <summary>
+            IviDCPwr class-compliant values measurement type.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.MeasurementType.Current">
+            <summary>
+            Current is measured.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.MeasurementType.Voltage">
+            <summary>
+            Voltage is measured.
+            </summary>
+        </member>
+        <member name="T:Ivi.DCPwr.OutputState">
+            <summary>
+            IviDCPwr class-compliant values for output state.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.OutputState.ConstantVoltage">
+            <summary>
+            A constant voltage condition.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.OutputState.ConstantCurrent">
+            <summary>
+            A constant current condition.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.OutputState.OverVoltage">
+            <summary>
+            An over-voltage condition.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.OutputState.OverCurrent">
+            <summary>
+            An over-current condition.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.OutputState.Unregulated">
+            <summary>
+            An unregulated condition.
+            </summary>
+        </member>
+        <member name="T:Ivi.DCPwr.RangeType">
+            <summary>
+            IviDCPwr class-compliant values for the range type.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.RangeType.Current">
+            <summary>
+            Current range.
+            </summary>
+        </member>
+        <member name="F:Ivi.DCPwr.RangeType.Voltage">
+            <summary>
+            Voltage range.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,26 @@
+HKCR
+{
+	WX218x.WX218x.1 = s 'WX218x Class'
+	{
+		CLSID = s '{185d62a6-86bc-4b0d-8fef-f35f0a0fc943}'
+	}
+	WX218x.WX218x = s 'WX218x Class'
+	{
+		CLSID = s '{185d62a6-86bc-4b0d-8fef-f35f0a0fc943}'
+		CurVer = s 'WX218x.WX218x.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {185d62a6-86bc-4b0d-8fef-f35f0a0fc943} = s 'WX218x Class'
+		{
+			ProgID = s 'WX218x.WX218x.1'
+			VersionIndependentProgID = s 'WX218x.WX218x'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{eb5ffd1f-180b-400e-9fed-46af13b65982}'
+		}
+	}
+}

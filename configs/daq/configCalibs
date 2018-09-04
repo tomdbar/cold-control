@@ -1,0 +1,121 @@
+[DAQ cards]
+[[master]]
+channels = 0, 1, 2, 3, 4, 5, 6, 7
+card number = 0
+[[slaves]]
+[[[1]]]
+channels = 8, 9, 10, 11, 12, 13, 14, 15
+card number = 1
+[DAQ channels]
+[[0]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_upper_freq.txt
+chNum = 0
+default value = 6.464
+chName = Cool upper - freq
+chLimits = 0, 10
+[[1]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_lower_freq.txt
+chNum = 1
+default value = 6.4728
+chName = Cool lower - freq
+chLimits = 0, 10
+[[2]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_center_freq.txt
+chNum = 2
+default value = 6.413
+chName = Cool center - freq
+chLimits = 0, 10
+[[3]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_repump_freq.txt
+chNum = 3
+default value = 2.051
+chName = Cool repump - freq
+chLimits = 0, 10
+[[4]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_upper_amp_at_102MHz.txt
+chNum = 4
+default value = 3.45787545788
+chName = Cool upper - amp
+chLimits = 0, 10
+[[5]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_lower_amp_at_102MHz.txt
+chNum = 5
+default value = 4.47863247863
+chName = Cool lower - amp
+chLimits = 0, 10
+[[6]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_center_amp_at_102MHz.txt
+chNum = 6
+default value = 6.34920634921
+chName = Cool center - amp
+chLimits = 0, 10
+[[7]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\cool_repump_amp_at_78.5MHz.txt
+chNum = 7
+default value = 5.06471306471
+chName = Cool repump - amp
+chLimits = 0, 10
+[[8]]
+UIvisible = True
+calibrationFname = ""
+chNum = 8
+default value = 0
+chName = 8
+chLimits = -10, 10
+[[9]]
+UIvisible = True
+calibrationFname = ""
+chNum = 9
+default value = 0
+chName = 9
+chLimits = -10, 10
+[[10]]
+UIvisible = True
+calibrationFname = ""
+chNum = 10
+default value = 0
+chName = 10
+chLimits = -10, 10
+[[11]]
+UIvisible = True
+calibrationFname = ""
+chNum = 11
+default value = 0
+chName = 11
+chLimits = -10, 10
+[[12]]
+UIvisible = True
+calibrationFname = ""
+chNum = 12
+default value = 0
+chName = 12
+chLimits = -10, 10
+[[13]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\abs_imaging_freq.txt
+chNum = 13
+default value = 7.3553
+chName = Abs imaging - freq
+chLimits = 0, 10
+[[14]]
+UIvisible = True
+calibrationFname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\calibrations\abs_imaging_amp_at_107.25MHz.txt
+chNum = 14
+default value = 1.823
+chName = Abs imaging - amp
+chLimits = 0, 10
+[[15]]
+UIvisible = True
+calibrationFname = ""
+chNum = 15
+default value = 0
+chName = Camera trigger
+chLimits = -10, 10

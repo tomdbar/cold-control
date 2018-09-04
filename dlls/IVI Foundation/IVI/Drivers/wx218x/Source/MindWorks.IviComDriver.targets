@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+///////////////////////////////////////////////////////////////////////////////
+//
+//	LEGAL NOTICE
+//
+//	This software file in any form is licensed, not sold, to you for use only
+//	under the terms of a license from Pacific MindWorks, Inc. available at
+//	http://www.pacificmindworks.com/legal/license/NimbusExpress plus other
+//	licenses from licensees and licensors to Pacific MindWorks, Inc. who retains
+//	ownership of this software. Removal of this notice in any copy is a violation
+//	of your license to use this software.
+//
+//	© 2011 Pacific MindWorks, Inc.
+//
+///////////////////////////////////////////////////////////////////////////////
+-->
+
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Import tasks -->  
+	<UsingTask AssemblyFile="$([MSBuild]::Unescape('$(NimbusBuildToolsFolder)'))$(NimbusBuildToolName)" TaskName="MindWorks.Nimbus.BuildTool.InstallConfigurationToDefaultMaster" />
+  <UsingTask AssemblyFile="$([MSBuild]::Unescape('$(NimbusBuildToolsFolder)'))$(NimbusBuildToolName)" TaskName="MindWorks.Nimbus.BuildTool.GenerateIviComDriverIntellisenseFile" />
+	<UsingTask AssemblyFile="$([MSBuild]::Unescape('$(NimbusBuildToolsFolder)'))$(NimbusBuildToolName)" TaskName="MindWorks.Nimbus.BuildTool.GenerateIviComDriverMatlabWrapper" />
+
+  <PropertyGroup>
+    <NimbusBuildToolName>NimbusBuildTool.exe</NimbusBuildToolName>
+		<DriverPiaFilePath>$(TargetDir)\$(DriverPiaNamespace).dll</DriverPiaFilePath>
+
+		<!-- If the key file is not found at the original path, look for the temporary Nimbus key in the project folder.  This should be the location on an end-user machine. -->
+		<DriverPiaKeyFilePath Condition="!Exists('$(DriverPiaKeyFilePath)')">$(ProjectDir)PubPrivNimbusTemp.snk</DriverPiaKeyFilePath>
+
+		<!-- First, look for the Nimbus project file in the folder where the solution exists.  This should be the location on a driver developer machine. -->
+    <NimbusProjFilePath Condition="Exists('$(SolutionDir)$(NimbusProjFileName)')">$(SolutionDir)$(NimbusProjFileName)</NimbusProjFilePath>
+
+    <!-- If not found in the solution folder, look for the Nimbus project file in the project folder.  This should be the location on an end-user machine. -->
+    <NimbusProjFilePath Condition="'$(NimbusProjFilePath)'=='' AND Exists('$(ProjectDir)$(NimbusProjFileName)')">$(ProjectDir)$(NimbusProjFileName)</NimbusProjFilePath>		
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<MachineProcessorArchitecture>$(registry:HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment@PROCESSOR_ARCHITECTURE)</MachineProcessorArchitecture>
+		<MachineIs32Bit>False</MachineIs32Bit>
+		<MachineIs32Bit Condition="'$(MachineProcessorArchitecture)'=='x86'">true</MachineIs32Bit>
+		<MachineIs64Bit>False</MachineIs64Bit>
+		<MachineIs64Bit Condition="'$(MachineProcessorArchitecture)'=='AMD64'">true</MachineIs64Bit>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!-- 
+			On 64-bit machines, this is the location of the 64-bit regsvr32, which is what we want to use.  On 32-bit machines, this is the location of the one and only 32-bit regsvr32. 
+		-->
+		<Regsvr32Path>C:\Windows\System32\regsvr32</Regsvr32Path>
+	</PropertyGroup>
+
+	<!-- 
+		We override the RegisterOutput target so that we can invoke the correct regsvr32.exe.  On 64-bit machines, there are two versions of regsvr32.exe.  The 64-bit one  
+		is in the Windows\System32 folder, while the 32-bit one is in the Windows\SysWOW64.  By default, VS invokes the 32-bit one which will not properly register a 
+		a 64-bit driver.  But, if we invoke the 64-bit regsvr32, then it's "smart" in that it looks to see if the DLL is 32-bit or 64-bit and registers the DLL in the
+		proper hive accordingly.  On 32-bit machines, we only run the RegisterOutput target for 32-bit builds, since there is only a single 32-bit regsvr32.exe and it 
+		is located in Windows\System32.
+	-->
+	<Target Name="RegisterOutput" Condition="'$(EmbedManifest)'=='true' and '$(LinkSkippedExecution)' != 'true' and ('$(MachineIs64Bit)'=='true' or '$(Platform)'=='Win32')">
+		<Exec Command="$(Regsvr32Path) /s &quot;%(Link.OutputFile)&quot;" Condition="'$(ConfigurationType)'=='DynamicLibrary' and '%(Link.RegisterOutput)'=='true' and '%(Link.PerUserRedirection)'!='true'" ContinueOnError="true">
+			<Output TaskParameter="ExitCode" PropertyName="_RegisterOutputExitCode" />
+		</Exec>
+		<Exec Command="$(Regsvr32Path) /s /n /i:user &quot;%(Link.OutputFile)&quot;" Condition="'$(ConfigurationType)'=='DynamicLibrary' and '%(Link.RegisterOutput)'=='true' and '%(Link.PerUserRedirection)'=='true'" ContinueOnError="true">
+			<Output TaskParameter="ExitCode" PropertyName="_RegisterOutputExitCode" />
+		</Exec>
+		<VCMessage Code="MSB8011" Type="Error" Condition="'$(_RegisterOutputExitCode)' != '' and '$(_RegisterOutputExitCode)' != '0'" />
+	</Target>
+
+	<Target
+		Name="TlbImp"
+		Condition="$(BuildingProject)"
+    DependsOnTargets="CopyFilesToOutputDirectory"
+		AfterTargets="CopyFilesToOutputDirectory">
+
+    <PropertyGroup>
+			<DelaySignFlag Condition="'$(DelaySignDriverPia)'=='True'">/delay</DelaySignFlag>
+			<KeyFileFlag>/keyfile</KeyFileFlag>
+			<KeyFileFlag Condition="'$(DelaySignDriverPia)'=='True'">/publickey</KeyFileFlag>
+    </PropertyGroup>
+    
+    <!-- Note the use of the the .NET 3.5 SDK version of tlbimp.  This ensures the resulting interop assembly targets the .NET 2.0 runtime. -->
+    <Exec Command="&quot;$(SDK35ToolsPath)tlbimp.exe&quot; &quot;$(TargetPath)&quot; /namespace:$(DriverPiaNamespace) &quot;/out:$(DriverPiaFilePath)&quot; $(KeyFileFlag):&quot;$(DriverPiaKeyFilePath)&quot; $(DelaySignFlag) /primary /asmversion:$(DriverVersion) /machine:$(PlatformShortName.Replace(&quot;amd&quot;, &quot;x&quot;))"/>
+  </Target>
+
+	<Target
+		Name="IviConfigStore"
+		Condition="$(BuildingProject)"
+    DependsOnTargets="TlbImp"
+		AfterTargets="TlbImp">
+
+		<InstallConfigurationToDefaultMaster
+			Condition="Exists('$(ProjectDir)ConfigStore.xml')"
+			ConfigStoreFilePath="$(ProjectDir)ConfigStore.xml"/>
+
+	</Target>
+
+	<Target
+    Name="MATLAB"
+    Condition="$(BuildingProject) AND '$(MatlabWrapperEnabled)'=='True'"
+    DependsOnTargets="TlbImp"
+    AfterTargets="TlbImp">
+
+    <GenerateIviComDriverMatlabWrapper
+			Condition="Exists('$(NimbusProjFilePath)')"
+      NimbusProjectFilePath="$(NimbusProjFilePath)"
+			OutputFolder="$(TargetDir)MATLAB"/>
+
+  </Target>
+
+	<Target
+    Name="IntelliSenseFile"
+    Condition="$(BuildingProject)"
+    DependsOnTargets="TlbImp"
+    AfterTargets="TlbImp">
+
+		<GenerateIviComDriverIntellisenseFile
+			Condition="Exists('$(NimbusProjFilePath)')"
+      NimbusProjectFilePath="$(NimbusProjFilePath)"
+			OutputFolder="$(TargetDir)"/>
+
+	</Target>
+
+</Project>

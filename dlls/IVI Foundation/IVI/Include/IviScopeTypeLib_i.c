@@ -1,0 +1,121 @@
+
+
+/* this ALWAYS GENERATED file contains the IIDs and CLSIDs */
+
+/* link this file in with the server and any clients */
+
+
+ /* File created by MIDL compiler version 8.00.0603 */
+/* at Tue Jun 28 13:59:18 2016
+ */
+/* Compiler settings for IviScopeTypeLib.idl:
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0603 
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/
+/* @@MIDL_FILE_HEADING(  ) */
+
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
+
+
+#ifdef __cplusplus
+extern "C"{
+#endif 
+
+
+#include <rpc.h>
+#include <rpcndr.h>
+
+#ifdef _MIDL_USE_GUIDDEF_
+
+#ifndef INITGUID
+#define INITGUID
+#include <guiddef.h>
+#undef INITGUID
+#else
+#include <guiddef.h>
+#endif
+
+#define MIDL_DEFINE_GUID(type,name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) \
+        DEFINE_GUID(name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8)
+
+#else // !_MIDL_USE_GUIDDEF_
+
+#ifndef __IID_DEFINED__
+#define __IID_DEFINED__
+
+typedef struct _IID
+{
+    unsigned long x;
+    unsigned short s1;
+    unsigned short s2;
+    unsigned char  c[8];
+} IID;
+
+#endif // __IID_DEFINED__
+
+#ifndef CLSID_DEFINED
+#define CLSID_DEFINED
+typedef IID CLSID;
+#endif // CLSID_DEFINED
+
+#define MIDL_DEFINE_GUID(type,name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) \
+        const type name = {l,w1,w2,{b1,b2,b3,b4,b5,b6,b7,b8}}
+
+#endif !_MIDL_USE_GUIDDEF_
+
+MIDL_DEFINE_GUID(IID, LIBID_IviScopeLib,0x47ed5124,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScope,0x47ed524c,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeAcquisition,0x47ed524d,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeChannels,0x47ed524e,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeChannel,0x47ed524f,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeReferenceLevel,0x47ed5250,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeMeasurements,0x47ed5251,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeMeasurement,0x47ed5252,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeTrigger,0x47ed5253,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeTriggerAcLine,0x47ed5254,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeTriggerEdge,0x47ed5255,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeTriggerGlitch,0x47ed5256,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeTriggerRunt,0x47ed5257,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeTriggerTv,0x47ed5258,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+
+MIDL_DEFINE_GUID(IID, IID_IIviScopeTriggerWidth,0x47ed5259,0xa398,0x11d4,0xba,0x58,0x00,0x00,0x64,0x65,0x73,0x74);
+
+#undef MIDL_DEFINE_GUID
+
+#ifdef __cplusplus
+}
+#endif
+
+
+

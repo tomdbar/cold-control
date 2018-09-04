@@ -1,0 +1,606 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivi.Dmm</name>
+    </assembly>
+    <members>
+        <member name="T:Ivi.Dmm.Auto">
+            <summary>IVI Dmm values for automatic mode of operation.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.Auto.Off">
+            <summary>
+            Specifies that the Dmm set automatic value selection off.
+            </summary>
+        </member>
+        <member name="F:Ivi.Dmm.Auto.On">
+            <summary>
+            Specifies that the Dmm set automatic value selection on.
+            </summary>
+        </member>
+        <member name="F:Ivi.Dmm.Auto.Once">
+            <summary>
+            Specifies that the Dmm automatically select the value once, and then set automatic value selection off.
+            </summary>
+        </member>
+        <member name="T:Ivi.Dmm.ApertureTimeUnits">
+            <summary>IVI DMM class-compliant values for aperture time units.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ApertureTimeUnits.Seconds">
+            <summary>Specifies seconds for aperture time units.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ApertureTimeUnits.PowerlineCycles">
+            <summary>Specifies powerline cycles for aperture time units.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.Errors">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Ivi.Dmm.Errors.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Ivi.Dmm.Errors.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Ivi.Dmm.IviDmm">
+            <summary>
+            The IviDmm class allows clients to create instances of drivers that implement the class-compliant
+            IviDmm interfaces, based on information in the IVI configuration store.  This allows clients to
+            interchange IVI.NET class-compliant IviDmm drivers without modifying or rebuilding the client program
+            source code.
+            </summary>
+        </member>
+        <member name="M:Ivi.Dmm.IviDmm.Create(System.String)">
+            <summary>
+            Create an instance of an IviDmm class-compliant driver and return an IIviDmm reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviDmm driver to be created.</param>
+            <returns>
+            An IIviDmm interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.Dmm.IviDmm.Create(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Create an instance of an IviDmm class-compliant driver and return an IIviDmm reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery and reset parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviDmm driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <returns>
+            An IIviDmm interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+        </member>
+        <member name="M:Ivi.Dmm.IviDmm.Create(System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Create an instance of an IviDmm class-compliant driver and return an IIviDmm reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviDmm driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviDmm interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="M:Ivi.Dmm.IviDmm.Create(System.String,System.Boolean,System.Boolean,Ivi.Driver.LockType,System.String,System.String)">
+            <summary>
+            Create an instance of an IviDmm class-compliant driver and return an IIviDmm reference to the
+            caller.  The creation process uses the IVI configuration store to map a logical name or driver session
+            name to the main driver class of the corresponding specific driver.  The driver is initialized using
+            information from the IVI configuration store and the idQuery, reset, and options parameters.
+            </summary>
+            <param name="name">An IVI configuration store logical name or driver session name that refers to the
+            IVI.NET class-compliant IviDmm driver to be created.</param>
+            <param name="idQuery">If true, verify the ID of the instrument.</param>
+            <param name="reset">If true, reset the instrument.</param>
+            <param name="lockType">Specifies whether to use .NET AppDomain-wide locking or machine-wide locking.</param>
+            <param name="accessKey">Specifies a user-selectable access key to identify the lock.  Driver instances 
+            that are created with the same accessKey will be protected from simultaneous access by multiple threads 
+            within a process or across processes, depending upon the value of the lockType parameter. </param>
+            <param name="options">A comma-separated list of option assignments.  An options assignment has the form
+            "OptionName=Value", where OptionName is one of: 'Cache', 'InterchangeCheck', 'QueryInstrStatus',
+            'RangeCheck', 'RecordCoercions', 'Simulate', or 'DriverSetup'.  With the exception of DriverSetup, all
+            of the options accept values of 'true' or 'false'.  'DriverSetup' is a string, and must be last in the
+            list.  The method assumes that everything following 'DriverSetup=' is part of the assignment.  The
+            DriverSetup string is meaningful only to the specific driver being instantiated.
+            </param>
+            <returns>
+            An IIviDmm interface reference for the specific driver that is referred to by the provided IVI
+            configuration store logical name or driver session name.
+            </returns>
+            <remarks>
+            Examples of legal values for the options parameter are:
+            <para>*  ""</para>
+            <para>*  "Simulate=true"</para>
+            <para>*  "Simulate=true,Cache=false,QueryInstrStatus=false"</para>
+            <para>*  "Simulate=true,Cache=false,DriverSetup=Trace=false"</para>
+            <para>Note that 'Simulate', 'Cache', and 'QueryInstrStatus' are standard IVI features, while
+            'Trace=false' is meaningful only to the specific driver being instantiated.</para>
+            </remarks>
+        </member>
+        <member name="T:Ivi.Dmm.MeasurementFunction">
+            <summary>IVI DMM class-compliant values for Function</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.DCVolts">
+            <summary>Specifies that the Dmm measure DC voltage.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.ACVolts">
+            <summary>Specifies that the Dmm measure AC voltage.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.DCCurrent">
+            <summary>Specifies that the Dmm measure DC current.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.ACCurrent">
+            <summary>Specifies that the Dmm measure AC current.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.TwoWireResistance">
+            <summary>Specifies that the Dmm measure 2-wire resistance.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.FourWireResistance">
+            <summary>Specifies that the Dmm measure 4-wire resistance.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.ACPlusDCVolts">
+            <summary>Specifies that the Dmm measure AC plus DC voltage.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.ACPlusDCCurrent">
+            <summary>Specifies that the Dmm measure AC plus DC current.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.Frequency">
+            <summary>Specifies that the Dmm measure frequency.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.Period">
+            <summary>Specifies that the Dmm measure period.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.MeasurementFunction.Temperature">
+            <summary>Specifies that the Dmm measure temperature.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmm">
+            <summary>IVI DMM class-compliant root interface</summary>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmm.Configure(Ivi.Dmm.MeasurementFunction,System.Double,System.Double)">
+            <summary>Configures the Function, Range, and Resolution properties.</summary>
+            <param name="measurementFunction">Specifies the MeasurementFunction property. The units for the Range and Resolution
+            parameters, and the measurement values that are returned are implied by the selected function.  Measurement values
+            are returned by the Read, Read Multiple Point, Fetch, and Fetch Multiple Point methods.</param>
+            <param name="range">Specifies the Range property. It is coerced by the driver to the largest magnitude (positive or
+            negative) input value based on the rest of the instrument configuration.  Negative values are permitted if valid for
+            the specified function (for instance DC Volts). Units are determined by Function. AutoRange is set to Auto.Off.</param>
+            <param name="resolution">Specifies the Resolution property. Units are determined by Function.</param>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmm.Configure(Ivi.Dmm.MeasurementFunction,Ivi.Dmm.Auto,System.Double)">
+            <summary>Configures the Function, AutoRange, and Resolution properties.  If the value of the Auto Range parameter is 
+            'On', then the Resolution parameter is ignored.</summary>
+            <param name="measurementFunction">Specifies the MeasurementFunction property. The units for the Range and Resolution
+            parameters, and the measurement values that are returned are implied by the selected function.  Measurement values
+            are returned by the Read, Read Multiple Point, Fetch, and Fetch Multiple Point methods.</param>
+            <param name="autoRange">Specifies the AutoRange property. It indicates whether the range is set automatically by the instrument.
+            When autoRange is set to Off, the range selected is driver dependent. To control the resulting range, use the overload of
+            this function that includes the range.</param>
+            <param name="resolution">Specifies the Resolution property. Units are determined by Function.</param>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmm.MeasurementFunction">
+            <summary>The measurement function. This property determines the units for Range and Resolution and the values 
+            returned by the Read, Read Multiple Point, Fetch, and Fetch Multiple Point methods.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmm.Range">
+            <summary>The measurement range, coerced by the driver to the largest magnitude (positive or
+            negative) input value based on the rest of the 
+            instrument configuration.  Negative values are permitted if valid for the current function (for instance DC Volts). 
+            Setting this property sets AutoRange to Auto.Off.  Units are determined by Function.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmm.AutoRange">
+            <summary>Indicates whether the range is set automatically by the instrument.When autoRange is set to Off, the range
+            selected is driver dependent. To control the resulting range, use the overload of this function that includes the range.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmm.Resolution">
+            <summary>The measurement resolution in absolute units. Units are determined by Function.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmm.AC">
+            <summary>Reference to the class-compliant IIviDmmAc interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmm.Advanced">
+            <summary>Reference to the class-compliant IIviDmmAdvanced interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmm.Frequency">
+            <summary>Reference to the class-compliant IIviDmmFrequency interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmm.Measurement">
+            <summary>Reference to the class-compliant IIviDmmMeasurement interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmm.Temperature">
+            <summary>Reference to the class-compliant IIviDmmTemperature interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmm.Trigger">
+            <summary>Reference to the class-compliant IIviDmmTrigger interface</summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmmAC">
+            <summary>IVI DMM class-compliant AC interface</summary>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmAC.ConfigureBandwidth(System.Double,System.Double)">
+            <summary>Configures the FrequencyMax and FrequencyMin properties for DMMs that take AC voltage or AC current 
+            measurements.</summary>
+            <param name="minFreq">Specifies the FrequencyMin property. It is the minimum frequency component of the input signal for AC measurements.</param>
+            <param name="maxFreq">Specifies the FrequencyMax property. It is the maximum frequency component of the input signal for AC measurements.</param>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmAC.FrequencyMax">
+            <summary>The maximum frequency component of the input signal for AC measurements.  The value of this property 
+            affects instrument behavior only when the Function property is set to an AC voltage or AC current measurement.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmAC.FrequencyMin">
+            <summary>The minimum frequency component of the input signal for AC measurements.  The value of this property 
+            affects instrument behavior only when the Function property is set to an AC voltage or AC current measurement.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmmAdvanced">
+            <summary>IVI DMM class-compliant advanced features interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmAdvanced.ApertureTime">
+            <summary>The measurement aperture time (also known as integration time) based on the present configuration. 
+            Units are specified by the property ApertureTimeUnits.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmAdvanced.ApertureTimeUnits">
+            <summary>Specifies whether the aperture time is express in seconds or powerline cycles.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmAdvanced.AutoZero">
+            <summary>The auto-zero mode.  When the auto-zero mode is 'On', the DMM internally disconnects the input 
+            signal and takes a Zero Reading. The DMM then subtracts the Zero Reading from the measurement.  If AutoZero
+            is 'Once', it configures the DMM to take a Zero Reading immediately. The DMM then subtracts this Zero
+            Reading from all subsequent values it measures.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmAdvanced.PowerlineFrequency">
+            <summary>The power line frequency in Hertz.  This property is used when ApertureTimeUnits is PowerlineCycles.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmmFrequency">
+            <summary>IVI DMM class-compliant frequency interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmFrequency.VoltageRange">
+            <summary>The expected maximum voltage level of the input signal for frequency and period measurements.  Setting this 
+            property sets Voltage Auto Range to Auto.Off.  Units are Volts RMS.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmFrequency.VoltageAutoRange">
+            <summary>Indicates whether the frequency voltage range is set automatically by the instrument.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmmMeasurement">
+            <summary>IVI DMM class-compliant measurement interface</summary>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.Abort">
+            <summary>Aborts a previously initiated measurement and returns the DMM to the idle state.</summary>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.Fetch(Ivi.Driver.PrecisionTimeSpan)">
+            <summary>Returns the measured value from a measurement that the Initiate method initiates.</summary>
+            <param name="maximumTime">The maximum time allowed for the measurement to complete.  If maxTime is PrecisionTimeSpan.Zero,
+            the measurement should only be returned if it is already available.  If maxTime is PrecisionTimeSpan.MaxValue, the 
+            measurement should wait until a measurement is available, with no timeout.</param>
+            <returns>The measured value.  Out of range testing may be performed by using the IsOutOfRange,
+            IsOverRange, or IsUnderRange methods.</returns>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.FetchMultiPoint(Ivi.Driver.PrecisionTimeSpan)">
+            <summary>Returns an array of values from a measurement that the Initiate method initiates.</summary>
+            <param name="maximumTime">The maximum time allowed for the measurement to complete.  If maxTime is PrecisionTimeSpan.Zero,
+            the measurement should only be returned if it is already available.  If maxTime is PrecisionTimeSpan.MaxValue, the 
+            measurement should wait until a measurement is available, with no timeout.</param>
+            <returns>An array of measured values.  The size of the array is the product of the trigger count and the
+            sample count.  Out of range testing may be performed by using the IsOutOfRange, IsOverRange, or IsUnderRange
+            methods.</returns>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.FetchMultiPoint(Ivi.Driver.PrecisionTimeSpan,System.Int32)">
+            <summary>Returns an array of values from a measurement that the Initiate method initiates.</summary>
+            <param name="maximumTime">The maximum time allowed for the measurement to complete.  If maxTime is PrecisionTimeSpan.Zero,
+            the measurement should only be returned if it is already available.  If maxTime is PrecisionTimeSpan.MaxValue, the 
+            measurement should wait until a measurement is available, with no timeout.</param>
+            <param name="numberOfMeasurements">The number of measurements to return, starting with the first measurement
+            from the instrument.</param>
+            <returns>An array of measured values.  The size of the array is the smaller of numberOfMeasurements or the
+            product of the trigger count and the sample count.  Out of range testing may be performed by using the
+            IsOutOfRange, IsOverRange, or IsUnderRange methods.</returns>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.Initiate">
+            <summary>Initiates a measurement. When this method executes, the DMM leaves the idle state and waits for a 
+            trigger.</summary>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.IsOutOfRange(System.Double)">
+            <summary>Takes a measurement value obtained from one of the Read or Fetch methods and determines if the
+            value is a valid measurement value or a value indicating that an out of range condition occurred.  Out of
+            range conditions include both over range and under range conditions.</summary>
+            <param name="measurementValue">Pass the measurement value you obtain from one of the Read or Fetch functions.</param>
+            <returns>True if the value is out of range, otherwise false.</returns>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.IsOverRange(System.Double)">
+            <summary>Takes a measurement value obtained from one of the Read or Fetch methods and determines if the
+            value is a valid measurement value or a value indicating that an over range condition occurred.</summary>
+            <param name="measurementValue">Pass the measurement value you obtain from one of the Read or Fetch functions.</param>
+            <returns>True if the value is over range, otherwise false.</returns>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.IsUnderRange(System.Double)">
+            <summary>Takes a measurement value obtained from one of the Read or Fetch methods and determines if the
+            value is a valid measurement value or a value indicating that an under range condition occurred.</summary>
+            <param name="measurementValue">Pass the measurement value you obtain from one of the Read or Fetch functions.</param>
+            <returns>True if the value is under range, otherwise false.</returns>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.Read(Ivi.Driver.PrecisionTimeSpan)">
+            <summary>Initiates a measurement, waits for the DMM to return to the idle state, and returns the measured
+            value.</summary>
+            <param name="maximumTime">The maximum time allowed for the measurement to complete. If maxTime is PrecisionTimeSpan.MaxValue, the 
+            measurement should wait until a measurement is available, with no timeout.</param>
+            <returns>The measured value.  Out of range testing may be performed by using the IsOutOfRange, IsOverRange,
+            or IsUnderRange methods.</returns>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.ReadMultiPoint(Ivi.Driver.PrecisionTimeSpan)">
+            <summary>Initiates a measurement, waits for the DMM to return to the idle state, and returns an array of 
+            values.</summary>
+            <param name="maximumTime">The maximum time allowed for the measurement to complete. If maxTime is PrecisionTimeSpan.MaxValue, the 
+            measurement should wait until a measurement is available, with no timeout.</param>
+            <returns>An array of measured values.  The size of the array is the product of the trigger count and the
+            sample count.  Out of range testing may be performed by using the IsOutOfRange, IsOverRange, or IsUnderRange
+            methods.</returns>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.ReadMultiPoint(Ivi.Driver.PrecisionTimeSpan,System.Int32)">
+            <summary>Initiates a measurement, waits for the DMM to return to the idle state, and returns an array of 
+            values.</summary>
+            <param name="maximumTime">The maximum time allowed for the measurement to complete. If maxTime is PrecisionTimeSpan.MaxValue, the 
+            measurement should wait until a measurement is available, with no timeout.</param>
+            <param name="numberOfMeasurements">The number of measurements to return, starting with the first measurement
+            from the instrument.</param>
+            <returns>An array of measured values.  The size of the array is the smaller of numberOfMeasurements or the
+            product of the trigger count and the sample count.  Out of range testing may be performed by using the
+            IsOutOfRange, IsOverRange, or IsUnderRange methods.</returns>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMeasurement.SendSoftwareTrigger">
+            <summary>Sends a software trigger, which causes the DMM to take a measurement. The IIviDmmTrigger.Source property must accept
+            Software Trigger as a valid setting for this method to work. If the IIviDmmTrigger.Source is not set to Software Trigger,
+            this method does nothing and throws TriggerNotSoftwareException.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmmMultiPoint">
+            <summary>IVI DMM class-compliant multipoint interface</summary>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmMultiPoint.Configure(System.Int32,System.Int32,System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>Configures multipoint TriggerCount, SampleCount, SampleTrigger and SampleInterval properties.</summary>
+            <param name="triggerCount">Specifies the TriggerCount property. It is the number of triggers the DMM accepts before it returns to the idle state.</param>
+            <param name="sampleCount">Specifies the SampleCount property. It is the number of measurements the DMM takes each time it receives a trigger.</param>
+            <param name="sampleTrigger">Specifies the SampleTrigger property. It is the sample trigger source. If the value of the Sample Count is greater than 1, the 
+            DMM enters the Wait-For-Sample-Trigger state after taking a single measurement. When the event specified by this 
+            parameter occurs, the DMM exits the Wait-For-Sample-Trigger state and takes the next measurement.</param>
+            <param name="sampleInterval">Specifies the SampleInterval property. It is the interval between samples in seconds.
+            Applies only when Sample Count is greater than 1 and Sample Trigger is Interval.</param>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmMultiPoint.TriggerCount">
+            <summary>The number of triggers the DMM accepts before it returns to the idle state.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmMultiPoint.SampleCount">
+            <summary>The number of measurements the DMM takes each time it receives a trigger.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmMultiPoint.SampleInterval">
+            <summary>The interval between samples in seconds. Applies only when Sample Count is greater than 1 and Sample 
+            Trigger is Interval.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmMultiPoint.SampleTrigger">
+            <summary>
+            The sample trigger source.  If the value of the Sample Count is greater than 1, the DMM enters the 
+            Wait-For-Sample-Trigger state after taking a single measurement.  When a sample trigger occurs, the DMM takes the 
+            next measurement.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmmRtd">
+            <summary>IVI DMM class-compliant RTD interface</summary>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmRtd.Configure(System.Double,System.Double)">
+            <summary>Configures the Alpha and Resistance parameters for a resistance temperature device.</summary>
+            <param name="alpha">Specifies the Alpha property. It is the alpha parameter for a resistance temperature device (RTD).</param>
+            <param name="resistance">Specifies the Resistance property. It is the R0 parameter (resistance) for a resistance temperature device (RTD) also known as 
+            the RTD reference value.</param>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmRtd.Alpha">
+            <summary>The alpha parameter for a resistance temperature device (RTD).  Applies only when the Temperature 
+            Transducer Type is set to 2 Wire RTD or 4 Wire RTD.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmRtd.Resistance">
+            <summary>The R0 parameter (resistance) for a resistance temperature device (RTD). Also known as the RTD reference 
+            value.  Applies only when the Temperature Transducer Type is set to 2 Wire RTD or 4 Wire RTD.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmmTemperature">
+            <summary>IVI DMM class-compliant temperature interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmTemperature.TransducerType">
+            <summary>The type of device used to measure the temperature. This property affects instrument behavior only when 
+            Function is set to a temperature measurement.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmTemperature.Rtd">
+            <summary>Reference to the class-compliant IIviDmmRtd interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmTemperature.Thermocouple">
+            <summary>Reference to the class-compliant IIviDmmThermocouple interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmTemperature.Thermistor">
+            <summary>Reference to the class-compliant IIviDmmThermistor interface</summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmmThermistor">
+            <summary>IVI DMM class-compliant thermistor interface</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmThermistor.Resistance">
+            <summary>The resistance of the thermistor in Ohms.  Applies only when the IIviDmmTemperature.TransducerType property 
+            is Thermistor.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmmThermocouple">
+            <summary>IVI DMM class-compliant thermocouple interface</summary>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmThermocouple.Configure(Ivi.Dmm.ThermocoupleType,Ivi.Dmm.ReferenceJunctionType)">
+            <summary>Configures the thermocouple Type and ReferenceJunctionType properties of a thermocouple.  Applies only when 
+            the IIviDmmTemperature.TransducerType is Thermocouple.</summary>
+            <param name="type">Specifies the Type property. It is the type of thermocouple used to measure the temperature.</param>
+            <param name="referenceJunctionType">Specifies the ReferenceJunctionType property. It is the type of reference junction used in the reference junction compensation.</param>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmThermocouple.FixedReferenceJunction">
+            <summary>The external reference junction temperature when a fixed reference junction thermocouple is used to 
+            measure temperature, or the thermocouple junction temperature of an instrument without an internal temperature 
+            sensor, in degrees Celsius.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmThermocouple.ReferenceJunctionType">
+            <summary>The type of reference junction to be used in the reference junction compensation of a thermocouple 
+            measurement. Applies only when the Temperature Transducer Type is Thermocouple.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmThermocouple.Type">
+            <summary>The type of thermocouple used to measure the temperature. Applies only when the IIviDmmTemperature.TransducerType 
+            is Thermocouple.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.IIviDmmTrigger">
+            <summary>IVI DMM class-compliant trigger interface</summary>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmTrigger.Configure(System.String,Ivi.Driver.PrecisionTimeSpan)">
+            <summary>Configures the trigger Source and Delay properties.</summary>
+            <param name="triggerSource">Specifies the Source property.</param>
+            <param name="triggerDelay">Specifies the Delay property. It is the interval between the time when the DMM receives the trigger and the time when 
+            it takes a measurement. Positive values set the trigger delay. Negative values do not have a special meaning 
+            but may be used to represent pre-trigger configurations. Auto Trigger Delay is set to Auto.Off.</param>
+        </member>
+        <member name="M:Ivi.Dmm.IIviDmmTrigger.Configure(System.String,System.Boolean)">
+            <summary>Configures the trigger Source and AutoDelay properties.</summary>
+            <param name="triggerSource">Specifies the Source property.</param>
+            <param name="autoTriggerDelay">Specifies the DelayAuto property. It indicates whether the range is set automatically by the instrument.  If set to 'Off', 
+            the driver Trigger Delay setting should stop at the current value selected by the algorithm.</param>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmTrigger.Slope">
+            <summary>The interval between the time when the DMM receives the trigger and the time when it takes a 
+            measurement. Positive values set the trigger delay in seconds. Negative values set auto delay mode.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmTrigger.Delay">
+            <summary>The interval between the time when the DMM receives the trigger and the time when it takes a 
+            measurement. Positive values set the trigger delay. Negative values do not have a special meaning but may 
+            be used to represent pre-trigger configurations. Setting this property sets AutoDelay to Auto.Off.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmTrigger.DelayAuto">
+            <summary>Indicates whether the trigger delay is set automatically by the instrument.</summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmTrigger.Source">
+            <summary>
+            The trigger source.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmTrigger.MeasurementCompleteDestination">
+            <summary>
+            The destination of the measurement-complete signal generated after each measurement.
+            [Refer to the instrument driver documentation for valid values, which may include
+            one or more of the standard values defined in Ivi.Driver.TriggerSource.]
+            </summary>
+        </member>
+        <member name="P:Ivi.Dmm.IIviDmmTrigger.MultiPoint">
+            <summary>Reference to the class-compliant IIviDmmMultipoint interface</summary>
+        </member>
+        <member name="T:Ivi.Dmm.ReferenceJunctionType">
+            <summary>IVI DMM class-compliant values for thermocouple ReferenceJunctionType</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ReferenceJunctionType.Fixed">
+            <summary>Specifies that the Dmm use a user-determined fixed value for the junction compensation.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ReferenceJunctionType.Internal">
+            <summary>Specifies that the Dmm use an internal sensor for the junction compensation.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.ThermocoupleType">
+            <summary>IVI DMM class-compliant values for thermocouple Type</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.B">
+            <summary>Specifies that the Dmm measure temperature using a type B thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.C">
+            <summary>Specifies that the Dmm measure temperature using a type C thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.D">
+            <summary>Specifies that the Dmm measure temperature using a type D thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.E">
+            <summary>Specifies that the Dmm measure temperature using a type E thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.G">
+            <summary>Specifies that the Dmm measure temperature using a type G thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.J">
+            <summary>Specifies that the Dmm measure temperature using a type J thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.K">
+            <summary>Specifies that the Dmm measure temperature using a type K thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.N">
+            <summary>Specifies that the Dmm measure temperature using a type N thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.R">
+            <summary>Specifies that the Dmm measure temperature using a type R thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.S">
+            <summary>Specifies that the Dmm measure temperature using a type S thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.T">
+            <summary>Specifies that the Dmm measure temperature using a type T thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.U">
+            <summary>Specifies that the Dmm measure temperature using a type U thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.ThermocoupleType.V">
+            <summary>Specifies that the Dmm measure temperature using a type V thermocouple.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.TransducerType">
+            <summary>IVI DMM class-compliant values for temperature TransducerType</summary>
+        </member>
+        <member name="F:Ivi.Dmm.TransducerType.Thermocouple">
+            <summary>Specifies that the Dmm measure temperature using a thermocouple.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.TransducerType.Thermistor">
+            <summary>Specifies that the Dmm measure temperature using a thermistor.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.TransducerType.TwoWireRtd">
+            <summary>Specifies that the Dmm measure temperature using a 2-wire resistive temperature device.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.TransducerType.FourWireRtd">
+            <summary>Specifies that the Dmm measure temperature using a 4-wire resistive temperature device.</summary>
+        </member>
+        <member name="T:Ivi.Dmm.Slope">
+            <summary>IVI Driver values for Slope.</summary>
+        </member>
+        <member name="F:Ivi.Dmm.Slope.Positive">
+            <summary>
+            Specifies positive slope.
+            </summary>
+        </member>
+        <member name="F:Ivi.Dmm.Slope.Negative">
+            <summary>
+            Specifies negative slope.
+            </summary>
+        </member>
+    </members>
+</doc>

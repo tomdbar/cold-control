@@ -1,0 +1,60 @@
+save_location = Z:/Results017_New/data
+summary_fname = automated_experiments_summary
+daq_channel_update_steps = 5
+daq_channel_update_delay = 1
+[experiments]
+[[0]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\0_0A_xBias
+[[1]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\0_25A_xBias
+[[2]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\0_5A_xBias
+[[3]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\0_75A_xBias
+[[4]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\1_0A_xBias
+[[5]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\1_25A_xBias
+[[6]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\1_5A_xBias
+[[7]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\1_75A_xBias
+[[8]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\2_0A_xBias
+[[9]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\2_25A_xBias
+[[10]]
+daq_channel_static_values = ,
+mot_reload = 500000
+iterations = 50
+sequence_fname = C:\Users\apc\Documents\Python Scripts\Cold Control Heavy\configs\sequence\photon production\F1 line\x bias scans\2_5A_xBias

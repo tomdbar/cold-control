@@ -1,0 +1,389 @@
+<doc>
+	<assembly>
+		<name>Ivi.Downconverter.Interop</name>
+	</assembly>
+	<members>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverter">
+			<summary>IviDownconverter class-compliant root interface.</summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverter.Initialize(System.String,System.Boolean,System.Boolean,System.String)">
+			<summary>Opens the I/O session to the instrument.  Driver methods and properties that access the instrument are only accessible after Initialize is called.  Initialize optionally performs a Reset and queries the instrument to validate the instrument model.</summary>
+			<param name="ResourceName">An IVI logical name or an instrument specific string that identifies the address of the instrument, such as a VISA resource descriptor string.</param>
+			<param name="IdQuery">Specifies whether to verify the ID of the instrument.</param>
+			<param name="Reset">Specifies whether to reset the instrument.</param>
+			<param name="OptionString">The user can use the OptionsString parameter to specify the initial values of certain IVI inherent attributes for the session. The format of an assignment in the OptionsString parameteris "Name=Value", where Name is one of: RangeCheck, QuerytInstrStatus, Cache, Simulate, RecordCoercions, InterchangeCheck,or DriverSetup. Value is either true or false except for DriverSetup. If the Options String parameter contains an assignment for the Driver Setup attribute, the Initialize function assumes that everything following "DriverSetup=" is part of the assignment.</param>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverter.Close">
+			<summary>Closes the I/O session to the instrument.  Driver methods and properties that access the instrument are not accessible after Close is called.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverter.DriverOperation">
+			<summary>Pointer to the IIviDriverOperation interface</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverter.Identity">
+			<summary>Pointer to the IIviDriverIdentity interface</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverter.Utility">
+			<summary>Pointer to the IIviDriverUtility interface</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverter.Initialized">
+			<summary>Initialized is True between a successful call to the Initialize method and a successful call to the Close method, and False at all other times.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverter.ReferenceOscillator">
+			<summary>Pointer to the class-compliant IIviDownconverterReferenceOscillator interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverter.RFInput">
+			<summary>Pointer to the class-compliant IIviDownconverterRFInput interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverter.IFOutput">
+			<summary>Pointer to the class-compliant IIviDownconverterIFOutput interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverter.ExternalLO">
+			<summary>Pointer to the class-compliant IIviDownconverterExternalLO interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverter.ExternalMixer">
+			<summary>Pointer to the class-compliant IIviDownconverterExternalMixer interface.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverterReferenceOscillator">
+			<summary>IviDownconverter class-compliant reference oscillator interface.</summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterReferenceOscillator.Configure(Ivi.Downconverter.Interop.IviDownconverterReferenceOscillatorSourceEnum,System.Double)">
+			<summary>Configures the downconverters reference oscillator.</summary>
+			<param name="Source">Specifies the source of the reference frequency signal. The driver uses this value to set the Reference Oscillator Source attribute. See the attribute description for more details.</param>
+			<param name="Frequency">Specifies the frequency of the external reference oscillator. This parameter is only used if the Source is set to External. The driver uses this value to set the Reference Oscillator Frequency attribute. See the attribute description for more details.</param>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterReferenceOscillator.ExternalFrequency">
+			<summary>Specifies the frequency of the external signal that is used as reference for internal IF frequency generation. This value is used only if Reference Oscillator Source is set to External. The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterReferenceOscillator.Source">
+			<summary>Specifies the reference oscillator source used to generate the precise IF output frequency.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterReferenceOscillator.OutputEnabled">
+			<summary>Enables or disables the Reference output.  Many downconverters support the ability to output  their frequency reference.  This attribute allows the user to enable or disable that output.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverterRFInput">
+			<summary>IviDownconverter class-compliant RF input interface.</summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterRFInput.Calibrate">
+			<summary>This function performs calibration on the entire device. This call can be blocking or can be non-blocking, depending on the instrument implementation. If it is non-blocking, the user may use the Is Calibration Complete function to determine when the calibration is complete. </summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterRFInput.IsCalibrated">
+			<summary>This function queries the instrument to determine the whether the instrument is currently in a valid self-calibrated state or whether it needs to be calibrated.  This function returns the Calibrated value in the Status parameter when the device does not need further self-calibration.</summary>
+			<returns>The calibrated status of the device.</returns>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterRFInput.IsCalibrationComplete">
+			<summary>This function queries the instrument to determine the status of all calibration operations initiated by the Calibrate function. This function returns the Calibration Complete value in the Status parameter only when calibration is complete.</summary>
+			<returns>The calibration status of the device.</returns>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterRFInput.SendSoftwareTrigger">
+			<summary>Refer to IVI-3.3: Standard Cross Class Capabilities, Section 2 Software Triggering Capability for the prototype and complete description of this function.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterRFInput.Frequency">
+			<summary>Specifies the frequency of the RF input.  The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterRFInput.Coupling">
+			<summary>Specifies the coupling applied to RF input.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterRFInput.Attenuation">
+			<summary>Specifies the amount of attenuation (or gain) to apply to the RF input of the downconverter.  The units are dB.  Positive values for this attribute represent attenuation while negative values represent gain.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterRFInput.Bypass">
+			<summary>Specifies whether or not the RF input signal bypass the entire downconverter.  When set to True, the RF input signal is routed directly to the IF output indicated by the value of the Active IF Output attribute.  When set to False, the RF input signal is routed into the front end of the downconverter and follows the normal signal path, as dictated by other downstream path control attributes, such as Preselector Enabled and Front End Bypass.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterRFInput.PreselectorEnabled">
+			<summary>Enables or disables bypassing the downconverter's pre-selection filter.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterRFInput.CorrectionsEnabled">
+			<summary>Enables or disables automatic global corrections on the device.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterRFInput.FrequencySweep">
+			<summary>Pointer to the class-compliant IIviDownconverterRFInputFrequencySweep interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterRFInput.ActiveRFInput">
+			<summary>Specifies the RF input that is currently active.  Subsequent calls to functions and attributes that are based on the RF Input repeated capability will be applied to the Active RF Input specified here.  The values for this attribute correspond to the allowed repeated capability names for the RF Input repeated capability.  Use the RF Input Name attribute (for IVI-COM) or the Get RF Input Name function (for IVI-C) to read the allowed values for this attribute.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterRFInput.Count">
+			<summary>Returns the number of RF Inputs available on the device.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterRFInput.Name(System.Int32)">
+			<summary>Returns the physical repeated capability identifier defined by the specific driver for the RF Input that corresponds to the one-based index that the user specifies. Valid values for the Index parameter are between one and the value of the RF Input Count attribute. If the user passes an invalid value for the Index parameter, the value of this attribute is an empty string. </summary>
+			<param name="Index">A one-based index that defines which physical repeated capability identifier to return.</param>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterRFInput.get_Name(System.Int32)">
+			<summary>Returns the physical repeated capability identifier defined by the specific driver for the RF Input that corresponds to the one-based index that the user specifies. Valid values for the Index parameter are between one and the value of the RF Input Count attribute. If the user passes an invalid value for the Index parameter, the value of this attribute is an empty string. </summary>
+			<param name="Index">A one-based index that defines which physical repeated capability identifier to return.</param>
+			<returns>Returns the physical repeated capability identifier defined by the specific driver for the RF Input that corresponds to the one-based index that the user specifies. Valid values for the Index parameter are between one and the value of the RF Input Count attribute. If the user passes an invalid value for the Index parameter, the value of this attribute is an empty string. </returns>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverterIFOutput">
+			<summary>IviDownconverter class-compliant IF output interface.</summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.WaitUntilSettled(System.Int32)">
+			<summary>This function waits until all of the signals flowing through the downconverter have settled. If the signals did not settle within the time period the user specified with the MaxTimeMilliseconds parameter, the function returns the Max Time Exceeded error.</summary>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time the end-user allows for this function to complete.  The units are milliseconds.  Defined values:
+Max Time Infinite - The function waits indefinitely for the downconverter to settle.</param>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.ActiveIFOutput">
+			<summary>Specifies the IF output that is currently active.  Subsequent calls to functions and attributes that are based on the IF Output repeated capability will be applied to the Active IF Output specified here.  The values for this attribute correspond to the allowed repeated capability names for the IF Output repeated capability.  Use the IF Output Name attribute (for IVI-COM) or the Get IF Output Name function (for IVI-C) to read the allowed values for this attribute.  Note that the Active IF Output attribute does not enable the specified output.  This attribute only controls the IF Output repeated capability instance to which other functions and attributes apply.  Use the IF Output Enabled atribute to route the IF signal to a specific output.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.Count">
+			<summary>Returns the number of IF Outputs available on the device.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.Name(System.Int32)">
+			<summary>Returns the physical repeated capability identifier defined by the specific driver for the IF Output that corresponds to the one-based index that the user specifies. Valid values for the Index parameter are between one and the value of the IF Output Count attribute. If the user passes an invalid value for the Index parameter, the value of this attribute is an empty string. </summary>
+			<param name="Index">A one-based index that defines which physical repeated capability identifier to return.</param>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.get_Name(System.Int32)">
+			<summary>Returns the physical repeated capability identifier defined by the specific driver for the IF Output that corresponds to the one-based index that the user specifies. Valid values for the Index parameter are between one and the value of the IF Output Count attribute. If the user passes an invalid value for the Index parameter, the value of this attribute is an empty string. </summary>
+			<param name="Index">A one-based index that defines which physical repeated capability identifier to return.</param>
+			<returns>Returns the physical repeated capability identifier defined by the specific driver for the IF Output that corresponds to the one-based index that the user specifies. Valid values for the Index parameter are between one and the value of the IF Output Count attribute. If the user passes an invalid value for the Index parameter, the value of this attribute is an empty string. </returns>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.Frequency">
+			<summary>Returns the frequency of the IF output.  The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.Enabled">
+			<summary>Enables or disables the IF output.  Only a single IF Output can be enabled at a time.  Thus, when this attribute is set to True for a particular IF output, all other IF outputs are disabled.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.Gain">
+			<summary>Specifies the amount of gain (or attenuation) to apply to the IF output of the downconverter.  The units are dB.  Positive values for this attribute represent signal gain while negative values represent attenuation.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.FilterBandwidth">
+			<summary>Returns the maximum effective IF signal bandwidth that the downconverter can present to the digitizer.  The units are Hertz.  This value is a measure of the spectral width between two points for which the amplitude profile is 3 dB below a peak close to mid band.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.VideoDetectorBandwidth">
+			<summary>Specifies the bandwidth of the IF output video detection filter.  The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterIFOutput.IsSettled">
+			<summary>Indicates whether the downconverter has settled from changes to either the RF input signal or changes to device control parameters, such as IF Output Gain, IF Frequency, or RF Attenuation.  This attribute indicates whether or not the IF output is valid for processing by another downstream system component, such as a digitizer.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverterExternalLO">
+			<summary>IviDownconverter class-compliant external local oscillator interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterExternalLO.Enabled">
+			<summary>Enables or disables the external LO.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterExternalLO.Frequency">
+			<summary>Specifies the frequency of the external LO.  The units are Hertz.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverterExternalMixer">
+			<summary>IviDownconverter class-compliant external mixer interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterExternalMixer.Enabled">
+			<summary>Enables or disables the external mixer.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterExternalMixer.Bias">
+			<summary>Pointer to the class-compliant IIviDownconverterExternalMixerBias interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterExternalMixer.Harmonic">
+			<summary>Specifies the order n of the harmonic used for conversion.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterExternalMixer.NumberOfPorts">
+			<summary>Specifies the number of ports.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverterExternalMixerBias">
+			<summary>IviDownconverter class-compliant external mixer bias interface.</summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterExternalMixerBias.Configure(System.Double,System.Double)">
+			<summary>This function configures the external mixer bias and the external mixer bias limit.</summary>
+			<param name="Bias">Specifies the bias current. The driver uses this value to set the External Mixer Bias attribute.  See the attribute description for more details.</param>
+			<param name="BiasLimit">Specifies the bias current limit. The driver uses this value to set the External Mixer Bias Limit attribute.  See the attribute description for more details.</param>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterExternalMixerBias.Level">
+			<summary>Specifies the external mixer bias current.  The units are Amps.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterExternalMixerBias.Limit">
+			<summary>Specifies the external mixer bias current limit.  The units are Amps.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterExternalMixerBias.Enabled">
+			<summary>Enables or disables the external mixer's bias.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep">
+			<summary>IviDownconverter class-compliant frequency sweep interface.</summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep.Configure(Ivi.Downconverter.Interop.IviDownconverterFrequencySweepModeEnum,System.String)">
+			<summary>Configures the whether the downconverter's RF input frequency is fixed, swept, or stepped.</summary>
+			<param name="Mode">Specifies the frequency sweep mode of the downconverter. The driver uses this value to set the Frequency Sweep Mode attribute. See the attribute description for more details.</param>
+			<param name="TriggerSource">Specifies the way to trigger source used to start a sweep or whether the sweep should run continuously. The driver uses this value to set the Frequency Sweep Trigger Source attribute. See the attribute description for more details.</param>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep.WaitUntilComplete(System.Int32)">
+			<summary>Waits until the configured frequency sweep is complete.  If no frequency sweep is currently running, this function returns immediately.   If the sweep does not complete  within the time period the user specified with the MaxTimeMilliseconds parameter, the function returns the Max Time Exceeded error.</summary>
+			<param name="MaxTimeMilliseconds">Specifies the maximum time the end-user allows for this function to complete.  The units are milliseconds.  Defined values:
+Max Time Infinite - The function waits indefinitely for the frequency sweep to complete.</param>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep.GetBandCrossingInfo(System.Double[]@,System.Double[]@)">
+			<summary>This function returns the band crossing information for sweeps.  Sweep timing is influenced by points in the sweep where frequency bands are crossed.  This function returns pairs of start/stop frequencies over which the sweep timing is constant.  Sweep timing between different pairs of start/stop frequencies is variable. The bands are returned in ascending order of frequency.</summary>
+			<param name="StartFrequencies">The start frequencies of each band.  Each value is paired with the corresponding element in the StopFrequencies output array.  The frequencies are returned in ascending order.  The units are Hertz.  </param>
+			<param name="StopFrequencies">The stop frequencies of each band.  Each value is paired with the corresponding element in the StartFrequencies output array.  The frequencies are returned in ascending order.  The units are Hertz.</param>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep.List">
+			<summary>Pointer to the class-compliant IIviDownconverterRFInputFrequencySweepList interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep.Step">
+			<summary>Pointer to the class-compliant IIviDownconverterRFInputFrequencySweepStep interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep.Analog">
+			<summary>Pointer to the class-compliant IIviDownconverterRFInputFrequencySweepNormal interface.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep.TriggerSource">
+			<summary>Specifies the trigger used to start an LO sweep operation.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep.Mode">
+			<summary>Specifies the sweep mode of the RF input signal.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep.IsSweeping">
+			<summary>Indicates if the downconverter is currently sweeping the RF input signal.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweep.NumberOfBands">
+			<summary>Returns the number of bands that will be returned from a call to the Get Band Crossing Info function.  The count returned here indicates the number of start-stop frequency pairs.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepList">
+			<summary>IviDownconverter class-compliant frequency sweep list interface.</summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepList.CreateList(System.String,System.Double[]@)">
+			<summary>Creates a named list of frequency values.</summary>
+			<param name="Name">Specifies the name of the frequency list to be created. </param>
+			<param name="FrequencyList">Specifies the array of frequency values to become elements of the list. The array must have at least as many elements as the value in the FrequencyListBufferSize parameter. The units are Hertz.</param>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepList.ClearAll">
+			<summary>Deletes all lists from the pool of defined lists.</summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepList.ConfigureDwell(System.Boolean,System.Double)">
+			<summary>Configures the attributes that control frequency list stepping.</summary>
+			<param name="SingleStepEnabled">Specifies whether the trigger initiates the next step. The driver uses this value to set the Frequency List Single Step Enabled attribute. See the attribute description for more details.</param>
+			<param name="Dwell">Specifies the duration of one frequency step. The driver uses this value to set the Frequency List Dwell attribute. See the attribute description for more details.</param>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepList.Reset">
+			<summary>Resets the current list to the first entry value.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepList.SelectedName">
+			<summary>Specifies the name of the selected list to become active.  The name shall be one of the lists created .</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepList.Dwell">
+			<summary>Specifies the duration of one step.  The units are seconds.  This attribute is ignored if the Frequency Sweep List Single Step Enabled attribute is set to True.
+</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepList.SingleStepEnabled">
+			<summary>Enables or disables single step mode.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverterFrequencyStep">
+			<summary>IviDownconverter class-compliant frequency step interface.</summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencyStep.ConfigureStartStop(System.Double,System.Double,Ivi.Downconverter.Interop.IviDownconverterFrequencyStepScalingEnum,System.Double)">
+			<summary>Configures the attributes that control the step frequencies of the downconverter's input frequency.  These attributes are start and stop frequency, step size and lin/log scaling. If the stop frequency is less than the start frequency, the frequency decreases during the sweep.</summary>
+			<param name="Start">Specifies the start frequency of the sweep. The driver uses this value to set the Frequency Step Start attribute. See the attribute description for more details.</param>
+			<param name="Stop">Specifies the stop frequency of the sweep. The driver uses this value to set the Frequency Step Stop attribute. See the attribute description for more details.</param>
+			<param name="Scaling">Specifies the scaling of the step sweep. The driver uses this value to set the Frequency Step Scaling attribute. See the attribute description for more details.</param>
+			<param name="StepSize">Specifies the size of one step. The driver uses this value to set the Frequency Step Size attribute. See the attribute description for more details.</param>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencyStep.ConfigureDwell(System.Boolean,System.Double)">
+			<summary>Configures the attributes that control frequency stepping dwell.</summary>
+			<param name="SingleStepEnabled">Specifies whether the trigger initiates the next step. The driver uses this value to set the Frequency Step Single Step Enabled attribute. See the attribute description for more details.</param>
+			<param name="Dwell">Specifies the duration of one frequency step. The driver uses this value to set the Frequency Step Dwell attribute. See the attribute description for more details.</param>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencyStep.Reset">
+			<summary>Resets the current frequency step to the frequency step start value</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencyStep.Start">
+			<summary>Specifies the start frequency of the stepped sweep. If the stop frequency is less than the start frequency, the frequency decreases during the sweep. The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencyStep.Stop">
+			<summary>Specifies the stop frequency of the stepped sweep.  If the stop frequency is less than the start frequency, the frequency decreases during the sweep. The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencyStep.Size">
+			<summary>Specifies the step size.  The units are Hertz if the Frequency Step Scaling attribute is set to Linear and unitless (factor) if the Frequency Step Scaling attribute is set to Logarithmic.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencyStep.Dwell">
+			<summary>Specifies the duration of one step. The units are seconds. Dwell time starts immediately after a trigger or the next step. No settling time is added. This attribute is ignored if the Frequency Step Single Step Enabled attribute is set to True.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencyStep.SingleStepEnabled">
+			<summary>Enables or disables single step mode.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencyStep.Scaling">
+			<summary>Specifies the spacing of the steps.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepAnalog">
+			<summary>IviDownconverter class-compliant frequency sweep interface.</summary>
+		</member>
+		<member name="M:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepAnalog.ConfigureStartStop(System.Double,System.Double)">
+			<summary>Configures the start and stop frequency attributes that control the frequency sweep of the RF input signal.  If the stop frequency is less than the start frequency, the frequency decreases during the sweep.</summary>
+			<param name="Start">Specifies the start frequency of the sweep. The driver uses this value to set the Frequency Sweep Start attribute. See the attribute description for more details.</param>
+			<param name="Stop">Specifies the stop frequency of the sweep. The driver uses this value to set the Frequency Sweep Stop attribute. See the attribute description for more details.</param>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepAnalog.Start">
+			<summary>Specifies the start frequency of the LO sweep. If the stop frequency is less than the start frequency, the frequency decreases during the sweep. The units are Hertz</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepAnalog.Stop">
+			<summary>Specifies the stop frequency of the LO sweep. If the stop frequency is less than the start frequency, the frequency decreases during the sweep. The units are Hertz.</summary>
+		</member>
+		<member name="P:Ivi.Downconverter.Interop.IIviDownconverterFrequencySweepAnalog.Time">
+			<summary>Specifies the duration of one LO sweep from start to stop frequency. The units are seconds.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IviDownconverterReferenceOscillatorSourceEnum">
+			<summary>Defined values for the reference oscillator source.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterReferenceOscillatorSourceEnum.IviDownconverterReferenceOscillatorSourceInternal">
+			<summary>The downconverter uses the internal reference oscillator.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterReferenceOscillatorSourceEnum.IviDownconverterReferenceOscillatorSourceExternal">
+			<summary>The downconverter uses an external reference oscillator.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IviDownconverterInputCouplingEnum">
+			<summary>Defined values for the type of RF input coupling.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterInputCouplingEnum.IviDownconverterInputCouplingAC">
+			<summary>The downconverter AC couples the RF input signal.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterInputCouplingEnum.IviDownconverterInputCouplingDC">
+			<summary>The downconverter DC couples the RF input signal.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IviDownconverterFrequencySweepModeEnum">
+			<summary>Defined values for the RF input frequency sweep mode.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterFrequencySweepModeEnum.IviDownconverterFrequencySweepModeNone">
+			<summary>The RF input of the downconverter is a non-swept signal (continuous wave). Frequency settings from the base capability group are used.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterFrequencySweepModeEnum.IviDownconverterFrequencySweepModeSweep">
+			<summary>The downconverter sweeps the RF input signal?s frequency in analog form (non-stepped). Refer to IviDownconverterAnalogyFrequencySweep extension group.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterFrequencySweepModeEnum.IviDownconverterFrequencySweepModeStep">
+			<summary>The downconverter sweeps the RF input signal?s frequency in steps. Refer to IviDownconverterFrequencyStep extension group.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterFrequencySweepModeEnum.IviDownconverterFrequencySweepModeList">
+			<summary>The downconverter uses a list to sweep the RF input signal frequency. Refer to IviDownconverterFrequencySweepList extension group.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IviDownconverterFrequencyStepScalingEnum">
+			<summary>Defined values for selecting the step size scaling for RF input frequency stepped sweeps.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterFrequencyStepScalingEnum.IviDownconverterFrequencyStepScalingLinear">
+			<summary>Enables linear scaling for step sizes in stepped sweeps.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterFrequencyStepScalingEnum.IviDownconverterFrequencyStepScalingLogarithmic">
+			<summary>Enables logarithmic scaling for step sizes in stepped sweeps.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IviDownconverterCalibrationStatusEnum">
+			<summary>Defined values for the downconverter calibration status.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterCalibrationStatusEnum.IviDownconverterCalibrationComplete">
+			<summary>The downconverter has completed the calibration.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterCalibrationStatusEnum.IviDownconverterCalibrationInProgress">
+			<summary>The downconverter is still performing the calibration.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterCalibrationStatusEnum.IviDownconverterCalibrationStatusUnknown">
+			<summary>The downconverter cannot determine the status of the calibration.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterCalibrationStatusEnum.IviDownconverterCalibrationFailed">
+			<summary>The downconverter calibration failed.</summary>
+		</member>
+		<member name="T:Ivi.Downconverter.Interop.IviDownconverterCalibratedStatusEnum">
+			<summary>Defined values indicating whether the instrument is currently in a valid self-calibrated state or whether it needs to be calibrated.  </summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterCalibratedStatusEnum.IviDownconverterCalibrated">
+			<summary>The downconverter is calibrated.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterCalibratedStatusEnum.IviDownconverterUncalibrated">
+			<summary>The downconverter requires further calibration.</summary>
+		</member>
+		<member name="F:Ivi.Downconverter.Interop.IviDownconverterCalibratedStatusEnum.IviDownconverterCalibratedStatusUnknown">
+			<summary>The downconverter cannot determine the status of the calibration.</summary>
+		</member>
+	</members>
+</doc>

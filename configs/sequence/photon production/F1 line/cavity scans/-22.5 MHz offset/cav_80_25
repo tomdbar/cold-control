@@ -1,0 +1,167 @@
+date = 10/03/17
+time = 10:48:40
+[notes]
+user = '''Default user notes...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+config_ch_assignments = "(0, 'Unconfigured channel')", "(1, 'Unconfigured channel')", "(2, 'Unconfigured channel')", "(3, 'Unconfigured channel')", "(4, 'Unconfigured channel')", "(5, 'Unconfigured channel')", "(6, 'Unconfigured channel')", "(7, 'Unconfigured channel')", "(8, 'Unconfigured channel')", "(9, 'Unconfigured channel')", "(10, 'Unconfigured channel')", "(11, 'Unconfigured channel')", "(12, 'Unconfigured channel')", "(13, 'Unconfigured channel')", "(14, 'Unconfigured channel')", "(15, 'Unconfigured channel')", "(16, 'Unconfigured channel')", "(17, 'Unconfigured channel')", "(18, 'Unconfigured channel')", "(19, 'Unconfigured channel')", "(20, 'Unconfigured channel')", "(21, 'Unconfigured channel')", "(22, 'Unconfigured channel')", "(23, 'Unconfigured channel')"
+[sequence]
+t_step = 10.0
+global_timings = "(15000.0, 'Cool off')", "(14000.0, 'Throw start')", "(20500.0, 'AWG start')", "(39000.0, 'AWG end')", "(15500.0, 'Depump off')", "(12000.0, 'Molasses start')", "(3000.0, 'Repump click-clack')"
+n_samples = 4001
+[sequence channels]
+[[0]]
+tV_pairs = "(0.0, 6.098919432921334)", "(12000.0, 5.346830003517509)", "(14000.0, 5.2815302187866875)"
+V_interval_styles = 0, 0, 0
+chNum = 0
+[[1]]
+tV_pairs = "(0.0, 6.103347153084332)", "(12000.0, 5.348613892354194)", "(14000.0, 5.416887214836322)"
+V_interval_styles = 0, 0, 0
+chNum = 1
+[[2]]
+tV_pairs = "(0.0, 6.0491989854320405)", "(12000.0, 5.299176255211292)", "(14000.0, 5.299176255211292)"
+V_interval_styles = 0, 0, 0
+chNum = 2
+[[3]]
+tV_pairs = "(0.0, 3.8430009980311857)",
+V_interval_styles = 0,
+chNum = 3
+[[4]]
+tV_pairs = "(0.0, 2.49084249084)", "(12000.0, 1.1500376527651095)", "(15000.0, 0.04884004884)"
+V_interval_styles = 0, 0, 0
+chNum = 4
+[[5]]
+tV_pairs = "(0.0, 3.32112332112)", "(12000.0, 2.3733778049439107)", "(15000.0, 0.39072039072)"
+V_interval_styles = 0, 0, 0
+chNum = 5
+[[6]]
+tV_pairs = "(0.0, 2.75946275946)", "(12000.0, 1.001327617152999)", "(15000.0, 0.04884004884)"
+V_interval_styles = 0, 0, 0
+chNum = 6
+[[7]]
+tV_pairs = "(0.0, 0.0)", "(15000.0, 5.06471306471)", "(35000.0, 0.0)"
+V_interval_styles = 0, 0, 0
+chNum = 7
+[[8]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 8
+[[9]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 9
+[[10]]
+tV_pairs = "(0.0, 2.2149500480644475)",
+V_interval_styles = 0,
+chNum = 10
+[[11]]
+tV_pairs = "(0.0, 5.0)",
+V_interval_styles = 0,
+chNum = 11
+[[12]]
+tV_pairs = "(0.0, 7.355114577696655)",
+V_interval_styles = 0,
+chNum = 12
+[[13]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 13
+[[14]]
+tV_pairs = "(0.0, 0.0)", "(14000.0, 7.247268393397062)"
+V_interval_styles = 0, 0
+chNum = 14
+[[15]]
+tV_pairs = "(0.0, 0.0)", "(17500.0, 10.0)", "(19500.0, 0.0)"
+V_interval_styles = 0, 0, 0
+chNum = 15
+[[16]]
+tV_pairs = "(0.0, 5.0)", "(12000.0, 0.0)"
+V_interval_styles = 0, 0
+chNum = 16
+[[17]]
+tV_pairs = "(0.0, 0.05)", "(15000.0, 0.05)", "(17500.0, 1.7)", "(39000.0, 0.05)"
+V_interval_styles = 0, 0, 0, 0
+chNum = 17
+[[18]]
+tV_pairs = "(0.0, 1.5)", "(12000.0, 1.5)", "(17500.0, 1.5)", "(35000.0, 1.5)"
+V_interval_styles = 0, 0, 0, 0
+chNum = 18
+[[19]]
+tV_pairs = "(0.0, 0.4)", "(17500.0, 0.4)", "(35000.0, 0.4)"
+V_interval_styles = 0, 0, 0
+chNum = 19
+[[20]]
+tV_pairs = "(0.0, 0.0)", "(5000.0, 5.0)", "(39000.0, 0.0)"
+V_interval_styles = 0, 0, 0
+chNum = 20
+[[21]]
+tV_pairs = "(0.0, -4.967558933370587)", "(15000.0, -4.967558933370587)", "(35000.0, -4.967558933370587)"
+V_interval_styles = 0, 0, 0
+chNum = 21
+[[22]]
+tV_pairs = "(0.0, 0.0)", "(20500.0, 2.5)", "(39000.0, 0.0)"
+V_interval_styles = 0, 0, 0
+chNum = 22
+[[23]]
+tV_pairs = "(0.0, 0.0)",
+V_interval_styles = 0,
+chNum = 23
