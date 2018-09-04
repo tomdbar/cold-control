@@ -6,5 +6,7 @@
 
 labbook/**
 
+*.pyc
+
 exceptions
 exceptions.log
