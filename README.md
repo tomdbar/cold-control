@@ -22,4 +22,4 @@ The below is not an exhaustive list and neglects most specfics, however it hopef
     - [qutools quTAU TDC](instruments/quTAU) 
     - [ThorlabsPM100 powermeter](instruments/ThorlabsPM100)
     - [TF930 frequency counter](instruments/TF930)
-  Other instruments in this folder are not currentlt integrated with cold-control, however the work done on proving a wrapper for doing so is still included.
+    - Other instruments in this folder are not currently integrated with cold-control, however some work has been done on proving a wrapper for doing so and this is included.
